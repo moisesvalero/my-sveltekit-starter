@@ -1,9 +1,6 @@
 {
   "installDependencies": true,
-  "startCommand": "npm run dev",
-  "engines": {
-    "node": ">=22"
-  },
+  "startCommand": "vite dev",
   "env": {
     "NODE_ENV": "development"
   }
