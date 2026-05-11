@@ -19,7 +19,7 @@ export const sitePortfolioQuery = `coalesce(
         defined(slug.current) &&
         coalesce(showOnHome, true) == true
       ] | order(coalesce(homeSortOrder, 999) asc, _updatedAt desc){
-        "imageSrc": coalesce(images.principal, "/imagenes/captura-novakit_ember.avif"),
+        "imageSrc": coalesce(images.principal, "/imagenes/captura-Svelte Starter_ember.avif"),
         "imageAlt": coalesce(title, "Proyecto"),
         "destinationUrl": "/proyectos/" + slug.current,
         "title": { "es": coalesce(title, "Proyecto"), "en": coalesce(title, "Project") },

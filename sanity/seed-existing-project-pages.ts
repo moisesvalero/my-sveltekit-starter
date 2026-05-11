@@ -16,9 +16,9 @@ async function main() {
       heroDescription: 'Completa este documento con tu contenido real.',
       tags: ['SvelteKit', 'Sanity'],
       images: {
-        principal: '/imagenes/captura-novakit_ember.avif',
-        secondary1: '/imagenes/captura-novakit_ember.avif',
-        secondary2: '/imagenes/captura-novakit_ember.avif'
+        principal: '/imagenes/captura-Svelte Starter_ember.avif',
+        secondary1: '/imagenes/captura-Svelte Starter_ember.avif',
+        secondary2: '/imagenes/captura-Svelte Starter_ember.avif'
       },
       metrics: [
         { _key: 'metric-1', value: '90+', label: 'Lighthouse' },

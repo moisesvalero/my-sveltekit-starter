@@ -6,9 +6,21 @@
     isYearly: boolean;
     toggleBilling: () => void;
   }>();
+
+  let togglePhase = $state<'idle' | 'toggling' | 'done'>('idle');
+
+  function handleToggle() {
+    togglePhase = 'toggling';
+    toggleBilling();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        togglePhase = 'done';
+      });
+    });
+  }
 </script>
 
-<section id="pricing" class="pricing">
+<section id="pricing" class={`pricing ${togglePhase === 'toggling' ? 'toggling' : ''} ${togglePhase === 'done' ? 'toggling-done' : ''}`}>
   <div class="pricing-header" use:reveal={{ stage: 'title' }}>
     <h2>{$t('pricing.title')}</h2>
     <p>{$t('pricing.subtitle')}</p>
@@ -17,7 +29,7 @@
       <button
         type="button"
         class="toggle-btn"
-        onclick={toggleBilling}
+        onclick={handleToggle}
         aria-label="Toggle billing"
       >
         <div class="toggle-circle" class:yearly={isYearly}></div>
@@ -176,7 +188,6 @@
       border-color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  /* Pro un poco más alto para destacar */
   .price-card.featured.is-visible {
     transform: translateY(-4px);
   }
@@ -193,7 +204,6 @@
     overflow: hidden;
   }
 
-  /* Glow respirando en el borde del plan Pro */
   .price-card.featured::before {
     content: "";
     position: absolute;
@@ -231,7 +241,6 @@
     color: var(--text-secondary);
   }
 
-  /* Efecto blur-fade al cambiar precios */
   .price-display .amount,
   .price-display .period {
     display: inline-block;
@@ -241,15 +250,15 @@
       filter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .pricing.toggling .amount,
-  .pricing.toggling .period {
+  .toggling .amount,
+  .toggling .period {
     opacity: 0;
     transform: translateY(-8px);
     filter: blur(3px);
   }
 
-  .pricing.toggling-done .amount,
-  .pricing.toggling-done .period {
+  .toggling-done .amount,
+  .toggling-done .period {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
@@ -278,7 +287,6 @@
     text-align: center;
   }
 
-  /* Botones con desplazamiento de gradiente interno al hover */
   .price-card .btn-primary {
     background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 50%, var(--accent) 100%);
     background-size: 200% 100%;

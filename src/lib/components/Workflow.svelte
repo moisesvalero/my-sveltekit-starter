@@ -130,7 +130,7 @@
                 <span class="iph-time">9:41</span>
                 <svg width="18" height="7" viewBox="0 0 18 7"><rect x="0" y="1.5" width="3" height="4" rx="0.5" fill="#000" opacity="0.4"/><rect x="4" y="1" width="3" height="5" rx="0.5" fill="#000" opacity="0.6"/><rect x="8" y="0.5" width="3" height="6" rx="0.5" fill="#000"/><rect x="13" y="1.5" width="3" height="4" rx="0.5" fill="none" stroke="#000" stroke-width="0.8"/><rect x="13.4" y="2.2" width="1.8" height="2.6" rx="0.3" fill="#34c759"/></svg>
               </div>
-              <div class="iph-nav"><div class="iph-nav-title">NovaKit</div></div>
+              <div class="iph-nav"><div class="iph-nav-title">Svelte Starter</div></div>
               <div class="iph-content">
                 <div class="iph-hero"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-4.5" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
                 <div class="iph-cards"><div class="iph-card"></div><div class="iph-card"></div></div>

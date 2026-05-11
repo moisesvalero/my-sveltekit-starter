@@ -1,6 +1,6 @@
 {
   "layout": {
-    "title": "NovaKit — Creative UI Toolkit",
+    "title": "Svelte Starter — Creative UI Toolkit",
     "nav": {
       "features": "Features",
       "pricing": "Pricing",
@@ -19,11 +19,11 @@
     }
   },
   "hero": {
-    "pill": "NovaKit · Creative UI Toolkit",
+    "pill": "Svelte Starter · Creative UI Toolkit",
     "titleLine1": "Creative UI Toolkit",
     "titleLine2": "for Modern Web Apps",
     "subtitle": "Design and ship clean, fast, elegant interfaces with a premium visual system and a modern product experience.",
-    "ctaPrimary": "Get NovaKit",
+    "ctaPrimary": "Get Svelte Starter",
     "ctaSecondary": "Explore components",
     "footnote": "No generic templates. Modern product sections ready to combine, animate, and ship to production."
   },
@@ -36,7 +36,7 @@
     }
   },
   "workflow": {
-    "eyebrow": "How NovaKit fits your flow",
+    "eyebrow": "How Svelte Starter fits your flow",
     "title": "From wireframe to <span class='gradient-text'>polished interface</span><br>in hours, not weeks.",
     "subtitle": "Combine ready-made blocks, tweak tokens, and ship product-ready UI kits without drowning in Figma files.",
     "step1_num": "01 — DESIGN",
@@ -140,7 +140,7 @@
   },
   "useCases": {
     "eyebrow": "Built for busy product teams",
-    "title": "Use NovaKit wherever clean, fast UI really matters.",
+    "title": "Use Svelte Starter wherever clean, fast UI really matters.",
     "case1Title": "SaaS dashboards",
     "case1Desc": "Compose analytics views, settings areas, and billing pages that feel consistent across your product.",
     "case2Title": "Internal tools",
@@ -163,10 +163,10 @@
     "stat1": "UI Components",
     "stat2": "Developers worldwide",
     "stat3": "Average rating",
-    "cta": "Get NovaKit"
+    "cta": "Get Svelte Starter"
   },
   "superpowers": {
-    "eyebrow": "Explore NovaKit in a whole new way.",
+    "eyebrow": "Explore Svelte Starter in a whole new way.",
     "title": "Everyday superpowers for modern product interfaces.",
     "card1Title": "Ready-to-use design tokens",
     "card1Desc": "Typography, spacing, and radius scales that stay consistent from day one, without wrestling a massive design system.",
@@ -195,7 +195,7 @@
       "customDesc": "Adapt color, typography, and spacing with design tokens in seconds."
     },
     "mockup": {
-      "storeTitle": "NovaKit Store",
+      "storeTitle": "Svelte Starter Store",
       "storeSub": "247 components available",
       "searchPlaceholder": "Dashboard components...",
       "segAll": "All",
@@ -251,7 +251,7 @@
   "testimonials": {
     "eyebrow": "Loved by designers and builders",
     "title": "Start bringing balance back to your interface work.",
-    "cta": "Download NovaKit preview",
+    "cta": "Download Svelte Starter preview",
     "roles": {
       "r1": "Product Designer at Brightlabs",
       "r2": "Frontend freelancer",
@@ -281,38 +281,38 @@
       "r26": "Software Engineer"
     },
     "quotes": {
-      "q1": "We moved from static marketing pages to complete SvelteKit flows in days. NovaKit gave us a consistent visual language without fighting Figma in every iteration.",
+      "q1": "We moved from static marketing pages to complete SvelteKit flows in days. Svelte Starter gave us a consistent visual language without fighting Figma in every iteration.",
       "q2": "As a freelancer, I finally have a serious starting point. I reuse the same foundation across clients, while each project still feels unique through sections and tokens.",
       "q3": "Our product team can prototype new ideas directly in SvelteKit without waiting for hand-coded HTML every time. The micro-interactions feel right out of the box.",
-      "q4": "Since migrating our marketing site to NovaKit, the team stopped saying 'we will build it tomorrow' and started saying 'we can ship it today 🚀'.",
+      "q4": "Since migrating our marketing site to Svelte Starter, the team stopped saying 'we will build it tomorrow' and started saying 'we can ship it today 🚀'.",
       "q5": "We use it as the foundation for three different products and almost nobody notices. We swap tokens, logos, and copy, and it just works. It feels like a living design system ✨.",
-      "q6": "Every sprint starts by cloning a NovaKit layout instead of reusing an old page. That alone saves hours of design debates 🙌.",
+      "q6": "Every sprint starts by cloning a Svelte Starter layout instead of reusing an old page. That alone saves hours of design debates 🙌.",
       "q7": "Our remote team shares landing screenshots in Slack like they are new Dribbble shots. The best part is that everything is live in production 😍.",
-      "q8": "We built a lightweight design system on top of NovaKit and, for the first time, design and code move at the same speed. No more endless pixel-perfect loops 🧩.",
-      "q9": "The client thought we hired an expensive agency. In reality, it was NovaKit layouts with a few brand customizations 😏.",
-      "q10": "NovaKit lets us keep a coherent component library across product, marketing, and internal dashboards without duplicating work ⚙️.",
+      "q8": "We built a lightweight design system on top of Svelte Starter and, for the first time, design and code move at the same speed. No more endless pixel-perfect loops 🧩.",
+      "q9": "The client thought we hired an expensive agency. In reality, it was Svelte Starter layouts with a few brand customizations 😏.",
+      "q10": "Svelte Starter lets us keep a coherent component library across product, marketing, and internal dashboards without duplicating work ⚙️.",
       "q11": "It feels like opening a mature app from day one. We only had to plug in our data and start iterating.",
       "q12": "We used to have four versions of the same button. Now everything comes from one kit, and support sends us hearts in Slack 💜.",
-      "q13": "I never thought I would enjoy building tables and settings screens this much. NovaKit makes even routine screens feel premium 😅.",
-      "q14": "We moved from 'do not touch that fragile view' to 'clone the NovaKit pattern and adapt it.' It is a completely different mindset 💡.",
+      "q13": "I never thought I would enjoy building tables and settings screens this much. Svelte Starter makes even routine screens feel premium 😅.",
+      "q14": "We moved from 'do not touch that fragile view' to 'clone the Svelte Starter pattern and adapt it.' It is a completely different mindset 💡.",
       "q15": "Backend handoff is now just sharing components. Fewer tickets, fewer screenshots, and many more happy pull requests 🤝.",
       "q16": "Some motion details feel straight out of apps like Linear or Superlist. Best of all, the CSS stays clean and readable 👀.",
       "q17": "We turned a Figma prototype into a navigable demo in one afternoon. The sales team sent us a very enthusiastic THANK YOU 🔥.",
       "q18": "This landing let us validate our product messaging in days. We only changed copy and data, the design foundation was already there.",
-      "q19": "Navigating NovaKit feels like the best modern productivity apps, while remaining pure Svelte code we fully control.",
+      "q19": "Navigating Svelte Starter feels like the best modern productivity apps, while remaining pure Svelte code we fully control.",
       "q20": "This landing let us validate our product messaging in days. We only changed copy and data, while the design foundation was already done ✅.",
       "q21": "We handed it to marketing and they now create new pages on their own. I just review the pull request and smile 😎.",
-      "q22": "NovaKit code is so clean that even our very detail-oriented CTO gave us an immediate green light 🧠.",
-      "q23": "In investor demos, we used a landing built with NovaKit directly. Nobody asked about design quality, only about the roadmap. That says it all 💬.",
-      "q24": "We connected NovaKit to our API and had a client mini-portal in one afternoon that looked polished for months ✨.",
-      "q25": "The data team asked for 'something quick' to present metrics. We gave them a NovaKit dashboard and now they do not want anything else 📊.",
+      "q22": "Svelte Starter code is so clean that even our very detail-oriented CTO gave us an immediate green light 🧠.",
+      "q23": "In investor demos, we used a landing built with Svelte Starter directly. Nobody asked about design quality, only about the roadmap. That says it all 💬.",
+      "q24": "We connected Svelte Starter to our API and had a client mini-portal in one afternoon that looked polished for months ✨.",
+      "q25": "The data team asked for 'something quick' to present metrics. We gave them a Svelte Starter dashboard and now they do not want anything else 📊.",
       "q26": "I love being able to open the landing repo, tweak a few props, and see real changes in minutes. Zero fear of breaking the design 💻."
     }
   },
   "deepDetails": {
     "eyebrow": "Details that matter for product UI.",
     "title": "Move seamlessly from idea to shipped interface.",
-    "subtitle": "NovaKit handles the details that shape great product UI: states, spacing, visual rhythm, and accessibility.",
+    "subtitle": "Svelte Starter handles the details that shape great product UI: states, spacing, visual rhythm, and accessibility.",
     "items": {
       "item1Text": "Real-time-ready layouts for collaborative dashboards.",
       "item1Tag": "Dashboards ready for production",
@@ -350,10 +350,10 @@
     "eyebrow": "Ready to build",
     "titleLine1": "Your next interface",
     "titleLine2": "starts here.",
-    "subtitle": "Stop building from scratch. NovaKit gives you everything you need to ship beautiful products in hours, not weeks.",
-    "primary": "Get NovaKit",
+    "subtitle": "Stop building from scratch. Svelte Starter gives you everything you need to ship beautiful products in hours, not weeks.",
+    "primary": "Get Svelte Starter",
     "secondary": "Explore components",
-    "proof": "<strong>2,400+</strong> developers trust NovaKit",
+    "proof": "<strong>2,400+</strong> developers trust Svelte Starter",
     "rating": "<strong>4.9</strong> / 5 rating"
   },
   "footer": {

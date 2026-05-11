@@ -1,0 +1,65 @@
+---
+title: Mi primer post con SvelteKit
+date: 2026-05-11
+description: Un ejemplo de blog usando mdsvex y Markdown.
+---
+
+<script>
+  import Container from '$lib/components/ui/Container.svelte';
+  import { setSeo } from '$lib/seo';
+  setSeo({ title: 'Mi primer post', description: 'Un ejemplo de blog con mdsvex y Markdown.' });
+</script>
+
+<svelte:head>
+  <title>Mi primer post | Blog</title>
+</svelte:head>
+
+<Container>
+<article class="blog-post">
+
+## Bienvenido al blog
+
+Este es un ejemplo de como funciona el sistema de blog con **Markdown** y **mdsvex**.
+
+### Como crear un post nuevo
+
+1. Crea una carpeta en `src/routes/blog/tu-post/`
+2. Crea un archivo `+page.svx` dentro
+3. Escribe tu contenido en Markdown
+4. Añade el frontmatter con `title`, `date` y `description`
+
+### Ejemplo de codigo
+
+```ts
+function saludo(nombre: string) {
+  return `Hola ${nombre}!`;
+}
+```
+
+### Por que usar SvelteKit para tu blog
+
+- Velocidad: las paginas se generan en build time
+- Markdown: escribes en texto plano, se convierte a HTML
+- Componentes: puedes meter componentes Svelte dentro del Markdown
+- SEO: cada post tiene su propio title, description y meta tags
+
+Listo para empezar a escribir.
+
+</article>
+</Container>
+
+<style>
+  .blog-post {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    max-width: 720px;
+  }
+  .blog-post :global(h2) { font-size: 1.8rem; margin: 2rem 0 1rem; }
+  .blog-post :global(h3) { font-size: 1.3rem; margin: 1.5rem 0 0.75rem; }
+  .blog-post :global(p) { line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.2rem; }
+  .blog-post :global(ul), .blog-post :global(ol) { line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.2rem; padding-left: 1.5rem; }
+  .blog-post :global(code) { background: rgba(99,102,241,0.08); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+  .blog-post :global(pre) { background: #1a1a2e; color: #e2e8f0; padding: 1.2rem; border-radius: 12px; overflow-x: auto; margin-bottom: 1.5rem; }
+  .blog-post :global(pre code) { background: none; padding: 0; color: inherit; }
+  .blog-post :global(a) { color: var(--accent); }
+</style>

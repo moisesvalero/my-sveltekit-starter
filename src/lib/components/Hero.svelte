@@ -29,7 +29,7 @@
           <iframe
             src="https://my.spline.design/interactiveaiwebsite-4kvHSstoxbqWFDKp11RVJkCe/"
             loading="lazy"
-            title="NovaKit 3D Hero"
+            title="Svelte Starter 3D Hero"
             onload={() => (splineLoaded = true)}
           ></iframe>
         </div>

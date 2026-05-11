@@ -42,7 +42,7 @@
               <button class="safari-nav-btn" aria-label="Go back">‹</button>
               <div class="safari-address-pill">
                 <span class="safari-lock"></span>
-                <span class="safari-domain">novakit.vercel.app</span>
+                <span class="safari-domain">Svelte Starter.vercel.app</span>
               </div>
               <button class="safari-nav-btn" aria-label="Share page">⋯</button>
             </div>

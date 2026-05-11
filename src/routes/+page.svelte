@@ -2,20 +2,19 @@
   import { env } from '$env/dynamic/public';
   import HeroSection from '$lib/components/ui/HeroSection.svelte';
   import FeaturesSection from '$lib/components/ui/FeaturesSection.svelte';
+  import { siteConfig } from '$lib/site-config';
   import { seo, setSeo } from '$lib/seo';
 
   const baseUrl = new URL(env.PUBLIC_SITE_URL || 'http://localhost:5173').toString().replace(/\/$/, '');
 
   setSeo({
-    title: 'Starter SvelteKit | Plantilla base para proyectos web',
-    description:
-      'Plantilla SvelteKit lista para lanzar landings y productos con componentes reutilizables desde el primer día.',
-    ogTitle: 'Starter SvelteKit | Plantilla base para proyectos web',
-    ogDescription:
-      'Empieza nuevos proyectos con una base limpia, componentes reutilizables y estructura lista para producción.',
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.tagline,
+    ogTitle: `${siteConfig.name} | ${siteConfig.tagline}`,
+    ogDescription: siteConfig.tagline,
     canonical: `${baseUrl}/`,
     ogUrl: `${baseUrl}/`,
-    ogImage: `${baseUrl}/og-image.png`,
+    ogImage: `${baseUrl}${siteConfig.ogImage}`,
     twitterCard: 'summary_large_image'
   });
 </script>
@@ -39,7 +38,7 @@
 </svelte:head>
 
 <HeroSection
-  eyebrow="Starter SvelteKit"
+  eyebrow={siteConfig.name}
   title="Plantilla lista para lanzar tus próximas interfaces."
   subtitle="Usa esta base como punto de partida para landings, productos SaaS o paneles internos. Personaliza colores, tipografía y secciones sin pelearte con el layout."
   primaryLabel="Ver ejemplo completo"

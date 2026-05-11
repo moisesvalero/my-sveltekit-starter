@@ -21,7 +21,7 @@
 
   let faqs = $state([
     {
-      question: '¿Qué incluye NovaKit?',
+      question: '¿Qué incluye Svelte Starter?',
       answer:
         'Incluye más de 50 componentes premium, animaciones listas para usar y soporte prioritario.',
       open: false
@@ -34,7 +34,7 @@
     {
       question: '¿Necesito experiencia previa con Svelte?',
       answer:
-        'No. NovaKit está pensado como una guía práctica: puedes partir de los ejemplos y aprender Svelte paso a paso mientras adaptas la landing.',
+        'No. Svelte Starter está pensado como una guía práctica: puedes partir de los ejemplos y aprender Svelte paso a paso mientras adaptas la landing.',
       open: false
     },
     {
