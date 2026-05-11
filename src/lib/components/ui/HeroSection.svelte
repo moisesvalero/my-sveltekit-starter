@@ -23,25 +23,32 @@
     primaryHref = undefined,
     secondaryLabel = undefined,
     secondaryHref = undefined,
-    align = 'left'
+    align = 'center'
   }: Props = $props();
 </script>
 
-<section class="nk-hero">
-  <Container className="nk-hero-inner">
-    <div class={`nk-hero-copy nk-hero-copy--${align}`}>
-      <Heading level={1} {eyebrow} align={align}>
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <Container>
+    <div class="hero-content hero-content--{align}">
+      <Heading level={1} {eyebrow} {align}>
         {title}
       </Heading>
 
       {#if subtitle}
-        <Text variant="muted" align={align} className="nk-hero-subtitle">
+        <Text variant="muted" align={align} className="hero-subtitle">
           {subtitle}
         </Text>
       {/if}
 
       {#if primaryLabel || secondaryLabel}
-        <div class="nk-hero-actions">
+        <div class="hero-actions">
           {#if primaryLabel}
             <Button
               as={primaryHref ? 'a' : 'button'}
@@ -57,7 +64,7 @@
             <Button
               as={secondaryHref ? 'a' : 'button'}
               href={secondaryHref}
-              variant="secondary"
+              variant="outline"
               size="lg"
             >
               {secondaryLabel}
@@ -66,88 +73,125 @@
         </div>
       {/if}
     </div>
-
-    <div class="nk-hero-media">
-      <slot />
-    </div>
   </Container>
 </section>
 
 <style>
-  .nk-hero {
+  .hero {
     position: relative;
-    padding-block: 120px;
-    background: #ffffff;
+    padding-block: clamp(120px, 18vh, 180px);
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.08) 0%, transparent 60%), var(--bg-main, #fff);
   }
 
-  .nk-hero-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: clamp(2rem, 4vw, 4rem);
-    align-items: center;
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
   }
 
-  .nk-hero-copy {
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+  }
+
+  .hero-orb--1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(99,102,241,0.25), transparent);
+    top: -150px; left: -100px;
+    animation: orbFloat1 12s ease-in-out infinite;
+  }
+
+  .hero-orb--2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(139,92,246,0.18), transparent);
+    top: 50%; right: -80px;
+    animation: orbFloat2 15s ease-in-out infinite;
+  }
+
+  .hero-orb--3 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(59,130,246,0.15), transparent);
+    bottom: -80px; left: 40%;
+    animation: orbFloat3 10s ease-in-out infinite;
+  }
+
+  @keyframes orbFloat1 {
+    0%, 100% { transform: translate3d(0,0,0) scale(1); }
+    50% { transform: translate3d(40px,-20px,0) scale(1.1); }
+  }
+  @keyframes orbFloat2 {
+    0%, 100% { transform: translate3d(0,0,0) scale(1); }
+    50% { transform: translate3d(-30px,20px,0) scale(1.15); }
+  }
+  @keyframes orbFloat3 {
+    0%, 100% { transform: translate3d(0,0,0) scale(1); }
+    50% { transform: translate3d(20px,30px,0) scale(1.08); }
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
-    max-width: 640px;
+    gap: 1.5rem;
+    max-width: 740px;
   }
 
-  .nk-hero-copy--center {
+  .hero-content--center {
     margin-inline: auto;
     align-items: center;
     text-align: center;
   }
 
-  .nk-hero-subtitle {
-    max-width: 34rem;
+  .hero-content--left {
+    align-items: flex-start;
+    text-align: left;
   }
 
-  .nk-hero-actions {
+  .hero-subtitle {
+    max-width: 36rem;
+    font-size: 1.05rem;
+  }
+
+  .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.9rem;
-    align-items: center;
+    margin-top: 0.5rem;
   }
 
-  .nk-hero-media {
-    min-height: 260px;
-    display: flex;
-    align-items: center;
+  .hero-content--center .hero-actions {
     justify-content: center;
   }
 
-  .nk-hero-media :global(iframe),
-  .nk-hero-media :global(img) {
-    max-width: 100%;
-    border-radius: 24px;
-    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
-  }
-
-  @media (max-width: 900px) {
-    .nk-hero-inner {
-      grid-template-columns: minmax(0, 1fr);
-    }
-
-    .nk-hero {
-      padding-block: 96px;
-    }
-
-    .nk-hero-copy--left {
-      align-items: flex-start;
-      text-align: left;
-    }
-  }
-
   @media (max-width: 640px) {
-    .nk-hero {
-      padding-block: 80px;
+    .hero {
+      padding-block: 100px;
     }
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    .hero-actions :global(*) {
+      width: 100%;
+      text-align: center;
+    }
+  }
 
-    .nk-hero-media {
-      min-height: 200px;
-    }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orb { animation: none; }
   }
 </style>
-
