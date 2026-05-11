@@ -30,7 +30,7 @@
     transition: all 0.2s;
   }
   .copy-btn:hover {
-    background: var(--accent, #6366f1);
+    background: var(--accent, #2563eb);
     color: #fff;
     border-color: var(--accent);
   }

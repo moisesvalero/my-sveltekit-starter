@@ -4,8 +4,8 @@
   import { t } from '$lib/i18n/index.js';
 
   const avatarPalette = [
-    '#6366f1',
-    '#8b5cf6',
+    '#2563eb',
+    '#3b82f6',
     '#ec4899',
     '#f97316',
     '#14b8a6',
@@ -477,7 +477,7 @@
   }
 
   .meta :global(.avatar) {
-    --avatar-bg: #6366f1;
+    --avatar-bg: #2563eb;
     width: 42px;
     height: 42px;
     border-radius: 999px;

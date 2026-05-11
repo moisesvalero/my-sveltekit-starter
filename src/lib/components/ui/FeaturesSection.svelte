@@ -92,7 +92,7 @@
     justify-content: center;
     font-size: 1.4rem;
     margin-bottom: 1rem;
-    background: radial-gradient(circle at top, #eef2ff, #e0e7ff);
+    background: radial-gradient(circle at top, #eff6ff, #dbeafe);
   }
 
   @media (max-width: 900px) {

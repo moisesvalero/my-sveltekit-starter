@@ -4,8 +4,8 @@
 
 :root {
   /* Colores de marca — cambialos por los tuyos */
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
   --text-main: #111827;
   --text-secondary: #6b7280;
   --bg-main: #ffffff;
@@ -102,7 +102,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #7c5cbf, #4f8ef7);
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

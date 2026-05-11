@@ -51,7 +51,7 @@
     border-left: 3px solid #ef4444;
   }
   .toast--info {
-    border-left: 3px solid #6366f1;
+    border-left: 3px solid #2563eb;
   }
   .toast--warning {
     border-left: 3px solid #f59e0b;
@@ -74,7 +74,7 @@
     background: #ef4444;
   }
   .toast--info .toast-icon {
-    background: #6366f1;
+    background: #2563eb;
   }
   .toast--warning .toast-icon {
     background: #f59e0b;

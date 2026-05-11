@@ -66,7 +66,7 @@
     margin: 0;
   }
   .cookie-content a {
-    color: var(--accent, #6366f1);
+    color: var(--accent, #2563eb);
   }
   .cookie-actions {
     display: flex;
@@ -83,7 +83,7 @@
     border: none;
   }
   .cookie-btn.primary {
-    background: var(--accent, #6366f1);
+    background: var(--accent, #2563eb);
     color: #fff;
   }
   .cookie-btn.secondary {

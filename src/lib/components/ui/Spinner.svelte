@@ -22,7 +22,7 @@
 <style>
   .spinner {
     animation: spin 0.8s linear infinite;
-    color: var(--accent, #6366f1);
+    color: var(--accent, #2563eb);
   }
   @keyframes spin {
     to {

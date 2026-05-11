@@ -69,7 +69,7 @@
       onclick={() => setLocale($locale === 'en' ? 'es' : 'en')}
       aria-label="Switch language"
     >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"/>
         <line x1="2" y1="12" x2="22" y2="12"/>
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -83,7 +83,7 @@
       onclick={() => setLocale($locale === 'en' ? 'es' : 'en')}
       aria-label="Switch language"
     >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"/>
         <line x1="2" y1="12" x2="22" y2="12"/>
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -232,7 +232,7 @@
   .desktop-only { margin-left: 0; }
   .btn-cta {
     text-decoration: none;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
     color: #fff !important;
     border: 1px solid rgba(139, 92, 246, 0.45);
     box-shadow: 0 10px 26px rgba(99, 102, 241, 0.25);
@@ -330,7 +330,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     transition: color 0.3s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .mobile-nav a:hover { color: #7c5cbf; transform: translateX(4px); }
+  .mobile-nav a:hover { color: #3b82f6; transform: translateX(4px); }
   .mobile-cta {
     margin-top: 12px;
     text-align: center;
@@ -369,7 +369,7 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #7c5cbf;
+    background: #3b82f6;
     animation: dotPulse 2s ease-in-out infinite;
   }
   @keyframes dotPulse {

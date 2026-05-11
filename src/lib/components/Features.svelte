@@ -96,7 +96,7 @@
               </div>
               <div class="ios-grid">
                 <div class="ios-grid-item">
-                  <div class="ios-grid-icon" style="background:#f0e6ff;"><svg width="16" height="16" viewBox="0 0 16 16"><rect x="2" y="2" width="5" height="5" rx="1" fill="#7c5cbf"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#7c5cbf"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#7c5cbf"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#7c5cbf"/></svg></div>
+                  <div class="ios-grid-icon" style="background:#f0e6ff;"><svg width="16" height="16" viewBox="0 0 16 16"><rect x="2" y="2" width="5" height="5" rx="1" fill="#3b82f6"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#3b82f6"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#3b82f6"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#3b82f6"/></svg></div>
                   <span class="ios-grid-name">{$t('features.mockup.grid')}</span><span class="ios-grid-price">{$t('features.mockup.free')}</span>
                 </div>
                 <div class="ios-grid-item">
@@ -118,7 +118,7 @@
               </div>
               <div class="ios-list">
                 <div class="ios-list-item">
-                  <div class="ios-list-avatar" style="background:linear-gradient(135deg,#7c5cbf,#a78bfa);"></div>
+                  <div class="ios-list-avatar" style="background:linear-gradient(135deg,#3b82f6,#60a5fa);"></div>
                   <div class="ios-list-info"><div class="ios-list-name">{$t('features.mockup.heroSection')}</div><div class="ios-list-desc">{$t('features.mockup.landingSvelte')}</div></div>
                   <span class="ios-list-price">$12</span>
                 </div>
@@ -245,7 +245,7 @@
   .ios-seg.active { background:#fff; color:#000; box-shadow:0 1px 3px rgba(0,0,0,0.12); }
   .ios-cards { display:flex; gap:8px; padding:6px 12px; }
   .ios-card-feat { flex:1; border-radius:12px; overflow:hidden; position:relative; height:80px; }
-  .ios-card-feat.purple { background:linear-gradient(135deg,#7c5cbf,#a78bfa); }
+  .ios-card-feat.purple { background:linear-gradient(135deg,#3b82f6,#60a5fa); }
   .ios-card-feat.blue { background:linear-gradient(135deg,#2563eb,#60a5fa); }
   .ios-card-feat-label { position:absolute; bottom:7px; left:8px; font-size:8px; font-weight:700; color:#fff; }
   .ios-card-dots { position:absolute; top:7px; left:8px; display:flex; gap:3px; }
@@ -274,7 +274,7 @@
   .ios-nav { background:#fff; padding:8px 14px 6px; border-bottom:0.5px solid rgba(0,0,0,0.1); display:flex; justify-content:space-between; align-items:center; }
   .ios-nav-title { font-size:15px; font-weight:700; color:#000; }
   .ios-nav-sub { font-size:9px; color:#8e8e93; margin-top:1px; }
-  .ios-notif { width:22px; height:22px; background:#7c5cbf; border-radius:6px; display:flex; align-items:center; justify-content:center; position:relative; animation:notifShake 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+  .ios-notif { width:22px; height:22px; background:#3b82f6; border-radius:6px; display:flex; align-items:center; justify-content:center; position:relative; animation:notifShake 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
   @keyframes notifShake { 0%,100%{transform:rotate(0)} 85%{transform:rotate(0)} 88%{transform:rotate(-12deg)} 91%{transform:rotate(12deg)} 94%{transform:rotate(-8deg)} 97%{transform:rotate(8deg)} }
   .ios-notif-dot { position:absolute; top:-3px; right:-3px; width:7px; height:7px; background:#ef4444; border-radius:50%; border:1.5px solid #fff; animation:notifDotPulse 1s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
   @keyframes notifDotPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
@@ -282,7 +282,7 @@
   .ios-search-text { font-size:10px; color:#8e8e93; display:flex; align-items:center; }
   .ios-typing-text { overflow:hidden; white-space:nowrap; animation:typeText 4s steps(20) infinite; width:0; display:inline-block; }
   @keyframes typeText { 0%,10%{width:0} 60%,90%{width:120px} 95%,100%{width:0} }
-  .ios-cursor { display:inline-block; width:1.5px; height:11px; background:#7c5cbf; vertical-align:middle; animation:cursorBlink 0.7s step-end infinite; }
+  .ios-cursor { display:inline-block; width:1.5px; height:11px; background:#3b82f6; vertical-align:middle; animation:cursorBlink 0.7s step-end infinite; }
   @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
   .ios-segments { display:flex; margin:6px 12px; background:rgba(116,116,128,0.12); border-radius:8px; padding:2px; position:relative; }
   .ios-seg { flex:1; text-align:center; font-size:9px; font-weight:600; padding:4px 0; border-radius:6px; color:#8e8e93; position:relative; z-index:1; }
@@ -291,7 +291,7 @@
   @keyframes segSlide { 0%,20%{left:2px} 30%,45%{left:calc(25% + 1px)} 55%,70%{left:calc(50%)} 80%,95%{left:calc(75% - 1px)} 100%{left:2px} }
   .ios-cards { display:flex; gap:8px; padding:6px 12px; }
   .ios-card-feat { flex:1; border-radius:12px; overflow:hidden; position:relative; height:75px; }
-  .ios-card-feat.purple { background:linear-gradient(135deg,#7c5cbf,#a78bfa); animation:cardPulse 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+  .ios-card-feat.purple { background:linear-gradient(135deg,#3b82f6,#60a5fa); animation:cardPulse 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
   .ios-card-feat.blue { background:linear-gradient(135deg,#2563eb,#60a5fa); animation:cardPulse 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite 1.5s; }
   @keyframes cardPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
   .ios-card-sweep { position:absolute; inset:0; background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.25) 50%,transparent 60%); animation:sweep 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; background-size:200% 100%; }
@@ -321,7 +321,7 @@
   .ios-list-name { font-size:9px; font-weight:600; color:#000; }
   .ios-list-desc { font-size:8px; color:#8e8e93; margin-top:1px; }
   .ios-list-price { font-size:9px; font-weight:700; animation:priceGlow 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-  @keyframes priceGlow { 0%,100%{color:#000} 50%{color:#7c5cbf} }
+  @keyframes priceGlow { 0%,100%{color:#000} 50%{color:#3b82f6} }
   .ios-tabbar { position:absolute; bottom:0; left:0; right:0; height:40px; background:rgba(255,255,255,0.95); border-top:0.5px solid rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:space-around; padding-bottom:3px; }
   .ios-tab { display:flex; flex-direction:column; align-items:center; gap:1px; }
   .ios-tab-label { font-size:7px; font-weight:500; color:#8e8e93; }
@@ -370,7 +370,7 @@
     justify-content: center;
     font-size: 1.4rem;
     margin-bottom: 1rem;
-    background: radial-gradient(circle at top, #eef2ff, #e0e7ff);
+    background: radial-gradient(circle at top, #eff6ff, #dbeafe);
     transform: scale(0.8) rotate(-10deg);
     opacity: 0.8;
     transition:

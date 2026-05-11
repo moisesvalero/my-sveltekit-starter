@@ -38,7 +38,7 @@
   .error-code {
     font-size: 6rem;
     font-weight: 800;
-    color: var(--accent, #6366f1);
+    color: var(--accent, #2563eb);
     line-height: 1;
     margin-bottom: 0.5rem;
   }
@@ -53,7 +53,7 @@
   }
   .btn-primary {
     display: inline-block;
-    background: var(--accent, #6366f1);
+    background: var(--accent, #2563eb);
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 999px;
@@ -62,6 +62,6 @@
     transition: background 0.2s;
   }
   .btn-primary:hover {
-    background: var(--accent-hover, #4f46e5);
+    background: var(--accent-hover, #1d4ed8);
   }
 </style>

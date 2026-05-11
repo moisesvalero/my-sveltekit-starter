@@ -55,7 +55,7 @@
               <div class="figma-comp"></div>
               <div class="figma-comp"></div>
               <div class="figma-cursor">
-                <svg viewBox="0 0 16 16" fill="none"><path d="M2 2l5 12 2-4 4-2-11-6z" fill="#7c5cbf"/></svg>
+                <svg viewBox="0 0 16 16" fill="none"><path d="M2 2l5 12 2-4 4-2-11-6z" fill="#3b82f6"/></svg>
               </div>
             </div>
             <div class="figma-panel">
@@ -174,7 +174,7 @@
 .step2-visual { background:linear-gradient(135deg,#0f0f1a,#1a1a2e); }
 .step3-visual { background:linear-gradient(135deg,#f0fff4,#e6ffed); }
 .step-content { padding:22px; }
-.step-num { font-size:11px; font-weight:700; color:#7c5cbf; letter-spacing:0.1em; margin-bottom:6px; }
+.step-num { font-size:11px; font-weight:700; color:#3b82f6; letter-spacing:0.1em; margin-bottom:6px; }
 .step-title { font-size:17px; font-weight:700; color:#1a1a2e; margin-bottom:6px; }
 .step-desc { font-size:13px; color:#8e8e93; line-height:1.5; }
 .figma-app { width:150px; background:#fff; border-radius:12px; box-shadow:0 8px 32px rgba(124,92,191,0.2); overflow:hidden; }
@@ -184,15 +184,15 @@
 .figma-body { display:flex; height:100px; }
 .figma-sidebar { width:30px; background:#f8f8fc; border-right:1px solid rgba(0,0,0,0.06); padding:8px 4px; display:flex; flex-direction:column; gap:6px; align-items:center; }
 .figma-icon { width:18px; height:18px; border-radius:5px; display:flex; align-items:center; justify-content:center; }
-.figma-icon.active { background:#7c5cbf; }
+.figma-icon.active { background:#3b82f6; }
 .figma-canvas { flex:1; padding:8px; display:flex; flex-direction:column; gap:5px; position:relative; overflow:hidden; }
 .figma-selection { position:absolute; top:6px; left:6px; right:6px; height:24px; border:1.5px dashed rgba(124,92,191,0.6); border-radius:3px; animation:selPulse 2s ease-in-out infinite; }
 @keyframes selPulse { 0%,100%{opacity:0} 50%{opacity:1} }
 .figma-comp { border-radius:4px; animation:compAnim 2s ease-in-out infinite alternate; }
-.figma-comp:nth-child(2){height:22px;background:linear-gradient(90deg,#7c5cbf,#a78bfa);animation-delay:0s}
+.figma-comp:nth-child(2){height:22px;background:linear-gradient(90deg,#3b82f6,#60a5fa);animation-delay:0s}
 .figma-comp:nth-child(3){height:12px;background:#f0e6ff;width:80%;animation-delay:0.3s}
 .figma-comp:nth-child(4){height:12px;background:#e8e0ff;width:60%;animation-delay:0.6s}
-.figma-comp:nth-child(5){height:14px;background:#7c5cbf;width:45%;border-radius:4px;animation-delay:0.9s}
+.figma-comp:nth-child(5){height:14px;background:#3b82f6;width:45%;border-radius:4px;animation-delay:0.9s}
 @keyframes compAnim { 0%{opacity:0.6} 100%{opacity:1} }
 .figma-cursor { position:absolute; bottom:12px; right:12px; width:12px; height:12px; animation:cursorAnim 3s ease-in-out infinite; }
 @keyframes cursorAnim { 0%,100%{transform:translate(0,0)} 33%{transform:translate(-12px,-6px)} 66%{transform:translate(-6px,-18px)} }
@@ -207,16 +207,16 @@
 .vscode-body { display:flex; background:#1e1e2e; height:95px; }
 .vscode-sidebar { width:24px; background:#252537; padding:5px 3px; display:flex; flex-direction:column; gap:4px; }
 .vscode-file { height:4px; border-radius:1px; background:rgba(255,255,255,0.08); }
-.vscode-file.active { background:#7c5cbf; width:90%; }
+.vscode-file.active { background:#3b82f6; width:90%; }
 .vscode-editor { flex:1; padding:7px; display:flex; flex-direction:column; gap:4px; }
 .code-ln { height:5px; border-radius:2px; animation:codeAnim 0.9s ease-in-out infinite alternate; }
-.code-ln:nth-child(1){width:55%;background:#7c5cbf;animation-delay:0s}
-.code-ln:nth-child(2){width:85%;background:#4f8ef7;animation-delay:0.1s}
+.code-ln:nth-child(1){width:55%;background:#3b82f6;animation-delay:0s}
+.code-ln:nth-child(2){width:85%;background:#0ea5e9;animation-delay:0.1s}
 .code-ln:nth-child(3){width:40%;background:#34c759;animation-delay:0.2s}
 .code-ln:nth-child(4){width:75%;background:#f97316;animation-delay:0.3s}
-.code-ln:nth-child(5){width:60%;background:#a78bfa;animation-delay:0.4s}
-.code-ln:nth-child(6){width:90%;background:#4f8ef7;animation-delay:0.5s}
-.code-ln:nth-child(7){width:45%;background:#7c5cbf;animation-delay:0.6s}
+.code-ln:nth-child(5){width:60%;background:#60a5fa;animation-delay:0.4s}
+.code-ln:nth-child(6){width:90%;background:#0ea5e9;animation-delay:0.5s}
+.code-ln:nth-child(7){width:45%;background:#3b82f6;animation-delay:0.6s}
 @keyframes codeAnim { 0%{opacity:0.25} 100%{opacity:1} }
 .code-cur { width:2px; height:8px; background:#fff; display:inline-block; animation:blinkCur 0.7s step-end infinite; margin-top:3px; }
 @keyframes blinkCur { 0%,100%{opacity:1} 50%{opacity:0} }
@@ -232,7 +232,7 @@
 .iph-nav { background:#fff; padding:4px 6px; border-bottom:0.5px solid rgba(0,0,0,0.08); }
 .iph-nav-title { font-size:6px; font-weight:700; color:#000; }
 .iph-content { padding:4px; display:flex; flex-direction:column; gap:3px; }
-.iph-hero { height:24px; border-radius:5px; background:linear-gradient(135deg,#7c5cbf,#a78bfa); display:flex; align-items:center; justify-content:center; animation:iphHero 2s ease-in-out infinite; }
+.iph-hero { height:24px; border-radius:5px; background:linear-gradient(135deg,#3b82f6,#60a5fa); display:flex; align-items:center; justify-content:center; animation:iphHero 2s ease-in-out infinite; }
 @keyframes iphHero { 0%,100%{opacity:0.8} 50%{opacity:1} }
 .iph-cards { display:flex; gap:3px; }
 .iph-card { flex:1; height:22px; border-radius:4px; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,0.06); animation:iphCard 2s ease-in-out infinite; }
@@ -245,7 +245,7 @@
 @keyframes iphItem { 0%{opacity:0.5;transform:translateX(-3px)} 30%,100%{opacity:1;transform:translateX(0)} }
 .iph-tabbar { position:absolute; bottom:9px; left:7px; right:7px; height:16px; background:rgba(255,255,255,0.95); border-radius:7px; display:flex; align-items:center; justify-content:space-around; }
 .iph-tab { width:5px; height:5px; border-radius:50%; background:#e0e0e0; }
-.iph-tab.active { background:#7c5cbf; animation:tabPulse 1.5s ease-in-out infinite; }
+.iph-tab.active { background:#3b82f6; animation:tabPulse 1.5s ease-in-out infinite; }
 @keyframes tabPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.4)} }
 .deploy-ring-wrap { position:absolute; inset:-16px; pointer-events:none; }
 .deploy-ring { position:absolute; inset:0; border:1.5px solid rgba(52,199,89,0.25); border-radius:50%; animation:ringExp 2.5s ease-out infinite; }
@@ -275,7 +275,7 @@
 .mob-line { width:2px; min-height:60px; position:relative; overflow:hidden; margin:4px 0; }
 .mob-arrow { width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; }
 .mob-content { flex:1; padding-bottom:24px; }
-.mob-num { font-size:11px; font-weight:700; color:#7c5cbf; letter-spacing:0.08em; margin-bottom:4px; }
+.mob-num { font-size:11px; font-weight:700; color:#3b82f6; letter-spacing:0.08em; margin-bottom:4px; }
 .mob-title { font-size:16px; font-weight:700; color:#1a1a2e; margin-bottom:4px; }
 .mob-desc { font-size:13px; color:#8e8e93; line-height:1.5; }
 

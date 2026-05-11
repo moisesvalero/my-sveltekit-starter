@@ -95,7 +95,7 @@
 }
 .footer-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; }
 .footer-left { display:flex; align-items:center; gap:10px; }
-.footer-logo { width:32px; height:32px; border-radius:8px; background:#7c5cbf; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#fff; letter-spacing:-0.5px; flex-shrink:0; }
+.footer-logo { width:32px; height:32px; border-radius:8px; background:#3b82f6; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#fff; letter-spacing:-0.5px; flex-shrink:0; }
 .footer-brand { display:flex; flex-direction:column; gap:2px; }
 .footer-name { font-size:14px; font-weight:700; color:#fff; }
 .footer-tagline { font-size:11px; color:rgba(255,255,255,0.4); }
@@ -113,7 +113,7 @@
 .footer-scroll:hover { background:rgba(124,92,191,0.2); border-color:rgba(124,92,191,0.4); transform:translateY(-2px) scale(1.1); }
 .footer-credit { font-size:12px; color:rgba(255,255,255,0.35); white-space:nowrap; }
 .footer-credit a { color:rgba(255,255,255,0.6); text-decoration:none; font-weight:600; transition:color 0.3s; }
-.footer-credit a:hover { color:#a78bfa; }
+.footer-credit a:hover { color:#60a5fa; }
 
 @media (max-width: 768px) {
   .footer { padding:32px 24px; }

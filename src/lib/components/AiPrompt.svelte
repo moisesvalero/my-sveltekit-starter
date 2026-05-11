@@ -52,7 +52,7 @@
   }
   .ai-form textarea:focus {
     outline: none;
-    border-color: var(--accent, #6366f1);
+    border-color: var(--accent, #2563eb);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
   }
   .ai-form-footer {
@@ -62,7 +62,7 @@
   }
   .ai-form-footer button {
     padding: 0.5rem 1.2rem;
-    background: var(--accent, #6366f1);
+    background: var(--accent, #2563eb);
     color: #fff;
     border: none;
     border-radius: 999px;
@@ -73,7 +73,7 @@
     transition: background 0.2s;
   }
   .ai-form-footer button:hover:not(:disabled) {
-    background: var(--accent-hover, #4f46e5);
+    background: var(--accent-hover, #1d4ed8);
   }
   .ai-form-footer button:disabled {
     opacity: 0.5;

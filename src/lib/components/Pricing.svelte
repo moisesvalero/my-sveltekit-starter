@@ -129,7 +129,7 @@
   }
 
   .toggle-container mark {
-    background: #eef2ff;
+    background: #eff6ff;
     color: var(--accent);
     padding: 2px 8px;
     border-radius: 6px;
@@ -199,7 +199,7 @@
 
   .price-card.featured {
     border-color: rgba(99, 102, 241, 0.4);
-    background: radial-gradient(circle at top, #eef2ff, #ffffff);
+    background: radial-gradient(circle at top, #eff6ff, #ffffff);
     position: relative;
     overflow: hidden;
   }

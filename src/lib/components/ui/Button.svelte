@@ -40,8 +40,8 @@
 
 <style>
   .nk-btn {
-    --nk-btn-bg: var(--accent, #6366f1);
-    --nk-btn-bg-hover: var(--accent-hover, #4f46e5);
+    --nk-btn-bg: var(--accent, #2563eb);
+    --nk-btn-bg-hover: var(--accent-hover, #1d4ed8);
     --nk-btn-color: #ffffff;
     --nk-btn-border: transparent;
     --nk-btn-shadow: 0 10px 26px rgba(99, 102, 241, 0.25);
@@ -121,7 +121,7 @@
   .nk-btn--outline {
     --nk-btn-bg: transparent;
     --nk-btn-bg-hover: rgba(99, 102, 241, 0.04);
-    --nk-btn-color: var(--accent, #4f46e5);
+    --nk-btn-color: var(--accent, #1d4ed8);
     --nk-btn-border: rgba(129, 140, 248, 0.7);
     --nk-btn-shadow: none;
   }
@@ -129,7 +129,7 @@
   .nk-btn--link {
     --nk-btn-bg: transparent;
     --nk-btn-bg-hover: transparent;
-    --nk-btn-color: var(--accent, #4f46e5);
+    --nk-btn-color: var(--accent, #1d4ed8);
     --nk-btn-border: transparent;
     --nk-btn-shadow: none;
     padding-inline: 0;

@@ -45,9 +45,9 @@ onMount(() => {
             <div class="ui1-bar" style="height:40%;background:#e6e0ff;"></div>
             <div class="ui1-bar" style="height:65%;background:#b8a9f5;"></div>
             <div class="ui1-bar" style="height:50%;background:#e6e0ff;"></div>
-            <div class="ui1-bar" style="height:80%;background:#7c5cbf;"></div>
+            <div class="ui1-bar" style="height:80%;background:#3b82f6;"></div>
             <div class="ui1-bar" style="height:60%;background:#b8a9f5;"></div>
-            <div class="ui1-bar" style="height:90%;background:#7c5cbf;"></div>
+            <div class="ui1-bar" style="height:90%;background:#3b82f6;"></div>
             <div class="ui1-bar" style="height:70%;background:#b8a9f5;"></div>
           </div>
           <div class="ui1-chart-label"><span class="ui1-chart-lbl">{$t('componentGallery.ui1.dayMon')}</span><span class="ui1-chart-lbl">{$t('componentGallery.ui1.dayTue')}</span><span class="ui1-chart-lbl">{$t('componentGallery.ui1.dayWed')}</span><span class="ui1-chart-lbl">{$t('componentGallery.ui1.dayThu')}</span><span class="ui1-chart-lbl">{$t('componentGallery.ui1.dayFri')}</span><span class="ui1-chart-lbl">{$t('componentGallery.ui1.daySat')}</span><span class="ui1-chart-lbl">{$t('componentGallery.ui1.daySun')}</span></div>
@@ -62,12 +62,12 @@ onMount(() => {
       <div class="ui2">
         <div class="ui2-header"><span class="ui2-title">{$t('componentGallery.ui2.title')}</span><div class="ui2-cart"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M1 1h2l1.5 6h5l1-4H3.5" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/><circle cx="5.5" cy="10" r="1" fill="#fff"/><circle cx="9.5" cy="10" r="1" fill="#fff"/></svg></div></div>
         <div class="ui2-grid">
-          <div class="ui2-item"><div class="ui2-img" style="background:#f0e6ff;"><svg width="28" height="28" viewBox="0 0 28 28"><rect x="6" y="8" width="16" height="12" rx="3" fill="#7c5cbf" opacity="0.3"/><rect x="9" y="11" width="10" height="6" rx="1.5" fill="#7c5cbf"/></svg></div><div class="ui2-info"><div class="ui2-name">{$t('componentGallery.ui2.item1')}</div><div class="ui2-price">$49</div></div></div>
+          <div class="ui2-item"><div class="ui2-img" style="background:#f0e6ff;"><svg width="28" height="28" viewBox="0 0 28 28"><rect x="6" y="8" width="16" height="12" rx="3" fill="#3b82f6" opacity="0.3"/><rect x="9" y="11" width="10" height="6" rx="1.5" fill="#3b82f6"/></svg></div><div class="ui2-info"><div class="ui2-name">{$t('componentGallery.ui2.item1')}</div><div class="ui2-price">$49</div></div></div>
           <div class="ui2-item"><div class="ui2-img" style="background:#e6f0ff;"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="7" fill="#2563eb" opacity="0.2"/><circle cx="14" cy="14" r="4" fill="#2563eb"/></svg></div><div class="ui2-info"><div class="ui2-name">{$t('componentGallery.ui2.item2')}</div><div class="ui2-price">$24</div></div></div>
           <div class="ui2-item"><div class="ui2-img" style="background:#e6fff0;"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M8 14l4 4 8-8" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round"/></svg></div><div class="ui2-info"><div class="ui2-name">{$t('componentGallery.ui2.item3')}</div><div class="ui2-price">{$t('componentGallery.ui2.free')}</div></div></div>
         </div>
         <div class="ui2-tag-row">
-          <div class="ui2-tag" style="background:#f0e6ff;color:#7c5cbf;">{$t('componentGallery.ui2.new')}</div>
+          <div class="ui2-tag" style="background:#f0e6ff;color:#3b82f6;">{$t('componentGallery.ui2.new')}</div>
           <div class="ui2-tag" style="background:#fff0e6;color:#f97316;">{$t('componentGallery.ui2.sale')}</div>
           <div class="ui2-tag" style="background:#e6fff0;color:#34c759;">{$t('componentGallery.ui2.free')}</div>
         </div>
@@ -105,9 +105,9 @@ onMount(() => {
           <div><div class="ui4-name">{$t('componentGallery.ui4.name')}</div><div class="ui4-status"><span class="ui4-dot"></span>{$t('componentGallery.ui4.online')}</div></div>
         </div>
         <div class="ui4-msgs">
-          <div class="ui4-msg"><div class="ui4-msg-av" style="background:linear-gradient(135deg,#7c5cbf,#a78bfa);"></div><div class="ui4-bubble them">{$t('componentGallery.ui4.msg1')}</div></div>
+          <div class="ui4-msg"><div class="ui4-msg-av" style="background:linear-gradient(135deg,#3b82f6,#60a5fa);"></div><div class="ui4-bubble them">{$t('componentGallery.ui4.msg1')}</div></div>
           <div class="ui4-msg mine"><div class="ui4-msg-av" style="background:linear-gradient(135deg,#2563eb,#60a5fa);"></div><div class="ui4-bubble me">{$t('componentGallery.ui4.msg2')}</div></div>
-          <div class="ui4-typing"><div class="ui4-msg-av" style="background:linear-gradient(135deg,#7c5cbf,#a78bfa);"></div><div class="ui4-typing-bubble"><div class="ui4-typing-dot"></div><div class="ui4-typing-dot"></div><div class="ui4-typing-dot"></div></div></div>
+          <div class="ui4-typing"><div class="ui4-msg-av" style="background:linear-gradient(135deg,#3b82f6,#60a5fa);"></div><div class="ui4-typing-bubble"><div class="ui4-typing-dot"></div><div class="ui4-typing-dot"></div><div class="ui4-typing-dot"></div></div></div>
         </div>
         <div class="ui4-input"><span>{$t('componentGallery.ui4.placeholder')}</span><div class="ui4-send"><svg width="8" height="8" viewBox="0 0 8 8"><path d="M1 4h6M4 1l3 3-3 3" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg></div></div>
       </div>
@@ -127,7 +127,7 @@ onMount(() => {
           <div class="ui5-day">16</div><div class="ui5-day">17</div><div class="ui5-day has-event">18</div><div class="ui5-day">19</div><div class="ui5-day">20</div><div class="ui5-day">21</div><div class="ui5-day">22</div>
         </div>
         <div class="ui5-events">
-          <div class="ui5-event"><div class="ui5-event-dot" style="background:#7c5cbf;"></div><span class="ui5-event-name">{$t('componentGallery.ui5.event1')}</span><span class="ui5-event-time">10:00 AM</span></div>
+          <div class="ui5-event"><div class="ui5-event-dot" style="background:#3b82f6;"></div><span class="ui5-event-name">{$t('componentGallery.ui5.event1')}</span><span class="ui5-event-time">10:00 AM</span></div>
           <div class="ui5-event"><div class="ui5-event-dot" style="background:#2563eb;"></div><span class="ui5-event-name">{$t('componentGallery.ui5.event2')}</span><span class="ui5-event-time">2:00 PM</span></div>
         </div>
       </div>
@@ -141,7 +141,7 @@ onMount(() => {
         <div class="ui6-profile"><div class="ui6-avatar">JD</div><div><div class="ui6-name">{$t('componentGallery.ui6.name')}</div><div class="ui6-role">{$t('componentGallery.ui6.role')}</div></div></div>
         <div class="ui6-section-lbl">{$t('componentGallery.ui6.preferences')}</div>
         <div class="ui6-items">
-          <div class="ui6-item"><div class="ui6-item-icon" style="background:#f0e6ff;"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4" fill="none" stroke="#7c5cbf" stroke-width="1.2"/><circle cx="6" cy="6" r="1.5" fill="#7c5cbf"/></svg></div><span class="ui6-item-name">{$t('componentGallery.ui6.darkMode')}</span><div class="ui6-toggle"><div class="ui6-toggle-thumb"></div></div></div>
+          <div class="ui6-item"><div class="ui6-item-icon" style="background:#f0e6ff;"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4" fill="none" stroke="#3b82f6" stroke-width="1.2"/><circle cx="6" cy="6" r="1.5" fill="#3b82f6"/></svg></div><span class="ui6-item-name">{$t('componentGallery.ui6.darkMode')}</span><div class="ui6-toggle"><div class="ui6-toggle-thumb"></div></div></div>
           <div class="ui6-item"><div class="ui6-item-icon" style="background:#e6f0ff;"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v2M6 9v2M1 6h2M9 6h2" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/><circle cx="6" cy="6" r="2" fill="none" stroke="#2563eb" stroke-width="1.2"/></svg></div><span class="ui6-item-name">{$t('componentGallery.ui6.notifications')}</span><span class="ui6-item-arrow">›</span></div>
         </div>
         <div class="ui6-progress-row">
@@ -174,7 +174,7 @@ onMount(() => {
 .ui1 { padding:14px; background:#fff; height:100%; }
 .ui1-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
 .ui1-title { font-size:11px; font-weight:700; color:#1a1a1a; font-family:-apple-system,sans-serif; }
-.ui1-badge { background:#f0e6ff; color:#7c5cbf; font-size:9px; padding:2px 7px; border-radius:999px; font-weight:600; font-family:-apple-system,sans-serif; animation:badgePulse 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.ui1-badge { background:#f0e6ff; color:#3b82f6; font-size:9px; padding:2px 7px; border-radius:999px; font-weight:600; font-family:-apple-system,sans-serif; animation:badgePulse 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes badgePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.95)} }
 .ui1-stats { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-bottom:10px; }
 .ui1-stat { background:#f8f8fc; border-radius:8px; padding:8px; }
@@ -190,7 +190,7 @@ onMount(() => {
 .ui2 { padding:12px; background:#fff; height:100%; }
 .ui2-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
 .ui2-title { font-size:11px; font-weight:700; color:#1a1a1a; font-family:-apple-system,sans-serif; }
-.ui2-cart { width:22px; height:22px; background:#7c5cbf; border-radius:6px; display:flex; align-items:center; justify-content:center; animation:cartShake 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.ui2-cart { width:22px; height:22px; background:#3b82f6; border-radius:6px; display:flex; align-items:center; justify-content:center; animation:cartShake 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes cartShake { 0%,100%{transform:rotate(0) scale(1)} 88%{transform:rotate(0) scale(1)} 91%{transform:rotate(-12deg) scale(1.15)} 94%{transform:rotate(12deg) scale(1.15)} 97%{transform:rotate(-6deg) scale(1.08)} }
 .ui2-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; }
 .ui2-item { border-radius:8px; overflow:hidden; border:1px solid rgba(0,0,0,0.06); }
@@ -199,10 +199,10 @@ onMount(() => {
 @keyframes imgSweep { 0%{transform:translateX(-150%)} 100%{transform:translateX(250%)} }
 .ui2-info { padding:5px 6px; }
 .ui2-name { font-size:8px; font-weight:600; color:#1a1a1a; font-family:-apple-system,sans-serif; }
-.ui2-price { font-size:8px; color:#7c5cbf; font-weight:700; font-family:-apple-system,sans-serif; }
+.ui2-price { font-size:8px; color:#3b82f6; font-weight:700; font-family:-apple-system,sans-serif; }
 .ui2-tag-row { display:flex; gap:4px; margin-top:8px; }
 .ui2-tag { font-size:8px; padding:3px 8px; border-radius:999px; font-family:-apple-system,sans-serif; font-weight:500; }
-.ui2-btn { margin-top:8px; width:100%; padding:6px 0; border-radius:8px; border:none; font-size:9px; font-weight:600; font-family:-apple-system,sans-serif; cursor:pointer; color:#fff; background:#7c5cbf; position:relative; overflow:hidden; animation:btnGlow 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.ui2-btn { margin-top:8px; width:100%; padding:6px 0; border-radius:8px; border:none; font-size:9px; font-weight:600; font-family:-apple-system,sans-serif; cursor:pointer; color:#fff; background:#3b82f6; position:relative; overflow:hidden; animation:btnGlow 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 .ui2-btn::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent); animation:btnSweep 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes btnGlow { 0%,100%{box-shadow:0 0 0 0 rgba(124,92,191,0)} 50%{box-shadow:0 0 12px 3px rgba(124,92,191,0.35)} }
 @keyframes btnSweep { 0%{transform:translateX(-150%)} 100%{transform:translateX(250%)} }
@@ -210,13 +210,13 @@ onMount(() => {
 .ui3-title { font-size:11px; font-weight:700; color:#1a1a1a; text-align:center; margin-bottom:4px; font-family:-apple-system,sans-serif; }
 .ui3-toggle-row { display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:8px; }
 .ui3-toggle-label { font-size:8px; color:#8e8e93; font-family:-apple-system,sans-serif; }
-.ui3-toggle-label.active { color:#7c5cbf; font-weight:600; }
-.ui3-toggle-track { width:28px; height:14px; background:#7c5cbf; border-radius:7px; position:relative; }
+.ui3-toggle-label.active { color:#3b82f6; font-weight:600; }
+.ui3-toggle-track { width:28px; height:14px; background:#3b82f6; border-radius:7px; position:relative; }
 .ui3-toggle-thumb { position:absolute; right:2px; top:2px; width:10px; height:10px; border-radius:50%; background:#fff; animation:toggleSlide 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes toggleSlide { 0%,40%{right:2px} 50%,90%{right:calc(100% - 12px)} 100%{right:2px} }
 .ui3-cards { display:flex; gap:6px; }
 .ui3-card { flex:1; border-radius:10px; padding:10px 8px; border:1px solid rgba(0,0,0,0.08); }
-.ui3-card.featured { background:#7c5cbf; border-color:#7c5cbf; animation:featuredPulse 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.ui3-card.featured { background:#3b82f6; border-color:#3b82f6; animation:featuredPulse 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes featuredPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.025)} }
 .ui3-plan { font-size:8px; font-weight:600; color:#8e8e93; font-family:-apple-system,sans-serif; }
 .ui3-card.featured .ui3-plan { color:rgba(255,255,255,0.7); }
@@ -230,10 +230,10 @@ onMount(() => {
 .ui3-check { width:8px; height:8px; border-radius:50%; background:#34c759; flex-shrink:0; }
 .ui3-card.featured .ui3-check { background:rgba(255,255,255,0.5); }
 .ui3-btn { margin-top:8px; width:100%; padding:5px 0; border-radius:6px; font-size:8px; font-weight:600; font-family:-apple-system,sans-serif; border:1px solid rgba(0,0,0,0.1); background:#f8f8fc; color:#1a1a1a; cursor:pointer; }
-.ui3-card.featured .ui3-btn { background:#fff; color:#7c5cbf; border-color:transparent; }
+.ui3-card.featured .ui3-btn { background:#fff; color:#3b82f6; border-color:transparent; }
 .ui4 { padding:12px; background:#fff; height:100%; display:flex; flex-direction:column; }
 .ui4-header { display:flex; align-items:center; gap:8px; padding-bottom:8px; border-bottom:1px solid rgba(0,0,0,0.06); margin-bottom:8px; }
-.ui4-avatar { width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#7c5cbf,#a78bfa); flex-shrink:0; animation:avatarGlow 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.ui4-avatar { width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#3b82f6,#60a5fa); flex-shrink:0; animation:avatarGlow 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes avatarGlow { 0%,100%{box-shadow:0 0 0 0 rgba(124,92,191,0)} 50%{box-shadow:0 0 0 3px rgba(124,92,191,0.25)} }
 .ui4-name { font-size:10px; font-weight:700; color:#1a1a1a; font-family:-apple-system,sans-serif; }
 .ui4-status { font-size:8px; color:#34c759; font-family:-apple-system,sans-serif; }
@@ -245,14 +245,14 @@ onMount(() => {
 .ui4-msg-av { width:18px; height:18px; border-radius:50%; flex-shrink:0; }
 .ui4-bubble { max-width:70%; padding:6px 9px; border-radius:12px; font-size:8px; line-height:1.4; font-family:-apple-system,sans-serif; }
 .ui4-bubble.them { background:#f0f0f5; color:#1a1a1a; border-bottom-left-radius:3px; }
-.ui4-bubble.me { background:#7c5cbf; color:#fff; border-bottom-right-radius:3px; }
+.ui4-bubble.me { background:#3b82f6; color:#fff; border-bottom-right-radius:3px; }
 .ui4-typing { display:flex; gap:6px; align-items:flex-end; }
 .ui4-typing-bubble { background:#f0f0f5; border-radius:12px; border-bottom-left-radius:3px; padding:8px 12px; display:flex; gap:3px; align-items:center; }
 .ui4-typing-dot { width:4px; height:4px; border-radius:50%; background:#8e8e93; animation:typingBounce 1s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 .ui4-typing-dot:nth-child(2){animation-delay:0.15s} .ui4-typing-dot:nth-child(3){animation-delay:0.3s}
-@keyframes typingBounce { 0%,100%{transform:translateY(0);background:#8e8e93} 50%{transform:translateY(-5px);background:#7c5cbf} }
+@keyframes typingBounce { 0%,100%{transform:translateY(0);background:#8e8e93} 50%{transform:translateY(-5px);background:#3b82f6} }
 .ui4-input { margin-top:8px; background:#f0f0f5; border-radius:20px; padding:6px 12px; font-size:8px; color:#8e8e93; font-family:-apple-system,sans-serif; display:flex; justify-content:space-between; align-items:center; }
-.ui4-send { width:16px; height:16px; background:#7c5cbf; border-radius:50%; display:flex; align-items:center; justify-content:center; animation:sendPulse 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.ui4-send { width:16px; height:16px; background:#3b82f6; border-radius:50%; display:flex; align-items:center; justify-content:center; animation:sendPulse 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes sendPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
 .ui5 { padding:10px; background:#fff; height:100%; }
 .ui5-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; }
@@ -263,10 +263,10 @@ onMount(() => {
 .ui5-day-lbl { font-size:7px; color:#8e8e93; text-align:center; font-family:-apple-system,sans-serif; font-weight:600; }
 .ui5-days { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
 .ui5-day { width:100%; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:8px; font-family:-apple-system,sans-serif; color:#1a1a1a; aspect-ratio: unset; height: 20px; }
-.ui5-day.today { background:#7c5cbf; color:#fff; font-weight:700; animation:todayPulse 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; font-size:7px; }
+.ui5-day.today { background:#3b82f6; color:#fff; font-weight:700; animation:todayPulse 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; font-size:7px; }
 @keyframes todayPulse { 0%,100%{box-shadow:0 0 0 0 rgba(124,92,191,0.5);transform:scale(1)} 50%{box-shadow:0 0 0 5px rgba(124,92,191,0);transform:scale(1.1)} }
 .ui5-day.has-event { position:relative; }
-.ui5-day.has-event::after { content:''; position:absolute; bottom:2px; left:50%; transform:translateX(-50%); width:3px; height:3px; border-radius:50%; background:#7c5cbf; animation:eventDot 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.ui5-day.has-event::after { content:''; position:absolute; bottom:2px; left:50%; transform:translateX(-50%); width:3px; height:3px; border-radius:50%; background:#3b82f6; animation:eventDot 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes eventDot { 0%,100%{opacity:1;transform:translateX(-50%) scale(1)} 50%{opacity:0.5;transform:translateX(-50%) scale(1.4)} }
 .ui5-day.other { color:#c0c0c8; }
 .ui5-events { margin-top:6px; display:flex; flex-direction:column; gap:4px; }
@@ -281,7 +281,7 @@ onMount(() => {
 .ui6 { padding:12px; background:#fff; height:100%; }
 .ui6-profile { display:flex; align-items:center; gap:10px; padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.06); margin-bottom:8px; }
 .ui6-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#2563eb,#60a5fa); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#fff; font-family:-apple-system,sans-serif; flex-shrink:0; animation:avatarColor 6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-@keyframes avatarColor { 0%,100%{background:linear-gradient(135deg,#2563eb,#60a5fa)} 33%{background:linear-gradient(135deg,#7c5cbf,#a78bfa)} 66%{background:linear-gradient(135deg,#34c759,#86efac)} }
+@keyframes avatarColor { 0%,100%{background:linear-gradient(135deg,#2563eb,#60a5fa)} 33%{background:linear-gradient(135deg,#3b82f6,#60a5fa)} 66%{background:linear-gradient(135deg,#34c759,#86efac)} }
 .ui6-name { font-size:11px; font-weight:700; color:#1a1a1a; font-family:-apple-system,sans-serif; }
 .ui6-role { font-size:8px; color:#8e8e93; font-family:-apple-system,sans-serif; }
 .ui6-section-lbl { font-size:8px; font-weight:600; color:#8e8e93; font-family:-apple-system,sans-serif; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; }
@@ -294,14 +294,14 @@ onMount(() => {
 .ui6-item-name { font-size:9px; font-weight:500; color:#1a1a1a; font-family:-apple-system,sans-serif; flex:1; }
 .ui6-item-arrow { font-size:9px; color:#c0c0c8; animation:arrowBounce 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes arrowBounce { 0%,100%{transform:translateX(0)} 50%{transform:translateX(3px)} }
-.ui6-toggle { width:26px; height:14px; border-radius:7px; background:#7c5cbf; position:relative; flex-shrink:0; animation:toggleGlow 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.ui6-toggle { width:26px; height:14px; border-radius:7px; background:#3b82f6; position:relative; flex-shrink:0; animation:toggleGlow 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes toggleGlow { 0%,100%{box-shadow:0 0 0 0 rgba(124,92,191,0)} 50%{box-shadow:0 0 6px 2px rgba(124,92,191,0.35)} }
 .ui6-toggle-thumb { position:absolute; right:2px; top:2px; width:10px; height:10px; border-radius:50%; background:#fff; animation:thumbSlide 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 @keyframes thumbSlide { 0%,40%{right:2px} 50%,90%{right:calc(100% - 12px)} 100%{right:2px} }
 .ui6-progress-row { margin-top:6px; }
 .ui6-progress-label { display:flex; justify-content:space-between; font-size:8px; color:#8e8e93; font-family:-apple-system,sans-serif; margin-bottom:3px; }
 .ui6-progress-track { height:4px; background:#f0f0f5; border-radius:2px; overflow:hidden; }
-.ui6-progress-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,#7c5cbf,#4f8ef7,#a78bfa); background-size:200% 100%; animation:progressFill 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate, progressShimmer 2s linear infinite; }
+.ui6-progress-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,#3b82f6,#0ea5e9,#60a5fa); background-size:200% 100%; animation:progressFill 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate, progressShimmer 2s linear infinite; }
 @keyframes progressFill { 0%{width:30%} 100%{width:88%} }
 @keyframes progressShimmer { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
 @media (max-width: 768px) {
