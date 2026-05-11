@@ -13,6 +13,13 @@
     FAQ,
     Footer
   } from '$lib/examples/landing';
+  import Section from '$lib/components/ui/Section.svelte';
+  import Container from '$lib/components/ui/Container.svelte';
+  import Text from '$lib/components/ui/Text.svelte';
+  import Button from '$lib/components/ui/Button.svelte';
+  import { setSeo } from '$lib/seo';
+
+  setSeo({ title: 'Landing de ejemplo | My SvelteKit Starter', description: 'Landing page completa construida con esta plantilla.' });
 
   let isYearly = $state(false);
   function toggleBilling() {
@@ -57,6 +64,18 @@
 </script>
 
 <Hero />
+
+<Section variant="soft">
+  <Container>
+    <div class="portfolio-banner">
+      <Text variant="small">EJEMPLO REAL CONSTRUIDO CON ESTA PLANTILLA</Text>
+      <Button variant="primary" as="a" href="https://novakit.moisesvalero.es/" size="lg">
+        Ver portfolio real →
+      </Button>
+    </div>
+  </Container>
+</Section>
+
 <SocialProof />
 <Workflow />
 <ComponentGallery />
@@ -68,4 +87,15 @@
 <DeepDetails />
 <FAQ {faqs} {toggleFaq} />
 <Footer />
+
+<style>
+  .portfolio-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+  }
+</style>
 
