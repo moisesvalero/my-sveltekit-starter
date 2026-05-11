@@ -10,7 +10,7 @@
 		"dev": "vite dev --host 0.0.0.0",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "husky",
+		"prepare": "husky || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
@@ -18,8 +18,14 @@
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"new:page": "node scripts/new-page.js",
-		"clean": "node scripts/clean.js",
-		"studio": "npx sanity dev"
+		"clean": "node scripts/clean.js"
+	},
+	"stackblitz": {
+		"installDependencies": true,
+		"startCommand": "npm run dev",
+		"env": {
+			"NODE_ENV": "development"
+		}
 	},
 	"lint-staged": {
 		"*.{js,ts,svelte}": [
@@ -28,36 +34,25 @@
 		]
 	},
 	"devDependencies": {
-		"@eslint/js": "^10.0.1",
-		"@sanity/cli": "^6.2.0",
 		"@sveltejs/adapter-auto": "^7.0.0",
-		"@sveltejs/adapter-vercel": "^6.3.3",
 		"@sveltejs/kit": "^2.50.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
-		"@testing-library/svelte": "^5.3.1",
-		"eslint": "^10.3.0",
+		"eslint": "^9.39.1",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-svelte": "^3.17.1",
+		"eslint-plugin-svelte": "^3.12.4",
 		"husky": "^9.1.7",
-		"lint-staged": "^17.0.4",
-		"mdsvex": "^0.12.7",
-		"prettier": "^3.8.3",
-		"prettier-plugin-svelte": "^3.5.1",
-		"sanity": "^5.17.1",
+		"lint-staged": "^16.2.7",
+		"mdsvex": "^0.12.3",
+		"prettier": "^3.7.4",
+		"prettier-plugin-svelte": "^3.4.0",
 		"svelte": "^5.51.0",
 		"svelte-check": "^4.4.2",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.59.2",
-		"vite": "^7.3.1",
-		"vitest": "^4.1.5"
+		"vite": "^7.3.1"
 	},
 	"dependencies": {
-		"@sanity/client": "^7.20.0",
-		"@sanity/image-url": "^2.0.3",
 		"@sentry/sveltekit": "^10.52.0",
 		"@supabase/supabase-js": "^2.105.4",
-		"cookie": "^1.1.1",
-		"satori": "^0.26.0",
 		"svelte-sonner": "^1.1.1"
 	}
 }
