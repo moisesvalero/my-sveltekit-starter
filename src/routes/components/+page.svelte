@@ -5,8 +5,6 @@
   import Card from '$lib/components/ui/Card.svelte';
   import Heading from '$lib/components/ui/Heading.svelte';
   import Text from '$lib/components/ui/Text.svelte';
-  import Grid from '$lib/components/ui/Grid.svelte';
-  import Section from '$lib/components/ui/Section.svelte';
   import Spinner from '$lib/components/ui/Spinner.svelte';
   import Modal from '$lib/components/ui/Modal.svelte';
   import Skeleton from '$lib/components/ui/Skeleton.svelte';
@@ -16,17 +14,17 @@
   import ThemeToggle from '$lib/components/ThemeToggle.svelte';
   import AiPrompt from '$lib/components/AiPrompt.svelte';
   import { toast } from '$lib/stores/toast';
+  import { reveal } from '$lib/reveal';
 
   setSeo({ title: 'Componentes | My SvelteKit Starter', description: '23 componentes Svelte 5 listos para usar.' });
 
   let modalOpen = $state(false);
-  let copied = $state('');
+  let copiedId = $state('');
 
-  function onCopy(text: string) {
-    navigator.clipboard.writeText(text);
-    copied = text;
-    toast('Import copiado!', 'success');
-    setTimeout(() => (copied = ''), 2000);
+  function onCopy(code: string, id: string) {
+    navigator.clipboard.writeText(code);
+    copiedId = id;
+    setTimeout(() => { if (copiedId === id) copiedId = ''; }, 2000);
   }
 </script>
 
@@ -34,346 +32,547 @@
   <title>Componentes | My SvelteKit Starter</title>
 </svelte:head>
 
-<div class="gallery-hero">
-  <div class="gallery-hero-bg">
-    <div class="gh-orb gh-orb--1"></div>
-    <div class="gh-orb gh-orb--2"></div>
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-orbs">
+    <div class="h-orb h-orb--1"></div>
+    <div class="h-orb h-orb--2"></div>
+    <div class="h-orb h-orb--3"></div>
+    <div class="h-grid"></div>
   </div>
   <Container>
-    <div class="gallery-hero-content">
-      <Heading level={1} eyebrow="UI KIT" align="center">Componentes listos para usar</Heading>
-      <Text variant="muted" align="center">
-        23 componentes Svelte 5. Sin dependencias. Sin Tailwind. Solo CSS y TypeScript.
+    <div class="hero-body">
+      <p class="hero-badge">UI KIT</p>
+      <Heading level={1} align="center">Componentes</Heading>
+      <Text variant="muted" align="center" className="hero-sub">
+        23 componentes Svelte 5 puros. Sin dependencias extra, sin Tailwind, sin frameworks de UI. Solo tu y el componente.
       </Text>
+      <div class="hero-stats">
+        <div class="stat"><strong>23</strong><span>Componentes</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><strong>0</strong><span>Dependencias</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><strong>100%</strong><span>TypeScript</span></div>
+      </div>
     </div>
   </Container>
 </div>
 
-<Container>
-  <Section variant="default">
-    <Heading level={2} eyebrow="Base" align="center">Componentes fundamentales</Heading>
-    <div class="grid-2">
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo fc-heading-demo">
-          <Heading level={1} eyebrow="Eyebrow">Heading</Heading>
-          <Heading level={2} kicker="Kicker debajo">H1 a H4</Heading>
-          <Heading level={3}>Con eyebrow</Heading>
-          <Text variant="muted">y kicker opcional</Text>
-        </div>
-        <div class="fc-info">
-          <Heading level={4}>Heading + Text</Heading>
-          <Text variant="small">Titulos jerarquicos y parrafos con variantes body, muted, small y label.</Text>
-          <button class="copy-import" onclick={() => onCopy("import Heading from '$lib/components/ui/Heading.svelte';")}>{copied.includes('Heading') ? '✓ Copiado' : 'Copiar import'}</button>
-        </div>
-      </Card>
+<!-- UI Base -->
+<div class="comp-section">
+  <Container>
+    <div class="comp-header" use:reveal={{ stage: 'content' }}>
+      <p class="comp-eyebrow">UI Base</p>
+      <Heading level={2}>Piezas fundamentales</Heading>
+      <Text variant="muted">Los bloques mas importantes para construir cualquier interfaz.</Text>
+    </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo fc-btn-demo">
-          <Button variant="primary" size="sm">Primary</Button>
-          <Button variant="secondary" size="sm">Secondary</Button>
-          <Button variant="outline" size="sm">Outline</Button>
-          <Button variant="ghost" size="sm">Ghost</Button>
-          <Button variant="link" size="sm">Link</Button>
-        </div>
-        <div class="fc-info">
-          <Heading level={4}>Button</Heading>
-          <Text variant="small">5 variantes, 3 tamanos, soporte para enlaces, estados disabled y loading.</Text>
-          <button class="copy-import" onclick={() => onCopy("import Button from '$lib/components/ui/Button.svelte';")}>{copied.includes('Button') ? '✓ Copiado' : 'Copiar import'}</button>
-        </div>
-      </Card>
+    <div class="comp-grid comp-grid--2">
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo fc-card-demo">
-          <div class="mini-cards">
-            <Card variant="default"><Text variant="small" align="center">Default</Text></Card>
-            <Card variant="soft"><Text variant="small" align="center">Soft</Text></Card>
-            <Card variant="outline"><Text variant="small" align="center">Outline</Text></Card>
+      <!-- Button -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo">
+          <div class="comp-buttons">
+            <Button variant="primary">Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="outline">Outline</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="link">Link</Button>
+          </div>
+          <div class="comp-sizes">
+            <Button variant="primary" size="sm">Small</Button>
+            <Button variant="primary">Medium</Button>
+            <Button variant="primary" size="lg">Large</Button>
           </div>
         </div>
-        <div class="fc-info">
-          <Heading level={4}>Card + Grid</Heading>
-          <Text variant="small">Tarjetas con 3 variantes. Grid responsive que se adapta a cualquier pantalla.</Text>
-          <button class="copy-import" onclick={() => onCopy("import Card from '$lib/components/ui/Card.svelte';\nimport Grid from '$lib/components/ui/Grid.svelte';")}>{copied.includes('Card') ? '✓ Copiado' : 'Copiar import'}</button>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Button</h3>
+            <p>5 variantes &middot; 3 tamanos &middot; Disabled &middot; Link</p>
+          </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import Button from '$lib/components/ui/Button.svelte';", 'btn')}>
+            {#if copiedId === 'btn'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
         </div>
-      </Card>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo fc-hero-demo">
+      <!-- Card -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo">
+          <div class="comp-card-row">
+            <div class="comp-mini-card default"><span>Default</span></div>
+            <div class="comp-mini-card soft"><span>Soft</span></div>
+            <div class="comp-mini-card outline"><span>Outline</span></div>
+          </div>
+        </div>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Card</h3>
+            <p>3 variantes &middot; Clickable &middot; Slots</p>
+          </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import Card from '$lib/components/ui/Card.svelte';", 'card')}>
+            {#if copiedId === 'card'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--left">
+          <h1 style="margin:0;font-size:1.8rem;letter-spacing:-0.03em;">H1 Eyebrow</h1>
+          <h2 style="margin:0;font-size:1.3rem;letter-spacing:-0.02em;color:var(--text-secondary);">H2 Kicker</h2>
+          <h3 style="margin:0;font-size:1.1rem;font-weight:600;">H3</h3>
+          <h4 style="margin:0;font-size:0.95rem;font-weight:500;color:var(--text-secondary);">H4</h4>
+        </div>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Heading + Text</h3>
+            <p>Titulos H1-H4 &middot; Eyebrow &middot; Kicker &middot; Parrafos</p>
+          </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import Heading from '$lib/components/ui/Heading.svelte';\nimport Text from '$lib/components/ui/Text.svelte';", 'head')}>
+            {#if copiedId === 'head'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
+        </div>
+      </div>
+
+      <!-- Container + Section -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo">
+          <div class="section-pills">
+            <span class="pill pill--default">default</span>
+            <span class="pill pill--muted">muted</span>
+            <span class="pill pill--soft">soft</span>
+            <span class="pill pill--surface">surface</span>
+          </div>
+        </div>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Container + Section</h3>
+            <p>Centrador responsivo &middot; 4 fondos de seccion</p>
+          </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import Container from '$lib/components/ui/Container.svelte';\nimport Section from '$lib/components/ui/Section.svelte';", 'cont')}>
+            {#if copiedId === 'cont'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo">
+          <div class="comp-grid-demo">
+            <div class="cg-cell" style="grid-column:1/3"><span>1 col</span></div>
+            <div class="cg-cell"><span>A</span></div>
+            <div class="cg-cell"><span>B</span></div>
+            <div class="cg-cell"><span>C</span></div>
+          </div>
+        </div>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Grid</h3>
+            <p>Responsive por defecto &middot; columns prop</p>
+          </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import Grid from '$lib/components/ui/Grid.svelte';", 'grid')}>
+            {#if copiedId === 'grid'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
+        </div>
+      </div>
+
+      <!-- HeroSection -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--centered">
           <div class="mini-hero">
-            <p class="mini-eyebrow">HERO SECTION</p>
+            <p class="mini-eyebrow">HERO</p>
             <p class="mini-title">Listo en una linea</p>
-            <p class="mini-sub">Con titulo, subtitulo y CTAs</p>
+            <p class="mini-sub">Titulo + subtitulo + CTAs</p>
             <div class="mini-btns">
-              <Button variant="primary" size="sm">CTA</Button>
-              <Button variant="outline" size="sm">Secundario</Button>
+              <Button variant="primary" size="sm">Primary</Button>
+              <Button variant="outline" size="sm">Secondary</Button>
             </div>
           </div>
         </div>
-        <div class="fc-info">
-          <Heading level={4}>HeroSection</Heading>
-          <Text variant="small">Hero completo con gradientes animados, titulo, subtitulo y 2 CTAs.</Text>
-          <button class="copy-import" onclick={() => onCopy("import HeroSection from '$lib/components/ui/HeroSection.svelte';")}>{copied.includes('HeroSection') ? '✓ Copiado' : 'Copiar import'}</button>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>HeroSection</h3>
+            <p>Gradientes animados &middot; 2 CTAs &middot; Centered</p>
+          </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import HeroSection from '$lib/components/ui/HeroSection.svelte';", 'hero')}>
+            {#if copiedId === 'hero'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
         </div>
-      </Card>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo fc-features-demo">
-          <div class="mini-features">
-            <span>🚀 Rapido</span>
-            <span>🎨 Personalizable</span>
-            <span>🧩 Componible</span>
-            <span>🔒 Seguro</span>
+      <!-- FeaturesSection -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--compact">
+          <div class="feature-pills">
+            <span class="fp">🚀 Rapido</span>
+            <span class="fp">🎨 Customizable</span>
+            <span class="fp">🧩 Componible</span>
+            <span class="fp">🔒 Seguro</span>
+            <span class="fp">⚡ Tipado</span>
+            <span class="fp">📱 Responsive</span>
           </div>
         </div>
-        <div class="fc-info">
-          <Heading level={4}>FeaturesSection</Heading>
-          <Text variant="small">Grid de caracteristicas con iconos. Pasa un array de items y listo.</Text>
-          <button class="copy-import" onclick={() => onCopy("import FeaturesSection from '$lib/components/ui/FeaturesSection.svelte';")}>{copied.includes('FeaturesSection') ? '✓ Copiado' : 'Copiar import'}</button>
-        </div>
-      </Card>
-
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo">
-          <div class="section-swatches">
-            <div class="sw default">default</div>
-            <div class="sw muted">muted</div>
-            <div class="sw soft">soft</div>
-            <div class="sw surface">surface</div>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>FeaturesSection</h3>
+            <p>Grid de features &middot; Array de items &middot; Iconos</p>
           </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import FeaturesSection from '$lib/components/ui/FeaturesSection.svelte';", 'feat')}>
+            {#if copiedId === 'feat'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
         </div>
-        <div class="fc-info">
-          <Heading level={4}>Container + Section</Heading>
-          <Text variant="small">Container centra el contenido. Section define 4 variantes de fondo.</Text>
-          <button class="copy-import" onclick={() => onCopy("import Container from '$lib/components/ui/Container.svelte';\nimport Section from '$lib/components/ui/Section.svelte';")}>{copied.includes('Container') ? '✓ Copiado' : 'Copiar import'}</button>
+      </div>
+
+      <!-- Spinner -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo">
+          <Spinner size={28} />
+          <Spinner size={40} />
+          <Spinner size={16} />
         </div>
-      </Card>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Spinner</h3>
+            <p>SVG animado &middot; Custom size</p>
+          </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import Spinner from '$lib/components/ui/Spinner.svelte';", 'spin')}>
+            {#if copiedId === 'spin'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
+        </div>
+      </div>
+
+      <!-- Skeleton -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--col">
+          <Skeleton width="80%" height="1rem" />
+          <Skeleton width="100%" height="0.8rem" />
+          <Skeleton width="60%" height="0.8rem" />
+          <Skeleton width="40%" height="2rem" borderRadius="10px" />
+        </div>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Skeleton</h3>
+            <p>Shimmer effect &middot; Width/Height/Radius</p>
+          </div>
+          <button class="comp-code-btn" onclick={() => onCopy("import Skeleton from '$lib/components/ui/Skeleton.svelte';", 'skel')}>
+            {#if copiedId === 'skel'}<span class="code-ok">Copiado</span>{:else}<span class="code-label">import</span>{/if}
+          </button>
+        </div>
+      </div>
+
     </div>
-  </Section>
+  </Container>
+</div>
 
-  <Section variant="muted">
-    <Heading level={2} eyebrow="Avanzados" align="center">Componentes extra</Heading>
-    <div class="grid-3">
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo"><Spinner size={32} /></div>
-        <div class="fc-info">
-          <Heading level={4}>Spinner</Heading>
-          <Text variant="small">Indicador de carga animado con SVG.</Text>
-        </div>
-      </Card>
+<!-- Componentes avanzados -->
+<div class="comp-section comp-section--dark">
+  <Container>
+    <div class="comp-header" use:reveal={{ stage: 'content' }}>
+      <p class="comp-eyebrow comp-eyebrow--light">Avanzados</p>
+      <Heading level={2} align="center">Componentes extra</Heading>
+      <Text variant="muted" align="center">Cookies, chat, analytics, newsletter... todo listo para conectar.</Text>
+    </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo"><Skeleton width="100%" height="0.8rem" /><Skeleton width="70%" height="0.8rem" /></div>
-        <div class="fc-info">
-          <Heading level={4}>Skeleton</Heading>
-          <Text variant="small">Placeholders con shimmer. Width, height y borderRadius configurables.</Text>
-        </div>
-      </Card>
+    <div class="comp-grid comp-grid--3">
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo">
+      <!-- Modal -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--centered">
           <Button variant="primary" size="sm" onclick={() => (modalOpen = true)}>Abrir modal</Button>
         </div>
-        <div class="fc-info">
-          <Heading level={4}>Modal</Heading>
-          <Text variant="small">Ventana emergente. Click fuera, ESC o boton para cerrar.</Text>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Modal</h3>
+            <p>ESC, click fuera, boton para cerrar</p>
+          </div>
         </div>
-      </Card>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo"><LoadingBlock loading={true} message="Cargando datos..." /></div>
-        <div class="fc-info">
-          <Heading level={4}>LoadingBlock</Heading>
-          <Text variant="small">Pantalla de carga con spinner y mensaje personalizable.</Text>
+      <!-- LoadingBlock -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo">
+          <LoadingBlock loading={true} message="Cargando datos..." />
         </div>
-      </Card>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>LoadingBlock</h3>
+            <p>Spinner + mensaje personalizable</p>
+          </div>
+        </div>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo"><CopyButton text="npm create svelte@latest" /></div>
-        <div class="fc-info">
-          <Heading level={4}>CopyButton</Heading>
-          <Text variant="small">Copia al portapapeles con feedback visual.</Text>
+      <!-- CopyButton -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--centered">
+          <CopyButton text="npm install my-sveltekit-starter" />
         </div>
-      </Card>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>CopyButton</h3>
+            <p>Copia al portapapeles con feedback</p>
+          </div>
+        </div>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo">
-          <Button variant="primary" size="sm" onclick={() => toast('Funciona!', 'success')}>Probar toast</Button>
+      <!-- Toast -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--col comp-demo--centered">
+          <Button variant="primary" size="sm" onclick={() => toast('Operacion completada!', 'success')}>Toast success</Button>
+          <Button variant="secondary" size="sm" onclick={() => toast('Algo salio mal', 'error')}>Toast error</Button>
+          <Button variant="outline" size="sm" onclick={() => toast('Aviso importante', 'warning')}>Toast warning</Button>
         </div>
-        <div class="fc-info">
-          <Heading level={4}>Toast</Heading>
-          <Text variant="small">Notificaciones success, error, info y warning.</Text>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Toast</h3>
+            <p>success &middot; error &middot; info &middot; warning</p>
+          </div>
         </div>
-      </Card>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo"><Newsletter buttonLabel="Suscribirse" /></div>
-        <div class="fc-info">
-          <Heading level={4}>Newsletter</Heading>
-          <Text variant="small">Formulario de email listo para conectar.</Text>
+      <!-- Newsletter -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo">
+          <Newsletter buttonLabel="Suscribirse" />
         </div>
-      </Card>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Newsletter</h3>
+            <p>Email form listo para API</p>
+          </div>
+        </div>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo"><ThemeToggle /></div>
-        <div class="fc-info">
-          <Heading level={4}>ThemeToggle</Heading>
-          <Text variant="small">Dark/light mode. Guarda en localStorage.</Text>
+      <!-- ThemeToggle -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--centered">
+          <ThemeToggle />
         </div>
-      </Card>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>ThemeToggle</h3>
+            <p>Dark/light &middot; localStorage</p>
+          </div>
+        </div>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo"><AiPrompt placeholder="Pregunta a la IA..." maxLength={200} /></div>
-        <div class="fc-info">
-          <Heading level={4}>AiPrompt</Heading>
-          <Text variant="small">Textarea listo para conectar a una API de IA.</Text>
+      <!-- AiPrompt -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo">
+          <AiPrompt placeholder="Pregunta a la IA..." maxLength={200} />
         </div>
-      </Card>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>AiPrompt</h3>
+            <p>Textarea + API de IA</p>
+          </div>
+        </div>
+      </div>
 
-      <Card variant="soft" className="feature-card">
-        <div class="fc-demo">
-          <div class="auto-badge">✅ CookieConsent</div>
-          <div class="auto-badge">✅ JsonLd</div>
-          <div class="auto-badge">✅ Analytics</div>
+      <!-- Auto -->
+      <div class="comp-card" use:reveal={{ stage: 'content', delay: 60 }}>
+        <div class="comp-demo comp-demo--col comp-demo--centered comp-demo--auto">
+          <div class="auto-row"><span class="auto-dot"></span> CookieConsent</div>
+          <div class="auto-row"><span class="auto-dot"></span> JsonLd</div>
+          <div class="auto-row"><span class="auto-dot"></span> Analytics</div>
+          <div class="auto-row"><span class="auto-dot"></span> LiveChat</div>
         </div>
-        <div class="fc-info">
-          <Heading level={4}>Automaticos</Heading>
-          <Text variant="small">CookieConsent, JsonLd (Schema.org), Analytics y LiveChat. Ya incluidos en el layout.</Text>
+        <div class="comp-meta">
+          <div class="comp-meta-text">
+            <h3>Incluidos</h3>
+            <p>4 componentes incluidos en el layout</p>
+          </div>
         </div>
-      </Card>
+      </div>
+
     </div>
-  </Section>
+  </Container>
+</div>
 
-  <Section variant="default">
-    <div class="gallery-bottom">
-      <Heading level={2} align="center">Todo listo para tu proyecto</Heading>
-      <Text variant="muted" align="center">Copia los imports, pega los componentes y personaliza. Sin configuracion extra.</Text>
-      <div class="gallery-bottom-btns">
+<!-- CTA -->
+<div class="comp-cta">
+  <Container>
+    <div class="comp-cta-inner" use:reveal={{ stage: 'content' }}>
+      <Heading level={2} align="center">Empezar a construir</Heading>
+      <Text variant="muted" align="center">Copia cualquier import, pega el componente y listo.</Text>
+      <div class="comp-cta-btns">
         <Button variant="primary" size="lg" as="a" href="/">Volver al inicio</Button>
         <Button variant="outline" size="lg" as="a" href="https://novakit.moisesvalero.es/">Ver demo real</Button>
       </div>
     </div>
-  </Section>
-</Container>
+  </Container>
+</div>
 
 <Modal title="Modal de ejemplo" open={modalOpen} onclose={() => (modalOpen = false)}>
-  <Text>Se cierra con click fuera, ESC o ✕</Text>
-  <br />
+  <p style="margin:0 0 1rem;color:var(--text-secondary);">Se cierra con click fuera, ESC o boton ✕.</p>
   <Button variant="primary" onclick={() => (modalOpen = false)}>Cerrar</Button>
 </Modal>
 
 <style>
-  .gallery-hero {
-    position: relative;
-    padding-block: clamp(100px, 14vh, 140px);
-    overflow: hidden;
-    background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 60%), var(--bg-main);
+  /* ---- HERO ---- */
+  .hero {
+    position: relative; overflow: hidden;
+    padding-block: clamp(80px, 14vh, 140px);
+    background: var(--bg-main);
   }
-  .gallery-hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-  .gh-orb {
-    position: absolute; border-radius: 50%; filter: blur(100px);
+  .hero-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .h-orb { position: absolute; border-radius: 50%; filter: blur(120px); }
+  .h-orb--1 { width: 500px; height: 500px; background: rgba(37,99,235,0.12); top: -200px; right: -80px; }
+  .h-orb--2 { width: 350px; height: 350px; background: rgba(14,165,233,0.08); bottom: -120px; left: -40px; }
+  .h-orb--3 { width: 250px; height: 250px; background: rgba(139,92,246,0.06); top: 40%; left: 30%; }
+  .h-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at 50% 20%, black 10%, transparent 60%);
   }
-  .gh-orb--1 {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(37,99,235,0.15), transparent);
-    top: -200px; right: -100px;
-  }
-  .gh-orb--2 {
-    width: 350px; height: 350px;
-    background: radial-gradient(circle, rgba(14,165,233,0.1), transparent);
-    bottom: -100px; left: -50px;
-  }
-  .gallery-hero-content {
+  .hero-body {
     position: relative; z-index: 1;
-    max-width: 640px; margin: 0 auto;
-    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
-    text-align: center;
+    max-width: 600px; margin: 0 auto; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
   }
+  .hero-badge {
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent);
+    background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.12);
+    padding: 0.3rem 1rem; border-radius: 999px;
+  }
+  .hero-sub { font-size: 1.05rem; max-width: 500px; }
+  .hero-stats {
+    display: flex; align-items: center; gap: 1.5rem; margin-top: 0.5rem;
+  }
+  .stat { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
+  .stat strong { font-size: 1.4rem; font-weight: 800; color: var(--text-main); }
+  .stat span { font-size: 0.75rem; color: var(--text-secondary); }
+  .stat-sep { width: 1px; height: 28px; background: rgba(0,0,0,0.1); }
 
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.2rem;
-    margin-top: 2rem;
+  /* ---- COMPOSITION ---- */
+  .comp-section { padding-block: 4rem; }
+  .comp-section--dark { background: var(--bg-soft); }
+  .comp-header {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.4rem; text-align: center; margin-bottom: 2rem;
   }
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.2rem;
-    margin-top: 2rem;
+  .comp-eyebrow {
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent);
+    background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.12);
+    padding: 0.25rem 0.9rem; border-radius: 999px;
   }
+  .comp-eyebrow--light { color: #fff; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); }
 
-  .feature-card {
-    display: flex; flex-direction: column;
-    padding: 0 !important;
+  .comp-grid { display: grid; gap: 1rem; }
+  .comp-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .comp-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+  /* ---- CARD ---- */
+  .comp-card {
+    background: #fff; border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.06);
     overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
   }
-
-  .fc-demo {
-    padding: 2rem 1.5rem;
+  .comp-card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .comp-demo {
     display: flex; align-items: center; justify-content: center;
-    gap: 0.8rem; flex-wrap: wrap;
-    min-height: 120px;
-    background: radial-gradient(ellipse at center, rgba(37,99,235,0.03) 0%, transparent 70%);
+    gap: 0.6rem; padding: 2rem 1.5rem; min-height: 130px;
+    background: linear-gradient(135deg, rgba(37,99,235,0.02) 0%, rgba(14,165,233,0.02) 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
   }
-  .fc-heading-demo { flex-direction: column; align-items: flex-start; }
-  .fc-btn-demo { gap: 0.4rem; }
-  .fc-hero-demo { min-height: 180px; }
-  .fc-features-demo { gap: 0.5rem; }
+  .comp-demo--col { flex-direction: column; }
+  .comp-demo--centered { justify-content: center; }
+  .comp-demo--left { justify-content: flex-start; padding-left: 2rem; }
+  .comp-demo--compact { padding: 1.5rem; }
+  .comp-demo--auto { gap: 0.4rem; }
 
-  .fc-info {
-    padding: 1.2rem 1.5rem;
-    display: flex; flex-direction: column; gap: 0.35rem;
-    border-top: 1px solid rgba(0,0,0,0.05);
+  .comp-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 1.2rem;
   }
-  .fc-info h4 { margin: 0; }
+  .comp-meta h3 { margin: 0; font-size: 0.95rem; font-weight: 700; }
+  .comp-meta p { margin: 0; font-size: 0.75rem; color: var(--text-secondary); }
 
-  .copy-import {
+  .comp-code-btn {
     background: none; border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 6px; padding: 0.3rem 0.7rem;
-    font-size: 0.75rem; cursor: pointer;
-    color: var(--text-secondary);
-    transition: all 0.2s;
-    align-self: flex-start; margin-top: 0.3rem;
+    border-radius: 6px; padding: 0.25rem 0.6rem;
+    cursor: pointer; font-size: 0.7rem; font-weight: 600;
+    color: var(--text-secondary); transition: all 0.2s; flex-shrink: 0;
   }
-  .copy-import:hover { border-color: var(--accent); color: var(--accent); }
+  .comp-code-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .code-ok { color: #22c55e; }
 
-  .mini-cards { display: flex; gap: 0.4rem; width: 100%; }
-  .mini-cards > * { flex: 1; padding: 0.8rem !important; }
+  /* ---- DEMOS ---- */
+  .comp-buttons { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+  .comp-sizes { display: flex; gap: 0.4rem; align-items: center; }
+  .comp-card-row { display: flex; gap: 0.5rem; width: 100%; }
+  .comp-card-row > div { flex: 1; padding: 1rem; border-radius: 10px; text-align: center; border: 1px solid rgba(0,0,0,0.06); }
+  .comp-card-row > div.default { background: #fff; }
+  .comp-card-row > div.soft { background: rgba(37,99,235,0.04); }
+  .comp-card-row > div.outline { background: transparent; border-style: dashed; }
+  .comp-card-row span { font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); }
+
+  .section-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .pill {
+    padding: 0.35rem 0.8rem; border-radius: 6px;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.03em;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .pill--default { background: #fff; }
+  .pill--muted { background: var(--bg-soft); }
+  .pill--soft { background: rgba(37,99,235,0.04); border-color: rgba(37,99,235,0.1); }
+  .pill--surface { background: #f8fafc; }
+
+  .comp-grid-demo {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; width: 100%;
+  }
+  .cg-cell {
+    background: rgba(37,99,235,0.04); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0.8rem; border: 1px dashed rgba(37,99,235,0.15);
+  }
+  .cg-cell span { font-size: 0.75rem; font-weight: 600; color: var(--accent); }
 
   .mini-hero { text-align: center; }
-  .mini-eyebrow { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 700; }
-  .mini-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.2rem; }
-  .mini-sub { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
+  .mini-eyebrow { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--accent); margin-bottom: 0.15rem; font-weight: 800; }
+  .mini-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 0.15rem; }
+  .mini-sub { font-size: 0.8rem; color: var(--text-secondary); margin: 0 0 0.7rem; }
   .mini-btns { display: flex; gap: 0.4rem; justify-content: center; }
 
-  .mini-features { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
-  .mini-features span {
-    background: rgba(37,99,235,0.06); padding: 0.3rem 0.7rem;
+  .feature-pills { display: flex; gap: 0.35rem; flex-wrap: wrap; justify-content: center; }
+  .fp {
+    background: rgba(37,99,235,0.05); padding: 0.3rem 0.7rem;
     border-radius: 6px; font-size: 0.75rem; font-weight: 500;
+    border: 1px solid rgba(37,99,235,0.08);
   }
 
-  .section-swatches { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  .sw {
-    padding: 0.4rem 0.7rem; border-radius: 6px; font-size: 0.65rem;
-    font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  .auto-row {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);
   }
-  .sw.default { background: #fff; border: 1px solid rgba(0,0,0,0.1); color: var(--text-main); }
-  .sw.muted { background: var(--bg-soft); color: var(--text-secondary); }
-  .sw.soft { background: rgba(37,99,235,0.04); color: var(--accent); }
-  .sw.surface { background: #f8fafc; border: 1px solid rgba(0,0,0,0.05); color: var(--text-secondary); }
+  .auto-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
 
-  .auto-badge {
-    background: rgba(37,99,235,0.06); padding: 0.4rem 0.8rem;
-    border-radius: 8px; font-size: 0.8rem; font-weight: 500;
-  }
-
-  .gallery-bottom {
+  /* ---- CTA ---- */
+  .comp-cta { padding-block: 3rem; }
+  .comp-cta-inner {
     display: flex; flex-direction: column; align-items: center;
-    gap: 1rem; padding: 2rem 0 3rem;
+    gap: 1rem; max-width: 500px; margin: 0 auto; text-align: center;
   }
-  .gallery-bottom-btns { display: flex; gap: 0.8rem; }
+  .comp-cta-btns { display: flex; gap: 0.7rem; }
 
-  @media (max-width: 768px) {
-    .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr); }
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    .comp-grid--2 { grid-template-columns: 1fr; }
+    .comp-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .comp-grid--2, .comp-grid--3 { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 0.3rem; }
+    .stat-sep { width: 30px; height: 1px; }
+    .comp-cta-btns { flex-direction: column; width: 100%; }
+    .comp-cta-btns > :global(*) { width: 100%; text-align: center; }
   }
 </style>
