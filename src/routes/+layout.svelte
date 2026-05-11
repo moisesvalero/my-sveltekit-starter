@@ -8,6 +8,7 @@
   import ToastContainer from '$lib/components/ToastContainer.svelte';
   import CookieConsent from '$lib/components/CookieConsent.svelte';
   import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+  import Footer from '$lib/components/Footer.svelte';
   import { initDarkMode } from '$lib/stores/darkMode';
   import { seo } from '$lib/seo';
   import { onMount } from 'svelte';
@@ -132,6 +133,8 @@
     </div>
   {/key}
 </main>
+
+<Footer />
 
 <ToastContainer />
 <CookieConsent />

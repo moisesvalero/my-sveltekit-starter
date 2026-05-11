@@ -81,7 +81,7 @@
     position: relative;
     padding-block: clamp(120px, 18vh, 180px);
     overflow: hidden;
-    background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.08) 0%, transparent 60%), var(--bg-main, #fff);
+    background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 60%), var(--bg-main, #fff);
   }
 
   .hero-bg {
@@ -99,21 +99,21 @@
 
   .hero-orb--1 {
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(99,102,241,0.25), transparent);
+    background: radial-gradient(circle, rgba(37,99,235,0.25), transparent);
     top: -150px; left: -100px;
     animation: orbFloat1 12s ease-in-out infinite;
   }
 
   .hero-orb--2 {
     width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(139,92,246,0.18), transparent);
+    background: radial-gradient(circle, rgba(96,165,250,0.18), transparent);
     top: 50%; right: -80px;
     animation: orbFloat2 15s ease-in-out infinite;
   }
 
   .hero-orb--3 {
     width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(59,130,246,0.15), transparent);
+    background: radial-gradient(circle, rgba(96,165,250,0.15), transparent);
     bottom: -80px; left: 40%;
     animation: orbFloat3 10s ease-in-out infinite;
   }
@@ -135,8 +135,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
   }

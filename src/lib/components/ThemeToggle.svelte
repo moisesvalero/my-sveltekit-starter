@@ -43,7 +43,7 @@
   }
   .theme-toggle:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(124, 92, 191, 0.15);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
   }
   :global(.dark) .theme-toggle {
     background: rgba(255, 255, 255, 0.06);

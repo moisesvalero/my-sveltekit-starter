@@ -86,7 +86,7 @@
     linear-gradient(
       to right,
       rgba(148, 163, 184, 0.25),
-      rgba(99, 102, 241, 0.6),
+      rgba(37, 99, 235, 0.6),
       rgba(148, 163, 184, 0.25)
     ),
     linear-gradient(#0a0a0b, #0a0a0b);
