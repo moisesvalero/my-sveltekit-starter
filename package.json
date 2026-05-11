@@ -7,7 +7,7 @@
 		"node": ">=18.0.0"
 	},
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "husky",
