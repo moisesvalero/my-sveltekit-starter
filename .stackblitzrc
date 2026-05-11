@@ -1,7 +1,7 @@
 {
   "installDependencies": true,
-  "startCommand": "vite dev",
+  "startCommand": "npm run build && npm run preview",
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV": "production"
   }
 }
