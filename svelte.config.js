@@ -2,14 +2,11 @@ import adapter from '@sveltejs/adapter-auto';
 
 const preprocessors = [];
 
-// mdsvex (blog con Markdown) — se carga solo si esta instalado
 try {
   const { mdsvex } = await import('mdsvex');
-  preprocessors.push(
-    mdsvex({ extensions: ['.svx', '.md'] })
-  );
+  preprocessors.push(mdsvex({ extensions: ['.svx', '.md'] }));
 } catch {
-  // mdsvex no instalado — no pasa nada, el blog no funcionara
+  // mdsvex opcional — sin el, el blog no funciona
 }
 
 /** @type {import('@sveltejs/kit').Config} */

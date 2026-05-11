@@ -20,13 +20,6 @@
 		"new:page": "node scripts/new-page.js",
 		"clean": "node scripts/clean.js"
 	},
-	"stackblitz": {
-		"installDependencies": true,
-		"startCommand": "npm run dev",
-		"env": {
-			"NODE_ENV": "development"
-		}
-	},
 	"lint-staged": {
 		"*.{js,ts,svelte}": [
 			"prettier --write",
