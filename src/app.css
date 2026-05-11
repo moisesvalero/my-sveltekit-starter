@@ -34,33 +34,25 @@
 }
 
 .dark body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
 }
 
-.dark .header-inner {
-  background: rgba(15, 23, 42, 0.9) !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.05) inset !important;
-}
+.dark .nk-section--default { background: #0f172a !important; }
+.dark .nk-section--muted { background: #1e293b !important; }
+.dark .nk-section--soft { background: radial-gradient(circle at top, rgba(37,99,235,0.06), transparent 60%), #0f172a !important; }
+.dark .nk-section--surface { background: #1a2332 !important; }
 
-.dark .nav-desktop a { color: var(--text-secondary); }
-.dark .nav-desktop a:hover { color: var(--accent); }
-.dark .btn-primary, .dark .btn-secondary { color: #fff; }
-.dark .btn-secondary { --nk-btn-bg: var(--bg-soft); --nk-btn-color: var(--text-main); }
+.dark .nk-card { background: #1e293b !important; border-color: rgba(255,255,255,0.06) !important; }
+.dark .nk-card--soft { background: radial-gradient(circle at top left, rgba(37,99,235,0.06), #1e293b) !important; }
 
-.dark .nk-section--default { background: var(--bg-main); }
-.dark .nk-section--muted { background: var(--bg-soft); }
-.dark .nk-section--soft { background: radial-gradient(circle at top, rgba(99, 102, 241, 0.06), transparent 60%), var(--bg-main); }
-.dark .nk-section--surface { background: #1a2332; }
+.dark .nk-hero { background: #0f172a !important; }
+.dark .nk-features { background: #0f172a !important; }
 
-.dark .nk-card { background: #1e293b; border-color: rgba(255, 255, 255, 0.06); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1); }
-.dark .nk-card--soft { background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.06), #1e293b); }
-.dark .nk-card--outline { background: transparent; box-shadow: none; border-color: rgba(255, 255, 255, 0.1); }
+.dark .nk-heading-title { color: #f1f5f9 !important; }
+.dark .nk-text--body, .dark .nk-text--muted { color: #94a3b8 !important; }
 
-.dark .nk-hero { background: var(--bg-main); }
-.dark .nk-features { background: var(--bg-main); }
-.dark .nk-features-icon { background: radial-gradient(circle at top, rgba(99, 102, 241, 0.15), rgba(99, 102, 241, 0.06)); }
+.dark .btn-secondary { background: #1e293b !important; color: #f1f5f9 !important; border-color: rgba(255,255,255,0.1) !important; }
 
 /* Reset básico para que todo se vea igual en todos los navegadores */
 * {
