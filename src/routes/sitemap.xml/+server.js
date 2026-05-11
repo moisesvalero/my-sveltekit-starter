@@ -24,8 +24,7 @@ export const GET = () => {
     { path: '/blog/primer-post', priority: '0.7', changefreq: 'monthly' },
     { path: '/components', priority: '0.6', changefreq: 'monthly' },
     { path: '/contacto', priority: '0.8', changefreq: 'monthly' },
-    { path: '/ssr-demo', priority: '0.6', changefreq: 'monthly' },
-    { path: '/examples/landing', priority: '0.7', changefreq: 'monthly' }
+    { path: '/ssr-demo', priority: '0.6', changefreq: 'monthly' }
   ];
 
   const urls = routes

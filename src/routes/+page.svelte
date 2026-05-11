@@ -29,8 +29,8 @@
   subtitle="23 componentes, dark mode, i18n, SEO, tests, seguridad A+ y despliegue 1-click. Todo lo que necesitas para lanzar tu proxima web."
   primaryLabel="Ver componentes"
   primaryHref="/components"
-  secondaryLabel="Landing de ejemplo"
-  secondaryHref="/examples/landing"
+  secondaryLabel="Ver portfolio real"
+  secondaryHref="https://novakit.moisesvalero.es/"
 />
 
 <FeaturesSection
@@ -66,7 +66,7 @@
       <Text variant="muted" align="center">Esta plantilla es gratis, open source y lista para produccion.</Text>
       <div class="cta-buttons">
         <Button variant="primary" size="lg" as="a" href="/components">Ver componentes</Button>
-        <Button variant="outline" size="lg" as="a" href="/examples/landing">Landing ejemplo</Button>
+        <Button variant="outline" size="lg" as="a" href="https://novakit.moisesvalero.es/">Portfolio real</Button>
       </div>
     </div>
   </Container>
