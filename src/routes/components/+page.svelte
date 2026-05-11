@@ -7,8 +7,6 @@
   import Text from '$lib/components/ui/Text.svelte';
   import Grid from '$lib/components/ui/Grid.svelte';
   import Section from '$lib/components/ui/Section.svelte';
-  import HeroSection from '$lib/components/ui/HeroSection.svelte';
-  import FeaturesSection from '$lib/components/ui/FeaturesSection.svelte';
   import Spinner from '$lib/components/ui/Spinner.svelte';
   import Modal from '$lib/components/ui/Modal.svelte';
   import Skeleton from '$lib/components/ui/Skeleton.svelte';
@@ -19,239 +17,246 @@
   import AiPrompt from '$lib/components/AiPrompt.svelte';
   import { toast } from '$lib/stores/toast';
 
-  setSeo({ title: 'Componentes UI | My SvelteKit Starter', description: 'Galeria de 23 componentes listos para usar.' });
+  setSeo({ title: 'Componentes | My SvelteKit Starter', description: '23 componentes Svelte 5 listos para usar.' });
 
   let modalOpen = $state(false);
-
-  const uiBase = [
-    {
-      name: 'Button',
-      import: `import Button from '$lib/components/ui/Button.svelte';`,
-      desc: '5 variantes, 3 tamanos, soporte para enlaces.',
-      demo: 'primary/secondary/ghost/outline/link'
-    },
-    {
-      name: 'Card',
-      import: `import Card from '$lib/components/ui/Card.svelte';`,
-      desc: 'Tarjetas con variantes default, soft y outline.',
-      demo: 'cards'
-    },
-    {
-      name: 'Container',
-      import: `import Container from '$lib/components/ui/Container.svelte';`,
-      desc: 'Wrapper centrado con max-width responsive.',
-      demo: 'inline'
-    },
-    {
-      name: 'Section',
-      import: `import Section from '$lib/components/ui/Section.svelte';`,
-      desc: 'Fondos: default, muted, soft, surface.',
-      demo: 'inline'
-    },
-    {
-      name: 'Heading',
-      import: `import Heading from '$lib/components/ui/Heading.svelte';`,
-      desc: 'Titulos H1-H4 con eyebrow y kicker opcionales.',
-      demo: 'heading'
-    },
-    {
-      name: 'Text',
-      import: `import Text from '$lib/components/ui/Text.svelte';`,
-      desc: 'Parrafos con variantes body, muted, small y label.',
-      demo: 'text'
-    },
-    {
-      name: 'Grid',
-      import: `import Grid from '$lib/components/ui/Grid.svelte';`,
-      desc: 'Cuadricula responsive con prop columns.',
-      demo: 'grid'
-    },
-    {
-      name: 'HeroSection',
-      import: `import HeroSection from '$lib/components/ui/HeroSection.svelte';`,
-      desc: 'Hero completo con titulo, subtitulo y CTAs.',
-      demo: 'hero'
-    },
-    {
-      name: 'FeaturesSection',
-      import: `import FeaturesSection from '$lib/components/ui/FeaturesSection.svelte';`,
-      desc: 'Grid de features con array de items.',
-      demo: 'features'
-    }
-  ];
-
-  const avanzados = [
-    { name: 'Spinner', import: `import Spinner from '$lib/components/ui/Spinner.svelte';`, desc: 'Indicador de carga animado.' },
-    { name: 'Skeleton', import: `import Skeleton from '$lib/components/ui/Skeleton.svelte';`, desc: 'Placeholder con shimmer mientras carga.' },
-    { name: 'Modal', import: `import Modal from '$lib/components/ui/Modal.svelte';`, desc: 'Ventana emergente. ESC, click fuera, boton.' },
-    { name: 'LoadingBlock', import: `import LoadingBlock from '$lib/components/LoadingBlock.svelte';`, desc: 'Pantalla de carga con mensaje.' },
-    { name: 'CopyButton', import: `import CopyButton from '$lib/components/CopyButton.svelte';`, desc: 'Copia texto al portapapeles.' },
-    { name: 'Toast', import: `import { toast } from '$lib/stores/toast';`, desc: 'Notificaciones success/error/info/warning.' },
-    { name: 'Newsletter', import: `import Newsletter from '$lib/components/Newsletter.svelte';`, desc: 'Formulario de suscripcion.' },
-    { name: 'ThemeToggle', import: `import ThemeToggle from '$lib/components/ThemeToggle.svelte';`, desc: 'Toggle dark/light mode.' },
-    { name: 'AiPrompt', import: `import AiPrompt from '$lib/components/AiPrompt.svelte';`, desc: 'Textarea listo para API de IA.' },
-    { name: 'CookieConsent', import: `import CookieConsent from '$lib/components/CookieConsent.svelte';`, desc: 'Banner GDPR automatico.' },
-    { name: 'Analytics', import: `import Analytics from '$lib/components/Analytics.svelte';`, desc: 'Placeholder Google Analytics / Plausible.' },
-    { name: 'LiveChat', import: `import LiveChat from '$lib/components/LiveChat.svelte';`, desc: 'Widget Crisp / Intercom / Tawk.' },
-    { name: 'JsonLd', import: `import JsonLd from '$lib/components/JsonLd.svelte';`, desc: 'Schema.org JSON-LD automatico.' }
-  ];
-
   let copied = $state('');
-  function onCopy(code: string) {
-    navigator.clipboard.writeText(code);
-    copied = code;
+
+  function onCopy(text: string) {
+    navigator.clipboard.writeText(text);
+    copied = text;
     toast('Import copiado!', 'success');
     setTimeout(() => (copied = ''), 2000);
   }
 </script>
 
 <svelte:head>
-  <title>Componentes UI | My SvelteKit Starter</title>
+  <title>Componentes | My SvelteKit Starter</title>
 </svelte:head>
 
 <div class="gallery-hero">
   <div class="gallery-hero-bg">
-    <div class="ghero-orb ghero-orb--1"></div>
-    <div class="ghero-orb ghero-orb--2"></div>
-    <div class="ghero-grid"></div>
+    <div class="gh-orb gh-orb--1"></div>
+    <div class="gh-orb gh-orb--2"></div>
   </div>
   <Container>
     <div class="gallery-hero-content">
-      <Heading level={1} eyebrow="23 COMPONENTES" align="center">Todo lo que necesitas para construir tu UI</Heading>
+      <Heading level={1} eyebrow="UI KIT" align="center">Componentes listos para usar</Heading>
       <Text variant="muted" align="center">
-        Componentes modernos, accesibles y listos para copiar y pegar en tu proyecto.
-        Sin dependencias externas. Solo Svelte 5 y CSS.
+        23 componentes Svelte 5. Sin dependencias. Sin Tailwind. Solo CSS y TypeScript.
       </Text>
-      <div class="gh-stats">
-        <div class="gh-stat"><strong>9</strong> UI Base</div>
-        <div class="gh-div"></div>
-        <div class="gh-stat"><strong>13</strong> Avanzados</div>
-        <div class="gh-div"></div>
-        <div class="gh-stat"><strong>0</strong> Dependencias extra</div>
-      </div>
     </div>
   </Container>
 </div>
 
-<Section variant="default">
-  <Container>
-    <Heading level={2} eyebrow="UI Base" align="center">Componentes fundamentales</Heading>
-    <Text variant="muted" align="center">La base de cualquier interfaz. Ligeros, tipados y listos para usar.</Text>
-    <div class="comp-grid">
-      {#each uiBase as comp}
-        <Card variant="soft" className="comp-card">
-          <div class="comp-card-header">
-            <Heading level={3}>{comp.name}</Heading>
-            <button class="comp-copy-btn" onclick={() => onCopy(comp.import)} title="Copiar import">
-              {copied === comp.import ? '✓' : '⎘'}
-            </button>
-          </div>
-          <Text variant="small">{comp.desc}</Text>
-          <code class="comp-import">{comp.import}</code>
-          <div class="comp-demo">
-            {#if comp.name === 'Button'}
-              <div class="btn-row">
-                <Button variant="primary" size="sm">Primary</Button>
-                <Button variant="secondary" size="sm">Secondary</Button>
-                <Button variant="outline" size="sm">Outline</Button>
-              </div>
-            {:else if comp.name === 'Card'}
-              <Card variant="soft"><Text variant="small">Card demo</Text></Card>
-            {:else if comp.name === 'Container'}
-              <Text variant="small" align="center">Wrapper centrado — esta pagina ya lo usa</Text>
-            {:else if comp.name === 'Section'}
-              <div class="section-swatch default">default</div>
-              <div class="section-swatch muted">muted</div>
-              <div class="section-swatch soft">soft</div>
-            {:else if comp.name === 'Heading'}
-              <Heading level={3} eyebrow="Eyebrow">Heading H3</Heading>
-            {:else if comp.name === 'Text'}
-              <Text variant="body">Body</Text>
-              <Text variant="muted">Muted</Text>
-              <Text variant="label">Label</Text>
-            {:else if comp.name === 'Grid'}
-              <Grid columns={2} gap="0.5rem">
-                <Card variant="soft"><Text variant="small" align="center">A</Text></Card>
-                <Card variant="soft"><Text variant="small" align="center">B</Text></Card>
-              </Grid>
-            {:else if comp.name === 'HeroSection'}
-              <HeroSection eyebrow="Hero" title="Listo en 1 linea" primaryLabel="CTA" primaryHref="#" />
-            {:else if comp.name === 'FeaturesSection'}
-              <FeaturesSection items={[{ icon:'✨', title:'Feature', description:'Descripcion breve.' }]} />
-            {/if}
-          </div>
-        </Card>
-      {/each}
-    </div>
-  </Container>
-</Section>
+<Container>
+  <Section variant="default">
+    <Heading level={2} eyebrow="Base" align="center">Componentes fundamentales</Heading>
+    <div class="grid-2">
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo fc-heading-demo">
+          <Heading level={1} eyebrow="Eyebrow">Heading</Heading>
+          <Heading level={2} kicker="Kicker debajo">H1 a H4</Heading>
+          <Heading level={3}>Con eyebrow</Heading>
+          <Text variant="muted">y kicker opcional</Text>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>Heading + Text</Heading>
+          <Text variant="small">Titulos jerarquicos y parrafos con variantes body, muted, small y label.</Text>
+          <button class="copy-import" onclick={() => onCopy("import Heading from '$lib/components/ui/Heading.svelte';")}>{copied.includes('Heading') ? '✓ Copiado' : 'Copiar import'}</button>
+        </div>
+      </Card>
 
-<Section variant="muted">
-  <Container>
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo fc-btn-demo">
+          <Button variant="primary" size="sm">Primary</Button>
+          <Button variant="secondary" size="sm">Secondary</Button>
+          <Button variant="outline" size="sm">Outline</Button>
+          <Button variant="ghost" size="sm">Ghost</Button>
+          <Button variant="link" size="sm">Link</Button>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>Button</Heading>
+          <Text variant="small">5 variantes, 3 tamanos, soporte para enlaces, estados disabled y loading.</Text>
+          <button class="copy-import" onclick={() => onCopy("import Button from '$lib/components/ui/Button.svelte';")}>{copied.includes('Button') ? '✓ Copiado' : 'Copiar import'}</button>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo fc-card-demo">
+          <div class="mini-cards">
+            <Card variant="default"><Text variant="small" align="center">Default</Text></Card>
+            <Card variant="soft"><Text variant="small" align="center">Soft</Text></Card>
+            <Card variant="outline"><Text variant="small" align="center">Outline</Text></Card>
+          </div>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>Card + Grid</Heading>
+          <Text variant="small">Tarjetas con 3 variantes. Grid responsive que se adapta a cualquier pantalla.</Text>
+          <button class="copy-import" onclick={() => onCopy("import Card from '$lib/components/ui/Card.svelte';\nimport Grid from '$lib/components/ui/Grid.svelte';")}>{copied.includes('Card') ? '✓ Copiado' : 'Copiar import'}</button>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo fc-hero-demo">
+          <div class="mini-hero">
+            <p class="mini-eyebrow">HERO SECTION</p>
+            <p class="mini-title">Listo en una linea</p>
+            <p class="mini-sub">Con titulo, subtitulo y CTAs</p>
+            <div class="mini-btns">
+              <Button variant="primary" size="sm">CTA</Button>
+              <Button variant="outline" size="sm">Secundario</Button>
+            </div>
+          </div>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>HeroSection</Heading>
+          <Text variant="small">Hero completo con gradientes animados, titulo, subtitulo y 2 CTAs.</Text>
+          <button class="copy-import" onclick={() => onCopy("import HeroSection from '$lib/components/ui/HeroSection.svelte';")}>{copied.includes('HeroSection') ? '✓ Copiado' : 'Copiar import'}</button>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo fc-features-demo">
+          <div class="mini-features">
+            <span>🚀 Rapido</span>
+            <span>🎨 Personalizable</span>
+            <span>🧩 Componible</span>
+            <span>🔒 Seguro</span>
+          </div>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>FeaturesSection</Heading>
+          <Text variant="small">Grid de caracteristicas con iconos. Pasa un array de items y listo.</Text>
+          <button class="copy-import" onclick={() => onCopy("import FeaturesSection from '$lib/components/ui/FeaturesSection.svelte';")}>{copied.includes('FeaturesSection') ? '✓ Copiado' : 'Copiar import'}</button>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo">
+          <div class="section-swatches">
+            <div class="sw default">default</div>
+            <div class="sw muted">muted</div>
+            <div class="sw soft">soft</div>
+            <div class="sw surface">surface</div>
+          </div>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>Container + Section</Heading>
+          <Text variant="small">Container centra el contenido. Section define 4 variantes de fondo.</Text>
+          <button class="copy-import" onclick={() => onCopy("import Container from '$lib/components/ui/Container.svelte';\nimport Section from '$lib/components/ui/Section.svelte';")}>{copied.includes('Container') ? '✓ Copiado' : 'Copiar import'}</button>
+        </div>
+      </Card>
+    </div>
+  </Section>
+
+  <Section variant="muted">
     <Heading level={2} eyebrow="Avanzados" align="center">Componentes extra</Heading>
-    <Text variant="muted" align="center">Cookies, toasts, analytics, chat... todo conectado y funcionando.</Text>
-    <div class="comp-grid">
-      {#each avanzados as comp}
-        <Card variant="soft" className="comp-card">
-          <div class="comp-card-header">
-            <Heading level={3}>{comp.name}</Heading>
-            <button class="comp-copy-btn" onclick={() => onCopy(comp.import)} title="Copiar import">
-              {copied === comp.import ? '✓' : '⎘'}
-            </button>
-          </div>
-          <Text variant="small">{comp.desc}</Text>
-          <code class="comp-import">{comp.import}</code>
-          <div class="comp-demo">
-            {#if comp.name === 'Spinner'}
-              <Spinner size={28} />
-            {:else if comp.name === 'Skeleton'}
-              <Skeleton width="100%" height="1rem" />
-              <Skeleton width="70%" height="1rem" />
-            {:else if comp.name === 'Modal'}
-              <Button variant="primary" size="sm" onclick={() => (modalOpen = true)}>Abrir modal</Button>
-            {:else if comp.name === 'LoadingBlock'}
-              <LoadingBlock loading={true} message="Cargando..." />
-            {:else if comp.name === 'CopyButton'}
-              <CopyButton text="npm install" />
-            {:else if comp.name === 'Toast'}
-              <Button variant="primary" size="sm" onclick={() => toast('Hola!', 'success')}>Mostrar toast</Button>
-            {:else if comp.name === 'Newsletter'}
-              <Newsletter buttonLabel="Suscribirse" />
-            {:else if comp.name === 'ThemeToggle'}
-              <ThemeToggle />
-            {:else if comp.name === 'AiPrompt'}
-              <AiPrompt placeholder="Pregunta a la IA..." maxLength={300} />
-            {:else if comp.name === 'CookieConsent'}
-              <Text variant="small">Automatico. Recarga para ver el banner GDPR.</Text>
-            {:else if comp.name === 'Analytics'}
-              <Text variant="small">&lt;Analytics id="..." src="..." /&gt; en el layout.</Text>
-            {:else if comp.name === 'LiveChat'}
-              <Text variant="small">&lt;LiveChat provider="crisp" /&gt; en el layout.</Text>
-            {:else if comp.name === 'JsonLd'}
-              <Text variant="small">Schema.org automatico en el layout global.</Text>
-            {/if}
-          </div>
-        </Card>
-      {/each}
-    </div>
-  </Container>
-</Section>
+    <div class="grid-3">
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo"><Spinner size={32} /></div>
+        <div class="fc-info">
+          <Heading level={4}>Spinner</Heading>
+          <Text variant="small">Indicador de carga animado con SVG.</Text>
+        </div>
+      </Card>
 
-<Section variant="default">
-  <Container>
-    <div class="gallery-cta">
-      <Heading level={2} align="center">Empieza a construir</Heading>
-      <Text variant="muted" align="center">Copia cualquier componente, pegalo en tu pagina y personaliza.</Text>
-      <div class="gh-stats">
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo"><Skeleton width="100%" height="0.8rem" /><Skeleton width="70%" height="0.8rem" /></div>
+        <div class="fc-info">
+          <Heading level={4}>Skeleton</Heading>
+          <Text variant="small">Placeholders con shimmer. Width, height y borderRadius configurables.</Text>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo">
+          <Button variant="primary" size="sm" onclick={() => (modalOpen = true)}>Abrir modal</Button>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>Modal</Heading>
+          <Text variant="small">Ventana emergente. Click fuera, ESC o boton para cerrar.</Text>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo"><LoadingBlock loading={true} message="Cargando datos..." /></div>
+        <div class="fc-info">
+          <Heading level={4}>LoadingBlock</Heading>
+          <Text variant="small">Pantalla de carga con spinner y mensaje personalizable.</Text>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo"><CopyButton text="npm create svelte@latest" /></div>
+        <div class="fc-info">
+          <Heading level={4}>CopyButton</Heading>
+          <Text variant="small">Copia al portapapeles con feedback visual.</Text>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo">
+          <Button variant="primary" size="sm" onclick={() => toast('Funciona!', 'success')}>Probar toast</Button>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>Toast</Heading>
+          <Text variant="small">Notificaciones success, error, info y warning.</Text>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo"><Newsletter buttonLabel="Suscribirse" /></div>
+        <div class="fc-info">
+          <Heading level={4}>Newsletter</Heading>
+          <Text variant="small">Formulario de email listo para conectar.</Text>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo"><ThemeToggle /></div>
+        <div class="fc-info">
+          <Heading level={4}>ThemeToggle</Heading>
+          <Text variant="small">Dark/light mode. Guarda en localStorage.</Text>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo"><AiPrompt placeholder="Pregunta a la IA..." maxLength={200} /></div>
+        <div class="fc-info">
+          <Heading level={4}>AiPrompt</Heading>
+          <Text variant="small">Textarea listo para conectar a una API de IA.</Text>
+        </div>
+      </Card>
+
+      <Card variant="soft" className="feature-card">
+        <div class="fc-demo">
+          <div class="auto-badge">✅ CookieConsent</div>
+          <div class="auto-badge">✅ JsonLd</div>
+          <div class="auto-badge">✅ Analytics</div>
+        </div>
+        <div class="fc-info">
+          <Heading level={4}>Automaticos</Heading>
+          <Text variant="small">CookieConsent, JsonLd (Schema.org), Analytics y LiveChat. Ya incluidos en el layout.</Text>
+        </div>
+      </Card>
+    </div>
+  </Section>
+
+  <Section variant="default">
+    <div class="gallery-bottom">
+      <Heading level={2} align="center">Todo listo para tu proyecto</Heading>
+      <Text variant="muted" align="center">Copia los imports, pega los componentes y personaliza. Sin configuracion extra.</Text>
+      <div class="gallery-bottom-btns">
         <Button variant="primary" size="lg" as="a" href="/">Volver al inicio</Button>
-        <Button variant="outline" size="lg" as="a" href="https://novakit.moisesvalero.es/">Landing de ejemplo</Button>
+        <Button variant="outline" size="lg" as="a" href="https://novakit.moisesvalero.es/">Ver demo real</Button>
       </div>
     </div>
-  </Container>
-</Section>
+  </Section>
+</Container>
 
 <Modal title="Modal de ejemplo" open={modalOpen} onclose={() => (modalOpen = false)}>
-  <Text>Se cierra con click fuera, ESC o el boton ✕</Text>
+  <Text>Se cierra con click fuera, ESC o ✕</Text>
   <br />
   <Button variant="primary" onclick={() => (modalOpen = false)}>Cerrar</Button>
 </Modal>
@@ -259,96 +264,116 @@
 <style>
   .gallery-hero {
     position: relative;
-    padding-block: clamp(120px, 16vh, 160px);
+    padding-block: clamp(100px, 14vh, 140px);
     overflow: hidden;
-    background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.1) 0%, transparent 60%), var(--bg-main);
+    background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 60%), var(--bg-main);
   }
-  .gallery-hero-bg {
-    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  .gallery-hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .gh-orb {
+    position: absolute; border-radius: 50%; filter: blur(100px);
   }
-  .ghero-orb {
-    position: absolute; border-radius: 50%; filter: blur(80px);
+  .gh-orb--1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(37,99,235,0.15), transparent);
+    top: -200px; right: -100px;
   }
-  .ghero-orb--1 {
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(37,99,235,0.2), transparent);
-    top: -100px; right: -60px;
-  }
-  .ghero-orb--2 {
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(14,165,233,0.15), transparent);
-    bottom: -80px; left: -40px;
-  }
-  .ghero-grid {
-    position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at 50% 20%, black 15%, transparent 60%);
+  .gh-orb--2 {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(14,165,233,0.1), transparent);
+    bottom: -100px; left: -50px;
   }
   .gallery-hero-content {
     position: relative; z-index: 1;
-    display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
-    max-width: 680px; margin: 0 auto; text-align: center;
+    max-width: 640px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+    text-align: center;
   }
-  .gh-stats {
-    display: flex; align-items: center; gap: 1.5rem; margin-top: 0.5rem;
-  }
-  .gh-stat { font-size: 0.9rem; color: var(--text-secondary); }
-  .gh-stat strong { color: var(--accent); font-size: 1.3rem; }
-  .gh-div { width: 1px; height: 24px; background: rgba(0,0,0,0.1); }
 
-  .comp-grid {
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.2rem;
     margin-top: 2rem;
   }
 
-  .comp-card {
-    display: flex; flex-direction: column; gap: 0.5rem;
-  }
-  .comp-card-header {
-    display: flex; align-items: flex-start; justify-content: space-between;
-  }
-  .comp-copy-btn {
-    background: none; border: 1px solid rgba(0,0,0,0.08); border-radius: 6px;
-    cursor: pointer; padding: 2px 8px; font-size: 0.85rem;
-    color: var(--text-secondary); transition: all 0.2s;
-  }
-  .comp-copy-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .comp-import {
-    display: block; font-size: 0.7rem; color: var(--text-secondary);
-    background: rgba(0,0,0,0.03); padding: 0.4rem 0.6rem;
-    border-radius: 6px; overflow-x: auto; white-space: nowrap;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-  }
-  .comp-demo {
-    margin-top: 0.5rem; padding: 0.8rem;
-    background: rgba(37,99,235,0.03); border-radius: 10px;
-    display: flex; flex-direction: column; gap: 0.4rem;
-    min-height: 40px;
+  .feature-card {
+    display: flex; flex-direction: column;
+    padding: 0 !important;
+    overflow: hidden;
   }
 
-  .btn-row { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  .section-swatch {
-    padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.7rem;
-    font-weight: 600; text-align: center;
+  .fc-demo {
+    padding: 2rem 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.8rem; flex-wrap: wrap;
+    min-height: 120px;
+    background: radial-gradient(ellipse at center, rgba(37,99,235,0.03) 0%, transparent 70%);
   }
-  .section-swatch.default { background: #fff; border: 1px solid rgba(0,0,0,0.1); }
-  .section-swatch.muted { background: var(--bg-soft); }
-  .section-swatch.soft { background: rgba(37,99,235,0.04); }
+  .fc-heading-demo { flex-direction: column; align-items: flex-start; }
+  .fc-btn-demo { gap: 0.4rem; }
+  .fc-hero-demo { min-height: 180px; }
+  .fc-features-demo { gap: 0.5rem; }
 
-  .gallery-cta {
+  .fc-info {
+    padding: 1.2rem 1.5rem;
+    display: flex; flex-direction: column; gap: 0.35rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  .fc-info h4 { margin: 0; }
+
+  .copy-import {
+    background: none; border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 6px; padding: 0.3rem 0.7rem;
+    font-size: 0.75rem; cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    align-self: flex-start; margin-top: 0.3rem;
+  }
+  .copy-import:hover { border-color: var(--accent); color: var(--accent); }
+
+  .mini-cards { display: flex; gap: 0.4rem; width: 100%; }
+  .mini-cards > * { flex: 1; padding: 0.8rem !important; }
+
+  .mini-hero { text-align: center; }
+  .mini-eyebrow { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-secondary); margin-bottom: 0.3rem; font-weight: 700; }
+  .mini-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.2rem; }
+  .mini-sub { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
+  .mini-btns { display: flex; gap: 0.4rem; justify-content: center; }
+
+  .mini-features { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+  .mini-features span {
+    background: rgba(37,99,235,0.06); padding: 0.3rem 0.7rem;
+    border-radius: 6px; font-size: 0.75rem; font-weight: 500;
+  }
+
+  .section-swatches { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  .sw {
+    padding: 0.4rem 0.7rem; border-radius: 6px; font-size: 0.65rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .sw.default { background: #fff; border: 1px solid rgba(0,0,0,0.1); color: var(--text-main); }
+  .sw.muted { background: var(--bg-soft); color: var(--text-secondary); }
+  .sw.soft { background: rgba(37,99,235,0.04); color: var(--accent); }
+  .sw.surface { background: #f8fafc; border: 1px solid rgba(0,0,0,0.05); color: var(--text-secondary); }
+
+  .auto-badge {
+    background: rgba(37,99,235,0.06); padding: 0.4rem 0.8rem;
+    border-radius: 8px; font-size: 0.8rem; font-weight: 500;
+  }
+
+  .gallery-bottom {
     display: flex; flex-direction: column; align-items: center;
-    gap: 1rem; padding: 3rem 0 4rem;
+    gap: 1rem; padding: 2rem 0 3rem;
   }
+  .gallery-bottom-btns { display: flex; gap: 0.8rem; }
 
-  @media (max-width: 900px) {
-    .comp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (max-width: 640px) {
-    .comp-grid { grid-template-columns: minmax(0, 1fr); }
-    .gh-stats { flex-direction: column; gap: 0.5rem; }
-    .gh-div { width: 24px; height: 1px; }
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr); }
   }
 </style>
