@@ -2,76 +2,120 @@
   import { env } from '$env/dynamic/public';
   import HeroSection from '$lib/components/ui/HeroSection.svelte';
   import FeaturesSection from '$lib/components/ui/FeaturesSection.svelte';
+  import Section from '$lib/components/ui/Section.svelte';
+  import Container from '$lib/components/ui/Container.svelte';
+  import Heading from '$lib/components/ui/Heading.svelte';
+  import Text from '$lib/components/ui/Text.svelte';
+  import Button from '$lib/components/ui/Button.svelte';
   import { siteConfig } from '$lib/site-config';
   import { seo, setSeo } from '$lib/seo';
 
-  const baseUrl = new URL(env.PUBLIC_SITE_URL || 'http://localhost:5173').toString().replace(/\/$/, '');
-
   setSeo({
-    title: `${siteConfig.name} | ${siteConfig.tagline}`,
-    description: siteConfig.tagline,
-    ogTitle: `${siteConfig.name} | ${siteConfig.tagline}`,
-    ogDescription: siteConfig.tagline,
-    canonical: `${baseUrl}/`,
-    ogUrl: `${baseUrl}/`,
-    ogImage: `${baseUrl}${siteConfig.ogImage}`,
+    title: siteConfig.name,
+    description: 'Plantilla Svelte 5 + SvelteKit 2 con 23 componentes, dark mode, i18n, SEO y seguridad A+.',
+    ogTitle: siteConfig.name,
+    ogDescription: 'Crea webs modernas en minutos con esta plantilla lista para produccion.',
     twitterCard: 'summary_large_image'
   });
 </script>
 
 <svelte:head>
   <title>{$seo.title}</title>
-  <meta name="description" content={$seo.description} />
-
-  <link rel="canonical" href={$seo.canonical} />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={$seo.ogTitle} />
-  <meta property="og:description" content={$seo.ogDescription} />
-  <meta property="og:url" content={$seo.ogUrl} />
-  <meta property="og:image" content={$seo.ogImage} />
-
-  <meta name="twitter:card" content={$seo.twitterCard} />
-  <meta name="twitter:title" content={$seo.ogTitle} />
-  <meta name="twitter:description" content={$seo.ogDescription} />
-  <meta name="twitter:image" content={$seo.ogImage} />
 </svelte:head>
 
 <HeroSection
-  eyebrow={siteConfig.name}
-  title="Plantilla lista para lanzar tus próximas interfaces."
-  subtitle="Usa esta base como punto de partida para landings, productos SaaS o paneles internos. Personaliza colores, tipografía y secciones sin pelearte con el layout."
-  primaryLabel="Ver ejemplo completo"
-  primaryHref="/examples/landing"
-  secondaryLabel="Explorar componentes base"
-  secondaryHref="#features"
+  eyebrow="Svelte 5 + SvelteKit 2"
+  title={siteConfig.name}
+  subtitle="23 componentes, dark mode, i18n, SEO, tests, seguridad A+ y despliegue 1-click. Todo lo que necesitas para lanzar tu proxima web."
+  primaryLabel="Ver componentes"
+  primaryHref="/components"
+  secondaryLabel="Landing de ejemplo"
+  secondaryHref="/examples/landing"
 />
 
 <FeaturesSection
   id="features"
-  eyebrow="Componentes base incluidos"
-  title="Bloques UI reutilizables desde el primer día."
-  subtitle="Combina secciones y componentes para crear nuevas pantallas rápido, manteniendo una estética limpia y consistente."
+  eyebrow="Que incluye"
+  title="Todo listo desde el primer minuto"
+  subtitle="No pierdas tiempo configurando. Esta plantilla viene con todo lo que necesitas."
   items={[
-    {
-      icon: '✨',
-      title: 'Hero adaptable',
-      description: 'Título, subtítulo y CTAs listos para reutilizar en cualquier página de tu app.'
-    },
-    {
-      icon: '⚡',
-      title: 'Grid de features',
-      description: 'Resume el valor de tu producto con una cuadrícula de características clara.'
-    },
-    {
-      icon: '🎨',
-      title: 'Tokens de estilo',
-      description: 'Colores y tipografía definidos en un solo lugar para adaptar la marca.'
-    },
-    {
-      icon: '🧩',
-      title: 'Composición flexible',
-      description: 'Crea nuevas secciones combinando Container, Section, Card y Button.'
-    }
+    { icon: '🧩', title: '23 componentes UI', description: 'Button, Card, Modal, Skeleton, Spinner, Grid, Hero, Features y mas.' },
+    { icon: '🌙', title: 'Dark mode', description: 'Toggle claro/oscuro con CSS variables. Respeta la preferencia del sistema.' },
+    { icon: '🌍', title: 'i18n ES/EN', description: 'Sistema de traducciones con store y localStorage.' },
+    { icon: '🔍', title: 'SEO + GEO', description: 'sitemap, robots, OG tags, Schema.org JSON-LD, llms.txt.' }
   ]}
 />
+
+<Section variant="muted">
+  <Container>
+    <Heading level={2} align="center">Empieza en 2 minutos</Heading>
+    <Text variant="muted" align="center">Edita un solo archivo y personaliza toda tu web.</Text>
+    <div class="steps">
+      <div class="step"><span>1</span> npm install</div>
+      <div class="step"><span>2</span> npm run dev</div>
+      <div class="step"><span>3</span> Edita site-config.ts</div>
+      <div class="step"><span>4</span> Despliega en Vercel</div>
+    </div>
+  </Container>
+</Section>
+
+<Section variant="default">
+  <Container>
+    <div class="cta-box">
+      <Heading level={2} align="center">¿Listo para empezar?</Heading>
+      <Text variant="muted" align="center">Esta plantilla es gratis, open source y lista para produccion.</Text>
+      <div class="cta-buttons">
+        <Button variant="primary" size="lg" as="a" href="/components">Ver componentes</Button>
+        <Button variant="outline" size="lg" as="a" href="/examples/landing">Landing ejemplo</Button>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .step {
+    background: var(--bg-main, #fff);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 14px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .step span {
+    width: 32px; height: 32px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .cta-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem 0;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media (max-width: 640px) {
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>

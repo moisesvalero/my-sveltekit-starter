@@ -14,11 +14,9 @@ export const siteConfig = {
   },
   nav: [
     { label: 'Inicio', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Precios', href: '/pricing' },
-    { label: 'FAQ', href: '/faq' },
+    { label: 'Componentes', href: '/components' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Componentes', href: '/components' }
+    { label: 'Contacto', href: '/contacto' }
   ],
   footer: {
     copyright: '{{year}} Mi Proyecto. Todos los derechos reservados.',
