@@ -4,7 +4,7 @@ export { seo, setSeo } from './seo';
 export { t, locale, setLocale } from './i18n/index';
 export { clickOutside } from './actions/clickOutside';
 export { toast, toastFn } from './stores/toast';
-export { dark, toggleDark, initDarkMode } from './stores/darkMode';
+export { toggleDark, initDarkMode, isDark } from './stores/darkMode.svelte';
 
 export { default as Analytics } from './components/Analytics.svelte';
 export { default as LoadingBlock } from './components/LoadingBlock.svelte';

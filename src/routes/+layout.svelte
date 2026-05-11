@@ -9,7 +9,7 @@
   import CookieConsent from '$lib/components/CookieConsent.svelte';
   import ThemeToggle from '$lib/components/ThemeToggle.svelte';
   import Footer from '$lib/components/Footer.svelte';
-  import { initDarkMode } from '$lib/stores/darkMode';
+  import { initDarkMode } from '$lib/stores/darkMode.svelte';
   import { seo } from '$lib/seo';
   import { onMount } from 'svelte';
 

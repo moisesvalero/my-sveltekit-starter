@@ -1,13 +1,14 @@
 <script lang="ts">
-  import { dark, toggleDark } from '$lib/stores/darkMode';
+  import { isDark, toggleDark } from '$lib/stores/darkMode.svelte';
+  const dark = $derived(isDark());
 </script>
 
 <button
   class="theme-toggle"
   onclick={toggleDark}
-  aria-label={$dark ? 'Modo claro' : 'Modo oscuro'}
+  aria-label={dark ? 'Modo claro' : 'Modo oscuro'}
 >
-  {#if $dark}
+  {#if dark}
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
