@@ -16,6 +16,12 @@
 
   onMount(() => {
     initDarkMode();
+    // Fallback: si las animaciones no disparan, mostrar todo tras 3s
+    setTimeout(() => {
+      document.querySelectorAll('.assembly-item:not(.is-visible)').forEach((el) => {
+        el.classList.add('is-visible');
+      });
+    }, 3000);
   });
 
   const toggleMenu = () => {
