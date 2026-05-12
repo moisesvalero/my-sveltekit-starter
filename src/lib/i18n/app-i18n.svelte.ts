@@ -14,11 +14,9 @@ function normalizeLocale(lang: string | null | undefined): AppLocale {
 
 let currentLocale = $state<AppLocale>('es');
 
-$effect(() => {
-  if (typeof document !== 'undefined') {
-    document.documentElement.lang = currentLocale;
-  }
-});
+if (typeof document !== 'undefined') {
+  document.documentElement.lang = currentLocale;
+}
 
 /** Lectura reactiva del locale (Svelte 5 / runes). */
 export function getLocale(): AppLocale {

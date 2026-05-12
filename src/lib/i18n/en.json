@@ -227,8 +227,7 @@
       "title": "The SvelteKit starter for people who just want to build",
       "subtitle": "Runes, routes, forms, toasts, light/dark theme and a component gallery living in your repo—not an opaque package. Fork, tweak, deploy.",
       "ctaPrimary": "Browse components",
-      "ctaSecondary": "Documentation",
-      "ctaLiveDemo": "Live demo"
+      "ctaSecondary": "Documentation"
     },
     "features": {
       "eyebrow": "Included",

@@ -11,9 +11,7 @@
 Starter template for modern **websites** with **SvelteKit 2 + Svelte 5 + TypeScript + Tailwind CSS v4** and **[shadcn-svelte](https://www.shadcn-svelte.com/)**-style UI (code lives in your repo, not an opaque package).
 The **home** uses Material/Stitch tokens (`src/lib/styles/stitch-m3.css`), **ES/EN i18n** on the landing, and centralized **SEO** via `$seo`.
 
-> **Live demo (Vercel):** replace the URL with your deployment — same value in `src/lib/site-config.ts` → `liveDemoUrl` (home CTA button).
->
-> [![Live demo](https://img.shields.io/badge/Live_demo-on_Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://tu-dominio.com)
+[![Live demo on Vercel](https://img.shields.io/badge/Live_demo-on_Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://my-sveltekit-starter-a5rj.vercel.app/)
 
 ---
 

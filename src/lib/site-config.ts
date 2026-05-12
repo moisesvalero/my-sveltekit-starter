@@ -2,9 +2,7 @@ export const siteConfig = {
   name: 'My SvelteKit Starter',
   tagline:
     'Plantilla lista para producción: Svelte 5, SvelteKit 2, TypeScript, Tailwind CSS v4 y componentes UI estilo shadcn-svelte.',
-  /** URL del deploy en Vercel (o producción). Sustituye el placeholder cuando tengas el dominio. */
-  liveDemoUrl: 'https://tu-dominio.com',
-  url: 'https://tu-dominio.com',
+  url: 'https://my-sveltekit-starter-a5rj.vercel.app',
   ogImage: '/og-image.png',
   social: {
     github: 'https://github.com/moisesvalero/my-sveltekit-starter',
@@ -13,7 +11,7 @@ export const siteConfig = {
   },
   author: {
     name: 'Tu nombre o equipo',
-    url: 'https://tu-dominio.com'
+    url: 'https://my-sveltekit-starter-a5rj.vercel.app'
   },
   nav: [
     { label: 'Inicio', href: '/' },

@@ -13,7 +13,7 @@
   import { onMount } from 'svelte';
   import type { Snippet } from 'svelte';
   import { ModeWatcher } from 'mode-watcher';
-  import { mode, setMode } from 'mode-watcher';
+  import { mode, toggleMode } from 'mode-watcher';
 
   let { children }: { children: Snippet } = $props();
 
@@ -25,7 +25,7 @@
   }
 
   function handleToggleTheme() {
-    setMode(mode.current === 'dark' ? 'light' : 'dark');
+    toggleMode();
   }
 
   onMount(() => {

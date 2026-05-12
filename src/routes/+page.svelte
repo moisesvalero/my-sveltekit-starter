@@ -42,16 +42,6 @@
       >
         {$t('home.hero.ctaSecondary')}
       </a>
-      {#if siteConfig.liveDemoUrl}
-        <a
-          href={siteConfig.liveDemoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-xl border border-outline-variant bg-surface-container-high px-8 py-3 font-bold text-on-surface transition-colors hover:bg-surface-variant"
-        >
-          {$t('home.hero.ctaLiveDemo')}
-        </a>
-      {/if}
     </div>
   </section>
 
