@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#334282",
+                    "inverse-surface": "#e5e1e4",
+                    "outline": "#908fa0",
+                    "on-tertiary-container": "#452000",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "surface-container": "#201f22",
+                    "surface-dim": "#131315",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "inverse-on-surface": "#313032",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-primary-fixed": "#07006c",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-container": "#d97721",
+                    "on-secondary": "#1a2b6a",
+                    "inverse-primary": "#494bd6",
+                    "on-primary": "#1000a9",
+                    "tertiary-fixed": "#ffdcc5",
+                    "primary-fixed": "#e1e0ff",
+                    "on-error": "#690005",
+                    "surface-bright": "#39393b",
+                    "on-primary-container": "#0d0096",
+                    "secondary-fixed-dim": "#b8c4ff",
+                    "surface-variant": "#353437",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "on-secondary-container": "#a2b1f9",
+                    "surface-container-lowest": "#0e0e10",
+                    "error-container": "#93000a",
+                    "background": "#09090b",
+                    "surface-container-highest": "#353437",
+                    "on-surface-variant": "#c7c4d7",
+                    "surface-tint": "#c0c1ff",
+                    "surface-container-low": "#1c1b1d",
+                    "outline-variant": "#464554",
+                    "secondary-fixed": "#dde1ff",
+                    "on-surface": "#e5e1e4",
+                    "tertiary": "#ffb783",
+                    "on-tertiary-fixed": "#301400",
+                    "on-tertiary": "#4f2500",
+                    "secondary": "#b8c4ff",
+                    "primary": "#6366f1",
+                    "on-secondary-fixed": "#001354",
+                    "surface-container-high": "#2a2a2c",
+                    "surface": "#18181b",
+                    "on-background": "#e5e1e4",
+                    "secondary-container": "#334282",
+                    "primary-container": "#8083ff",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "unit": "4px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "h3": ["Geist"],
+                    "h2": ["Geist"],
+                    "body-sm": ["Geist"],
+                    "h1": ["Geist"],
+                    "body-md": ["Geist"],
+                    "body-lg": ["Geist"],
+                    "code": ["JetBrains Mono"],
+                    "h1-mobile": ["Geist"],
+                    "label-caps": ["Geist"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "h2": ["30px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "code": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #09090b;
+            color: #e5e1e4;
+            font-family: 'Geist', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .code-window {
+            background-color: #0e0e10;
+            border: 1px solid #464554;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .accent-glow {
+            box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.3);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 20px -5px rgba(99, 102, 241, 0.4);
+        }
+    </style>
+</head>
+<body class="selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center gap-8 bg-surface/80 backdrop-blur-md rounded-full mt-4 mx-auto max-w-fit px-6 py-2 border border-outline-variant shadow-lg">
+<div class="font-h3 text-h3 font-bold text-primary mr-4">SvelteKit Starter</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md hover:text-primary transition-colors duration-200" href="#">Features</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Guide</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Docs</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-transform scale-95 active:scale-90" data-icon="terminal">terminal</button>
+<button class="bg-primary text-white px-4 py-1.5 rounded-full font-body-sm text-body-sm font-bold scale-95 active:scale-90 transition-transform">Get Started</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="flex flex-col items-center text-center mb-stack-lg lg:mb-32">
+<span class="text-primary font-label-caps tracking-widest mb-stack-sm bg-primary/10 px-3 py-1 rounded-full">SVELTEKIT 5 READY</span>
+<h1 class="font-h1 text-h1-mobile md:text-h1 max-w-4xl mb-stack-md leading-tight">
+                La base moderna para tus proyectos <span class="text-primary">Svelte</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-stack-lg">
+                Un kit de inicio optimizado con TypeScript, Tailwind CSS y componentes Material Design 3. Diseñado para ofrecer la máxima velocidad de desarrollo.
+            </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-primary text-white font-body-md text-body-md px-8 py-4 rounded-lg font-semibold hover:brightness-110 transition-all accent-glow">
+                    Empieza ahora
+                </button>
+<button class="border border-outline-variant text-on-surface font-body-md text-body-md px-8 py-4 rounded-lg font-semibold hover:bg-surface-variant transition-all">
+                    Documentación
+                </button>
+</div>
+</section>
+<!-- Code Editor Block -->
+<section class="mb-32 max-w-4xl mx-auto">
+<div class="code-window rounded-xl overflow-hidden">
+<div class="bg-surface-container flex items-center justify-between px-4 py-2 border-b border-outline-variant">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+<div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+</div>
+<div class="text-body-sm text-on-surface-variant font-code">lib/Counter.svelte</div>
+<div class="w-12"></div>
+</div>
+<div class="p-6 font-code text-body-md overflow-x-auto bg-surface-container-lowest">
+<pre class="text-on-surface-variant leading-relaxed"><span class="text-primary-container">script</span> {
+  <span class="text-secondary">let</span> count = <span class="text-tertiary">$state</span>(<span class="text-tertiary-fixed-dim">0</span>);
+  <span class="text-secondary">function</span> <span class="text-primary">increment</span>() {
+    count += <span class="text-tertiary-fixed-dim">1</span>;
+  }
+} <span class="text-primary-container">/script</span>
+
+<span class="text-outline">&lt;!-- Svelte 5 logic --&gt;</span>
+&lt;<span class="text-primary">button</span> <span class="text-secondary">onclick</span>={<span class="text-primary">increment</span>}&gt;
+  Count is {count}
+&lt;/<span class="text-primary">button</span>&gt;</pre>
+</div>
+</div>
+</section>
+<!-- Features Grid -->
+<section class="mb-32">
+<div class="flex flex-col items-center mb-stack-lg">
+<h2 class="font-h2 text-h2 mb-4">Potencia tu flujo de trabajo</h2>
+<p class="text-on-surface-variant font-body-md">Herramientas premium para desarrolladores exigentes.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Feature 1 -->
+<div class="p-stack-md bg-surface border border-outline-variant rounded-xl glow-hover transition-all group">
+<div class="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-stack-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+</div>
+<h3 class="font-h3 text-h3 mb-2">Performance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cargas instantáneas gracias a la hidratación parcial de Svelte 5.</p>
+</div>
+<!-- Feature 2 -->
+<div class="p-stack-md bg-surface border border-outline-variant rounded-xl glow-hover transition-all group">
+<div class="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-stack-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<h3 class="font-h3 text-h3 mb-2">Type-safety</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Integración profunda con TypeScript para un desarrollo sin errores.</p>
+</div>
+<!-- Feature 3 -->
+<div class="p-stack-md bg-surface border border-outline-variant rounded-xl glow-hover transition-all group">
+<div class="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-stack-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<h3 class="font-h3 text-h3 mb-2">DX Elevada</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hot Module Replacement que funciona de verdad con Vite.</p>
+</div>
+<!-- Feature 4 -->
+<div class="p-stack-md bg-surface border border-outline-variant rounded-xl glow-hover transition-all group">
+<div class="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-stack-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h3 class="font-h3 text-h3 mb-2">Deployment</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Adaptadores listos para Vercel, Netlify y Cloudflare.</p>
+</div>
+</div>
+</section>
+<!-- Steps Section -->
+<section class="mb-32">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-h2 text-h2 mb-12 text-center">Configura tu entorno en segundos</h2>
+<div class="space-y-12">
+<div class="flex gap-6 items-start">
+<div class="flex-shrink-0 w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center font-bold font-h3">1</div>
+<div>
+<h4 class="font-h3 text-h3 mb-2">Clona el repositorio</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Usa git para descargar el starter kit en tu máquina local de forma inmediata.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="flex-shrink-0 w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center font-bold font-h3">2</div>
+<div>
+<h4 class="font-h3 text-h3 mb-2">Instala dependencias</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Ejecuta <code>pnpm install</code> para configurar el ecosistema de herramientas optimizado.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="flex-shrink-0 w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center font-bold font-h3">3</div>
+<div>
+<h4 class="font-h3 text-h3 mb-2">Configura variables</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Añade tus claves de API y configuraciones de entorno en el archivo .env.example.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="flex-shrink-0 w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center font-bold font-h3">4</div>
+<div>
+<h4 class="font-h3 text-h3 mb-2">Lanza el dev server</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Empieza a codificar con <code>npm run dev</code> y disfruta de la velocidad de Vite.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="mb-32">
+<div class="bg-primary p-12 md:p-16 rounded-3xl text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary via-primary-container to-secondary opacity-50"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="font-h1 text-h1-mobile md:text-h1 mb-stack-md text-white">¿Listo para construir el futuro?</h2>
+<p class="font-body-lg text-body-lg mb-stack-lg text-primary-fixed opacity-90">Únete a miles de desarrolladores que ya están creando aplicaciones increíbles con SvelteKit Starter.</p>
+<button class="bg-white text-primary font-bold px-10 py-4 rounded-xl hover:bg-on-surface transition-all transform hover:scale-105">
+                        Crear nuevo proyecto
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-gutter border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex flex-col gap-4">
+<div class="font-h3 text-h3 text-on-surface font-bold">SvelteKit Starter</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 SvelteKit Starter. Built for developers.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary font-body-sm text-body-sm transition-colors opacity-80 hover:opacity-100" href="#">Documentation</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm text-body-sm transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm text-body-sm transition-colors opacity-80 hover:opacity-100" href="#">Changelog</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm text-body-sm transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm text-body-sm transition-colors opacity-80 hover:opacity-100" href="#">Terms</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="language">language</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="dark_mode">dark_mode</span>
+</div>
+</footer>
+</body></html>

@@ -1,12 +1,12 @@
 import imageUrlBuilder from '@sanity/image-url';
+import type { SanityClient } from '@sanity/client';
 
-export function createImageUrlBuilder(projectId: string, dataset: string) {
-  return imageUrlBuilder({ projectId, dataset });
+export function createImageUrlBuilder(client: SanityClient) {
+  return imageUrlBuilder(client);
 }
 
 export function imageUrl(
-  projectId: string,
-  dataset: string,
+  client: SanityClient,
   source: unknown,
   width?: number
 ): string | undefined {
@@ -14,7 +14,7 @@ export function imageUrl(
     return undefined;
   }
   try {
-    let b = createImageUrlBuilder(projectId, dataset).image(source as never);
+    let b = createImageUrlBuilder(client).image(source as never);
     if (width) {
       b = b.width(width);
     }

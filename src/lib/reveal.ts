@@ -49,7 +49,7 @@ export function reveal(node: HTMLElement, options?: RevealOptions) {
     });
   };
 
-  let observer = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     ([entry]) => {
       if (!entry.isIntersecting) return;
       revealWithFrameGap();

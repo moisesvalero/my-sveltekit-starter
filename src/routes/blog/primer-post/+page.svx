@@ -56,10 +56,10 @@ Listo para empezar a escribir.
   }
   .blog-post :global(h2) { font-size: 1.8rem; margin: 2rem 0 1rem; }
   .blog-post :global(h3) { font-size: 1.3rem; margin: 1.5rem 0 0.75rem; }
-  .blog-post :global(p) { line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.2rem; }
-  .blog-post :global(ul), .blog-post :global(ol) { line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.2rem; padding-left: 1.5rem; }
+  .blog-post :global(p) { line-height: 1.8; color: var(--muted-foreground); margin-bottom: 1.2rem; }
+  .blog-post :global(ul), .blog-post :global(ol) { line-height: 1.8; color: var(--muted-foreground); margin-bottom: 1.2rem; padding-left: 1.5rem; }
   .blog-post :global(code) { background: rgba(99,102,241,0.08); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
   .blog-post :global(pre) { background: #1a1a2e; color: #e2e8f0; padding: 1.2rem; border-radius: 12px; overflow-x: auto; margin-bottom: 1.5rem; }
   .blog-post :global(pre code) { background: none; padding: 0; color: inherit; }
-  .blog-post :global(a) { color: var(--accent); }
+  .blog-post :global(a) { color: var(--primary); text-underline-offset: 3px; }
 </style>

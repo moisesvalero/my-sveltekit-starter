@@ -1,11 +1,8 @@
 <script lang="ts">
   import { setSeo } from '$lib/seo';
   import Container from '$lib/components/ui/Container.svelte';
-  import Heading from '$lib/components/ui/Heading.svelte';
-  import Text from '$lib/components/ui/Text.svelte';
-  import Card from '$lib/components/ui/Card.svelte';
-  import Grid from '$lib/components/ui/Grid.svelte';
   import Section from '$lib/components/ui/Section.svelte';
+  import { Card } from '$lib/components/ui/card';
 
   setSeo({ title: 'Sobre nosotros', description: 'Conoce mas sobre nuestro proyecto.' });
 </script>
@@ -15,64 +12,60 @@
 </svelte:head>
 
 <Container>
-  <div class="page-head">
-    <Heading level={1} eyebrow="Sobre nosotros">Construimos herramientas que la gente ama usar.</Heading>
-    <Text variant="muted">Un equipo pequeño con un objetivo grande: hacer software que marque la diferencia.</Text>
+  <div class="pt-32 pb-8">
+    <p class="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-4">Sobre nosotros</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+      Construimos herramientas que la gente ama usar.
+    </h1>
+    <p class="text-lg text-muted-foreground">
+      Un equipo pequeño con un objetivo grande: hacer software que marque la diferencia.
+    </p>
   </div>
 </Container>
 
 <Section variant="muted">
   <Container>
-    <Grid columns={3}>
-      <Card variant="soft">
-        <Heading level={3}>Mision</Heading>
-        <Text variant="muted">Crear herramientas digitales que resuelvan problemas reales de forma simple y elegante.</Text>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Card class="p-6 bg-gradient-to-br from-blue-50/50 to-transparent border-blue-100/50">
+        <h3 class="text-lg font-semibold text-foreground mb-2">Mision</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">
+          Crear herramientas digitales que resuelvan problemas reales de forma simple y elegante.
+        </p>
       </Card>
-      <Card variant="soft">
-        <Heading level={3}>Vision</Heading>
-        <Text variant="muted">Ser la plataforma de referencia para equipos que quieren construir rapido y bien.</Text>
+      <Card class="p-6 bg-gradient-to-br from-blue-50/50 to-transparent border-blue-100/50">
+        <h3 class="text-lg font-semibold text-foreground mb-2">Vision</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">
+          Ser la plataforma de referencia para equipos que quieren construir rapido y bien.
+        </p>
       </Card>
-      <Card variant="soft">
-        <Heading level={3}>Valores</Heading>
-        <Text variant="muted">Transparencia, velocidad, calidad y obsesion por la experiencia de usuario.</Text>
+      <Card class="p-6 bg-gradient-to-br from-blue-50/50 to-transparent border-blue-100/50">
+        <h3 class="text-lg font-semibold text-foreground mb-2">Valores</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">
+          Transparencia, velocidad, calidad y obsesion por la experiencia de usuario.
+        </p>
       </Card>
-    </Grid>
+    </div>
   </Container>
 </Section>
 
 <Section variant="default">
   <Container>
-    <Heading level={2} eyebrow="Equipo" align="center">Las personas detras del proyecto</Heading>
-    <Text variant="muted" align="center">Un equipo distribuido trabajando desde cualquier parte del mundo.</Text>
-    <div class="team-grid">
+    <h2 class="text-3xl font-bold text-center mb-4">Las personas detras del proyecto</h2>
+    <p class="text-muted-foreground text-center mb-8">
+      Un equipo distribuido trabajando desde cualquier parte del mundo.
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
       {#each ['Alex', 'Maria', 'Carlos', 'Lucia'] as name (name)}
-        <Card variant="outline">
-          <div class="avatar">{name[0]}</div>
-          <Heading level={4} align="center">{name}</Heading>
-          <Text variant="small" align="center">Rol del equipo</Text>
+        <Card class="p-6 text-center">
+          <div
+            class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center text-white font-bold text-lg mx-auto mb-4"
+          >
+            {name[0]}
+          </div>
+          <h4 class="text-base font-semibold text-foreground">{name}</h4>
+          <p class="text-sm text-muted-foreground">Rol del equipo</p>
         </Card>
       {/each}
     </div>
   </Container>
 </Section>
-
-<style>
-  .page-head { padding-top: 8rem; padding-bottom: 2rem; }
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.2rem;
-    margin-top: 2rem;
-  }
-  .avatar {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-weight: 700; font-size: 1.1rem;
-    margin: 0 auto 1rem;
-  }
-  @media (max-width: 640px) {
-    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-</style>

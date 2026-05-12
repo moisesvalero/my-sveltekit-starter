@@ -1,17 +1,51 @@
-/* src/app.css */
-/* Importamos la fuente Inter para ese look moderno y limpio */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import "tailwindcss";
+@import './lib/styles/stitch-m3.css';
 
+/* Fuentes: cargar desde app.html (evita warning "@import must precede rules") */
+
+/* Dark mode con clase .dark (mode-watcher) — obligatorio para variantes dark: */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Tailwind v4: las utilidades bg-background, text-primary, etc. leen --color-* del @theme.
+ * Sin este puente @theme inline → var(--background), TODO seguía siendo gris zinc por defecto.
+ */
 :root {
-  /* Colores de marca — cambialos por los tuyos */
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --text-main: #111827;
-  --text-secondary: #6b7280;
-  --bg-main: #ffffff;
-  --bg-soft: #f9fafb;
+  --background: #fcf8ff;
+  --foreground: #1b1b24;
+  --card: #ffffff;
+  --card-foreground: #1b1b24;
+  --popover: #fcf8ff;
+  --popover-foreground: #1b1b24;
+  --primary: #3525cd;
+  --primary-foreground: #ffffff;
+  --secondary: #58579b;
+  --secondary-foreground: #ffffff;
+  --muted: #f0ecf9;
+  --muted-foreground: #464555;
+  --accent: #f0ecf9;
+  --accent-foreground: #1b1b24;
+  --destructive: #ba1a1a;
+  --destructive-foreground: #ffffff;
+  --border: #c7c4d8;
+  --input: #c7c4d8;
+  --ring: #3525cd;
+  --radius: 0.75rem;
 
-  /* Motion & sombras “premium” */
+  --inverse-surface: #302f39;
+  --inverse-on-surface: #f3effc;
+  --primary-container: #4f46e5;
+  --on-primary-container: #dad7ff;
+  --outline-variant: #c7c4d8;
+
+  /* Legacy = tema shadcn (un solo origen; mismos valores que antes) */
+  --text-main: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+  --bg-main: var(--background);
+  --bg-soft: var(--muted);
+  /* Referenciado en Hero, Pricing, Testimonials sin fallback */
+  --accent-hover: color-mix(in oklab, var(--primary) 82%, black);
+
   --ease-out-soft: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-soft-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --shadow-soft-lg: 0 22px 55px rgba(15, 23, 42, 0.14);
@@ -24,56 +58,132 @@
 }
 
 .dark {
-  --text-main: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --bg-main: #0f172a;
-  --bg-soft: #1e293b;
+  --background: #1b1b24;
+  --foreground: #f3effc;
+  --card: #302f39;
+  --card-foreground: #f3effc;
+  --popover: #302f39;
+  --popover-foreground: #f3effc;
+  --primary: #c3c0ff;
+  --primary-foreground: #1b1b24;
+  --secondary: #b6b4ff;
+  --secondary-foreground: #1b1b24;
+  --muted: #3d3c48;
+  --muted-foreground: #c7c4d8;
+  --accent: #3d3c48;
+  --accent-foreground: #f3effc;
+  --destructive: #ffb4ab;
+  --destructive-foreground: #690005;
+  --border: #464555;
+  --input: #464555;
+  --ring: #c3c0ff;
+
+  --inverse-surface: #f3effc;
+  --inverse-on-surface: #302f39;
+  --primary-container: #5e52f0;
+  --on-primary-container: #eeebff;
+  --outline-variant: #464555;
+
+  --text-main: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+  --bg-main: var(--background);
+  --bg-soft: var(--muted);
+  --accent-hover: color-mix(in oklab, var(--primary) 88%, white);
+
   --shadow-soft-lg: 0 22px 55px rgba(0, 0, 0, 0.4);
   --shadow-soft-md: 0 14px 35px rgba(0, 0, 0, 0.35);
   --ring-soft: 0 0 0 1px rgba(148, 163, 184, 0.12);
 }
 
-.dark body {
-  background-color: #0f172a !important;
-  color: #f1f5f9 !important;
+@theme inline {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Stitch / extras */
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-on-surface: var(--inverse-on-surface);
 }
 
-.dark .nk-section--default { background: #0f172a !important; }
-.dark .nk-section--muted { background: #1e293b !important; }
-.dark .nk-section--soft { background: radial-gradient(circle at top, rgba(37,99,235,0.06), transparent 60%), #0f172a !important; }
-.dark .nk-section--surface { background: #1a2332 !important; }
+@layer base {
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
 
-.dark .nk-card { background: #1e293b !important; border-color: rgba(255,255,255,0.06) !important; }
-.dark .nk-card--soft { background: radial-gradient(circle at top left, rgba(37,99,235,0.06), #1e293b) !important; }
-
-.dark .nk-hero { background: #0f172a !important; }
-.dark .nk-features { background: #0f172a !important; }
-
-.dark .nk-heading-title { color: #f1f5f9 !important; }
-.dark .nk-text--body, .dark .nk-text--muted { color: #94a3b8 !important; }
-
-.dark .btn-secondary { background: #1e293b !important; color: #f1f5f9 !important; border-color: rgba(255,255,255,0.1) !important; }
-
-/* Reset básico para que todo se vea igual en todos los navegadores */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  html {
+    @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100%;
+    overflow-x: clip;
+  }
 }
 
-html {
-  scroll-behavior: smooth; /* Hace que al pulsar en un enlace el scroll sea fluido */
-  overflow-x: clip;
+::selection {
+  background-color: color-mix(in oklab, var(--primary-container) 85%, transparent);
+  color: var(--on-primary-container);
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased; /* Suaviza el renderizado de las letras en Mac/iOS */
-  overflow-x: clip;
-} 
+@keyframes hero-orb-1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(28px, -24px, 0) scale(1.06);
+  }
+}
+@keyframes hero-orb-2 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-36px, 28px, 0) scale(1.12);
+  }
+}
+@keyframes hero-orb-3 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, 36px, 0) scale(1.05);
+  }
+}
 
 .skip-link {
   position: absolute;
@@ -81,8 +191,8 @@ body {
   left: 1rem;
   z-index: 9999;
   padding: 0.75rem 1.5rem;
-  background: var(--accent);
-  color: #fff;
+  background: var(--primary);
+  color: var(--primary-foreground);
   border-radius: 999px;
   font-weight: 600;
   text-decoration: none;
@@ -94,13 +204,12 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  background: linear-gradient(135deg, #3525cd, #4f46e5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Sistema global de ensamblaje magnético */
 .assembly-item {
   opacity: 0;
   transform: translate3d(var(--assembly-x, 0), var(--assembly-distance, 64px), 0)
@@ -126,91 +235,6 @@ body {
   --assembly-delay: 120ms;
 }
 
-/* Tarjetas y bloques con sensación premium (hover suave) */
-.motion-card {
-  transition:
-    transform 0.4s var(--ease-out-soft),
-    box-shadow 0.4s var(--ease-out-soft),
-    border-color 0.4s var(--ease-out-soft),
-    background-color 0.4s var(--ease-out-soft);
-  will-change: transform, box-shadow;
-}
-
-.motion-card:hover {
-  transform: translateY(-10px) scale(1.028);
-  box-shadow: var(--shadow-soft-lg);
-  border-color: rgba(99, 102, 241, 0.4);
-}
-
-.btn-primary,
-.btn-secondary {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  transition:
-    transform 0.4s var(--ease-soft-bounce),
-    box-shadow 0.4s var(--ease-soft-bounce),
-    background-color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-    color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.cta,
-.back-to-top {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.btn-primary::before,
-.btn-secondary::before,
-.toggle-btn::before,
-.cta::before,
-.back-to-top::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    115deg,
-    transparent 18%,
-    rgba(255, 255, 255, 0.38) 46%,
-    rgba(255, 255, 255, 0.04) 62%,
-    transparent 78%
-  );
-  opacity: 0.7;
-  transform: translateX(-120%);
-  transition:
-    transform var(--btn-shine-duration) cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity var(--btn-shine-opacity-duration) cubic-bezier(0.34, 1.56, 0.64, 1);
-  pointer-events: none;
-}
-
-.btn-primary:hover,
-.btn-secondary:hover {
-  transform: translateY(-2.5px) scale(1.02);
-  box-shadow: var(--shadow-soft-md);
-}
-
-.btn-primary:hover::before,
-.btn-secondary:hover::before,
-.toggle-btn:hover::before,
-.cta:hover::before,
-.back-to-top:hover::before,
-.btn-primary:focus-visible::before,
-.btn-secondary:focus-visible::before,
-.toggle-btn:focus-visible::before,
-.cta:focus-visible::before,
-.back-to-top:focus-visible::before {
-  opacity: 1;
-  transform: translateX(120%);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .assembly-item {
     opacity: 1;
@@ -233,4 +257,3 @@ html.in-iframe * {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-

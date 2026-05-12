@@ -1,6 +1,6 @@
 <script lang="ts">
   import { reveal } from '$lib/reveal';
-  import { t } from '$lib/i18n/index.js';
+  import { t } from '$lib/i18n';
 </script>
 
 <section class="deep-details" id="details">
@@ -211,7 +211,9 @@
 
   .list li {
     color: rgba(17, 24, 39, 0.45);
-    transition: color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition:
+      color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: block;
     position: relative;
     cursor: pointer;
@@ -228,7 +230,9 @@
   }
 
   .text {
-    transition: color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition:
+      color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: inline-block;
     padding-right: 0.5rem;
   }
@@ -245,7 +249,9 @@
     background: rgba(255, 255, 255, 0.96);
     opacity: 0;
     transform: translateY(-50%) translateY(8px);
-    transition: opacity 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition:
+      opacity 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+      transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
     white-space: nowrap;
   }
 
@@ -349,4 +355,3 @@
     }
   }
 </style>
-

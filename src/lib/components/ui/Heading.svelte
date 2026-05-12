@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
+
   type Level = 1 | 2 | 3 | 4;
   type Align = 'left' | 'center' | 'right';
 
@@ -8,6 +10,9 @@
     eyebrow?: string;
     kicker?: string;
     className?: string;
+    /** Texto del encabezado si no pasas `children` (evita snippet solo con texto). */
+    title?: string;
+    children?: Snippet;
   };
 
   let {
@@ -15,94 +20,49 @@
     align = 'left',
     eyebrow = undefined,
     kicker = undefined,
-    className = ''
+    className = '',
+    title = undefined,
+    children
   }: Props = $props();
+
+  const sizeClasses = {
+    1: 'text-4xl md:text-5xl lg:text-[3.4rem] tracking-tight leading-[1.03]',
+    2: 'text-3xl md:text-4xl lg:text-[2.6rem] tracking-tight leading-[1.08]',
+    3: 'text-xl font-semibold leading-tight',
+    4: 'text-lg font-medium leading-relaxed'
+  };
+
+  const alignClasses = {
+    center: 'text-center items-center',
+    left: 'text-left items-start',
+    right: 'text-right items-end'
+  };
 </script>
 
-<div class={`nk-heading nk-heading--l${level} nk-heading--${align} ${className}`.trim()}>
+<div class="flex flex-col gap-3 {alignClasses[align]} {className}">
   {#if eyebrow}
-    <p class="nk-heading-eyebrow">{eyebrow}</p>
+    <p class="text-xs uppercase tracking-[0.16em] text-muted-foreground">{eyebrow}</p>
   {/if}
 
   {#if level === 1}
-    <h1 class="nk-heading-title"><slot /></h1>
+    <h1 class="font-bold {sizeClasses[1]} text-foreground">
+      {#if children}{@render children()}{:else if title}{title}{/if}
+    </h1>
   {:else if level === 2}
-    <h2 class="nk-heading-title"><slot /></h2>
+    <h2 class="font-bold {sizeClasses[2]} text-foreground">
+      {#if children}{@render children()}{:else if title}{title}{/if}
+    </h2>
   {:else if level === 3}
-    <h3 class="nk-heading-title"><slot /></h3>
+    <h3 class="font-semibold {sizeClasses[3]} text-foreground">
+      {#if children}{@render children()}{:else if title}{title}{/if}
+    </h3>
   {:else}
-    <h4 class="nk-heading-title"><slot /></h4>
+    <h4 class="font-medium {sizeClasses[4]} text-foreground">
+      {#if children}{@render children()}{:else if title}{title}{/if}
+    </h4>
   {/if}
 
   {#if kicker}
-    <p class="nk-heading-kicker">{kicker}</p>
+    <p class="text-base text-muted-foreground max-w-[36rem] leading-relaxed">{kicker}</p>
   {/if}
 </div>
-
-<style>
-  .nk-heading {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .nk-heading--center {
-    text-align: center;
-    align-items: center;
-  }
-
-  .nk-heading--right {
-    text-align: right;
-    align-items: flex-end;
-  }
-
-  .nk-heading--left {
-    text-align: left;
-    align-items: flex-start;
-  }
-
-  .nk-heading-eyebrow {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--text-secondary, #6b7280);
-  }
-
-  .nk-heading-title {
-    letter-spacing: -0.04em;
-    color: var(--text-main, #0f172a);
-    margin: 0;
-  }
-
-  .nk-heading--l1 .nk-heading-title {
-    font-size: clamp(2.4rem, 5vw, 3.4rem);
-    line-height: 1.03;
-  }
-
-  .nk-heading--l2 .nk-heading-title {
-    font-size: clamp(2rem, 3vw, 2.6rem);
-    line-height: 1.08;
-  }
-
-  .nk-heading--l3 .nk-heading-title {
-    font-size: 1.4rem;
-    line-height: 1.2;
-  }
-
-  .nk-heading--l4 .nk-heading-title {
-    font-size: 1.1rem;
-    line-height: 1.3;
-  }
-
-  .nk-heading-kicker {
-    max-width: 36rem;
-    font-size: 0.98rem;
-    color: var(--text-secondary, #6b7280);
-    line-height: 1.7;
-  }
-
-  .nk-heading--center .nk-heading-kicker {
-    margin-inline: auto;
-  }
-</style>
-

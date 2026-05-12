@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
+
   type Variant = 'body' | 'muted' | 'small' | 'label';
   type Align = 'left' | 'center' | 'right';
 
@@ -7,51 +9,25 @@
     variant?: Variant;
     align?: Align;
     className?: string;
+    children?: Snippet;
   };
 
-  let {
-    as = 'p',
-    variant = 'body',
-    align = 'left',
-    className = ''
-  }: Props = $props();
+  let { as = 'p', variant = 'body', align = 'left', className = '', children }: Props = $props();
+
+  const variantClasses = {
+    body: 'text-foreground',
+    muted: 'text-muted-foreground',
+    small: 'text-sm text-muted-foreground',
+    label: 'text-xs uppercase tracking-[0.14em] text-muted-foreground'
+  };
+
+  const alignClasses = {
+    center: 'text-center',
+    left: 'text-left',
+    right: 'text-right'
+  };
 </script>
 
-<svelte:element
-  this={as}
-  class={`nk-text nk-text--${variant} nk-text--${align} ${className}`.trim()}
->
-  <slot />
+<svelte:element this={as} class="m-0 {variantClasses[variant]} {alignClasses[align]} {className}">
+  {@render children?.()}
 </svelte:element>
-
-<style>
-  .nk-text {
-    margin: 0;
-    color: var(--text-main, #0f172a);
-  }
-
-  .nk-text--muted {
-    color: var(--text-secondary, #6b7280);
-  }
-
-  .nk-text--small {
-    font-size: 0.82rem;
-    color: var(--text-secondary, #6b7280);
-  }
-
-  .nk-text--label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--text-secondary, #6b7280);
-  }
-
-  .nk-text--center {
-    text-align: center;
-  }
-
-  .nk-text--right {
-    text-align: right;
-  }
-</style>
-

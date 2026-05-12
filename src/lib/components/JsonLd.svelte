@@ -2,22 +2,22 @@
   import { siteConfig } from '$lib/site-config';
   import { page } from '$app/state';
 
-  const {
+  let {
     type = 'WebSite',
     headline = '',
     datePublished = '',
     dateModified = '',
     image = ''
-  } = $props<{
+  }: {
     type?: string;
     headline?: string;
     datePublished?: string;
     dateModified?: string;
     image?: string;
-  }>();
+  } = $props();
 
   const base = siteConfig.url.replace(/\/$/, '');
-  const path = page ? page.url.pathname : '/';
+  const path = $derived(page ? page.url.pathname : '/');
 
   const organization = {
     '@context': 'https://schema.org',
@@ -34,7 +34,7 @@
     url: base
   };
 
-  const pageSchema = {
+  const pageSchema = $derived({
     '@context': 'https://schema.org',
     '@type': type,
     name: headline || siteConfig.name,
@@ -47,9 +47,9 @@
       author: { '@type': 'Person', name: siteConfig.author.name },
       publisher: { '@type': 'Organization', name: siteConfig.name, url: base }
     })
-  };
+  });
 
-  const breadcrumb = {
+  const breadcrumb = $derived({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: path
@@ -61,7 +61,7 @@
         name: seg.charAt(0).toUpperCase() + seg.slice(1).replace(/-/g, ' '),
         item: `${base}/${arr.slice(0, i + 1).join('/')}`
       }))
-  };
+  });
 </script>
 
 <svelte:head>

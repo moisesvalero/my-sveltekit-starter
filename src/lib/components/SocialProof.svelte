@@ -1,6 +1,6 @@
 <script lang="ts">
   import { reveal } from '$lib/reveal';
-  import { t } from '$lib/i18n/index.js';
+  import { t } from '$lib/i18n';
 </script>
 
 <section class="social-proof">
@@ -65,11 +65,7 @@
     margin: 0 auto;
     border-radius: 999px;
     border: 1px solid rgba(15, 23, 42, 0.06);
-    background: linear-gradient(
-      135deg,
-      rgba(99, 102, 241, 0.03),
-      rgba(15, 23, 42, 0.01)
-    );
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.03), rgba(15, 23, 42, 0.01));
     padding: 1.25rem 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -111,7 +107,9 @@
     height: auto;
     filter: grayscale(1);
     opacity: 0.4;
-    transition: filter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition:
+      filter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .logo-item:hover img {
@@ -173,4 +171,3 @@
     }
   }
 </style>
-

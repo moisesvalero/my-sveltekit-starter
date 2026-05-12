@@ -116,11 +116,8 @@ Archivos que SI necesitas tocar:
   → Tu pagina principal (home).
 
 - src/lib/site-config.ts
-  → UNICO archivo de configuracion. Aqui cambias:
-    - Nombre de tu web
-    - Links de redes sociales
-    - Menu de navegacion
-    - Tu nombre/creditos
+  → Marca y enlaces globales (nombre del sitio, URL, redes, autor).
+    Los textos del menu superior estan en src/lib/i18n/es.json y en.json (claves layout.nav.*).
 
 - src/app.css
   → Colores globales. Busca --accent y cambialo por tu color.
@@ -128,12 +125,12 @@ Archivos que SI necesitas tocar:
 Archivos que NO necesitas tocar (al principio):
 - src/lib/components/ → componentes reutilizables
 - src/lib/i18n/ → traducciones (editalas cuando quieras ES/EN)
-- src/lib/seo.js → SEO (funciona solo)
+- src/lib/seo.ts → Store SEO y setSeo()
 
 Paginas de ejemplo incluidas:
-- / → home simple
-- /components → galeria de todos los componentes
-- /examples/landing → landing completa
+- / → landing con hero, caracteristicas, pasos y CTA (textos en i18n)
+- /components → galeria de componentes UI + demos de blog y formulario de contacto
+- No existe la ruta /examples/landing en esta plantilla (la landing principal es /)
 
 --------------------------------------------------
 7. TU PRIMER CAMBIO: PERSONALIZAR LA WEB
@@ -172,11 +169,10 @@ Paginas de ejemplo incluidas:
 
 Esta plantilla esta diseñada para que las IAs te entiendan:
 
-- Si usas Cursor AI: ya hay un archivo .cursor/rules que le
-  dice a Cursor como funciona tu proyecto.
+- Si usas Cursor AI: el archivo .cursor/rules resume convenciones del proyecto (alineado con AGENTS.md).
 
-- Si usas ChatGPT, Claude o Copilot: el archivo AGENTS.md
-  contiene las mismas instrucciones.
+- Si usas ChatGPT, Claude o Copilot: el archivo AGENTS.md describe el proyecto y los componentes.
+- Si vienes de Stitch, Lovable u otro prototipo: lee DESIGN_TO_CURSOR.md (flujo y prompt listo).
 
 Para instalar aun mas ayuda de IA:
 ```bash
@@ -186,7 +182,7 @@ Esto detecta tu proyecto y añade skills extra para Cursor,
 Claude Code y otros asistentes.
 
 Cuando pidas ayuda a la IA, dile que usas:
-"Svelte 5 con runes, SvelteKit 2, TypeScript, sin Tailwind"
+"Svelte 5 con runes, SvelteKit 2, TypeScript, Tailwind CSS v4"
 
 --------------------------------------------------
 10. COMPONENTES DISPONIBLES
@@ -222,7 +218,7 @@ La plantilla soporta español e ingles.
 
 Para usarlo en tus componentes:
 - Importa: import { t } from '$lib/i18n/index';
-- En el HTML: {$t('hero.title')}
+- En el HTML: {$t('home.hero.title')} (u otra clave definida en los JSON)
 - Las claves estan en src/lib/i18n/es.json y en.json
 
 El boton de cambio de idioma ya esta en el menu superior.
@@ -244,8 +240,8 @@ Ejemplo de uso en una pagina:
 
 Archivos SEO incluidos:
 - /sitemap.xml → genera sitemap automatico
-- /robots.txt → permite indexacion
-- src/lib/seo.js → store reutilizable
+- /robots.txt → permite indexacion (tambien hay static/robots.txt si sirves estaticos)
+- src/lib/seo.ts → store reutilizable y setSeo()
 
 IMPORTANTE: en produccion define la variable de entorno:
 PUBLIC_SITE_URL=https://tu-dominio.com
@@ -270,8 +266,7 @@ La plantilla esta preconfigurada para Vercel y Netlify.
 3. Netlify detecta la configuracion sola
 
 ### Opcion C: Otro hosting
-En svelte.config.js, cambia el adapter por el adecuado.
-Las opciones estan comentadas en el archivo.
+En svelte.config.js usa `@sveltejs/adapter-auto` o cambia al adapter oficial de tu plataforma (ver documentacion de SvelteKit).
 
 --------------------------------------------------
 14. TESTS Y CALIDAD DE CODIGO
@@ -313,8 +308,8 @@ Problema: quiero volver atras un cambio
 
 Cuando ya estes comodo con la plantilla:
 
-1. Explora /components para ver todos los componentes.
-2. Mira /examples/landing para ver una landing completa.
+1. Explora /components para ver todos los componentes y demos.
+2. Personaliza la landing en / (src/routes/+page.svelte + i18n).
 3. Crea tus propias paginas en src/routes/.
 4. Añade tus propios componentes en src/lib/components/.
 5. Conecta un CMS (Sanity, Decap CMS) si necesitas que

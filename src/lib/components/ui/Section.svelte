@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
+
   type Variant = 'default' | 'muted' | 'soft' | 'surface';
 
   type Props = {
@@ -6,51 +8,27 @@
     variant?: Variant;
     id?: string;
     className?: string;
+    children?: Snippet;
   };
 
   let {
     as = 'section',
     variant = 'default',
     id = undefined,
-    className = ''
+    className = '',
+    children
   }: Props = $props();
+
+  const variantClasses = {
+    default: 'bg-background',
+    muted: 'bg-muted/30',
+    soft: 'bg-gradient-to-b from-blue-50/30 to-transparent',
+    surface: 'bg-secondary/20'
+  };
 </script>
 
-<svelte:element
-  this={as}
-  id={id}
-  class={`nk-section nk-section--${variant} ${className}`.trim()}
->
-  <slot />
+<svelte:element this={as} {id} class="py-24 md:py-28 {variantClasses[variant]} {className}">
+  {#if children}
+    {@render children()}
+  {/if}
 </svelte:element>
-
-<style>
-  .nk-section {
-    padding-block: 96px;
-  }
-
-  .nk-section--default {
-    background: #ffffff;
-  }
-
-  .nk-section--muted {
-    background: var(--bg-soft, #f5f5f9);
-  }
-
-  .nk-section--soft {
-    background:
-      radial-gradient(circle at top, rgba(99, 102, 241, 0.04), transparent 60%),
-      #ffffff;
-  }
-
-  .nk-section--surface {
-    background: #f9fafb;
-  }
-
-  @media (max-width: 768px) {
-    .nk-section {
-      padding-block: 72px;
-    }
-  }
-</style>
-

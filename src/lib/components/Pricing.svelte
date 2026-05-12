@@ -1,6 +1,6 @@
 <script lang="ts">
   import { reveal } from '$lib/reveal';
-  import { t } from '$lib/i18n/index.js';
+  import { t } from '$lib/i18n';
 
   const { isYearly, toggleBilling } = $props<{
     isYearly: boolean;
@@ -20,18 +20,16 @@
   }
 </script>
 
-<section id="pricing" class={`pricing ${togglePhase === 'toggling' ? 'toggling' : ''} ${togglePhase === 'done' ? 'toggling-done' : ''}`}>
+<section
+  id="pricing"
+  class={`pricing ${togglePhase === 'toggling' ? 'toggling' : ''} ${togglePhase === 'done' ? 'toggling-done' : ''}`}
+>
   <div class="pricing-header" use:reveal={{ stage: 'title' }}>
     <h2>{$t('pricing.title')}</h2>
     <p>{$t('pricing.subtitle')}</p>
     <div class="toggle-container">
       <span class:active={!isYearly}>{$t('pricing.monthly')}</span>
-      <button
-        type="button"
-        class="toggle-btn"
-        onclick={handleToggle}
-        aria-label="Toggle billing"
-      >
+      <button type="button" class="toggle-btn" onclick={handleToggle} aria-label="Toggle billing">
         <div class="toggle-circle" class:yearly={isYearly}></div>
       </button>
       <span class:active={isYearly}>
@@ -205,12 +203,12 @@
   }
 
   .price-card.featured::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: -1px;
     border-radius: inherit;
     background: radial-gradient(circle at top, rgba(99, 102, 241, 0.45), transparent 55%);
-    opacity: 0.0;
+    opacity: 0;
     pointer-events: none;
     mix-blend-mode: soft-light;
     animation: pro-glow 5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate;
@@ -288,7 +286,12 @@
   }
 
   .price-card .btn-primary {
-    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 50%, var(--accent) 100%);
+    background: linear-gradient(
+      90deg,
+      var(--accent) 0%,
+      var(--accent-hover) 50%,
+      var(--accent) 100%
+    );
     background-size: 200% 100%;
     color: #fff;
     border-radius: 14px;
@@ -308,7 +311,7 @@
 
   @keyframes pro-glow {
     0% {
-      opacity: 0.0;
+      opacity: 0;
     }
     50% {
       opacity: 0.45;

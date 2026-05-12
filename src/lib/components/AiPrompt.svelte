@@ -1,11 +1,13 @@
 <script lang="ts">
-  type Props = {
+  let {
+    placeholder = '',
+    message = 'Estamos en ello...',
+    maxLength = 999
+  }: {
     placeholder?: string;
     message?: string;
     maxLength?: number;
-  };
-
-  let { placeholder = '', message = 'Estamos en ello...', maxLength = 999 } = $props<Props>();
+  } = $props();
 
   let result = $state('');
   let loading = $state(false);
@@ -13,12 +15,7 @@
 </script>
 
 <form class="ai-form">
-  <textarea
-    bind:value={result}
-    {placeholder}
-    rows={3}
-    maxlength={maxLength}
-  />
+  <textarea bind:value={result} {placeholder} rows={3} maxlength={maxLength}></textarea>
   <div class="ai-form-footer">
     <button type="button" disabled={loading || !result.trim()}>
       {loading ? 'Pensando...' : 'Preguntar a la IA'}

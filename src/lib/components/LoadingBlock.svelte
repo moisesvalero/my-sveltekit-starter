@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import Spinner from './ui/Spinner.svelte';
+  import { Spinner } from '$lib/components/ui/spinner';
 
   const { loading = false, message = 'Cargando...' } = $props<{
     loading?: boolean;
@@ -9,29 +9,10 @@
 </script>
 
 {#if loading}
-  <div class="loading-overlay" transition:fade={{ duration: 200 }}>
-    <div class="loading-inner">
-      <Spinner size={32} />
-      <p>{message}</p>
+  <div class="flex items-center justify-center min-h-[60vh]" transition:fade={{ duration: 200 }}>
+    <div class="flex flex-col items-center gap-4">
+      <Spinner class="size-8" />
+      <p class="text-sm text-muted-foreground">{message}</p>
     </div>
   </div>
 {/if}
-
-<style>
-  .loading-overlay {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 60vh;
-  }
-  .loading-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .loading-inner p {
-    color: var(--text-secondary, #6b7280);
-    font-size: 0.9rem;
-  }
-</style>

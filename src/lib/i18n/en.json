@@ -1,21 +1,88 @@
 {
   "layout": {
-    "title": "Svelte Starter — Creative UI Toolkit",
+    "title": "My SvelteKit Starter",
     "nav": {
-      "features": "Features",
-      "pricing": "Pricing",
-      "testimonials": "Testimonials",
-      "components": "Details",
-      "contact": "Contact",
+      "home": "Home",
+      "components": "Components",
       "getStarted": "Get Started"
+    },
+    "footer": {
+      "documentation": "Documentation",
+      "builtWith": "Built with precision."
     },
     "aria": {
       "toggleMenu": "Toggle menu",
-      "closeMenuOverlay": "Close menu overlay"
+      "closeMenuOverlay": "Close menu overlay",
+      "theme": "Theme",
+      "language": "Language"
     },
     "lang": {
       "toSpanish": "🇪🇸 ES",
       "toEnglish": "🇬🇧 EN"
+    }
+  },
+  "home": {
+    "seo": {
+      "title": "My SvelteKit Starter — Svelte 5 + Kit 2 template ready to ship",
+      "description": "All in one repo: shadcn-style UI you own, Tailwind v4, TypeScript, ES/EN copy, dark mode, technical SEO and demo pages. For vibe coders who skip reinventing the stack."
+    },
+    "hero": {
+      "title": "The SvelteKit starter for people who just want to build",
+      "subtitle": "Runes, routes, forms, toasts, light/dark theme and a component gallery living in your repo—not an opaque package. Fork, tweak, deploy.",
+      "ctaPrimary": "Browse components",
+      "ctaSecondary": "Documentation"
+    },
+    "features": {
+      "eyebrow": "Included",
+      "title": "What’s included in this starter",
+      "performance": {
+        "title": "Lean JS in the browser",
+        "desc": "Svelte compiles components to small output — great for landings and apps where payload matters."
+      },
+      "types": {
+        "title": "TypeScript that survives CI",
+        "desc": "Structured for `npm run check`: typed routes and UI so failures happen in the pipeline, not on users."
+      },
+      "dx": {
+        "title": "shadcn-style UI in your repo",
+        "desc": "Buttons, cards, forms live under `src/lib/components/ui/` — edit the source, no black-box dependency."
+      },
+      "deploy": {
+        "title": "SEO & production baseline",
+        "desc": "Meta tags, JSON-LD, `/sitemap.xml`, `/robots.txt`, dynamic OG — wire the repo to Vercel or Netlify when your domain is ready."
+      },
+      "cms": {
+        "title": "Sanity CMS (optional)",
+        "desc": "Studio + schema under `sanity/`, server client + GROQ helpers under `src/lib/server/sanity/`. Enable with `SANITY_PROJECT_ID` and `SANITY_DATASET` in `.env`."
+      },
+      "product": {
+        "title": "Product-ready UX",
+        "desc": "ES/EN strings via `$t()`, light/dark theme (mode-watcher), cookie banner and JSON-LD — a usable landing, not an isolated mock."
+      }
+    },
+    "steps": {
+      "title": "Run this starter locally (4 steps)",
+      "step1": {
+        "title": "Get the code",
+        "desc": "Clone the repo (`git clone …`) or download the ZIP from GitHub. This template already includes SvelteKit, Tailwind v4, TypeScript and the UI setup."
+      },
+      "step2": {
+        "title": "Install dependencies",
+        "desc": "From the project folder run `npm install`. Requires Node.js 22+ (see `package.json`)."
+      },
+      "step3": {
+        "title": "Start the dev server",
+        "desc": "Run `npm run dev` and open the URL printed in the terminal (usually http://localhost:5173)."
+      },
+      "step4": {
+        "title": "Customize & deploy",
+        "desc": "Update name and links in project config, adjust copy and theme colors, run `npm run build`, then ship to Vercel, Netlify or your host."
+      }
+    },
+    "cta": {
+      "title": "What’s next?",
+      "subtitle": "Explore the gallery, steal UI patterns and swap in your brand—this template is the launchpad, not the ceiling.",
+      "button": "Browse components"
     }
   },
   "hero": {
@@ -360,6 +427,7 @@
     "tagline": "The last UI toolkit you will ever need.",
     "statusFallback": "ALC / ESP",
     "backToTopAria": "Back to top",
+    "rights": "All rights reserved.",
     "designedBy": "Designed by"
   }
 }

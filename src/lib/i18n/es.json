@@ -1,21 +1,88 @@
 {
   "layout": {
-    "title": "Svelte Starter — Kit creativo de interfaces",
+    "title": "My SvelteKit Starter",
     "nav": {
-      "features": "Funciones",
-      "pricing": "Precios",
-      "testimonials": "Testimonios",
-      "components": "Detalles",
-      "contact": "Contacto",
+      "home": "Inicio",
+      "components": "Componentes",
       "getStarted": "Empezar"
+    },
+    "footer": {
+      "documentation": "Documentación",
+      "builtWith": "Construido con precisión."
     },
     "aria": {
       "toggleMenu": "Abrir o cerrar menú",
-      "closeMenuOverlay": "Cerrar menú"
+      "closeMenuOverlay": "Cerrar menú",
+      "theme": "Tema claro u oscuro",
+      "language": "Idioma"
     },
     "lang": {
       "toSpanish": "🇪🇸 ES",
       "toEnglish": "🇬🇧 EN"
+    }
+  },
+  "home": {
+    "seo": {
+      "title": "My SvelteKit Starter — Plantilla Svelte 5 + Kit 2 lista para shippear",
+      "description": "Todo en un repo: UI estilo shadcn en tu código, Tailwind v4, TypeScript, textos ES/EN, modo oscuro, SEO técnico y páginas de ejemplo. Para quien quiere vibe coding sin reinventar la base."
+    },
+    "hero": {
+      "title": "La plantilla SvelteKit para quien solo quiere construir",
+      "subtitle": "Runes, rutas, formularios, toasts, tema claro/oscuro y una galería de componentes que ya están en tu proyecto —no en un npm opaco. Fork, personaliza y despliega.",
+      "ctaPrimary": "Ver componentes",
+      "ctaSecondary": "Documentación"
+    },
+    "features": {
+      "eyebrow": "Incluido",
+      "title": "Qué incluye esta plantilla",
+      "performance": {
+        "title": "Menos JS en el navegador",
+        "desc": "Svelte compila a JS pequeño y predecible: ideal para landings y apps donde cada kilobyte cuenta."
+      },
+      "types": {
+        "title": "TypeScript que aguanta CI",
+        "desc": "Proyecto preparado para `npm run check`: tipos en rutas y componentes para fallar en la pipeline, no en producción."
+      },
+      "dx": {
+        "title": "UI estilo shadcn en tu carpeta",
+        "desc": "Button, Card, formularios y más viven en `src/lib/components/ui/`: los cambias tú, sin depender de un paquete opaco."
+      },
+      "deploy": {
+        "title": "SEO y salida a producción",
+        "desc": "Meta tags, JSON-LD, `/sitemap.xml`, `/robots.txt` y OG dinámico incluidos; conectas repo a Vercel o Netlify cuando tengas dominio."
+      },
+      "cms": {
+        "title": "Sanity CMS (opcional)",
+        "desc": "Schema y Studio en `sanity/`, cliente y GROQ en `src/lib/server/sanity/`. Actívalo con `SANITY_PROJECT_ID` y `SANITY_DATASET` en `.env`."
+      },
+      "product": {
+        "title": "Experiencia de producto",
+        "desc": "i18n ES/EN con `$t()`, modo claro/oscuro (mode-watcher), banner de cookies y JSON-LD: una landing usable, no un mock suelto."
+      }
+    },
+    "steps": {
+      "title": "Poner este starter en marcha (4 pasos)",
+      "step1": {
+        "title": "Obtén el código",
+        "desc": "Clona el repositorio (`git clone …`) o descarga el ZIP desde GitHub. Aquí ya viene SvelteKit, Tailwind v4, TypeScript y la UI configurada."
+      },
+      "step2": {
+        "title": "Instala dependencias",
+        "desc": "En la carpeta del proyecto ejecuta `npm install`. Requisito: Node.js 22 o superior (ver `package.json`)."
+      },
+      "step3": {
+        "title": "Arranca en local",
+        "desc": "Ejecuta `npm run dev` y abre la URL que muestra la terminal (por defecto http://localhost:5173)."
+      },
+      "step4": {
+        "title": "Personaliza y despliega",
+        "desc": "Cambia nombre y enlaces en la config del proyecto, ajusta textos y colores del tema, ejecuta `npm run build` y sube a Vercel, Netlify o el hosting que uses."
+      }
+    },
+    "cta": {
+      "title": "¿Siguiente paso?",
+      "subtitle": "Explora la galería, copia patrones de UI y sustituye la marca por la tuya: esta plantilla es el punto de partida, no el techo.",
+      "button": "Ver componentes"
     }
   },
   "hero": {
@@ -364,6 +431,7 @@
     "tagline": "El último kit de UI que vas a necesitar.",
     "statusFallback": "ALC / ESP",
     "backToTopAria": "Volver arriba",
+    "rights": "Todos los derechos reservados.",
     "designedBy": "Diseñado por"
   }
 }

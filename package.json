@@ -18,7 +18,8 @@
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"new:page": "node scripts/new-page.js",
-		"clean": "node scripts/clean.js"
+		"clean": "node scripts/clean.js",
+		"studio": "sanity dev"
 	},
 	"lint-staged": {
 		"*.{js,ts,svelte}": [
@@ -27,26 +28,41 @@
 		]
 	},
 	"devDependencies": {
+		"@internationalized/date": "^3.12.1",
+		"@lucide/svelte": "^1.14.0",
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/kit": "^2.50.2",
+		"@tailwindcss/vite": "^4.3.0",
 		"eslint": "^9.39.1",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.12.4",
-		"typescript-eslint": "^8.48.1",
 		"husky": "^9.1.7",
 		"lint-staged": "^16.2.7",
 		"mdsvex": "^0.12.3",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.0",
+		"sanity": "^5.24.0",
 		"svelte": "^5.51.0",
 		"svelte-check": "^4.4.2",
+		"tailwind-variants": "^3.2.2",
+		"tailwindcss": "^4.3.0",
 		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.48.1",
 		"vite": "^7.3.1",
 		"vitest": "^4.1.5"
 	},
 	"dependencies": {
+		"@sanity/client": "^7.22.0",
+		"@sanity/image-url": "^2.1.1",
 		"@sentry/sveltekit": "^10.52.0",
 		"@supabase/supabase-js": "^2.105.4",
-		"svelte-sonner": "^1.1.1"
+		"bits-ui": "^2.18.1",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"lucide-svelte": "^1.0.1",
+		"mode-watcher": "^1.1.0",
+		"svelte-sonner": "^1.1.1",
+		"tailwind-merge": "^3.6.0",
+		"tailwindcss-animate": "^1.0.7"
 	}
 }

@@ -1,11 +1,10 @@
 <script lang="ts">
-  import Container from './Container.svelte';
-  import Heading from './Heading.svelte';
-  import Text from './Text.svelte';
-  import Card from './Card.svelte';
+  import { Bolt, Shield, Rocket, CloudUpload } from 'lucide-svelte';
+
+  export type FeatureId = 'perf' | 'types' | 'dx' | 'deploy' | 'stack' | 'theme' | 'i18n' | 'seo';
 
   export type FeatureItem = {
-    icon?: string;
+    id: FeatureId;
     title: string;
     description: string;
   };
@@ -16,6 +15,8 @@
     subtitle?: string;
     items?: FeatureItem[];
     id?: string;
+    /** Caja redondeada tipo Stitch (surface-container-lowest) */
+    variant?: 'default' | 'boxed';
   };
 
   let {
@@ -23,92 +24,57 @@
     title = '',
     subtitle = undefined,
     items = [],
-    id = undefined
+    id = undefined,
+    variant = 'default'
   }: Props = $props();
+
+  const icons: Record<string, typeof Bolt> = {
+    perf: Bolt,
+    types: Shield,
+    dx: Rocket,
+    deploy: CloudUpload,
+    stack: Bolt,
+    theme: Shield,
+    i18n: Rocket,
+    seo: CloudUpload
+  };
 </script>
 
-<section class="nk-features" {id}>
-  <Container>
-    <div class="nk-features-head">
-      <Heading level={2} {eyebrow} align="center">
+<section class="scroll-mt-24 bg-background py-16 md:py-20" {id}>
+  <div
+    class="mx-auto w-full max-w-7xl px-6 {variant === 'boxed'
+      ? 'mb-32 rounded-3xl border border-border bg-card py-24'
+      : ''}"
+  >
+    <div class="mx-auto mb-16 max-w-[44rem] text-center md:mb-16">
+      {#if eyebrow}
+        <span class="text-xs font-bold uppercase tracking-widest text-primary">{eyebrow}</span>
+      {/if}
+      <h2
+        class="mt-2 text-3xl font-semibold tracking-tight text-foreground md:text-[32px] md:leading-tight"
+      >
         {title}
-      </Heading>
+      </h2>
       {#if subtitle}
-        <Text variant="muted" align="center">
-          {subtitle}
-        </Text>
+        <p class="mt-3 text-base leading-relaxed text-muted-foreground md:text-lg">{subtitle}</p>
       {/if}
     </div>
 
-    <div class="nk-features-grid">
-      {#each items as item (item.title)}
-        <Card variant="soft" className="nk-features-card">
-          {#if item.icon}
-            <div class="nk-features-icon">{item.icon}</div>
-          {/if}
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-        </Card>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      {#each items as item (item.id)}
+        {@const Icon = icons[item.id] ?? Bolt}
+        <article
+          class="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-zinc-300 hover:shadow-md dark:border-border dark:hover:border-primary/30"
+        >
+          <div
+            class="mb-4 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary"
+          >
+            <Icon class="size-7 shrink-0" strokeWidth={1.75} aria-hidden="true" />
+          </div>
+          <h3 class="mb-2 text-xl font-semibold leading-snug text-foreground">{item.title}</h3>
+          <p class="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+        </article>
       {/each}
     </div>
-  </Container>
+  </div>
 </section>
-
-<style>
-  .nk-features {
-    padding-block: 96px;
-    background: #ffffff;
-  }
-
-  .nk-features-head {
-    max-width: 640px;
-    margin: 0 auto 3rem;
-  }
-
-  .nk-features-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.4rem;
-  }
-
-  .nk-features-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-    color: var(--text-main, #0f172a);
-  }
-
-  .nk-features-card p {
-    font-size: 0.95rem;
-    color: var(--text-secondary, #6b7280);
-    line-height: 1.7;
-  }
-
-  .nk-features-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    background: radial-gradient(circle at top, #eff6ff, #dbeafe);
-  }
-
-  @media (max-width: 900px) {
-    .nk-features-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 640px) {
-    .nk-features {
-      padding-block: 80px;
-    }
-
-    .nk-features-grid {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
-</style>
-

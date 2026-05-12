@@ -1,119 +1,92 @@
-# Reglas para Cursor AI - My SvelteKit Starter
-# Cuando la IA te genere codigo, seguira estas reglas para ser consistente con tu proyecto.
+# Reglas para Cursor AI — My SvelteKit Starter
 
-## REGLA DE ORO - USA COMPONENTES EXISTENTES
+Fuente de verdad detallada: **AGENTS.md** en la raíz del repo.
 
-**NUNCA escribas HTML crudo si ya existe un componente para eso.**
+## Disparador: diseño externo → código (léelo antes de tocar archivos)
 
-Antes de escribir `<button>`, `<h1>`, `<section>`, `<div class="card">` o cualquier elemento HTML, revisa este catalogo. Si existe un componente que hace lo que necesitas, USALO. NO lo reinventes.
+Si el usuario (o el contexto) menciona **Stitch**, **Lovable**, **paridad visual**, **pixel perfect**, **igual que el diseño**, **export HTML/CSS**, **Figma / prototipo** como referencia principal, o **DESIGN_TO_CURSOR**:
 
-### Catalogo de componentes (IMPORTANTE: mira esto primero)
+1. **Abre y sigue** el archivo **`DESIGN_TO_CURSOR.md`** en la raíz del repo (léelo completo con la herramienta de lectura si no lo tienes en contexto).
+2. Después aplica **AGENTS.md** (catálogo de componentes, i18n, `npm run check`).
+3. Mapea el diseño a **Button, Card, Section**, etc.; ajusta tokens en **`src/app.css`** y **`src/lib/styles/stitch-m3.css`**; no dejes solo HTML crudo sin migrar a componentes.
 
-| Componente | Import | Props |
-|-----------|--------|-------|
-| Button | `$lib/components/ui/Button.svelte` | `variant="primary|secondary|ghost|outline|link" size="sm|md|lg" as="a"` |
-| Card | `$lib/components/ui/Card.svelte` | `variant="default|soft|outline" clickable` |
-| Container | `$lib/components/ui/Container.svelte` | `as="div|section"` |
-| Section | `$lib/components/ui/Section.svelte` | `variant="default|muted|soft|surface"` |
-| Heading | `$lib/components/ui/Heading.svelte` | `level={1|2|3|4} eyebrow kicker align` |
-| Text | `$lib/components/ui/Text.svelte` | `variant="body|muted|small|label"` |
-| Grid | `$lib/components/ui/Grid.svelte` | `columns={2|3|4} gap="1.5rem"` |
-| HeroSection | `$lib/components/ui/HeroSection.svelte` | `eyebrow title subtitle primaryLabel primaryHref` |
-| FeaturesSection | `$lib/components/ui/FeaturesSection.svelte` | `items=[{icon,title,description}] id` |
-| Spinner | `$lib/components/ui/Spinner.svelte` | `size={24}` |
-| Modal | `$lib/components/ui/Modal.svelte` | `open title onclose` |
-| Skeleton | `$lib/components/ui/Skeleton.svelte` | `width height borderRadius` |
-| LoadingBlock | `$lib/components/LoadingBlock.svelte` | `loading message` |
-| CopyButton | `$lib/components/CopyButton.svelte` | `text label` |
-| Newsletter | `$lib/components/Newsletter.svelte` | `title subtitle action buttonLabel` |
-| CookieConsent | `$lib/components/CookieConsent.svelte` | automatico, sin props |
-| ThemeToggle | `$lib/components/ThemeToggle.svelte` | automatico, sin props |
-| Analytics | `$lib/components/Analytics.svelte` | `id src` |
-| LiveChat | `$lib/components/LiveChat.svelte` | `provider="crisp|intercom|tawk"` |
-| AiPrompt | `$lib/components/AiPrompt.svelte` | `placeholder message maxLength` |
-| JsonLd | `$lib/components/JsonLd.svelte` | `type headline datePublished dateModified` |
+Si no aplica ninguno de esos casos, sigue solo con AGENTS.md como hasta ahora.
 
-### Utilities y stores
+---
+
+Flujo resumido **Stitch / Lovable → paridad visual**: checklist y prompt en **DESIGN_TO_CURSOR.md**.
+
+Si el usuario pide clonar un diseño externo: mapear a componentes del catálogo, ajustar tokens en `app.css` / `stitch-m3.css`, no dejar maquetación solo con HTML suelto.
+
+## Regla de oro
+
+**No escribas HTML crudo** (`<button>`, `<h1>`, tarjetas a mano) si ya existe un componente en `src/lib/components/ui/` o `src/lib/components/`.
+
+## Catálogo rápido (imports actuales)
+
+| Uso | Import |
+|-----|--------|
+| Button, variantes shadcn | `$lib/components/ui/button` |
+| Card / CardHeader / CardTitle… | `$lib/components/ui/card` |
+| Dialog | `$lib/components/ui/dialog` |
+| Input, Textarea, Label | `$lib/components/ui/input`, `textarea`, `label` |
+| Skeleton, Spinner | `$lib/components/ui/skeleton`, `spinner` |
+| Toasts Sonner | `$lib/components/ui/sonner` → `<Toaster />` en layout |
+| Layout marketing | `Container`, `Section`, `Heading`, `Text`, `Grid` en `$lib/components/ui/*.svelte` |
+| Bloques | `HeroSection`, `FeaturesSection` en `$lib/components/ui/` |
+| Proyecto | `Footer`, `CopyButton`, `Newsletter`, `AiPrompt`, `JsonLd`, `CookieConsent`, `BlogLayout`, `LoadingBlock`, `LiveChat`, `Analytics` en `$lib/components/` |
+
+**No existen** como rutas antiguas: `ThemeToggle.svelte`, `Modal.svelte`, `Button.svelte` suelto en la raíz de `ui/`.
+
+## Utilidades
 
 ```ts
-// Toast notifications
 import { toast } from '$lib/stores/toast';
-toast('Mensaje', 'success'); // success | error | info | warning
+// Layout: <Toaster /> (Sonner) + <ToastContainer /> para el store
 
-// Dark mode
-import { dark, toggleDark, initDarkMode } from '$lib/stores/darkMode';
-// dark: store booleano, toggleDark(): alterna
+import { mode, toggleMode } from 'mode-watcher';
 
-// Click outside (accion Svelte)
-import { clickOutside } from '$lib/actions/clickOutside';
-// use:clickOutside={fn}
-
-// i18n traducciones
 import { t, locale, setLocale } from '$lib/i18n/index';
-// {$t('clave')} en el template
 
-// SEO
-import { seo, setSeo } from '$lib/seo';
-setSeo({ title: '...', description: '...', ogImage: '...' });
+import { setSeo } from '$lib/seo';
 
-// Animaciones scroll reveal
 import { reveal } from '$lib/reveal';
-// use:reveal={{ stage: 'title'|'content', delay: 120 }}
-```
 
-### Cuando NO exista el componente que necesitas
+import { cn } from '$lib/utils';
 
-Crealo siguiendo estas reglas:
-1. Carpeta: `src/lib/components/` (o `ui/` si es generico)
-2. Script: `<script lang="ts">` con `$props<{...}>()`
-3. Estilos: scoped en `<style>`, usando variables CSS (--accent, --text-main, --bg-main)
-4. NO uses Tailwind (no esta instalado)
-5. NO crees estilos globales a menos que sea imprescindible
-
-### Ejemplo MAL vs BIEN
-
-```svelte
-<!-- MAL: reinventando HTML -->
-<button class="boton-morado" onclick={handleClick}>Enviar</button>
-<div class="tarjeta"><h2>Titulo</h2><p>Texto</p></div>
-<section class="hero"><h1>Hero</h1><p>Subtitulo</p></section>
-
-<!-- BIEN: usando componentes existentes -->
-<Button variant="primary" onclick={handleClick}>Enviar</Button>
-<Card><Heading level={2}>Titulo</Heading><Text>Texto</Text></Card>
-<HeroSection title="Hero" subtitle="Subtitulo" primaryLabel="CTA" primaryHref="/ruta" />
+import { clickOutside } from '$lib/actions/clickOutside';
 ```
 
 ## Stack
-- Svelte 5 con runes ($state, $props, $derived, $effect)
-- SvelteKit 2 con adapter-auto (despliegue en Vercel)
-- TypeScript estricto
-- Sin Tailwind - usamos CSS custom properties + estilos scoped
 
-## Reglas de codigo Svelte 5
-- Usa `$props<{...}>()` con tipado para recibir props
-- Usa `$state()` para estado local, NO `let` con `$:`
-- Usa `$derived()` en vez de `$:`
-- Usa `$effect()` en vez de `onMount` para side effects (aunque onMount aun funciona)
-- NO uses `<slot/>` - usa `{@render children()}` con snippet
-- Importa `page` desde `$app/state`, NO `$page` desde `$app/stores`
-- Para enlaces internos usa el componente `<a href="/ruta">` de SvelteKit (sin recarga)
+- **Svelte 5** — runes: `$state`, `$props`, `$derived`, `$effect`
+- **SvelteKit 2** — rutas, `load`, form actions
+- **TypeScript**
+- **Tailwind CSS v4** — utilidades en componentes; tokens en `src/app.css` y `src/lib/styles/stitch-m3.css`
+- **shadcn-svelte + bits-ui** — patrones bajo `src/lib/components/ui/`
 
-## Personalizacion
-- Colores en `app.css` → variables `--accent`, `--accent-hover`, `--text-main`, `--text-secondary`, `--bg-main`, `--bg-soft`
-- Datos del sitio en `src/lib/site-config.ts`
-- Textos en `src/lib/i18n/es.json` y `en.json`
+## Props (Svelte 5)
 
-## Al crear nuevas paginas
-1. Crea carpeta en `src/routes/tu-ruta/`
-2. Crea `+page.svelte` dentro
-3. Pon `<script lang="ts">` al inicio
-4. Usa `setSeo({ title, description, ... })` para SEO
-5. Añade `<svelte:head>` con meta tags
-6. Si necesita datos del servidor, crea `+page.ts` con funcion `load`
+Tipar así (sin generic en `$props()`):
 
-## Al crear nuevos componentes
-1. Ponlos en `src/lib/components/` (o `ui/` si son genericos)
-2. Usa `<script lang="ts">` con tipado de props
-3. Estilos scoped en `<style>` al final
-4. Exporta desde `src/lib/examples/landing/index.ts` si se usan en la landing
+```ts
+let { titulo }: { titulo: string } = $props();
+```
+
+Snippets en lugar de slots: `{@render children?.()}`
+
+## Personalización
+
+- `src/lib/site-config.ts` — nombre, URL, redes
+- `src/lib/i18n/es.json` y `en.json` — copy del layout (`layout.*`) y home (`home.*`)
+- `src/lib/seo.ts` — `setSeo`, store `$seo`
+
+## Nueva página / componente
+
+Ver **AGENTS.md**: `+page.svelte`, `setSeo`, opcional `+page.ts` / `+page.server.ts`; sin `async` en el `.svelte`.
+
+## shadcn-svelte CLI
+
+```bash
+npx shadcn-svelte@latest add <componente>
+```

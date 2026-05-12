@@ -5,73 +5,95 @@
 npm install
 ```
 
-## Paso 2: Arrancar  
+## Paso 2: Arrancar
 ```bash
 npm run dev
 ```
-Abre `http://localhost:5173`. ❌ No necesitas copiar `.env`. Ya funciona en local.
+Abre `http://localhost:5173`. No necesitas `.env` para local.
 
-## Paso 3: Personalizar
-Edita **UN solo archivo**: `src/lib/site-config.ts`
-Ahi cambias nombre, dominio, redes sociales, menu de navegacion, creditos.
+## Paso 3: Personalizar marca y textos
+1. `src/lib/site-config.ts` — nombre del sitio, URL, enlaces sociales.
+2. `src/lib/i18n/es.json` y `en.json` — textos de la **home** (`home.*`), menu (`layout.nav.*`) y footer.
 
-## Paso 4: Cambiar colores
-Edita `src/app.css`, busca `--accent` y pon tu color.
+## Paso 4: Colores y tema
+Edita `src/app.css` (`--primary`, `--background`, …) y, si usas la estetica Stitch/M3, revisa `src/lib/styles/stitch-m3.css`.
 
 ## Paso 5: Desplegar
-Sube a GitHub → conéctalo a Vercel → listo.
+GitHub → Vercel/Netlify → listo.
 
 ---
 
-### Scripts utiles
+## Scripts utiles
 
 | Comando | Que hace |
 |---------|----------|
-| `npm run dev` | Arranca el servidor local |
-| `npm run new:page nombre` | Crea una pagina nueva automaticamente |
-| `npm run build` | Genera version de produccion |
-| `npm run clean` | Borra paginas de ejemplo, deja solo la home |
-| `npm run check` | Revisa errores TypeScript + Svelte |
-| `npm run lint` | Revisa estilo de codigo |
-| `npm run format` | Formatea todo el codigo |
-| `npm run test` | Ejecuta tests |
+| `npm run dev` | Servidor local |
+| `npm run build` | Build produccion |
+| `npm run check` | TypeScript + Svelte (0 errores, 0 warnings) |
+| `npm run lint` | ESLint + Prettier |
+| `npm run format` | Formatear codigo |
+| `npm run test` | Tests |
+| `npm run new:page nombre` | Crear pagina |
+| `npm run studio` | Sanity Studio (opcional; CMS) |
 
 ---
 
-### Rutas incluidas
+## Rutas incluidas
+
 | Ruta | Que es |
 |------|--------|
 | `/` | Home |
 | `/about` | Sobre nosotros |
 | `/pricing` | Precios |
 | `/faq` | Preguntas frecuentes |
-| `/blog` | Blog con Markdown |
-| `/contacto` | Formulario con validacion server-side |
-| `/components` | Galeria de todos los componentes |
-| `/ssr-demo` | Ejemplo SSR con load() |
-| `/examples/landing` | Landing completa |
-| `/api/hello` | API endpoint de ejemplo |
+| `/blog` | Redirige a `/components#blog-demo`; post ejemplo `/blog/primer-post` (mdsvex) |
+| `/contacto` | Redirige a `/components#contact-demo` (formulario demo en la galeria) |
+| `/components` | Galeria de componentes + demos blog/contacto |
+| `/ssr-demo` | Demo SSR |
 | `/api/og?title=Hola` | OG image dinamica |
 
 ---
 
-### Para IAs y vibe coders
+## Archivos que mas vas a tocar
 
-| Archivo | Para que sirve |
-|---------|---------------|
-| `.cursor/rules` | Instrucciones para Cursor AI |
-| `AGENTS.md` | Instrucciones para ChatGPT, Claude, Copilot |
-| `PROMPTS.md` | Snippets copy-pasteables para pedirle a la IA |
+- `src/lib/site-config.ts` — marca y enlaces
+- `src/lib/i18n/es.json` y `en.json` — copy de la landing y layout
+- `src/routes/+page.svelte` — estructura de la home (clases Tailwind; strings desde `$t('home.…')`)
+- `src/app.css` / `src/lib/styles/stitch-m3.css` — tema visual
 
-Para mas ayuda de IA:
-```bash
-npx autoskills
+---
+
+## Tech stack
+
+- **Svelte 5** con runes ($state, $props, $derived, $effect)
+- **SvelteKit 2** (filesystem routing, form actions, load functions)
+- **TypeScript** strict mode (0 errores, 0 warnings)
+- **Tailwind CSS v4** (utility-first, responsive)
+- **shadcn-svelte** (componentes UI en `src/lib/components/ui/`, patron oficial de codigo en repo + **bits-ui**)
+- **sonner** (toast notifications)
+- **mode-watcher** (dark mode)
+- **Lucide Svelte** (iconos)
+
+---
+
+## Componentes disponibles
+
+Usa componentes en vez de HTML crudo. Ver lista completa en `AGENTS.md`.
+
+```svelte
+<!-- MAL -->
+<button class="bg-blue-500 px-4 py-2 rounded">Click</button>
+
+<!-- BIEN -->
+<Button variant="default">Click</Button>
 ```
 
 ---
 
-### Solo necesitas tocar estos archivos
-- `src/lib/site-config.ts` → UNICO archivo de configuracion
-- `src/routes/+page.svelte` → tu home
-- `src/app.css` → colores
-- `src/lib/i18n/es.json` y `en.json` → textos
+## Para IAs
+
+| Archivo | Para que sirve |
+|---------|---------------|
+| `AGENTS.md` | Instrucciones para ChatGPT, Claude, Copilot |
+| `PROMPTS.md` | Snippets copy-paste para pedirle a la IA |
+| `DESIGN_TO_CURSOR.md` | De Stitch/Lovable a esta plantilla: tokens, prompt y checklist |

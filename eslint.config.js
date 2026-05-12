@@ -10,6 +10,13 @@ export default [
   prettier,
   ...svelte.configs['flat/prettier'],
   {
+    files: ['**/*.svelte.ts'],
+    languageOptions: {
+      parser: ts.parser,
+      parserOptions: { parser: ts.parser }
+    }
+  },
+  {
     files: ['**/*.svelte'],
     languageOptions: {
       parserOptions: { parser: ts.parser },
@@ -28,6 +35,11 @@ export default [
         MouseEvent: 'readonly',
         KeyboardEvent: 'readonly',
         HTMLElement: 'readonly',
+        HTMLElementTagNameMap: 'readonly',
+        HTMLDivElement: 'readonly',
+        HTMLParagraphElement: 'readonly',
+        FileList: 'readonly',
+        SVGSVGElement: 'readonly',
         console: 'readonly',
         fetch: 'readonly'
       }

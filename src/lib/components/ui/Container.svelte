@@ -1,40 +1,17 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
+
   type Props = {
     as?: keyof HTMLElementTagNameMap;
     className?: string;
+    children?: Snippet;
   };
 
-  let {
-    as = 'div',
-    className = ''
-  }: Props = $props();
+  let { as = 'div', className = '', children }: Props = $props();
 </script>
 
-<svelte:element
-  this={as}
-  class={`nk-container ${className}`.trim()}
->
-  <slot />
+<svelte:element this={as} class="w-full max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-6 {className}">
+  {#if children}
+    {@render children()}
+  {/if}
 </svelte:element>
-
-<style>
-  .nk-container {
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: 1.5rem;
-  }
-
-  @media (max-width: 640px) {
-    .nk-container {
-      padding-inline: 1.25rem;
-    }
-  }
-
-  @media (min-width: 1600px) {
-    .nk-container {
-      max-width: 1320px;
-    }
-  }
-</style>
-

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { t, locale } from '$lib/i18n/index.js';
+  import { t, locale } from '$lib/i18n';
 
   let heroLoaded = $state(false);
   let splineLoaded = $state(false);
@@ -116,14 +116,20 @@
   }
 
   .hero-bg::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 1;
     background:
       radial-gradient(circle at 74% 28%, rgba(99, 102, 241, 0.34), transparent 42%),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.9) 32%, rgba(255, 255, 255, 0.1) 66%, rgba(255, 255, 255, 0) 100%);
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.97) 0%,
+        rgba(255, 255, 255, 0.9) 32%,
+        rgba(255, 255, 255, 0.1) 66%,
+        rgba(255, 255, 255, 0) 100%
+      );
   }
 
   .hero-bg::after {
@@ -142,8 +148,20 @@
     filter: blur(8px);
     opacity: 1;
     background:
-      linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.96) 62%, rgba(255, 255, 255, 0.78) 82%, transparent),
-      linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0.72) 74%, transparent);
+      linear-gradient(
+        to top,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.96) 62%,
+        rgba(255, 255, 255, 0.78) 82%,
+        transparent
+      ),
+      linear-gradient(
+        to left,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.72) 74%,
+        transparent
+      );
   }
 
   .hero-inner {
@@ -305,8 +323,8 @@
   }
 
   .btn-primary {
-    background: var(--accent);
-    color: white;
+    background: var(--primary);
+    color: var(--primary-foreground);
     padding: 1rem 2rem;
     border-radius: 12px;
     text-decoration: none;
@@ -400,7 +418,12 @@
     .hero-bg::before {
       background:
         radial-gradient(circle at 70% 30%, rgba(99, 102, 241, 0.34), transparent 48%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.8) 74%, rgba(255, 255, 255, 0.94) 100%);
+        linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.38) 0%,
+          rgba(255, 255, 255, 0.8) 74%,
+          rgba(255, 255, 255, 0.94) 100%
+        );
     }
 
     .copy {
@@ -423,7 +446,6 @@
     .footnote {
       max-width: 100%;
     }
-
   }
 
   @media (max-width: 768px) {
@@ -473,4 +495,3 @@
     }
   }
 </style>
-

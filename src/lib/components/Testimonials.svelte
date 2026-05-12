@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { reveal } from '$lib/reveal';
-  import { t } from '$lib/i18n/index.js';
+  import { t } from '$lib/i18n';
 
   const avatarPalette = [
     '#2563eb',
@@ -73,13 +73,19 @@
 </script>
 
 <section class="testimonials" id="testimonials">
-  <div class="header" use:reveal={{ stage: 'title', threshold: 0.12, rootMargin: '0px 0px -2% 0px' }}>
+  <div
+    class="header"
+    use:reveal={{ stage: 'title', threshold: 0.12, rootMargin: '0px 0px -2% 0px' }}
+  >
     <p class="eyebrow">{$t('testimonials.eyebrow')}</p>
     <h2>{$t('testimonials.title')}</h2>
     <button class="cta">{$t('testimonials.cta')}</button>
   </div>
 
-  <div class="columns" use:reveal={{ stage: 'content', delay: 70, threshold: 0.08, rootMargin: '0px 0px 6% 0px' }}>
+  <div
+    class="columns"
+    use:reveal={{ stage: 'content', delay: 70, threshold: 0.08, rootMargin: '0px 0px 6% 0px' }}
+  >
     <!-- Columna 1 -->
     <div class="col">
       <div class="stack stack-slow">
@@ -369,7 +375,7 @@
 
   /* Funda inferior: hace que las columnas parezcan salir de detrás del bloque de abajo */
   .testimonials::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -460,7 +466,7 @@
   }
 
   .body::before {
-    content: "\201C";
+    content: '\201C';
     position: absolute;
     left: -0.12rem;
     top: -0.5rem;
@@ -603,4 +609,3 @@
     }
   }
 </style>
-

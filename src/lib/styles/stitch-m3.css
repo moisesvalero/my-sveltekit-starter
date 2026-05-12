@@ -1,0 +1,197 @@
+/*
+ * Tokens 1:1 con stitch_svelte_5_indigo_starter/sveltekit_starter_landing_page/code.html
+ * (tailwind.config extend.colors del HTML de Stitch)
+ */
+:root {
+  --stitch-primary-container: #4f46e5;
+  --stitch-on-secondary-fixed: #140f54;
+  --stitch-surface-container-low: #f5f2ff;
+  --stitch-surface-variant: #e4e1ee;
+  --stitch-on-tertiary: #ffffff;
+  --stitch-tertiary-fixed: #ffdbcc;
+  --stitch-surface-container-lowest: #ffffff;
+  --stitch-outline: #777587;
+  --stitch-inverse-on-surface: #f3effc;
+  --stitch-on-primary-fixed-variant: #3323cc;
+  --stitch-surface-container: #f0ecf9;
+  --stitch-secondary-fixed: #e2dfff;
+  --stitch-on-secondary-fixed-variant: #413f82;
+  --stitch-error-container: #ffdad6;
+  --stitch-surface-container-highest: #e4e1ee;
+  --stitch-inverse-surface: #302f39;
+  --stitch-surface: #fcf8ff;
+  --stitch-on-secondary: #ffffff;
+  --stitch-on-tertiary-fixed: #351000;
+  --stitch-on-tertiary-container: #ffd2be;
+  --stitch-on-primary: #ffffff;
+  --stitch-secondary-fixed-dim: #c3c0ff;
+  --stitch-surface-dim: #dcd8e5;
+  --stitch-primary-fixed: #e2dfff;
+  --stitch-on-error: #ffffff;
+  --stitch-tertiary-container: #a44100;
+  --stitch-tertiary: #7e3000;
+  --stitch-tertiary-fixed-dim: #ffb695;
+  --stitch-surface-container-high: #eae6f4;
+  --stitch-on-secondary-container: #454386;
+  --stitch-on-tertiary-fixed-variant: #7b2f00;
+  --stitch-on-surface-variant: #464555;
+  --stitch-surface-tint: #4d44e3;
+  --stitch-surface-bright: #fcf8ff;
+  --stitch-on-primary-fixed: #0f0069;
+  --stitch-primary-fixed-dim: #c3c0ff;
+  --stitch-on-background: #1b1b24;
+  --stitch-on-error-container: #93000a;
+  --stitch-inverse-primary: #c3c0ff;
+}
+
+/* Duplicamos nombres cortos para var() en utilidades shadcn coexistiendo */
+:root {
+  --on-surface: var(--stitch-on-background);
+  --on-primary: #ffffff;
+  --on-background: var(--stitch-on-background);
+}
+
+@theme inline {
+  --color-primary-container: var(--stitch-primary-container);
+  --color-on-secondary-fixed: var(--stitch-on-secondary-fixed);
+  --color-surface-container-low: var(--stitch-surface-container-low);
+  --color-surface-variant: var(--stitch-surface-variant);
+  --color-on-tertiary: var(--stitch-on-tertiary);
+  --color-tertiary-fixed: var(--stitch-tertiary-fixed);
+  --color-surface-container-lowest: var(--stitch-surface-container-lowest);
+  --color-outline: var(--stitch-outline);
+  --color-inverse-on-surface: var(--stitch-inverse-on-surface);
+  --color-on-primary-fixed-variant: var(--stitch-on-primary-fixed-variant);
+  --color-surface-container: var(--stitch-surface-container);
+  --color-secondary-fixed: var(--stitch-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--stitch-on-secondary-fixed-variant);
+  --color-error-container: var(--stitch-error-container);
+  --color-surface-container-highest: var(--stitch-surface-container-highest);
+  --color-inverse-surface: var(--stitch-inverse-surface);
+  --color-surface: var(--stitch-surface);
+  --color-on-secondary: var(--stitch-on-secondary);
+  --color-on-tertiary-fixed: var(--stitch-on-tertiary-fixed);
+  --color-on-tertiary-container: var(--stitch-on-tertiary-container);
+  --color-on-primary: var(--stitch-on-primary);
+  --color-secondary-fixed-dim: var(--stitch-secondary-fixed-dim);
+  --color-surface-dim: var(--stitch-surface-dim);
+  --color-primary-fixed: var(--stitch-primary-fixed);
+  --color-on-error: var(--stitch-on-error);
+  --color-tertiary-container: var(--stitch-tertiary-container);
+  --color-tertiary: var(--stitch-tertiary);
+  --color-tertiary-fixed-dim: var(--stitch-tertiary-fixed-dim);
+  --color-surface-container-high: var(--stitch-surface-container-high);
+  --color-on-secondary-container: var(--stitch-on-secondary-container);
+  --color-on-tertiary-fixed-variant: var(--stitch-on-tertiary-fixed-variant);
+  --color-on-surface-variant: var(--stitch-on-surface-variant);
+  --color-surface-tint: var(--stitch-surface-tint);
+  --color-surface-bright: var(--stitch-surface-bright);
+  --color-on-primary-fixed: var(--stitch-on-primary-fixed);
+  --color-primary-fixed-dim: var(--stitch-primary-fixed-dim);
+  --color-on-error-container: var(--stitch-on-error-container);
+  --color-inverse-primary: var(--stitch-inverse-primary);
+  --color-on-surface: var(--stitch-on-background);
+  --color-on-background: var(--stitch-on-background);
+
+  --color-primary-fixed-dim: var(--stitch-primary-fixed-dim);
+  --color-secondary-fixed-dim: var(--stitch-secondary-fixed-dim);
+  --color-tertiary-fixed-dim: var(--stitch-tertiary-fixed-dim);
+  --color-secondary-container: #b6b4ff;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-surface-dim: var(--stitch-surface-dim);
+  --color-surface-tint: var(--stitch-surface-tint);
+  --color-surface-bright: var(--stitch-surface-bright);
+  /* Borde Stitch (outline-variant en M3) */
+  --color-outline-variant: #c7c4d8;
+}
+
+/* Tipografía Stitch (extend.fontSize del HTML) — clases text-h1, font-code, etc. */
+@layer utilities {
+  .font-body,
+  .font-h1,
+  .font-h2,
+  .font-h3,
+  .font-subtitle,
+  .font-body-sm,
+  .font-label {
+    font-family: var(--font-sans), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .font-code {
+    font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  /* h1-mobile — extend.fontSize del code.html de Stitch */
+  .text-h1-mobile {
+    font-size: 36px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+  .text-h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+  }
+
+  .text-h2 {
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  .text-h3 {
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  .text-subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .text-body {
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+
+  .text-body-sm {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .text-label {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .text-code {
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  vertical-align: middle;
+  font-size: 24px;
+}
