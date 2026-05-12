@@ -3,6 +3,7 @@
   import { get } from 'svelte/store';
   import { t, locale, setLocale } from '$lib/i18n';
   import { siteConfig } from '$lib/site-config';
+  import { browser } from '$app/environment';
   import { page } from '$app/state';
   import JsonLd from '$lib/components/JsonLd.svelte';
   import ToastContainer from '$lib/components/ToastContainer.svelte';
@@ -17,7 +18,8 @@
 
   let { children }: { children: Snippet } = $props();
 
-  let isDark = $derived(mode.current === 'dark');
+  /** Solo en cliente: en SSR `mode.current` es undefined → icono distinto = fallo de hidratación y botones muertos. */
+  let isDark = $derived(browser && mode.current === 'dark');
 
   /** Svelte 5: `$store` dentro de funciones inline puede no reaccionar; usamos `get(locale)`. */
   function handleToggleLocale() {

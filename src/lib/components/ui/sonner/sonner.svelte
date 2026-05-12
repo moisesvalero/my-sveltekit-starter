@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from '$app/environment';
   import { Toaster as Sonner, type ToasterProps as SonnerProps } from 'svelte-sonner';
   import { mode } from 'mode-watcher';
   import Loader2Icon from '@lucide/svelte/icons/loader-2';
@@ -8,10 +9,15 @@
   import TriangleAlertIcon from '@lucide/svelte/icons/triangle-alert';
 
   let { ...restProps }: SonnerProps = $props();
+
+  /** Evitar mismatch SSR (undefined) vs cliente al hidratar. */
+  let sonnerTheme = $derived<'light' | 'dark' | undefined>(
+    !browser ? 'light' : mode.current === 'dark' ? 'dark' : 'light'
+  );
 </script>
 
 <Sonner
-  theme={mode.current}
+  theme={sonnerTheme}
   class="toaster group"
   style="--normal-bg: var(--color-popover); --normal-text: var(--color-popover-foreground); --normal-border: var(--color-border);"
   {...restProps}

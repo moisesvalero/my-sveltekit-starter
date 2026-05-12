@@ -17,7 +17,8 @@ export const handle: Handle = async ({ event, resolve }) => {
       'Content-Security-Policy',
       [
         "default-src 'self'",
-        "script-src 'self' 'wasm-unsafe-eval' 'sha256-4aglIzZWlffciY1YNkapYz3E2oa2PTFFx4WcfBdaB6o='",
+        // SvelteKit inyecta scripts inline de hidratación; un hash fijo se rompe al cambiar Vite/Kit.
+        "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "img-src 'self' data: https:",
         "font-src 'self' https://fonts.gstatic.com",
