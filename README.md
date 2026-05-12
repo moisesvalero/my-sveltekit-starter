@@ -1,144 +1,146 @@
 # My SvelteKit Starter
 
+**[Español](INICIO_RAPIDO.md)** · Quick start: [QUICK_START.md](QUICK_START.md)
+
 [![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte)](https://svelte.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-4-38bdf8?logo=tailwind)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/moisesvalero/my-sveltekit-starter/pulls)
 
-Plantilla base para crear **paginas web modernas** con **SvelteKit 2 + Svelte 5 + TypeScript + Tailwind CSS v4** y **componentes UI estilo [shadcn-svelte](https://www.shadcn-svelte.com/)** (codigo en tu repo, no un paquete opaco).
-La **home** usa tokens Material/Stitch (`src/lib/styles/stitch-m3.css`), **i18n ES/EN** en la landing y **SEO** centralizado con `$seo`.
+Starter template for modern **websites** with **SvelteKit 2 + Svelte 5 + TypeScript + Tailwind CSS v4** and **[shadcn-svelte](https://www.shadcn-svelte.com/)**-style UI (code lives in your repo, not an opaque package).
+The **home** uses Material/Stitch tokens (`src/lib/styles/stitch-m3.css`), **ES/EN i18n** on the landing, and centralized **SEO** via `$seo`.
 
-> **Demo en vivo (Vercel):** sustituye la URL por la de tu proyecto cuando esté desplegado — la misma va en `src/lib/site-config.ts` → `liveDemoUrl` (botón en la home).
+> **Live demo (Vercel):** replace the URL with your deployment — same value in `src/lib/site-config.ts` → `liveDemoUrl` (home CTA button).
 >
-> [![Ver demo en vivo](https://img.shields.io/badge/Ver_demo-en_vivo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://tu-dominio.com)
+> [![Live demo](https://img.shields.io/badge/Live_demo-on_Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://tu-dominio.com)
 
 ---
 
-## Inicio en 2 minutos
+## Quick start (2 minutes)
 
 ```bash
-npm install       # solo la primera vez
-npm run dev       # arranca el servidor
+npm install       # first time only
+npm run dev       # dev server
 ```
 
-Abre `http://localhost:5173`. No necesitas configurar `.env` para empezar.
+Open `http://localhost:5173`. You do not need a `.env` file to get started.
 
-Requisitos: **Node.js 22+** (ver `package.json` → `engines`).
+Requirements: **Node.js 22+** (see `package.json` → `engines`).
 
 ---
 
-## Que incluye
+## What’s included
 
-### Paginas pre-hechas
-- `/` — Landing (hero, terminal de ejemplo, caracteristicas, pasos, CTA; textos en `src/lib/i18n/*.json` bajo `home.*`)
-- `/components` — Galeria de componentes UI **y** demos de plantilla (about, pricing, faq, SSR con `load()`, blog, formulario). Contenido en `src/lib/components/demos/*.svelte`; datos SSR en `src/routes/components/+page.ts`.
-- **Atajos (redirect 307 a anclas en `/components`)** — enlaces legacy o bookmarks: `/about`, `/pricing`, `/faq`, `/blog`, `/blog/primer-post`, `/ssr-demo`, `/contacto` (form action en `src/routes/components/+page.server.ts`).
+### Pre-built pages
+- `/` — Landing (hero, sample terminal, features, steps, CTAs; copy in `src/lib/i18n/*.json` under `home.*`)
+- `/components` — UI gallery **and** template demos (about, pricing, faq, SSR with `load()`, blog, form). Content in `src/lib/components/demos/*.svelte`; SSR data in `src/routes/components/+page.ts`.
+- **Shortcuts (307 redirects to anchors on `/components`)** — legacy links or bookmarks: `/about`, `/pricing`, `/faq`, `/blog`, `/blog/primer-post`, `/ssr-demo`, `/contacto` (form action in `src/routes/components/+page.server.ts`).
 
-### Componentes UI (shadcn-svelte + proyecto)
+### UI components (shadcn-svelte + project)
 
-**UI base** (`src/lib/components/ui/`, patron shadcn-svelte + **bits-ui**): Button, Card, Dialog, Input, Textarea, Label, Skeleton, Spinner, Sonner (toast).
+**Base UI** (`src/lib/components/ui/`, shadcn-svelte pattern + **bits-ui**): Button, Card, Dialog, Input, Textarea, Label, Skeleton, Spinner, Sonner (toast).
 
-**Proyecto** (`src/lib/components/`): Footer, Heading, Container, Section, Grid, CopyButton, Newsletter, AiPrompt, JsonLd, CookieConsent, BlogLayout, LoadingBlock, demos en `demos/`, etc. (bloques de marketing opcionales como Hero no estan todos enlazados en la home actual).
+**Project** (`src/lib/components/`): Footer, Heading, Container, Section, Grid, CopyButton, Newsletter, AiPrompt, JsonLd, CookieConsent, BlogLayout, LoadingBlock, demos under `demos/`, etc. (optional marketing blocks like Hero are not all wired on the current home).
 
-### Infraestructura
+### Infrastructure
 - **SEO**: sitemap.xml + robots.txt + OG tags + Twitter cards + Schema.org JSON-LD + GEO (AI crawlers)
-- **i18n**: Traducciones ES/EN con store y localStorage
-- **Dark mode**: Toggle con mode-watcher, respeta preferencias del sistema
-- **Toast notifications**: Sonner (`<Toaster />` en el layout) + `toast()` desde `$lib/stores/toast` (visible con `<ToastContainer />` en el layout)
-- **Animaciones**: Scroll reveal con IntersectionObserver
-- **Tests**: Vitest preconfigurado
+- **i18n**: ES/EN translations with store + localStorage
+- **Dark mode**: Toggle with mode-watcher, respects system preference
+- **Toasts**: Sonner (`<Toaster />` in layout) + `toast()` from `$lib/stores/toast` (also `<ToastContainer />` in layout)
+- **Motion**: Scroll reveal via IntersectionObserver
+- **Tests**: Vitest preconfigured
 - **CI/CD**: GitHub Actions (lint + check + build + test)
-- **Pre-commit hooks**: Husky + lint-staged
-- **OG image dinamica**: `/api/og?title=Texto`
-- **Security headers**: CSP + X-Frame-Options en hooks.server.ts
+- **Pre-commit**: Husky + lint-staged
+- **Dynamic OG image**: `/api/og?title=Text`
+- **Security headers**: CSP + X-Frame-Options in `hooks.server.ts`
 
-### Integraciones opcionales (listas, solo pones las keys)
-- **Sanity CMS** — detalle en [Sanity (opcional)](#sanity-cms-opcional)
-- **Supabase** — auth + base de datos
+### Optional integrations (ready when you add keys)
+- **Sanity CMS** — see [Sanity (optional)](#sanity-cms-optional)
+- **Supabase** — auth + database
 - **Sentry** — error tracking
-- **Newsletter** — componente listo para Mailchimp/Resend
-- **Live Chat** — placeholder para Crisp/Intercom/Tawk
+- **Newsletter** — component ready for Mailchimp/Resend
+- **Live Chat** — placeholder for Crisp/Intercom/Tawk
 
-### Sanity CMS (opcional)
+### Sanity CMS (optional)
 
-**Qué hay en el repo:** carpeta `sanity/` (schemas, seeds), `sanity.config.ts` / `sanity.cli.ts`, y código servidor en `src/lib/server/sanity/` (cliente con `@sanity/client`, consultas GROQ de ejemplo, tipos). El paquete **`sanity`** está en **devDependencies** para poder abrir el Studio; **`@sanity/client`** y **`@sanity/image-url`** en dependencies para el front SSR.
+**In this repo:** `sanity/` folder (schemas, seeds), `sanity.config.ts` / `sanity.cli.ts`, and server code under `src/lib/server/sanity/` (client with `@sanity/client`, sample GROQ queries, types). The **`sanity`** package is in **devDependencies** so you can run Studio; **`@sanity/client`** and **`@sanity/image-url`** are in dependencies for SSR on the app.
 
-**Qué no hace la plantilla sola:** ninguna ruta usa GROQ por defecto. Sin variables de Sanity, la web sigue funcionando; cuando quieras datos del CMS, llama a `getSanityServerClient()` desde un `load` o `+page.server.ts`.
+**What the template does not do by default:** no route uses GROQ out of the box. Without Sanity env vars the site still runs; when you want CMS data, call `getSanityServerClient()` from a `load` or `+page.server.ts`.
 
-**Variables típicas** (`.env`, no subir secretos): `SANITY_PROJECT_ID`, `SANITY_DATASET`; opcional `SANITY_READ_TOKEN` si necesitas borradores o datasets privados. `sanity.config.ts` también acepta `SANITY_STUDIO_PROJECT_ID` / `SANITY_STUDIO_DATASET` si prefieres separar Studio del runtime.
+**Typical env vars** (`.env`, never commit secrets): `SANITY_PROJECT_ID`, `SANITY_DATASET`; optional `SANITY_READ_TOKEN` for drafts or private datasets. `sanity.config.ts` can also use `SANITY_STUDIO_PROJECT_ID` / `SANITY_STUDIO_DATASET` if you want Studio separate from runtime.
 
-**Arrancar el Studio:** `npm run studio` (CLI de Sanity; puerto distinto a Vite). Crea o enlaza un proyecto en [sanity.io](https://www.sanity.io) y alinea `projectId` y dataset con tu entorno.
+**Run Studio:** `npm run studio` (Sanity CLI; different port from Vite). Create or link a project at [sanity.io](https://www.sanity.io) and align `projectId` and dataset with your environment.
 
-### Para IAs
-- **`AGENTS.md`** — ChatGPT, Claude, Copilot saben como funciona tu proyecto
-- **`PROMPTS.md`** — Snippets copy-pasteables para pedirle a la IA
-- **`DESIGN_TO_CURSOR.md`** — Flujo Stitch / Lovable → implementación en esta plantilla (tokens, checklist, prompt base)
+### For AI assistants
+- **`AGENTS.md`** — How ChatGPT, Claude, Copilot should work in this repo
+- **`PROMPTS.md`** — Copy-paste snippets for AI prompts
+- **`DESIGN_TO_CURSOR.md`** — Stitch / Lovable → this template (tokens, checklist, base prompt)
 
-**Opcional (recomendado):** instalar skills extra detectadas para tu stack (Cursor, Claude Code, etc.):
+**Optional (recommended):** install extra skills detected for your stack (Cursor, Claude Code, etc.):
 
 ```bash
 npx autoskills
 ```
 
-Detalle en `INSTRUCCIONES.txt` (seccion «Usar la IA para ayudarte»).
+See `INSTRUCTIONS.txt` (section “Using AI to help you”). Spanish step-by-step: `INSTRUCCIONES.txt`.
 
 ---
 
 ## Scripts
 
-| Comando | Que hace |
-|---------|----------|
-| `npm run dev` | Servidor de desarrollo |
-| `npm run build` | Build de produccion |
-| `npm run preview` | Previsualizar build |
-| `npm run check` | Type-check + Svelte-check (0 errores, 0 warnings) |
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run check` | Type-check + svelte-check (0 errors, 0 warnings) |
 | `npm run lint` | ESLint + Prettier |
-| `npm run format` | Formatear todo |
+| `npm run format` | Format everything |
 | `npm run test` | Tests |
-| `npm run new:page nombre` | Crear pagina |
-| `npm run studio` | Sanity Studio (panel CMS en desarrollo, opcional) |
+| `npm run new:page name` | Scaffold a page |
+| `npm run studio` | Sanity Studio (optional CMS in dev) |
 
 ---
 
-## Estructura
+## Project structure
 
 ```
-sanity/                     → Schemas, seeds y Studio (opcional; ver seccion Sanity)
+sanity/                     → Schemas, seeds, Studio (optional; see Sanity section)
 sanity.config.ts
 sanity.cli.ts
 src/
   routes/
     +page.svelte              → Home
-    +layout.svelte            → Layout global (header, nav, footer, toasts, cookies, dark mode)
+    +layout.svelte            → Global layout (header, nav, footer, toasts, cookies, dark mode)
     +error.svelte             → 404/500
-    blog/                     → +page.ts redirect a galeria; primer-post/ → ancla post demo
-    contacto/                 → Redirect a ancla formulario en /components
-    about/ pricing/ faq/ ssr-demo/  → Solo +page.ts (redirect 307 a /components#…)
-    components/               → Galeria UI + demos (load SSR, form action contact)
+    blog/                     → +page.ts redirects to gallery; primer-post/ → demo post anchor
+    contacto/                 → Redirect to form anchor on /components
+    about/ pricing/ faq/ ssr-demo/  → +page.ts only (307 → /components#…)
+    components/               → UI gallery + demos (SSR load, contact form action)
     api/
-      og/+server.ts          → OG image dinamica
+      og/+server.ts          → Dynamic OG image
   lib/
-    styles/stitch-m3.css      → Tokens M3/Stitch + utilidades text-h1, font-code…
-    site-config.ts            → Config nombre, URL, redes
+    styles/stitch-m3.css      → M3/Stitch tokens + utilities (text-h1, font-code…)
+    site-config.ts            → Site name, URL, social links
     components/
-      ui/                     → shadcn-svelte + componentes base (Button, Card, Input...)
-      *.svelte                → Componentes de proyecto
+      ui/                     → shadcn-svelte + base components (Button, Card, Input…)
+      *.svelte                → Project components
     stores/
-      toast.ts                → Notificaciones toast
+      toast.ts                → Toast notifications
     actions/
-      clickOutside.ts        → Accion Svelte
-    i18n/                     → Traducciones ES/EN
+      clickOutside.ts        → Svelte action
+    i18n/                     → ES/EN translations
     seo.ts                    → SEO store
-    reveal.ts                 → Animaciones scroll
-    utils.ts                  → cn(), tipos
+    reveal.ts                 → Scroll animations
+    utils.ts                  → cn(), types
     server/
-      supabase/              → Cliente Supabase (opcional)
-      sanity/                → Cliente GROQ + tipos (opcional)
-  app.css                     → CSS global + Tailwind v4 + variables de tema
+      supabase/              → Supabase client (optional)
+      sanity/                → GROQ client + types (optional)
+  app.css                     → Global CSS + Tailwind v4 + theme variables
   hooks.server.ts             → Security headers + CSP
 static/
-  logos/                      → SVGs de marcas (referencia)
+  logos/                      → Brand SVGs (reference)
   manifest.json              → Web app manifest
   favicon.svg
   robots.txt, llms.txt
@@ -146,18 +148,18 @@ static/
 
 ---
 
-## Personalizacion
+## Customization
 
 ### `src/lib/site-config.ts`
-Nombre del sitio, URL, redes, autor y valores por defecto que usa `src/lib/seo.ts`.
+Site name, URL, social links, author defaults used by `src/lib/seo.ts`.
 
-### `src/lib/i18n/es.json` y `en.json`
-Textos de la landing (`home.*`), navegacion (`layout.nav.*`), footer y demas claves. El titulo del documento viene del store **`seo`** (`<title>{$seo.title}</title>` en el layout); cada ruta puede llamar a `setSeo({ title, description, ... })`.
+### `src/lib/i18n/es.json` and `en.json`
+Landing copy (`home.*`), navigation (`layout.nav.*`), footer, and other keys. The document title comes from the **`seo`** store (`<title>{$seo.title}</title>` in the layout); each route can call `setSeo({ title, description, ... })`.
 
-### `src/app.css` y `src/lib/styles/stitch-m3.css`
-Tokens del tema (`--primary`, `--background`, …) y utilidades de tipografia Stitch. Variables legacy (`--text-main`, `--bg-soft`) estan alineadas con `--foreground` / `--muted`.
+### `src/app.css` and `src/lib/styles/stitch-m3.css`
+Theme tokens (`--primary`, `--background`, …) and Stitch typography utilities. Legacy variables (`--text-main`, `--bg-soft`) are aligned with `--foreground` / `--muted`.
 
-### Dark mode (ya viene configurado)
+### Dark mode (preconfigured)
 ```svelte
 import { mode, toggleMode } from 'mode-watcher';
 import { Moon, Sun } from 'lucide-svelte';
@@ -169,12 +171,12 @@ import { Moon, Sun } from 'lucide-svelte';
 
 ---
 
-## Despliegue
+## Deploy
 
-Vercel y Netlify. Sube a GitHub, conecta en el hosting, listo.
+Vercel and Netlify. Push to GitHub, connect the repo, done.
 
 ---
 
-## Licencia
+## License
 
-Libre para uso personal y comercial.
+Free for personal and commercial use.

@@ -1,38 +1,38 @@
-# AGENTS.md - Instrucciones para asistentes de IA
+# AGENTS.md — Instructions for AI assistants
 
-## Proyecto: My SvelteKit Starter
+## Project: My SvelteKit Starter
 
-Este es un proyecto **Svelte 5 + SvelteKit 2 + TypeScript + Tailwind CSS v4**.
-Usa runes de Svelte 5 ($state, $props, $derived, $effect) y shadcn-svelte.
+This is a **Svelte 5 + SvelteKit 2 + TypeScript + Tailwind CSS v4** project.
+It uses Svelte 5 runes (`$state`, `$props`, `$derived`, `$effect`) and shadcn-svelte.
 
 ---
 
-## REGLA DE ORO - LEE ESTO PRIMERO
+## GOLDEN RULE — READ THIS FIRST
 
-**NUNCA crees HTML crudo si ya existe un componente para eso.**
+**NEVER write raw HTML if a component already exists for that.**
 
-Antes de escribir `<button>`, `<h1>`, `<section>`, `<div class="card">` o cualquier elemento HTML,
-revisa esta lista. Si existe un componente que hace lo que necesitas, USALO.
+Before writing `<button>`, `<h1>`, `<section>`, `<div class="card">`, or similar,
+check this list. If a component does the job, **use it**.
 
 ```svelte
-<!-- MAL: HTML crudo -->
+<!-- BAD: raw HTML -->
 <button class="bg-blue-500 px-4 py-2 rounded-lg">Click</button>
-<h1 class="text-4xl font-bold">Titulo</h1>
-<div class="p-6 rounded-xl border bg-card">Contenido</div>
+<h1 class="text-4xl font-bold">Title</h1>
+<div class="p-6 rounded-xl border bg-card">Content</div>
 
-<!-- BIEN: componentes existentes -->
+<!-- GOOD: existing components -->
 <Button variant="default">Click</Button>
-<h1 class="text-4xl font-bold tracking-tight text-foreground">Titulo</h1>
+<h1 class="text-4xl font-bold tracking-tight text-foreground">Title</h1>
 <Card class="p-6">
-  <CardHeader><CardTitle>Contenido</CardTitle></CardHeader>
+  <CardHeader><CardTitle>Content</CardTitle></CardHeader>
   <CardContent>...</CardContent>
 </Card>
 ```
 
-### Catalogo de componentes shadcn-svelte
+### shadcn-svelte component catalog
 
-| Componente | Import | Props clave |
-|-----------|--------|-------------|
+| Component | Import | Key props |
+|-----------|--------|-----------|
 | **Button** | `$lib/components/ui/button` | `variant="default\|secondary\|outline\|ghost\|destructive\|link" size="default\|sm\|lg\|icon" href disabled` |
 | **Card** | `$lib/components/ui/card` | `Card`, `CardContent`, `CardHeader`, `CardTitle`, `CardFooter`, `CardDescription`, `CardAction` |
 | **Dialog** | `$lib/components/ui/dialog` | `open title onclose` |
@@ -42,10 +42,10 @@ revisa esta lista. Si existe un componente que hace lo que necesitas, USALO.
 | **Skeleton** | `$lib/components/ui/skeleton` | `width height class` |
 | **Spinner** | `$lib/components/ui/spinner` | `class="size-{n}"` |
 
-### Componentes custom del proyecto
+### Project-specific components
 
-| Componente | Import | Props clave |
-|-----------|--------|-------------|
+| Component | Import | Key props |
+|-----------|--------|-----------|
 | **Container** | `$lib/components/ui/Container.svelte` | `as="div\|section"` |
 | **Section** | `$lib/components/ui/Section.svelte` | `variant="default\|muted\|soft\|surface" id` |
 | **Heading** | `$lib/components/ui/Heading.svelte` | `level={1\|2\|3\|4} eyebrow kicker align` |
@@ -53,32 +53,32 @@ revisa esta lista. Si existe un componente que hace lo que necesitas, USALO.
 | **Grid** | `$lib/components/ui/Grid.svelte` | `columns={n} gap className` |
 | **HeroSection** | `$lib/components/ui/HeroSection.svelte` | `eyebrow title subtitle primaryLabel primaryHref secondaryLabel secondaryHref align` |
 | **FeaturesSection** | `$lib/components/ui/FeaturesSection.svelte` | `eyebrow title subtitle items=[{icon,title,description}] id` |
-| **Sonner (Toast)** | `$lib/components/ui/sonner` | `<Toaster />` en +layout.svelte |
+| **Sonner (Toast)** | `$lib/components/ui/sonner` | `<Toaster />` in +layout.svelte |
 | **CopyButton** | `$lib/components/CopyButton.svelte` | `text label` |
 | **Newsletter** | `$lib/components/Newsletter.svelte` | `title subtitle action buttonLabel` |
 | **AiPrompt** | `$lib/components/AiPrompt.svelte` | `placeholder message maxLength` |
 | **JsonLd** | `$lib/components/JsonLd.svelte` | `type headline datePublished dateModified` |
-| **Footer** | `$lib/components/Footer.svelte` | Enlaces; textos traducibles (`layout.footer.*`) |
+| **Footer** | `$lib/components/Footer.svelte` | Links; translatable copy (`layout.footer.*`) |
 
-La **home** (`src/routes/+page.svelte`) obtiene copy desde **i18n** (`home.*` en `es.json` / `en.json`). SEO se actualiza con `setSeo` dentro de `$effect` al cambiar idioma. Estilos Stitch/M3: utilidades en `src/lib/styles/stitch-m3.css`.
+The **home** (`src/routes/+page.svelte`) loads copy from **i18n** (`home.*` in `es.json` / `en.json`). SEO is updated with `setSeo` inside `$effect` when the locale changes. Stitch/M3 styles: utilities in `src/lib/styles/stitch-m3.css`.
 
-El **titulo del documento** en el layout usa **`{$seo.title}`** (store en `src/lib/seo.ts`), no un titulo fijo de i18n.
+The **document title** in the layout uses **`{$seo.title}`** (store in `src/lib/seo.ts`), not a fixed i18n title string.
 
-### Stores y utilidades
+### Stores and utilities
 
 ```ts
 import { toast } from '$lib/stores/toast';
-toast('Mensaje', 'success');  // success | error | info | warning
-// El layout monta `<Toaster />` (Sonner/shadcn) y `<ToastContainer />` para toasts del store anterior.
+toast('Message', 'success'); // success | error | info | warning
+// Layout mounts `<Toaster />` (Sonner/shadcn) and `<ToastContainer />` for the legacy toast store.
 
 import { mode, toggleMode } from 'mode-watcher';
-// mode.current === 'dark' | 'light' | 'system', toggleMode() para alternar
+// mode.current === 'dark' | 'light' | 'system', toggleMode() to toggle
 
 import { clickOutside } from '$lib/actions/clickOutside';
-// use:clickOutside={fn}  → ejecuta fn al clickear fuera
+// use:clickOutside={fn} → runs fn on outside click
 
 import { t, locale, setLocale } from '$lib/i18n/index';
-// {$t('clave')} para traducir, setLocale('es'|'en')
+// {$t('key')} to translate, setLocale('es'|'en')
 
 import { setSeo } from '$lib/seo';
 // setSeo({ title, description, ogImage, ... })
@@ -87,57 +87,58 @@ import { reveal } from '$lib/reveal';
 // use:reveal={{ stage: 'title'|'content', delay: 120 }}
 
 import { cn } from '$lib/utils';
-// cn('foo', 'bar') → combina classes con tailwind-merge
+// cn('foo', 'bar') → merge classes with tailwind-merge
 ```
 
-### SI el componente que necesitas NO existe
+### If the component you need does NOT exist
 
-Entonces sí, créalo. Pero:
-1. Ponlo en `src/lib/components/ui/` si es genérico
-2. Usa `<script lang="ts">` con `$props()`
-3. Usa Tailwind para estilos
-4. Usa `$state()`, `$derived()`, `$effect()` para estado
-
----
-
-## Regla de oro
-SIEMPRE lee `src/lib/site-config.ts` antes de tocar nombres, links o SEO.
-SIEMPRE usa los componentes de arriba en vez de crear HTML desde cero.
-SIEMPRE traduce textos con `$t('clave')` del sistema i18n SI LA PAGINA USA i18n.
+Then create it. But:
+1. Put it in `src/lib/components/ui/` if it is generic
+2. Use `<script lang="ts">` with `$props()`
+3. Use Tailwind for styles
+4. Use `$state()`, `$derived()`, `$effect()` for state
 
 ---
 
-## Estructura clave
+## Golden rules (summary)
 
-| Carpeta | Proposito |
-|---------|-----------|
-| `src/routes/` | Paginas (filesystem routing) |
-| `src/lib/components/ui/` | Componentes shadcn-svelte + custom |
-| `src/lib/components/` | Componentes de proyecto |
-| `src/lib/i18n/` | Traducciones ES/EN |
-| `src/lib/server/` | Codigo solo servidor |
-| `src/app.css` | CSS global, Tailwind v4, variables de tema shadcn |
-| `src/lib/styles/stitch-m3.css` | Tokens/copy visual tipo Stitch (tipografia `text-h1`, colores M3) |
-| `static/` | Archivos estaticos |
+ALWAYS read `src/lib/site-config.ts` before changing names, links, or SEO.
+ALWAYS use the components above instead of hand-written HTML.
+ALWAYS translate visible strings with `$t('key')` **if the page uses i18n**.
 
 ---
 
-## Patrones Svelte 5 obligatorios
+## Key structure
+
+| Folder | Purpose |
+|--------|---------|
+| `src/routes/` | Pages (filesystem routing) |
+| `src/lib/components/ui/` | shadcn-svelte + shared UI |
+| `src/lib/components/` | Project components |
+| `src/lib/i18n/` | ES/EN translations |
+| `src/lib/server/` | Server-only code |
+| `src/app.css` | Global CSS, Tailwind v4, shadcn theme variables |
+| `src/lib/styles/stitch-m3.css` | Stitch-style M3 tokens (`text-h1`, etc.) |
+| `static/` | Static assets |
+
+---
+
+## Required Svelte 5 patterns
 
 ```svelte
 <script lang="ts">
-  // Props tipadas - ASI se hace en Svelte 5
-  let { titulo, items = [] }: { titulo: string; items?: string[] } = $props();
+  // Typed props — Svelte 5 style
+  let { title, items = [] }: { title: string; items?: string[] } = $props();
 
-  // Estado local
-  let abierto = $state(false);
+  // Local state
+  let open = $state(false);
 
-  // Derivado
+  // Derived
   const total = $derived(items.length);
 
-  // Efecto
+  // Effect
   $effect(() => {
-    console.log('abierto cambio:', abierto);
+    console.log('open changed:', open);
   });
 </script>
 ```
@@ -145,31 +146,31 @@ SIEMPRE traduce textos con `$t('clave')` del sistema i18n SI LA PAGINA USA i18n.
 ### Slots → Snippets (Svelte 5)
 
 ```svelte
-<!-- ANTES (Svelte 4) -->
+<!-- BEFORE (Svelte 4) -->
 <slot name="header" />
 
-<!-- AHORA (Svelte 5) -->
+<!-- NOW (Svelte 5) -->
 {@render children?.()}
 ```
 
-### Props con $props() - NO con generics
+### Props with `$props()` — NOT with generics
 
 ```svelte
-<!-- MAL -->
-let { titulo } = $props<string>();
+<!-- BAD -->
+let { title } = $props<string>();
 
-<!-- BIEN -->
-let { titulo }: { titulo: string } = $props();
+<!-- GOOD -->
+let { title }: { title: string } = $props();
 ```
 
 ---
 
 ## CSS
 
-- **Tailwind CSS v4** con `@import "tailwindcss"`
-- Variables shadcn: `--primary`, `--primary-foreground`, `--background`, `--foreground`, `--border`, `--muted`, etc.
-- Variables custom: `--accent`, `--text-main`, `--text-secondary`, `--bg-main`, `--bg-soft`
-- Estilos scoped en cada componente: `<style>...</style>`
+- **Tailwind CSS v4** with `@import "tailwindcss"`
+- shadcn variables: `--primary`, `--primary-foreground`, `--background`, `--foreground`, `--border`, `--muted`, etc.
+- Custom variables: `--accent`, `--text-main`, `--text-secondary`, `--bg-main`, `--bg-soft`
+- Scoped styles per component: `<style>...</style>`
 
 ---
 
@@ -186,7 +187,7 @@ setSeo({ title: '...', description: '...', ogImage: '...' });
 
 ```svelte
 import { t } from '$lib/i18n/index';
-{$t('clave.del.json')}
+{$t('key.from.json')}
 ```
 
 ---
@@ -204,53 +205,53 @@ import { Moon, Sun } from 'lucide-svelte';
 
 ---
 
-## Al crear paginas nuevas
+## Creating a new page
 
-1. `src/routes/mi-pagina/+page.svelte`
-2. `<script lang="ts">` arriba con imports
-3. `setSeo(...)` para SEO
-4. Si carga datos del servidor: `+page.ts` con `load()`
-5. Si tiene formulario: `+page.server.ts` con `actions`
-6. `+page.svelte` NUNCA usa `async` - la carga va en `+page.ts`
-
----
-
-## Al crear componentes nuevos
-
-1. Props tipadas con `$props()`
-2. Estado con `$state()`, derivado con `$derived()`
-3. Si es genérico → `src/lib/components/ui/`
-4. Si es específico del proyecto → `src/lib/components/`
-5. Usa Tailwind para estilos, NO CSS custom si Tailwind puede hacerlo
+1. `src/routes/my-page/+page.svelte`
+2. `<script lang="ts">` at the top with imports
+3. `setSeo(...)` for SEO
+4. If loading server data: `+page.ts` with `load()`
+5. If it has a form: `+page.server.ts` with `actions`
+6. `+page.svelte` must **not** use `async` — data loading belongs in `+page.ts`
 
 ---
 
-## Flujo diseño externo → código (Stitch, Lovable, Figma HTML, etc.)
+## Creating a new component
 
-Cuando el usuario traiga **referencia de otra herramienta** y pida **paridad visual** con esta plantilla:
+1. Typed props with `$props()`
+2. State with `$state()`, derived with `$derived()`
+3. Generic → `src/lib/components/ui/`
+4. Project-specific → `src/lib/components/`
+5. Use Tailwind for styles; avoid custom CSS when Tailwind can do it
 
-1. **No volcar HTML crudo sin traducir**: mapear bloques a **Button, Card, Section, Heading, Grid**, etc. del catálogo superior.
-2. **Tokens primero**: alinear colores y tipografía con `src/app.css`, utilidades M3/Stitch en `src/lib/styles/stitch-m3.css`, y copy en **i18n** si la página ya usa `$t()`.
-3. **Pedir al usuario** (si falta) capturas o export CSS/HTML y lista de breakpoints a respetar.
-4. **Cierre**: `npm run check` y mencionar qué se aproximó vs. qué quedó 1:1.
+---
 
-Guía detallada y prompt listo para copiar: **`DESIGN_TO_CURSOR.md`**.
+## External design → code (Stitch, Lovable, Figma HTML, etc.)
+
+When the user brings **reference from another tool** and asks for **visual parity** with this template:
+
+1. **Do not dump raw HTML without mapping** — map blocks to **Button, Card, Section, Heading, Grid**, etc. from the catalog above.
+2. **Tokens first** — align colors and typography with `src/app.css`, M3/Stitch utilities in `src/lib/styles/stitch-m3.css`, and copy in **i18n** if the page already uses `$t()`.
+3. **Ask the user** (if missing) for screenshots or exported CSS/HTML and breakpoints to respect.
+4. **Finish with** `npm run check` and summarize what matched vs. what was approximated.
+
+Detailed guide and copy-paste prompt: **`DESIGN_TO_CURSOR.md`**.
 
 ---
 
 ## shadcn-svelte CLI
 
 ```bash
-npx shadcn-svelte@latest add <componente>
+npx shadcn-svelte@latest add <component>
 ```
 
-Componentes disponibles: button, card, dialog, skeleton, spinner, sonner, input, textarea, label, accordion, avatar, badge, calendar, checkbox, command, dropdown-menu, form, popover, progress, select, separator, sheet, slider, switch, table, tabs, toggle-group, tooltip
+Available components: button, card, dialog, skeleton, spinner, sonner, input, textarea, label, accordion, avatar, badge, calendar, checkbox, command, dropdown-menu, form, popover, progress, select, separator, sheet, slider, switch, table, tabs, toggle-group, tooltip
 
 ---
 
 ## type-only imports
 
-Quando uses `Snippet` como tipo, importa con `import type`:
+When you use `Snippet` as a type, import with `import type`:
 
 ```svelte
 <script lang="ts">

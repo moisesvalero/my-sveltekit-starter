@@ -1,0 +1,319 @@
+STEP-BY-STEP INSTRUCTIONS FOR THIS TEMPLATE
+============================================
+
+English version (this file). Spanish: **INSTRUCCIONES.txt** in the repo root.
+
+This file is for people who:
+- Have NEVER used Svelte or SvelteKit.
+- Use AI (Cursor, ChatGPT, Claude) to write code.
+- Want modern websites without being experts.
+
+Read calmly and follow the steps in order.
+
+--------------------------------------------------
+1. WHAT THIS TEMPLATE IS
+--------------------------------------------------
+
+This folder is a ready-to-use template for websites with:
+- SvelteKit 2 + Svelte 5 + TypeScript
+
+It includes:
+- A working home page.
+- A full sample landing for inspiration.
+- A gallery with ALL available components.
+- Reusable components to build your own site.
+- ES/EN translations ready to use.
+- Automatic SEO (sitemap, robots.txt, meta tags).
+- Tests, formatting, and GitHub CI/CD.
+- Deployment presets for Vercel and Netlify.
+- Context files so AIs understand your project better.
+
+Your goals when using it:
+- Make a copy.
+- Change ONE config file.
+- Change copy and colors.
+- Deploy.
+
+--------------------------------------------------
+2. INSTALL REQUIRED TOOLS
+--------------------------------------------------
+
+2.1. Install Node.js
+--------------------
+
+1. Go to https://nodejs.org
+2. Download the recommended LTS version.
+3. Run the installer (double-click).
+4. Accept defaults.
+5. To verify, open a terminal (Windows + "cmd") and run:
+
+   node -v
+   npm -v
+
+   If you see version numbers, it worked.
+
+2.2. (Optional) Install Git
+-----------------------------
+
+1. Go to https://git-scm.com
+2. Download and install with defaults.
+
+--------------------------------------------------
+3. CREATE A NEW PROJECT
+--------------------------------------------------
+
+3.1. Option A — Use Git
+-----------------------
+
+1. Open a terminal.
+2. Go where you want the project:
+
+   cd C:\Users\YOUR_USER\Desktop
+
+3. Clone the repository:
+
+   git clone URL_OF_THIS_REPO my-new-site
+   cd my-new-site
+
+3.2. Option B — Download ZIP
+----------------------------
+
+1. Download the ZIP from GitHub ("Code" → "Download ZIP").
+2. Extract to a folder (e.g. Desktop).
+3. Open a terminal in that folder.
+
+--------------------------------------------------
+4. INSTALL DEPENDENCIES
+--------------------------------------------------
+
+1. In the terminal, inside the project folder:
+
+   npm install
+
+2. Wait until it finishes (may take a few minutes).
+3. When the prompt returns, you are ready.
+
+--------------------------------------------------
+5. START DEVELOPMENT MODE
+--------------------------------------------------
+
+1. In the same terminal:
+
+   npm run dev
+
+2. Open your browser at:
+
+   http://localhost:5173
+
+3. You should see the home page.
+4. Keep the terminal open while you work.
+
+--------------------------------------------------
+6. UNDERSTAND THE STRUCTURE (MINIMUM)
+--------------------------------------------------
+
+Files you WILL touch:
+
+- src/routes/+page.svelte
+  → Your main (home) page.
+
+- src/lib/site-config.ts
+  → Brand and global links (site name, URL, social, author).
+    Top menu labels live in src/lib/i18n/es.json and en.json (keys layout.nav.*).
+
+- src/app.css
+  → Global colors. Look for --accent and change it to your color.
+
+Files you do NOT need to touch at first:
+- src/lib/components/ → reusable components
+- src/lib/i18n/ → translations (edit when you want ES/EN)
+- src/lib/seo.ts → SEO store and setSeo()
+
+Sample pages included:
+- / → landing with hero, features, steps, CTAs (copy in i18n)
+- /components → UI gallery + blog demos and contact form
+- There is no /examples/landing route (the main landing is /)
+
+--------------------------------------------------
+7. YOUR FIRST CHANGE: CUSTOMIZE THE SITE
+--------------------------------------------------
+
+1. Open src/lib/site-config.ts
+2. Change:
+   - name: 'My Project' → your site name
+   - url: 'https://your-domain.com' → your real domain
+   - social.github → your GitHub
+   - social.linkedin → your LinkedIn
+   - author.name → your name
+   - author.url → your site
+3. Save (Ctrl+S).
+4. The browser hot-reloads and you see updates.
+
+--------------------------------------------------
+8. CHANGE COLORS
+--------------------------------------------------
+
+1. Open src/app.css
+2. Find and edit variables such as:
+
+   --accent: #6366f1;       → your main color
+   --accent-hover: #4f46e5; → darker hover
+   --text-main: #111827;    → main text
+   --text-secondary: #6b7280; → secondary text
+   --bg-main: #ffffff;      → main background
+   --bg-soft: #f9fafb;      → soft background
+
+3. Save and check the browser.
+
+--------------------------------------------------
+9. USING AI TO HELP
+--------------------------------------------------
+
+This template is set up so AIs understand your project:
+
+- Cursor: `.cursor/rules` summarizes conventions (aligned with AGENTS.md).
+
+- ChatGPT, Claude, Copilot: **AGENTS.md** describes the project and components.
+- Coming from Stitch, Lovable, or similar: read **DESIGN_TO_CURSOR.md** (flow + ready prompt).
+
+To add even more AI help:
+```bash
+npx autoskills
+```
+This detects your stack and adds extra skills for Cursor, Claude Code, and other assistants.
+
+When you ask for help, say you use:
+"Svelte 5 with runes, SvelteKit 2, TypeScript, Tailwind CSS v4"
+
+--------------------------------------------------
+10. AVAILABLE COMPONENTS
+--------------------------------------------------
+
+Base components live in src/lib/components/ui/:
+
+Button    → Variants (primary, secondary, ghost…)
+Card      → Cards with borders/shadows
+Container → Centered container
+Section   → Section with background variants
+Heading   → H1–H4
+Text      → Paragraph variants
+Grid      → Responsive grid
+Spinner   → Loading indicator
+
+Advanced / project blocks:
+
+HeroSection     → Full hero (title + buttons)
+FeaturesSection → Feature grid
+LoadingBlock    → Loading screen
+CopyButton      → Copy-to-clipboard
+Analytics       → Placeholder for Google Analytics
+AiPrompt        → Text area ready for AI wiring
+
+See them all: http://localhost:5173/components
+
+--------------------------------------------------
+11. TRANSLATIONS (i18n)
+--------------------------------------------------
+
+The template supports Spanish and English.
+
+In your components:
+- Import: import { t } from '$lib/i18n/index';
+- In markup: {$t('home.hero.title')} (or any key from the JSON files)
+- Keys live in src/lib/i18n/es.json and en.json
+
+The language toggle is in the top menu.
+The choice is stored in the browser’s localStorage.
+
+--------------------------------------------------
+12. SEO (SEARCH)
+--------------------------------------------------
+
+Each page can set its own SEO.
+
+Example in a page:
+```svelte
+<script lang="ts">
+  import { setSeo } from '$lib/seo';
+  setSeo({ title: 'My Page', description: 'Description…' });
+</script>
+```
+
+SEO-related pieces:
+- /sitemap.xml → automatic sitemap
+- /robots.txt → indexing rules (also static/robots.txt if you serve static)
+- src/lib/seo.ts → reusable store and setSeo()
+
+IMPORTANT: in production set:
+PUBLIC_SITE_URL=https://your-domain.com
+On Vercel: Settings → Environment Variables.
+
+--------------------------------------------------
+13. DEPLOY TO PRODUCTION
+--------------------------------------------------
+
+The template is preset for Vercel and Netlify.
+
+### Option A: Vercel (recommended)
+1. Push the project to GitHub.
+2. Go to vercel.com, sign in with GitHub.
+3. "New Project" → select your repo.
+4. Vercel auto-detects settings.
+5. Your site goes live at https://your-project.vercel.app
+
+### Option B: Netlify
+1. Go to netlify.com
+2. Connect your GitHub repo
+3. Netlify auto-detects config
+
+### Option C: Other hosting
+In svelte.config.js use `@sveltejs/adapter-auto` or the official adapter for your platform (see SvelteKit docs).
+
+--------------------------------------------------
+14. TESTS AND CODE QUALITY
+--------------------------------------------------
+
+The template includes tooling to keep code clean:
+
+npm run lint   → Lint rules
+npm run format → Auto-format
+npm run test   → Run tests
+npm run check  → TypeScript + Svelte diagnostics
+
+In VS Code, format on save may run automatically
+(if recommended extensions are installed).
+
+--------------------------------------------------
+15. IF SOMETHING BREAKS
+--------------------------------------------------
+
+Problem: "npm run dev" fails
+→ Run "npm install" first.
+→ Make sure you are in the project folder.
+
+Problem: page shows an error
+→ Read the terminal message.
+→ If unclear, copy the error to your AI assistant.
+
+Problem: changes not visible
+→ Save the file (Ctrl+S).
+→ Hard refresh the browser (F5).
+
+Problem: undo a change
+→ With Git: git checkout -- path/to/file
+→ Without Git: Ctrl+Z in the editor.
+
+--------------------------------------------------
+16. NEXT STEPS
+--------------------------------------------------
+
+When you are comfortable:
+
+1. Explore /components for all UI and demos.
+2. Customize the landing at / (src/routes/+page.svelte + i18n).
+3. Add your own routes under src/routes/.
+4. Add components under src/lib/components/.
+5. Connect a CMS (Sanity, Decap, etc.) if non-devs must edit content.
+
+No rush. Start by changing copy and colors.
+You’ll learn the rest gradually.

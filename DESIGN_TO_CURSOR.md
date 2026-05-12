@@ -1,75 +1,75 @@
-# De Stitch / Lovable (u otro) → esta plantilla en Cursor
+# From Stitch / Lovable (or similar) → this template in Cursor
 
-Flujo pensado: **diseñas o prototipas fuera** (Stitch, Lovable, Framer export, HTML de referencia…) y **implementas aquí** con el agente para acercarte al diseño **todo lo que permitan tokens + layout**.
-
----
-
-## ¿Es buena idea?
-
-**Sí**, como proceso: una referencia visual/clara reduce improvisación y acelera decisiones.  
-**No** esperes “pixel perfect” máquina-solo al 100 %: las herramientas exportan otro stack (React/HTML crudo), otros nombres de clase y a veces otros breakpoints. Lo que sí puedes exigir es **paridad muy alta** si aportas referencia + criterios.
+**Flow:** you **design or prototype elsewhere** (Stitch, Lovable, Framer export, reference HTML…) and **implement here** with the agent to get as close as **tokens + layout** allow.
 
 ---
 
-## Qué aportar siempre al agente
+## Is this a good idea?
 
-1. **Referencia visual** — Captura del resultado objetivo (o URL si es estable), idealmente **desktop + mobile**.
-2. **HTML/CSS o código exportado** — Pégalo en el chat o en un archivo temporal del repo (luego borras lo que no necesites).
-3. **Tokens del diseño** — Colores hex, radios, sombras, tipografías y tamaños clave (o captura del panel de tema).
-4. **Prioridad** — Qué debe ser idéntico sí o sí (hero, nav, pricing) vs. “puede variar un poco”.
-5. **Alcance** — Solo home, solo `/pricing`, o site completo.
+**Yes**, as a process: a clear visual reference cuts guesswork and speeds decisions.  
+**No**, don’t expect 100% “pixel perfect” on autopilot: exporters use another stack (React/raw HTML), different class names, and sometimes different breakpoints. You *can* aim for **very high parity** if you provide reference + criteria.
 
 ---
 
-## Dónde encaja esta plantilla
+## Always give the agent
 
-| Objetivo | Dónde tocar |
-|----------|-------------|
-| Colores y tema global | `src/app.css`, variables shadcn (`--primary`, `--background`, …) |
-| Tipografía / utilidades tipo Stitch | `src/lib/styles/stitch-m3.css` (`text-h1`, `font-h3`, …) |
-| Copy por idioma | `src/lib/i18n/es.json`, `en.json` |
-| Marca y enlaces | `src/lib/site-config.ts` |
-| Maquetación por página | `src/routes/.../+page.svelte` |
-| Componentes reutilizables | `src/lib/components/ui/` (shadcn) y `src/lib/components/` |
-
-El agente debe **mapear** el diseño exportado a **componentes existentes** (`Button`, `Card`, `Section`, …), no dejar un volcado de `<div>` sin revisar.
+1. **Visual reference** — Screenshot of the target (or a stable URL), ideally **desktop + mobile**.
+2. **HTML/CSS or exported code** — Paste in chat or a temporary file in the repo (delete what you don’t need).
+3. **Design tokens** — Hex colors, radii, shadows, key type sizes (or a screenshot of the theme panel).
+4. **Priority** — What must match exactly (hero, nav, pricing) vs. what can drift slightly.
+5. **Scope** — Home only, `/pricing` only, or full site.
 
 ---
 
-## Prompt base (cópialo en Cursor)
+## Where this template fits
+
+| Goal | Where to edit |
+|------|----------------|
+| Global colors & theme | `src/app.css`, shadcn variables (`--primary`, `--background`, …) |
+| Typography / Stitch-like utilities | `src/lib/styles/stitch-m3.css` (`text-h1`, `font-h3`, …) |
+| Copy per language | `src/lib/i18n/es.json`, `en.json` |
+| Brand & links | `src/lib/site-config.ts` |
+| Page layout | `src/routes/.../+page.svelte` |
+| Reusable UI | `src/lib/components/ui/` (shadcn) and `src/lib/components/` |
+
+The agent should **map** exported design to **existing components** (`Button`, `Card`, `Section`, …), not leave a wall of unreviewed `<div>`s.
+
+---
+
+## Base prompt (copy into Cursor)
 
 ```
-Tengo una referencia hecha en [Stitch / Lovable / …].
-Adjunto: [pega HTML/CSS o describe capturas].
+I have a reference built in [Stitch / Lovable / …].
+Attached: [paste HTML/CSS or describe screenshots].
 
-Objetivo: implementar en ESTE repo SvelteKit 5 la misma composición visual lo más fiel posible.
+Goal: implement the same visual composition in THIS SvelteKit 5 repo as faithfully as possible.
 
-Reglas obligatorias:
-- Usa solo componentes del catálogo en AGENTS.md (Button, Card, Section, Heading, etc.).
-- Tailwind v4 + tokens en app.css y stitch-m3.css donde aplique.
-- No inventes rutas nuevas salvo que yo las pida.
-- Mantén i18n: textos visibles en es.json / en.json con claves nuevas bajo home.* o la página que toque.
-- Tras cambios: npm run check debe pasar.
+Hard rules:
+- Use only components from the catalog in AGENTS.md (Button, Card, Section, Heading, etc.).
+- Tailwind v4 + tokens in app.css and stitch-m3.css where relevant.
+- Do not invent new routes unless I ask.
+- Keep i18n: visible strings in es.json / en.json with new keys under home.* or the page you touch.
+- After changes: npm run check must pass.
 
-Orden de trabajo:
-1) Lista diferencias visual→token (colores, tipo, espaciados).
-2) Propón cambios por archivo.
-3) Implementa y resume qué quedó igual al diseño y qué se aproximó.
+Work order:
+1) List visual→token differences (colors, type, spacing).
+2) Propose changes file by file.
+3) Implement and summarize what matches the design vs. what was approximated.
 ```
 
 ---
 
-## Checklist rápido después del agente
+## Quick checklist after the agent
 
-- [ ] `npm run check` sin errores  
-- [ ] Vista mobile y desktop comparadas con la referencia  
-- [ ] Contraste y foco accesible en botones y enlaces  
-- [ ] Textos en ES/EN si la página usa `$t()`
+- [ ] `npm run check` clean  
+- [ ] Mobile and desktop compared to the reference  
+- [ ] Accessible contrast and focus on buttons and links  
+- [ ] ES/EN copy if the page uses `$t()`
 
 ---
 
-## Lecturas relacionadas
+## Related docs
 
-- **`AGENTS.md`** — Catálogo de componentes y convenciones  
-- **`PROMPTS.md`** — Snippets; busca la sección del mismo flujo  
-- **`.cursor/rules`** — Reglas cortas que Cursor carga en contexto  
+- **`AGENTS.md`** — Component catalog and conventions  
+- **`PROMPTS.md`** — Snippets; same flow in a dedicated section  
+- **`.cursor/rules`** — Short rules Cursor loads into context  

@@ -1,48 +1,48 @@
-# Reglas para Cursor AI — My SvelteKit Starter
+# Cursor rules — My SvelteKit Starter
 
-Fuente de verdad detallada: **AGENTS.md** en la raíz del repo.
+Detailed source of truth: **AGENTS.md** at the repo root.
 
-## Disparador: diseño externo → código (léelo antes de tocar archivos)
+## Trigger: external design → code (read before editing files)
 
-Si el usuario (o el contexto) menciona **Stitch**, **Lovable**, **paridad visual**, **pixel perfect**, **igual que el diseño**, **export HTML/CSS**, **Figma / prototipo** como referencia principal, o **DESIGN_TO_CURSOR**:
+If the user (or context) mentions **Stitch**, **Lovable**, **visual parity**, **pixel perfect**, **match the design**, **exported HTML/CSS**, **Figma / prototype** as the main reference, or **DESIGN_TO_CURSOR**:
 
-1. **Abre y sigue** el archivo **`DESIGN_TO_CURSOR.md`** en la raíz del repo (léelo completo con la herramienta de lectura si no lo tienes en contexto).
-2. Después aplica **AGENTS.md** (catálogo de componentes, i18n, `npm run check`).
-3. Mapea el diseño a **Button, Card, Section**, etc.; ajusta tokens en **`src/app.css`** y **`src/lib/styles/stitch-m3.css`**; no dejes solo HTML crudo sin migrar a componentes.
+1. **Open and follow** **`DESIGN_TO_CURSOR.md`** at the repo root (read it fully with the read tool if it is not in context).
+2. Then apply **AGENTS.md** (component catalog, i18n, `npm run check`).
+3. Map the design to **Button, Card, Section**, etc.; tune tokens in **`src/app.css`** and **`src/lib/styles/stitch-m3.css`**; do not leave only raw HTML without migrating to components.
 
-Si no aplica ninguno de esos casos, sigue solo con AGENTS.md como hasta ahora.
+If none of that applies, follow **AGENTS.md** as usual.
 
 ---
 
-Flujo resumido **Stitch / Lovable → paridad visual**: checklist y prompt en **DESIGN_TO_CURSOR.md**.
+Short **Stitch / Lovable → visual parity** flow: checklist and prompt in **DESIGN_TO_CURSOR.md**.
 
-Si el usuario pide clonar un diseño externo: mapear a componentes del catálogo, ajustar tokens en `app.css` / `stitch-m3.css`, no dejar maquetación solo con HTML suelto.
+If the user asks to clone an external design: map to catalog components, adjust tokens in `app.css` / `stitch-m3.css`, avoid layout-only loose HTML.
 
-## Regla de oro
+## Golden rule
 
-**No escribas HTML crudo** (`<button>`, `<h1>`, tarjetas a mano) si ya existe un componente en `src/lib/components/ui/` o `src/lib/components/`.
+**Do not write raw HTML** (`<button>`, `<h1>`, hand-built cards) if a component already exists under `src/lib/components/ui/` or `src/lib/components/`.
 
-## Catálogo rápido (imports actuales)
+## Quick catalog (current imports)
 
-| Uso | Import |
+| Use | Import |
 |-----|--------|
-| Button, variantes shadcn | `$lib/components/ui/button` |
+| Button (shadcn variants) | `$lib/components/ui/button` |
 | Card / CardHeader / CardTitle… | `$lib/components/ui/card` |
 | Dialog | `$lib/components/ui/dialog` |
 | Input, Textarea, Label | `$lib/components/ui/input`, `textarea`, `label` |
 | Skeleton, Spinner | `$lib/components/ui/skeleton`, `spinner` |
-| Toasts Sonner | `$lib/components/ui/sonner` → `<Toaster />` en layout |
-| Layout marketing | `Container`, `Section`, `Heading`, `Text`, `Grid` en `$lib/components/ui/*.svelte` |
-| Bloques | `HeroSection`, `FeaturesSection` en `$lib/components/ui/` |
-| Proyecto | `Footer`, `CopyButton`, `Newsletter`, `AiPrompt`, `JsonLd`, `CookieConsent`, `BlogLayout`, `LoadingBlock`, `LiveChat`, `Analytics` en `$lib/components/` |
+| Sonner toasts | `$lib/components/ui/sonner` → `<Toaster />` in layout |
+| Marketing layout | `Container`, `Section`, `Heading`, `Text`, `Grid` in `$lib/components/ui/*.svelte` |
+| Blocks | `HeroSection`, `FeaturesSection` in `$lib/components/ui/` |
+| Project | `Footer`, `CopyButton`, `Newsletter`, `AiPrompt`, `JsonLd`, `CookieConsent`, `BlogLayout`, `LoadingBlock`, `LiveChat`, `Analytics` in `$lib/components/` |
 
-**No existen** como rutas antiguas: `ThemeToggle.svelte`, `Modal.svelte`, `Button.svelte` suelto en la raíz de `ui/`.
+**Not** present as legacy paths: `ThemeToggle.svelte`, `Modal.svelte`, loose `Button.svelte` at the root of `ui/`.
 
-## Utilidades
+## Utilities
 
 ```ts
 import { toast } from '$lib/stores/toast';
-// Layout: <Toaster /> (Sonner) + <ToastContainer /> para el store
+// Layout: <Toaster /> (Sonner) + <ToastContainer /> for the store
 
 import { mode, toggleMode } from 'mode-watcher';
 
@@ -60,33 +60,33 @@ import { clickOutside } from '$lib/actions/clickOutside';
 ## Stack
 
 - **Svelte 5** — runes: `$state`, `$props`, `$derived`, `$effect`
-- **SvelteKit 2** — rutas, `load`, form actions
+- **SvelteKit 2** — routes, `load`, form actions
 - **TypeScript**
-- **Tailwind CSS v4** — utilidades en componentes; tokens en `src/app.css` y `src/lib/styles/stitch-m3.css`
-- **shadcn-svelte + bits-ui** — patrones bajo `src/lib/components/ui/`
+- **Tailwind CSS v4** — utilities in components; tokens in `src/app.css` and `src/lib/styles/stitch-m3.css`
+- **shadcn-svelte + bits-ui** — patterns under `src/lib/components/ui/`
 
 ## Props (Svelte 5)
 
-Tipar así (sin generic en `$props()`):
+Type like this (no generic on `$props()`):
 
 ```ts
-let { titulo }: { titulo: string } = $props();
+let { title }: { title: string } = $props();
 ```
 
-Snippets en lugar de slots: `{@render children?.()}`
+Use snippets instead of slots: `{@render children?.()}`
 
-## Personalización
+## Customization
 
-- `src/lib/site-config.ts` — nombre, URL, redes
-- `src/lib/i18n/es.json` y `en.json` — copy del layout (`layout.*`) y home (`home.*`)
-- `src/lib/seo.ts` — `setSeo`, store `$seo`
+- `src/lib/site-config.ts` — name, URL, social
+- `src/lib/i18n/es.json` and `en.json` — layout (`layout.*`) and home (`home.*`) copy
+- `src/lib/seo.ts` — `setSeo`, `$seo` store
 
-## Nueva página / componente
+## New page / component
 
-Ver **AGENTS.md**: `+page.svelte`, `setSeo`, opcional `+page.ts` / `+page.server.ts`; sin `async` en el `.svelte`.
+See **AGENTS.md**: `+page.svelte`, `setSeo`, optional `+page.ts` / `+page.server.ts`; no `async` in the `.svelte` file.
 
 ## shadcn-svelte CLI
 
 ```bash
-npx shadcn-svelte@latest add <componente>
+npx shadcn-svelte@latest add <component>
 ```

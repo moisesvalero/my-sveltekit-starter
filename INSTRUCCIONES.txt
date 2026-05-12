@@ -1,6 +1,8 @@
 INSTRUCCIONES PASO A PASO PARA USAR ESTA PLANTILLA
 ==================================================
 
+(English version: INSTRUCTIONS.txt en la raíz del repo.)
+
 Este archivo esta pensado para personas que:
 - NUNCA han usado Svelte ni SvelteKit.
 - Usan IA (Cursor, ChatGPT, Claude) para generar codigo.

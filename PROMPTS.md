@@ -1,127 +1,127 @@
-# PROMPTS.md - Snippets para pedirle a la IA
+# PROMPTS.md — Snippets for AI assistants
 
-Copia y pega estos snippets en ChatGPT, Claude o Cursor para generar paginas y componentes
-que sigan las convenciones de esta plantilla.
+Copy and paste these snippets into ChatGPT, Claude, or Cursor to generate pages and components
+that follow this template’s conventions.
 
 ---
 
-## Crear una pagina nueva
+## Create a new page
 
 ```
-Crea una pagina de [tipo: landing / about / servicios] en Svelte 5 para mi proyecto SvelteKit.
-Usa runes ($state, $props, $derived, $effect).
-Usa estos componentes existentes: Container, Section, Heading, Text, Grid, Card, Button.
-Usa Tailwind para estilos (ya esta instalado).
-Añade setSeo({ title, description }) al inicio del script.
-La pagina debe estar en +page.svelte.
-Si cargas datos del servidor, usa +page.ts con export async function load().
-Si la pagina usa traducciones, importa { t } from '$lib/i18n/index'.
+Create a [type: landing / about / services] page in Svelte 5 for my SvelteKit project.
+Use runes ($state, $props, $derived, $effect).
+Use these existing components: Container, Section, Heading, Text, Grid, Card, Button.
+Use Tailwind for styles (already installed).
+Add setSeo({ title, description }) at the top of the script.
+The page must live in +page.svelte.
+If you load server data, use +page.ts with export async function load().
+If the page uses translations, import { t } from '$lib/i18n/index'.
 ```
 
-## Crear un componente nuevo
+## Create a new component
 
 ```
-Crea un componente [nombre] en Svelte 5 para mi proyecto.
-Usa <script lang="ts"> con props tipadas asi: let { titulo }: { titulo: string } = $props(); (no uses $props con generic).
-Usa $state() para estado local.
-Usa $derived() para valores derivados.
-Usa Tailwind para estilos.
-Ponlo en src/lib/components/[nombre].svelte.
-Si es un componente UI generico, ponlo en src/lib/components/ui/.
-Si el componente necesita slots, usa snippets: {#snippet name()} {@render name()}
+Create a [name] component in Svelte 5 for my project.
+Use <script lang="ts"> with typed props like: let { title }: { title: string } = $props(); (do not use $props with a generic type parameter).
+Use $state() for local state.
+Use $derived() for derived values.
+Use Tailwind for styles.
+Put it in src/lib/components/[name].svelte.
+If it is a generic UI primitive, put it in src/lib/components/ui/.
+If the component needs “slots”, use snippets: {#snippet name()} … {@render name()}
 ```
 
-## Crear una landing completa
+## Create a full landing page
 
 ```
-Crea una landing page completa en +page.svelte para [producto/servicio].
-Usa Svelte 5 con runes. Reutiliza patrones de esta repo:
-- Textos en src/lib/i18n/es.json y en.json bajo claves home.* (hero, features, steps, cta).
-- En +page.svelte usa {$t('home.hero.title')} etc. y $effect + setSeo para SEO al cambiar idioma.
-- Componentes UI desde $lib/components/ui (Button, Card, … estilo shadcn-svelte).
-Incluye setSeo({ title, description }) y Tailwind; tokens en app.css / stitch-m3.css si aplica.
+Create a full landing page in +page.svelte for [product/service].
+Use Svelte 5 with runes. Reuse patterns from this repo:
+- Copy in src/lib/i18n/es.json and en.json under home.* (hero, features, steps, cta).
+- In +page.svelte use {$t('home.hero.title')} etc. and $effect + setSeo for SEO when the locale changes.
+- UI from $lib/components/ui (Button, Card, … shadcn-svelte style).
+Include setSeo({ title, description }) and Tailwind; tokens in app.css / stitch-m3.css if relevant.
 ```
 
-## Crear un formulario con SvelteKit actions
+## Create a form with SvelteKit actions
 
 ```
-Crea un formulario de contacto en SvelteKit con actions.
-Crea +page.server.ts con: export const actions = { default: async ({ request }) => {...} }
-En el servidor valida name, email (regex), message.
-Devuelve fail(400, { error: '...' }) si hay error, o { success: true } si OK.
-En +page.svelte recibe form via $props y muestra errores o exito.
-Inicializa los campos con $state(untrack(() => form?.campo ?? '')).
-Usa { toast } from '$lib/stores/toast' para notificaciones.
+Create a contact form in SvelteKit with actions.
+Add +page.server.ts with: export const actions = { default: async ({ request }) => {...} }
+On the server validate name, email (regex), message.
+Return fail(400, { error: '...' }) on error, or { success: true } on success.
+In +page.svelte receive form via $props and show errors or success.
+Initialize fields with $state(untrack(() => form?.field ?? '')).
+Use { toast } from '$lib/stores/toast' for notifications.
 ```
 
-## Crear una pagina con datos del servidor (SSR)
+## Create a page with server data (SSR)
 
 ```
-Crea una pagina SSR en SvelteKit que cargue datos del servidor.
-En +page.ts crea: export async function load() que devuelva datos.
-En +page.svelte recibe los datos via let { data } = $props().
-Muestra los datos en Cards con Grid.
-Añade setSeo con title y description.
-Usa Container, Section, Heading, Text para el layout.
+Create an SSR page in SvelteKit that loads server data.
+In +page.ts add: export async function load() returning data.
+In +page.svelte receive data via let { data } = $props().
+Render data in Cards inside Grid.
+Add setSeo with title and description.
+Use Container, Section, Heading, Text for layout.
 ```
 
-## Añadir SEO a una pagina existente
+## Add SEO to an existing page
 
 ```
-Añade SEO completo a esta pagina:
-- Importa import { setSeo } from '$lib/seo'
-- Llama setSeo({ title, description, ogTitle, ogDescription, ogImage, canonical, twitterCard })
-- Añade <svelte:head> con las meta tags leyendo $seo
+Add full SEO to this page:
+- import { setSeo } from '$lib/seo'
+- Call setSeo({ title, description, ogTitle, ogDescription, ogImage, canonical, twitterCard })
+- Add <svelte:head> meta tags reading $seo
 ```
 
-## Usar i18n (traducciones)
+## Use i18n (translations)
 
 ```
-Añade soporte i18n a esta pagina/componente:
-- Importa import { t } from '$lib/i18n/index'
-- Sustituye todos los textos fijos por {$t('clave.nueva')}
-- Añade las claves a src/lib/i18n/es.json y en.json
+Add i18n support to this page/component:
+- import { t } from '$lib/i18n/index'
+- Replace all hard-coded strings with {$t('new.key')}
+- Add keys to src/lib/i18n/es.json and en.json
 ```
 
-## Conectar Supabase Auth
+## Connect Supabase Auth
 
 ```
-Conecta Supabase Auth a mi proyecto SvelteKit.
-Usa src/lib/server/supabase/client.ts para el cliente.
-Crea una pagina de login con formulario email/password.
-Usa SvelteKit actions en +page.server.ts.
-Muestra el estado de autenticacion (logueado / no logueado).
+Connect Supabase Auth to my SvelteKit project.
+Use src/lib/server/supabase/client.ts for the client.
+Create a login page with email/password form.
+Use SvelteKit actions in +page.server.ts.
+Show auth state (signed in / signed out).
 ```
 
-## Conectar Sanity CMS
+## Connect Sanity CMS
 
 ```
-Configura Sanity CMS en mi proyecto SvelteKit.
-Hay codigo de ejemplo bajo src/lib/server/sanity/ (cliente GROQ, tipos). Revisa que los archivos existan en tu rama y anade SANITY_* en .env si los usas.
-Variables tipicas: SANITY_PROJECT_ID, SANITY_DATASET, SANITY_API_VERSION, SANITY_READ_TOKEN (opcional).
+Configure Sanity CMS in my SvelteKit project.
+There is sample code under src/lib/server/sanity/ (GROQ client, types). Verify files exist on your branch and add SANITY_* to .env if you use them.
+Typical variables: SANITY_PROJECT_ID, SANITY_DATASET, SANITY_API_VERSION, SANITY_READ_TOKEN (optional).
 ```
 
-## Igualar un diseño de Stitch / Lovable (paridad visual)
+## Match a Stitch / Lovable design (visual parity)
 
 ```
-Vengo de [Stitch / Lovable / otro] con esta referencia:
-[Pega HTML/CSS exportado o describe capturas desktop+móvil].
+I’m coming from [Stitch / Lovable / other] with this reference:
+[Paste exported HTML/CSS or describe desktop + mobile screenshots].
 
-Implementa en esta plantilla Svelte 5 + Tailwind v4 la misma composición lo más fiel posible.
-- Usa solo componentes del AGENTS.md (Button, Card, Section, Heading, Grid…).
-- Mapea colores y tipo a src/app.css y src/lib/styles/stitch-m3.css.
-- Textos visibles en es.json/en.json si la página usa i18n.
-- Al final: npm run check sin errores y lista qué quedó 1:1 vs aproximado.
+Implement the same composition in this Svelte 5 + Tailwind v4 template as faithfully as possible.
+- Use only components listed in AGENTS.md (Button, Card, Section, Heading, Grid…).
+- Map colors and typography to src/app.css and src/lib/styles/stitch-m3.css.
+- Visible copy in es.json/en.json if the page uses i18n.
+- Finish with npm run check clean and list what is 1:1 vs approximated.
 
-Lee DESIGN_TO_CURSOR.md del repo si necesitas el orden de trabajo.
+Read DESIGN_TO_CURSOR.md in the repo for the recommended workflow.
 ```
 
-## Debuggear / Arreglar errores
+## Debug / fix errors
 
 ```
-Mi proyecto SvelteKit da este error: [pega el error aqui].
-El proyecto usa Svelte 5 con runes, SvelteKit 2, TypeScript, Tailwind CSS v4.
-Los componentes estan en src/lib/components/ui/ (shadcn-svelte) y src/lib/components/ (custom).
-Ejecuta npm run check para ver errores de tipo.
-Revisa el error y dime como arreglarlo.
+My SvelteKit project shows this error: [paste error here].
+The project uses Svelte 5 with runes, SvelteKit 2, TypeScript, Tailwind CSS v4.
+Components live in src/lib/components/ui/ (shadcn-svelte) and src/lib/components/ (custom).
+Run npm run check for type errors.
+Review the error and tell me how to fix it.
 ```

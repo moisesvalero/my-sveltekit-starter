@@ -1,5 +1,7 @@
 # My SvelteKit Starter — Tu web en 2 minutos
 
+**[English → QUICK_START.md](QUICK_START.md)**
+
 ## Paso 1: Instalar
 ```bash
 npm install
@@ -13,39 +15,39 @@ Abre `http://localhost:5173`. No necesitas `.env` para local.
 
 ## Paso 3: Personalizar marca y textos
 1. `src/lib/site-config.ts` — nombre del sitio, URL, enlaces sociales.
-2. `src/lib/i18n/es.json` y `en.json` — textos de la **home** (`home.*`), menu (`layout.nav.*`) y footer.
+2. `src/lib/i18n/es.json` y `en.json` — textos de la **home** (`home.*`), menú (`layout.nav.*`) y footer.
 
 ## Paso 4: Colores y tema
-Edita `src/app.css` (`--primary`, `--background`, …) y, si usas la estetica Stitch/M3, revisa `src/lib/styles/stitch-m3.css`.
+Edita `src/app.css` (`--primary`, `--background`, …) y, si usas la estética Stitch/M3, revisa `src/lib/styles/stitch-m3.css`.
 
 ## Paso 5: Desplegar
 GitHub → Vercel/Netlify → listo.
 
 ---
 
-## Scripts utiles
+## Scripts útiles
 
-| Comando | Que hace |
+| Comando | Qué hace |
 |---------|----------|
 | `npm run dev` | Servidor local |
-| `npm run build` | Build produccion |
+| `npm run build` | Build producción |
 | `npm run check` | TypeScript + Svelte (0 errores, 0 warnings) |
 | `npm run lint` | ESLint + Prettier |
-| `npm run format` | Formatear codigo |
+| `npm run format` | Formatear código |
 | `npm run test` | Tests |
-| `npm run new:page nombre` | Crear pagina |
+| `npm run new:page nombre` | Crear página |
 | `npm run studio` | Sanity Studio (opcional; CMS) |
 
 ---
 
 ## Rutas incluidas
 
-| Ruta | Que es |
+| Ruta | Qué es |
 |------|--------|
 | `/` | Home |
-| `/components` | Galeria UI + demos (about, pricing, faq, SSR, blog, formulario) |
+| `/components` | Galería UI + demos (about, pricing, faq, SSR, blog, formulario) |
 | `/about`, `/pricing`, `/faq`, `/blog`, `/blog/primer-post`, `/ssr-demo`, `/contacto` | Redirigen (307) a anclas en `/components` |
-| `/api/og?title=Hola` | OG image dinamica |
+| `/api/og?title=Hola` | OG image dinámica |
 
 ---
 
@@ -55,11 +57,11 @@ GitHub → Vercel/Netlify → listo.
 npx autoskills
 ```
 
-Añade skills segun tu proyecto (Cursor, Claude Code, etc.). Mas contexto en `INSTRUCCIONES.txt`.
+Añade skills según tu proyecto (Cursor, Claude Code, etc.). Más contexto en `INSTRUCCIONES.txt` (English: **`INSTRUCTIONS.txt`**).
 
 ---
 
-## Archivos que mas vas a tocar
+## Archivos que más vas a tocar
 
 - `src/lib/site-config.ts` — marca y enlaces
 - `src/lib/i18n/es.json` y `en.json` — copy de la landing y layout
@@ -74,7 +76,7 @@ Añade skills segun tu proyecto (Cursor, Claude Code, etc.). Mas contexto en `IN
 - **SvelteKit 2** (filesystem routing, form actions, load functions)
 - **TypeScript** strict mode (0 errores, 0 warnings)
 - **Tailwind CSS v4** (utility-first, responsive)
-- **shadcn-svelte** (componentes UI en `src/lib/components/ui/`, patron oficial de codigo en repo + **bits-ui**)
+- **shadcn-svelte** (componentes UI en `src/lib/components/ui/`, patrón oficial de código en repo + **bits-ui**)
 - **sonner** (toast notifications)
 - **mode-watcher** (dark mode)
 - **Lucide Svelte** (iconos)
@@ -97,8 +99,8 @@ Usa componentes en vez de HTML crudo. Ver lista completa en `AGENTS.md`.
 
 ## Para IAs
 
-| Archivo | Para que sirve |
-|---------|---------------|
+| Archivo | Para qué sirve |
+|---------|----------------|
 | `AGENTS.md` | Instrucciones para ChatGPT, Claude, Copilot |
 | `PROMPTS.md` | Snippets copy-paste para pedirle a la IA |
 | `DESIGN_TO_CURSOR.md` | De Stitch/Lovable a esta plantilla: tokens, prompt y checklist |
