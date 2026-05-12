@@ -10,11 +10,11 @@ export const actions = {
     const message = data.get('message')?.toString().trim();
 
     if (!name || !email || !message) {
-      return fail(400, { name, email, message, error: 'Todos los campos son obligatorios.' });
+      return fail(400, { name, email, message, errorKey: 'allRequired' as const });
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return fail(400, { name, email, message, error: 'Email no válido.' });
+      return fail(400, { name, email, message, errorKey: 'invalidEmail' as const });
     }
 
     console.log('[contact demo]', { name, email, message });

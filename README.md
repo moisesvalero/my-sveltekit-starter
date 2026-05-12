@@ -9,11 +9,9 @@
 Plantilla base para crear **paginas web modernas** con **SvelteKit 2 + Svelte 5 + TypeScript + Tailwind CSS v4** y **componentes UI estilo [shadcn-svelte](https://www.shadcn-svelte.com/)** (codigo en tu repo, no un paquete opaco).
 La **home** usa tokens Material/Stitch (`src/lib/styles/stitch-m3.css`), **i18n ES/EN** en la landing y **SEO** centralizado con `$seo`.
 
-> **Pruebala ahora en tu navegador sin instalar nada:**
+> **Demo en vivo (Vercel):** sustituye la URL por la de tu proyecto cuando esté desplegado — la misma va en `src/lib/site-config.ts` → `liveDemoUrl` (botón en la home).
 >
-> [![Abrir en StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/moisesvalero/my-sveltekit-starter?file=src%2Froutes%2F%2Bpage.svelte)
->
-> _(Ya configurado para este repo)_
+> [![Ver demo en vivo](https://img.shields.io/badge/Ver_demo-en_vivo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://tu-dominio.com)
 
 ---
 

@@ -1,7 +1,9 @@
 <script lang="ts">
   import { untrack } from 'svelte';
+  import { get } from 'svelte/store';
   import { enhance } from '$app/forms';
   import { setSeo } from '$lib/seo';
+  import { locale, t } from '$lib/i18n';
   import Heading from '$lib/components/ui/Heading.svelte';
   import { Button } from '$lib/components/ui/button';
   import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
@@ -21,18 +23,27 @@
   import SsrDemoPanel from '$lib/components/demos/SsrDemoPanel.svelte';
   import BlogPostDemo from '$lib/components/demos/BlogPostDemo.svelte';
 
-  setSeo({
-    title: 'Componentes | My SvelteKit Starter',
-    description:
-      'Galería de componentes UI shadcn-svelte, demos de páginas (about, pricing, faq, SSR, blog) y formulario.'
+  $effect(() => {
+    void $locale;
+    const tr = get(t);
+    setSeo({
+      title: tr('componentsPage.seo.title'),
+      description: tr('componentsPage.seo.description')
+    });
   });
 
   let {
     form,
     data
   }: {
-    form?: { name?: string; email?: string; message?: string; error?: string; success?: boolean };
-    data: { serverTime: string; serverFact: string; magicNumber: number };
+    form?: {
+      name?: string;
+      email?: string;
+      message?: string;
+      errorKey?: 'allRequired' | 'invalidEmail';
+      success?: boolean;
+    };
+    data: { serverTime: string; serverFactKey: 'compiler'; magicNumber: number };
   } = $props();
 
   let name = $state(untrack(() => form?.name ?? ''));
@@ -40,7 +51,7 @@
   let message = $state(untrack(() => form?.message ?? ''));
 
   $effect(() => {
-    if (form?.error) {
+    if (form?.errorKey) {
       name = form.name ?? '';
       email = form.email ?? '';
       message = form.message ?? '';
@@ -49,53 +60,53 @@
 
   $effect(() => {
     if (form?.success) {
-      toast('Mensaje enviado (demo)', 'success');
+      toast(get(t)('componentsPage.toastDemoSent'), 'success');
       name = '';
       email = '';
       message = '';
     }
   });
 
-  const categories = [
-    {
-      label: 'UI Base',
-      items: [
-        { id: 'button', name: 'Button' },
-        { id: 'card', name: 'Card' },
-        { id: 'input', name: 'Input' },
-        { id: 'textarea', name: 'Textarea' },
-        { id: 'label', name: 'Label' },
-        { id: 'spinner', name: 'Spinner' },
-        { id: 'skeleton', name: 'Skeleton' }
-      ]
-    },
-    {
-      label: 'Avanzados',
-      items: [
-        { id: 'copy', name: 'CopyButton' },
-        { id: 'newsletter', name: 'Newsletter' },
-        { id: 'toast', name: 'Toast' },
-        { id: 'aiprompt', name: 'AiPrompt' }
-      ]
-    },
-    {
-      label: 'Ejemplos plantilla',
-      items: [
-        { id: 'about-demo', name: 'About' },
-        { id: 'pricing-demo', name: 'Pricing' },
-        { id: 'faq-demo', name: 'FAQ' },
-        { id: 'ssr-demo', name: 'SSR load()' },
-        { id: 'blog-demo', name: 'Blog (mdsvex)' },
-        { id: 'blog-post-demo', name: 'Post ejemplo' },
-        { id: 'contact-demo', name: 'Formulario contacto' }
-      ]
-    }
-  ];
+  const categories = $derived.by(() => {
+    void $locale;
+    const tr = get(t);
+    return [
+      {
+        label: tr('componentsPage.nav.uiBase'),
+        items: [
+          { id: 'button', name: 'Button' },
+          { id: 'card', name: 'Card' },
+          { id: 'input', name: 'Input' },
+          { id: 'textarea', name: 'Textarea' },
+          { id: 'label', name: 'Label' },
+          { id: 'spinner', name: 'Spinner' },
+          { id: 'skeleton', name: 'Skeleton' }
+        ]
+      },
+      {
+        label: tr('componentsPage.nav.advanced'),
+        items: [
+          { id: 'copy', name: 'CopyButton' },
+          { id: 'newsletter', name: 'Newsletter' },
+          { id: 'toast', name: 'Toast' },
+          { id: 'aiprompt', name: 'AiPrompt' }
+        ]
+      },
+      {
+        label: tr('componentsPage.nav.templateExamples'),
+        items: [
+          { id: 'about-demo', name: tr('componentsPage.nav.about') },
+          { id: 'pricing-demo', name: tr('componentsPage.nav.pricing') },
+          { id: 'faq-demo', name: tr('componentsPage.nav.faq') },
+          { id: 'ssr-demo', name: tr('componentsPage.nav.serverData') },
+          { id: 'blog-demo', name: tr('componentsPage.nav.blogList') },
+          { id: 'blog-post-demo', name: tr('componentsPage.nav.sampleArticle') },
+          { id: 'contact-demo', name: tr('componentsPage.nav.contactForm') }
+        ]
+      }
+    ];
+  });
 </script>
-
-<svelte:head>
-  <title>Componentes | My SvelteKit Starter</title>
-</svelte:head>
 
 <div class="flex w-full min-h-0 flex-1 flex-col lg:flex-row">
   <aside
@@ -105,9 +116,9 @@
       <a
         href="/components"
         class="mb-4 rounded-md px-3 py-2 text-sm font-bold text-foreground no-underline hover:bg-muted/60"
-        >Componentes</a
+        >{$t('componentsPage.nav.root')}</a
       >
-      {#each categories as cat (cat.label)}
+      {#each categories as cat, catIdx (catIdx)}
         <p
           class="px-3 py-2 text-[0.6rem] font-extrabold uppercase tracking-widest text-muted-foreground opacity-60"
         >
@@ -128,13 +139,13 @@
     <section class="mb-8 border-b border-border pb-8">
       <span
         class="mb-4 inline-block rounded-full border border-primary/20 bg-primary/10 px-2 py-1 text-[0.6rem] font-extrabold uppercase tracking-widest text-primary"
-        >COMPONENTES UI</span
+        >{$t('componentsPage.badge')}</span
       >
       <Heading
         level={1}
         className="!gap-2 border-0 pb-0"
-        kicker="Svelte 5 + Tailwind CSS. Listos para copiar y personalizar."
-        title="Componentes"
+        kicker={$t('componentsPage.kicker')}
+        title={$t('componentsPage.title')}
       />
     </section>
 
@@ -147,7 +158,7 @@
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Button</h2>
           <p class="text-sm text-muted-foreground">
-            5 variantes · 3 tamaños · enlace · disabled · loading
+            {$t('componentsPage.sections.button.desc')}
           </p>
         </div>
         <code
@@ -183,7 +194,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Card</h2>
-          <p class="text-sm text-muted-foreground">3 variantes · composición</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.card.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -195,17 +206,29 @@
       >
         <Card class="min-w-[140px] flex-1 p-5">
           <CardHeader><CardTitle>Default</CardTitle></CardHeader>
-          <CardContent><p class="text-sm text-muted-foreground">Contenido del card</p></CardContent>
+          <CardContent
+            ><p class="text-sm text-muted-foreground">
+              {$t('componentsPage.sections.card.content')}
+            </p></CardContent
+          >
         </Card>
         <Card
           class="min-w-[140px] flex-1 border-primary/25 bg-gradient-to-br from-primary/10 to-transparent p-5 dark:from-primary/15"
         >
           <CardHeader><CardTitle>Soft</CardTitle></CardHeader>
-          <CardContent><p class="text-sm text-muted-foreground">Contenido del card</p></CardContent>
+          <CardContent
+            ><p class="text-sm text-muted-foreground">
+              {$t('componentsPage.sections.card.content')}
+            </p></CardContent
+          >
         </Card>
         <Card class="min-w-[140px] flex-1 border-dashed p-5">
           <CardHeader><CardTitle>Outline</CardTitle></CardHeader>
-          <CardContent><p class="text-sm text-muted-foreground">Contenido del card</p></CardContent>
+          <CardContent
+            ><p class="text-sm text-muted-foreground">
+              {$t('componentsPage.sections.card.content')}
+            </p></CardContent
+          >
         </Card>
       </div>
     </section>
@@ -218,7 +241,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Input</h2>
-          <p class="text-sm text-muted-foreground">Texto, email y contraseña</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.input.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -242,7 +265,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Textarea</h2>
-          <p class="text-sm text-muted-foreground">Entrada multilínea</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.textarea.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -250,7 +273,7 @@
         >
       </div>
       <div class="max-w-sm rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15">
-        <Textarea placeholder="Type your message here..." rows={4} />
+        <Textarea placeholder={$t('componentsPage.sections.textarea.placeholder')} rows={4} />
       </div>
     </section>
 
@@ -262,7 +285,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Label</h2>
-          <p class="text-sm text-muted-foreground">Etiqueta accesible</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.label.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -272,8 +295,12 @@
       <div
         class="flex max-w-sm flex-col gap-2 rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15"
       >
-        <Label for="demo-input">Nombre</Label>
-        <Input id="demo-input" type="text" placeholder="Tu nombre" />
+        <Label for="demo-input">{$t('componentsPage.sections.label.demo')}</Label>
+        <Input
+          id="demo-input"
+          type="text"
+          placeholder={$t('componentsPage.sections.label.placeholder')}
+        />
       </div>
     </section>
 
@@ -285,7 +312,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Spinner</h2>
-          <p class="text-sm text-muted-foreground">Indicador SVG</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.spinner.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -309,7 +336,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Skeleton</h2>
-          <p class="text-sm text-muted-foreground">Placeholder con pulso</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.skeleton.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -335,7 +362,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">CopyButton</h2>
-          <p class="text-sm text-muted-foreground">Copiar al portapapeles</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.copy.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -357,7 +384,9 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Newsletter</h2>
-          <p class="text-sm text-muted-foreground">Suscripción por email</p>
+          <p class="text-sm text-muted-foreground">
+            {$t('componentsPage.sections.newsletter.desc')}
+          </p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -367,7 +396,7 @@
       <div
         class="flex items-start justify-center rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15"
       >
-        <Newsletter buttonLabel="Suscribirse" />
+        <Newsletter buttonLabel={$t('componentsPage.sections.newsletter.button')} />
       </div>
     </section>
 
@@ -379,7 +408,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Toast</h2>
-          <p class="text-sm text-muted-foreground">success · error · info · warning</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.toast.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -389,15 +418,26 @@
       <div
         class="flex flex-wrap justify-center gap-2 rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15"
       >
-        <Button variant="default" size="sm" onclick={() => toast('Completado!', 'success')}
-          >Success</Button
+        <Button
+          variant="default"
+          size="sm"
+          onclick={() => toast($t('componentsPage.sections.toast.done'), 'success')}>Success</Button
         >
-        <Button variant="secondary" size="sm" onclick={() => toast('Error!', 'error')}>Error</Button
+        <Button
+          variant="secondary"
+          size="sm"
+          onclick={() => toast($t('componentsPage.sections.toast.err'), 'error')}>Error</Button
         >
-        <Button variant="outline" size="sm" onclick={() => toast('Aviso', 'warning')}
-          >Warning</Button
+        <Button
+          variant="outline"
+          size="sm"
+          onclick={() => toast($t('componentsPage.sections.toast.warn'), 'warning')}>Warning</Button
         >
-        <Button variant="ghost" size="sm" onclick={() => toast('Info', 'info')}>Info</Button>
+        <Button
+          variant="ghost"
+          size="sm"
+          onclick={() => toast($t('componentsPage.sections.toast.info'), 'info')}>Info</Button
+        >
       </div>
     </section>
 
@@ -409,7 +449,7 @@
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">AiPrompt</h2>
-          <p class="text-sm text-muted-foreground">Área de prompt para IA</p>
+          <p class="text-sm text-muted-foreground">{$t('componentsPage.sections.aiprompt.desc')}</p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
@@ -417,7 +457,10 @@
         >
       </div>
       <div class="rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15">
-        <AiPrompt placeholder="Pregunta lo que quieras..." maxLength={300} />
+        <AiPrompt
+          placeholder={$t('componentsPage.sections.aiprompt.placeholder')}
+          maxLength={300}
+        />
       </div>
     </section>
 
@@ -428,10 +471,11 @@
     >
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">Página About (demo)</h2>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.aboutDemo.title')}
+          </h2>
           <p class="text-sm text-muted-foreground">
-            Antes en <code class="rounded bg-muted px-1 py-0.5 text-xs">/about</code>; ahora solo
-            redirige aquí.
+            {$t('componentsPage.sections.aboutDemo.desc')}
           </p>
         </div>
         <code
@@ -451,10 +495,11 @@
     >
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">Página Pricing (demo)</h2>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.pricingDemo.title')}
+          </h2>
           <p class="text-sm text-muted-foreground">
-            Antes en <code class="rounded bg-muted px-1 py-0.5 text-xs">/pricing</code>; ahora solo
-            redirige aquí.
+            {$t('componentsPage.sections.pricingDemo.desc')}
           </p>
         </div>
         <code
@@ -474,10 +519,11 @@
     >
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">Página FAQ (demo)</h2>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.faqDemo.title')}
+          </h2>
           <p class="text-sm text-muted-foreground">
-            Antes en <code class="rounded bg-muted px-1 py-0.5 text-xs">/faq</code>; ahora solo
-            redirige aquí.
+            {$t('componentsPage.sections.faqDemo.desc')}
           </p>
         </div>
         <code
@@ -497,23 +543,22 @@
     >
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">SSR con load() (demo)</h2>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.ssrDemo.title')}
+          </h2>
           <p class="text-sm text-muted-foreground">
-            Datos desde <code class="rounded bg-muted px-1 py-0.5 text-xs"
-              >src/routes/components/+page.ts</code
-            >.
-            <code class="rounded bg-muted px-1 py-0.5 text-xs">/ssr-demo</code> redirige aquí.
+            {$t('componentsPage.sections.ssrDemo.desc')}
           </p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
-          >+page.ts + SsrDemoPanel</code
+          >{$t('componentsPage.sections.ssrDemo.chip')}</code
         >
       </div>
       <div class="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/15 sm:p-6">
         <SsrDemoPanel
           serverTime={data.serverTime}
-          serverFact={data.serverFact}
+          serverFactKey={data.serverFactKey}
           magicNumber={data.magicNumber}
         />
       </div>
@@ -526,29 +571,30 @@
     >
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">Blog (mdsvex)</h2>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.blogDemo.title')}
+          </h2>
           <p class="text-sm text-muted-foreground">
-            <code class="rounded bg-muted px-1 py-0.5 text-xs">/blog</code> redirige a esta galería.
-            El post de ejemplo está debajo (<code class="rounded bg-muted px-1 py-0.5 text-xs"
-              >/blog/primer-post</code
-            > → ancla).
+            {$t('componentsPage.sections.blogDemo.desc')}
           </p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
-          >mdsvex + .svx (ver AGENTS.md)</code
+          >{$t('componentsPage.sections.blogDemo.codeChip')}</code
         >
       </div>
       <div class="rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15">
         <a href="#blog-post-demo" class="block no-underline">
           <Card class="cursor-pointer p-6 transition-shadow hover:shadow-md">
             <CardHeader>
-              <CardTitle>Mi primer post con SvelteKit</CardTitle>
+              <CardTitle>{$t('componentsPage.sections.blogCard.title')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p class="mb-2 text-sm text-muted-foreground">2026-05-11</p>
+              <p class="mb-2 text-sm text-muted-foreground">
+                {$t('componentsPage.demos.blogPost.date')}
+              </p>
               <p class="text-base text-muted-foreground">
-                Demo de Markdown; el contenido completo está en la sección «Post ejemplo».
+                {$t('componentsPage.sections.blogCard.excerpt')}
               </p>
             </CardContent>
           </Card>
@@ -563,13 +609,11 @@
     >
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">Post ejemplo (contenido)</h2>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.blogPostDemo.title')}
+          </h2>
           <p class="text-sm text-muted-foreground">
-            Equivalente al antiguo <code class="rounded bg-muted px-1 py-0.5 text-xs"
-              >+page.svx</code
-            >; ruta
-            <code class="rounded bg-muted px-1 py-0.5 text-xs">/blog/primer-post</code> redirige a esta
-            ancla.
+            {$t('componentsPage.sections.blogPostDemo.desc')}
           </p>
         </div>
         <code
@@ -589,9 +633,11 @@
     >
       <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">Formulario de contacto</h2>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.contactDemo.title')}
+          </h2>
           <p class="text-sm text-muted-foreground">
-            Misma acción de servidor que antes en /contacto; esa URL ahora solo redirige aquí.
+            {$t('componentsPage.sections.contactDemo.desc')}
           </p>
         </div>
         <code
@@ -606,48 +652,50 @@
           class="flex max-w-[520px] flex-col gap-5"
           use:enhance
         >
-          {#if form?.error}
+          {#if form?.errorKey}
             <div
               class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600 dark:border-red-900 dark:bg-red-950/40 dark:text-red-400"
             >
-              {form.error}
+              {$t(`componentsPage.formErrors.${form.errorKey}`)}
             </div>
           {/if}
 
           <div class="flex flex-col gap-1.5">
-            <Label for="contact-name">Nombre</Label>
+            <Label for="contact-name">{$t('componentsPage.sections.contactDemo.name')}</Label>
             <Input
               type="text"
               id="contact-name"
               name="name"
               bind:value={name}
               required
-              placeholder="Tu nombre"
+              placeholder={$t('componentsPage.sections.contactDemo.phName')}
             />
           </div>
           <div class="flex flex-col gap-1.5">
-            <Label for="contact-email">Email</Label>
+            <Label for="contact-email">{$t('componentsPage.sections.contactDemo.email')}</Label>
             <Input
               type="email"
               id="contact-email"
               name="email"
               bind:value={email}
               required
-              placeholder="tu@email.com"
+              placeholder={$t('componentsPage.sections.contactDemo.phEmail')}
             />
           </div>
           <div class="flex flex-col gap-1.5">
-            <Label for="contact-message">Mensaje</Label>
+            <Label for="contact-message">{$t('componentsPage.sections.contactDemo.message')}</Label>
             <Textarea
               id="contact-message"
               name="message"
               bind:value={message}
               required
               rows={5}
-              placeholder="Mensaje de prueba…"
+              placeholder={$t('componentsPage.sections.contactDemo.phMessage')}
             />
           </div>
-          <Button type="submit" class="w-full sm:w-auto">Enviar (demo)</Button>
+          <Button type="submit" class="w-full sm:w-auto"
+            >{$t('componentsPage.sections.contactDemo.submit')}</Button
+          >
         </form>
       </div>
     </section>

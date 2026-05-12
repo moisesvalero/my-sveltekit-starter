@@ -8,8 +8,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   const theme = event.cookies.get('theme') || 'light';
 
   const response = await resolve(event, {
-    transformPageChunk: ({ html }) =>
-      html.replace('%theme%', theme)
+    transformPageChunk: ({ html }) => html.replace('%theme%', theme)
   });
 
   if (!building) {
@@ -18,7 +17,7 @@ export const handle: Handle = async ({ event, resolve }) => {
       'Content-Security-Policy',
       [
         "default-src 'self'",
-        "script-src 'self' 'wasm-unsafe-eval'",
+        "script-src 'self' 'wasm-unsafe-eval' 'sha256-4aglIzZWlffciY1YNkapYz3E2oa2PTFFx4WcfBdaB6o='",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "img-src 'self' data: https:",
         "font-src 'self' https://fonts.gstatic.com",
@@ -78,10 +77,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     // Cache control para assets estaticos
     const url = event.url.pathname;
     if (url.match(/\.(js|css|svg|png|jpg|jpeg|gif|ico|woff2?)$/)) {
-      response.headers.set(
-        'Cache-Control',
-        `public, max-age=${ONE_YEAR_IN_SECONDS}, immutable`
-      );
+      response.headers.set('Cache-Control', `public, max-age=${ONE_YEAR_IN_SECONDS}, immutable`);
     }
   }
 

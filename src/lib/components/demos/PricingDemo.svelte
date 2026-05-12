@@ -3,41 +3,32 @@
   import Section from '$lib/components/ui/Section.svelte';
   import { Card } from '$lib/components/ui/card';
   import { Button } from '$lib/components/ui/button';
+  import { t } from '$lib/i18n';
 
-  const plans = [
-    {
-      name: 'Starter',
-      price: '19',
-      desc: 'Para empezar',
-      features: ['5 proyectos', 'Soporte basico', 'Actualizaciones'],
-      featured: false
-    },
-    {
-      name: 'Pro',
-      price: '49',
-      desc: 'Para profesionales',
-      features: ['Proyectos ilimitados', 'Soporte prioritario', 'API access'],
-      featured: true
-    },
-    {
-      name: 'Enterprise',
-      price: '99',
-      desc: 'Para equipos',
-      features: ['Todo en Pro', 'SLA garantizado', 'Onboarding dedicado'],
-      featured: false
-    }
-  ];
+  const planKeys = ['starter', 'pro', 'enterprise'] as const;
+  const prices: Record<(typeof planKeys)[number], string> = {
+    starter: '19',
+    pro: '49',
+    enterprise: '99'
+  };
+  const featured: Record<(typeof planKeys)[number], boolean> = {
+    starter: false,
+    pro: true,
+    enterprise: false
+  };
 </script>
 
 <div class="demo-pages text-left">
   <Container>
     <div class="pb-6 pt-2 text-center">
-      <p class="mb-4 text-xs uppercase tracking-[0.16em] text-muted-foreground">Precios</p>
+      <p class="mb-4 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+        {$t('componentsPage.demos.pricing.eyebrow')}
+      </p>
       <h2 class="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-        Planes simples y claros
+        {$t('componentsPage.demos.pricing.title')}
       </h2>
       <p class="text-lg text-muted-foreground">
-        Elige el plan que mejor se adapte a ti. Sin sorpresas.
+        {$t('componentsPage.demos.pricing.subtitle')}
       </p>
     </div>
   </Container>
@@ -45,23 +36,36 @@
   <Section variant="default">
     <Container>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {#each plans as plan (plan.name)}
-          <Card class="p-6 {plan.featured ? 'border-primary shadow-lg' : ''}">
+        {#each planKeys as key (key)}
+          <Card class="p-6 {featured[key] ? 'border-primary shadow-lg' : ''}">
             <div class="flex flex-col items-center gap-4 text-center">
-              <h3 class="text-xl font-semibold text-foreground">{plan.name}</h3>
+              <h3 class="text-xl font-semibold text-foreground">
+                {$t(`componentsPage.demos.pricing.names.${key}`)}
+              </h3>
               <div class="text-5xl font-extrabold tracking-tight">
-                <span class="align-top text-xl text-muted-foreground">$</span>{plan.price}<span
-                  class="text-base font-normal text-muted-foreground">/mes</span
+                <span class="align-top text-xl text-muted-foreground">$</span>{prices[key]}<span
+                  class="text-base font-normal text-muted-foreground"
+                  >{$t('componentsPage.demos.pricing.perMonth')}</span
                 >
               </div>
-              <p class="text-sm text-muted-foreground">{plan.desc}</p>
+              <p class="text-sm text-muted-foreground">
+                {$t(`componentsPage.demos.pricing.${key}.desc`)}
+              </p>
               <ul class="flex w-full flex-col gap-2 text-sm text-muted-foreground">
-                {#each plan.features as f (f)}
-                  <li class="flex items-center gap-2">✓ {f}</li>
-                {/each}
+                <li class="flex items-center gap-2">
+                  ✓ {$t(`componentsPage.demos.pricing.${key}.f1`)}
+                </li>
+                <li class="flex items-center gap-2">
+                  ✓ {$t(`componentsPage.demos.pricing.${key}.f2`)}
+                </li>
+                <li class="flex items-center gap-2">
+                  ✓ {$t(`componentsPage.demos.pricing.${key}.f3`)}
+                </li>
               </ul>
-              <Button variant={plan.featured ? 'default' : 'outline'} class="w-full">
-                {plan.featured ? 'Empezar ahora' : 'Elegir plan'}
+              <Button variant={featured[key] ? 'default' : 'outline'} class="w-full">
+                {featured[key]
+                  ? $t('componentsPage.demos.pricing.ctaFeatured')
+                  : $t('componentsPage.demos.pricing.ctaOther')}
               </Button>
             </div>
           </Card>

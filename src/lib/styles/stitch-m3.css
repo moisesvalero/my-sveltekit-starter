@@ -1,6 +1,7 @@
 /*
- * Tokens 1:1 con stitch_svelte_5_indigo_starter/sveltekit_starter_landing_page/code.html
- * (tailwind.config extend.colors del HTML de Stitch)
+ * Tokens Stitch M3:
+ * - Claro: stitch_svelte_5_indigo_starter/sveltekit_starter_landing_page/code.html
+ * - Oscuro: stitch_svelte_5_indigo_starter/sveltekit_starter_landing_page_dark/code.html
  */
 :root {
   --stitch-primary-container: #4f46e5;
@@ -42,12 +43,78 @@
   --stitch-on-background: #1b1b24;
   --stitch-on-error-container: #93000a;
   --stitch-inverse-primary: #c3c0ff;
+  --stitch-primary: #3525cd;
+  --stitch-secondary: #58579b;
+  --stitch-secondary-container: #b6b4ff;
+  --stitch-background: #fcf8ff;
+  --stitch-on-surface: #1b1b24;
+  --stitch-outline-variant: #c7c4d8;
+  --stitch-error: #ba1a1a;
+}
+
+/*
+ * Oscuro 1:1 con stitch_svelte_5_indigo_starter/sveltekit_starter_landing_page_dark/code.html
+ */
+.dark {
+  --stitch-on-secondary-fixed-variant: #334282;
+  --stitch-inverse-surface: #e5e1e4;
+  --stitch-outline: #908fa0;
+  --stitch-on-tertiary-container: #452000;
+  --stitch-tertiary-fixed-dim: #ffb783;
+  --stitch-surface-container: #201f22;
+  --stitch-surface-dim: #131315;
+  --stitch-on-tertiary-fixed-variant: #703700;
+  --stitch-inverse-on-surface: #313032;
+  --stitch-primary-fixed-dim: #c0c1ff;
+  --stitch-on-primary-fixed: #07006c;
+  --stitch-on-error-container: #ffdad6;
+  --stitch-tertiary-container: #d97721;
+  --stitch-on-secondary: #1a2b6a;
+  --stitch-inverse-primary: #494bd6;
+  --stitch-on-primary: #ffffff;
+  --stitch-tertiary-fixed: #ffdcc5;
+  --stitch-primary-fixed: #e1e0ff;
+  --stitch-on-error: #690005;
+  --stitch-surface-bright: #39393b;
+  --stitch-on-primary-container: #0d0096;
+  --stitch-secondary-fixed-dim: #b8c4ff;
+  --stitch-surface-variant: #353437;
+  --stitch-on-primary-fixed-variant: #2f2ebe;
+  --stitch-on-secondary-container: #a2b1f9;
+  --stitch-surface-container-lowest: #0e0e10;
+  --stitch-error-container: #93000a;
+  --stitch-background: #09090b;
+  --stitch-surface-container-highest: #353437;
+  --stitch-on-surface-variant: #c7c4d7;
+  --stitch-surface-tint: #c0c1ff;
+  --stitch-surface-container-low: #1c1b1d;
+  --stitch-outline-variant: #464554;
+  --stitch-secondary-fixed: #dde1ff;
+  --stitch-on-surface: #e5e1e4;
+  --stitch-tertiary: #ffb783;
+  --stitch-on-tertiary-fixed: #301400;
+  --stitch-on-tertiary: #4f2500;
+  --stitch-secondary: #b8c4ff;
+  --stitch-primary: #6366f1;
+  --stitch-on-secondary-fixed: #001354;
+  --stitch-surface-container-high: #2a2a2c;
+  --stitch-surface: #18181b;
+  --stitch-on-background: #e5e1e4;
+  --stitch-secondary-container: #334282;
+  --stitch-primary-container: #8083ff;
+  --stitch-error: #ffb4ab;
 }
 
 /* Duplicamos nombres cortos para var() en utilidades shadcn coexistiendo */
 :root {
-  --on-surface: var(--stitch-on-background);
+  --on-surface: var(--stitch-on-surface);
   --on-primary: #ffffff;
+  --on-background: var(--stitch-on-background);
+}
+
+.dark {
+  --on-surface: var(--stitch-on-surface);
+  --on-primary: var(--stitch-on-primary);
   --on-background: var(--stitch-on-background);
 }
 
@@ -90,25 +157,17 @@
   --color-primary-fixed-dim: var(--stitch-primary-fixed-dim);
   --color-on-error-container: var(--stitch-on-error-container);
   --color-inverse-primary: var(--stitch-inverse-primary);
-  --color-on-surface: var(--stitch-on-background);
+  --color-on-surface: var(--stitch-on-surface);
   --color-on-background: var(--stitch-on-background);
 
-  --color-primary-fixed-dim: var(--stitch-primary-fixed-dim);
-  --color-secondary-fixed-dim: var(--stitch-secondary-fixed-dim);
-  --color-tertiary-fixed-dim: var(--stitch-tertiary-fixed-dim);
-  --color-secondary-container: #b6b4ff;
-  --color-error: #ba1a1a;
-  --color-on-error: #ffffff;
-  --color-error-container: #ffdad6;
-  --color-on-error-container: #93000a;
-  --color-surface-dim: var(--stitch-surface-dim);
-  --color-surface-tint: var(--stitch-surface-tint);
-  --color-surface-bright: var(--stitch-surface-bright);
-  /* Borde Stitch (outline-variant en M3) */
-  --color-outline-variant: #c7c4d8;
+  --color-secondary-container: var(--stitch-secondary-container);
+  --color-error: var(--stitch-error);
+  --color-on-error: var(--stitch-on-error);
+  --color-error-container: var(--stitch-error-container);
+  --color-on-error-container: var(--stitch-on-error-container);
+  --color-outline-variant: var(--stitch-outline-variant);
 }
 
-/* Tipografía Stitch (extend.fontSize del HTML) — clases text-h1, font-code, etc. */
 @layer utilities {
   .font-body,
   .font-h1,
@@ -183,6 +242,28 @@
     font-size: 14px;
     line-height: 1.7;
     font-weight: 400;
+  }
+}
+
+@layer components {
+  .code-window {
+    background-color: var(--stitch-surface-container-lowest);
+    border: 1px solid var(--stitch-outline-variant);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .accent-glow {
+    box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.3);
+  }
+
+  .glow-hover {
+    transition:
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 20px -5px rgba(99, 102, 241, 0.4);
   }
 }
 

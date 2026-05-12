@@ -17,6 +17,8 @@
 
   let { children }: { children: Snippet } = $props();
 
+  let isDark = $derived(mode.current === 'dark');
+
   /** Svelte 5: `$store` dentro de funciones inline puede no reaccionar; usamos `get(locale)`. */
   function handleToggleLocale() {
     setLocale(get(locale) === 'en' ? 'es' : 'en');
@@ -27,6 +29,14 @@
   }
 
   onMount(() => {
+    const saved = localStorage.getItem('lang');
+    const hasManual = localStorage.getItem('lang_manual') === '1';
+    if (hasManual && saved) {
+      setLocale(saved as 'en' | 'es');
+    } else {
+      const nav = navigator.language || 'es';
+      setLocale(nav.toLowerCase().startsWith('en') ? 'en' : 'es');
+    }
     setTimeout(() => {
       document.querySelectorAll('.assembly-item:not(.is-visible)').forEach((el) => {
         el.classList.add('is-visible');
@@ -39,9 +49,9 @@
     const active =
       href === '/' ? path === '/' : path === href || (href !== '/' && path.startsWith(href + '/'));
     if (active) {
-      return "relative font-bold text-primary transition-colors after:absolute after:-bottom-1 after:left-1/2 after:h-1 after:w-1 after:-translate-x-1/2 after:rounded-full after:bg-primary after:content-[''] hover:text-primary dark:text-inverse-primary dark:after:bg-inverse-primary dark:hover:text-inverse-primary";
+      return 'relative border-b-2 border-primary pb-1 font-bold text-primary transition-colors duration-200 hover:text-primary';
     }
-    return 'text-on-surface-variant transition-colors hover:text-primary dark:text-outline-variant dark:hover:text-inverse-primary';
+    return 'text-on-surface-variant transition-colors duration-200 hover:text-primary';
   }
 </script>
 
@@ -55,9 +65,9 @@
 <div class="flex min-h-0 w-full flex-1 flex-col">
   <!-- Nav — mismas utilidades que stitch .../code.html (enlaces reales) -->
   <nav
-    class="fixed left-0 right-0 top-0 z-50 mx-auto mt-4 flex max-w-5xl items-center justify-between rounded-full border border-outline-variant bg-surface/80 px-6 py-3 shadow-md backdrop-blur-md dark:border-outline dark:bg-inverse-surface/80"
+    class="fixed left-0 right-0 top-0 z-50 mx-auto mt-4 flex max-w-5xl items-center justify-between rounded-full border border-outline-variant bg-surface/80 px-6 py-3 shadow-md backdrop-blur-md"
   >
-    <div class="font-h3 text-h3 font-bold text-primary dark:text-inverse-primary">
+    <div class="font-h3 text-h3 font-bold text-primary">
       {siteConfig.name}
     </div>
     <div class="hidden items-center gap-6 md:flex">
@@ -72,9 +82,7 @@
           onclick={handleToggleTheme}
           aria-label={$t('layout.aria.theme')}
         >
-          <span class="material-symbols-outlined"
-            >{mode.current === 'dark' ? 'light_mode' : 'dark_mode'}</span
-          >
+          <span class="material-symbols-outlined">{isDark ? 'light_mode' : 'dark_mode'}</span>
         </button>
         <button
           type="button"
@@ -87,7 +95,7 @@
       </div>
       <a
         href="/components"
-        class="scale-95 rounded-full bg-primary px-6 py-2 font-bold text-on-primary transition-transform active:scale-90"
+        class="scale-95 rounded-full bg-primary px-6 py-2 font-bold text-white transition-transform active:scale-90"
       >
         {$t('layout.nav.getStarted')}
       </a>

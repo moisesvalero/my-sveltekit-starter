@@ -21,6 +21,203 @@
       "toEnglish": "🇬🇧 EN"
     }
   },
+  "componentsPage": {
+    "seo": {
+      "title": "Componentes | My SvelteKit Starter",
+      "description": "Galería de componentes UI shadcn-svelte, demos de páginas (about, pricing, faq, SSR, blog) y formulario."
+    },
+    "nav": {
+      "root": "Componentes",
+      "uiBase": "UI base",
+      "advanced": "Avanzados",
+      "templateExamples": "Ejemplos plantilla",
+      "about": "About",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "serverData": "Datos en servidor",
+      "blogList": "Blog (mdsvex)",
+      "sampleArticle": "Artículo ejemplo",
+      "contactForm": "Formulario contacto"
+    },
+    "badge": "COMPONENTES UI",
+    "title": "Componentes",
+    "kicker": "Svelte 5 + Tailwind CSS. Listos para copiar y personalizar.",
+    "sections": {
+      "button": { "desc": "5 variantes · 3 tamaños · enlace · disabled · loading" },
+      "card": { "desc": "3 variantes · composición", "content": "Contenido del card" },
+      "input": { "desc": "Texto, email y contraseña" },
+      "textarea": { "desc": "Entrada multilínea", "placeholder": "Escribe tu mensaje aquí…" },
+      "label": { "desc": "Etiqueta accesible", "demo": "Nombre", "placeholder": "Tu nombre" },
+      "spinner": { "desc": "Indicador SVG" },
+      "skeleton": { "desc": "Placeholder con pulso" },
+      "copy": { "desc": "Copiar al portapapeles" },
+      "newsletter": { "desc": "Suscripción por email", "button": "Suscribirse" },
+      "toast": { "desc": "success · error · info · warning", "done": "¡Completado!", "err": "¡Error!", "warn": "Aviso", "info": "Info" },
+      "aiprompt": { "desc": "Área de prompt para IA", "placeholder": "Pregunta lo que quieras…" },
+      "aboutDemo": {
+        "title": "Sobre nosotros",
+        "desc": "Ejemplo de sección corporativa: propuesta breve, valores y bloques que puedes reutilizar en cualquier landing."
+      },
+      "pricingDemo": {
+        "title": "Planes y precios",
+        "desc": "Tabla de planes con destacado y CTAs; sirve como base para SaaS, servicios o membresías."
+      },
+      "faqDemo": {
+        "title": "Preguntas frecuentes",
+        "desc": "Acordeón para agrupar dudas habituales (producto, facturación, soporte) sin alargar la página."
+      },
+      "ssrDemo": {
+        "title": "Datos en el servidor (load)",
+        "desc": "Valores calculados en el servidor antes del HTML: hora y datos de ejemplo. El código está en src/routes/components/+page.ts.",
+        "chip": "+page.ts + SsrDemoPanel"
+      },
+      "blogDemo": {
+        "title": "Blog — listado",
+        "desc": "Tarjeta de entrada típica de un listado de artículos; el contenido completo del ejemplo está en la siguiente sección.",
+        "codeChip": "mdsvex + .svx (ver AGENTS.md)"
+      },
+      "blogCard": {
+        "title": "Mi primer post con SvelteKit",
+        "excerpt": "Vista previa; el texto completo está en «Artículo de ejemplo» más abajo."
+      },
+      "blogPostDemo": {
+        "title": "Artículo de ejemplo",
+        "desc": "Post largo con títulos, listas y código; puedes sustituirlo por rutas mdsvex o por contenido desde tu CMS."
+      },
+      "contactDemo": {
+        "title": "Formulario de contacto",
+        "desc": "Validación en servidor con acciones de SvelteKit y mensajes de error. En un proyecto real conectarías aquí tu API, email o CRM.",
+        "name": "Nombre",
+        "email": "Email",
+        "message": "Mensaje",
+        "phName": "Tu nombre",
+        "phEmail": "tu@email.com",
+        "phMessage": "Mensaje de prueba…",
+        "submit": "Enviar (demo)"
+      }
+    },
+    "demos": {
+      "about": {
+        "eyebrow": "Sobre nosotros",
+        "title": "Construimos herramientas que la gente ama usar.",
+        "subtitle": "Un equipo pequeño con un objetivo grande: hacer software que marque la diferencia.",
+        "mission": "Misión",
+        "missionText": "Crear herramientas digitales que resuelvan problemas reales de forma simple y elegante.",
+        "vision": "Visión",
+        "visionText": "Ser la plataforma de referencia para equipos que quieren construir rápido y bien.",
+        "values": "Valores",
+        "valuesText": "Transparencia, velocidad, calidad y obsesión por la experiencia de usuario.",
+        "teamTitle": "Las personas detrás del proyecto",
+        "teamSubtitle": "Un equipo distribuido trabajando desde cualquier parte del mundo.",
+        "role": "Rol del equipo"
+      },
+      "pricing": {
+        "eyebrow": "Precios",
+        "title": "Planes simples y claros",
+        "subtitle": "Elige el plan que mejor se adapte a ti. Sin sorpresas.",
+        "perMonth": "/mes",
+        "names": {
+          "starter": "Starter",
+          "pro": "Pro",
+          "enterprise": "Enterprise"
+        },
+        "ctaFeatured": "Empezar ahora",
+        "ctaOther": "Elegir plan",
+        "starter": {
+          "desc": "Para empezar",
+          "f1": "5 proyectos",
+          "f2": "Soporte básico",
+          "f3": "Actualizaciones"
+        },
+        "pro": {
+          "desc": "Para profesionales",
+          "f1": "Proyectos ilimitados",
+          "f2": "Soporte prioritario",
+          "f3": "Acceso API"
+        },
+        "enterprise": {
+          "desc": "Para equipos",
+          "f1": "Todo en Pro",
+          "f2": "SLA garantizado",
+          "f3": "Onboarding dedicado"
+        }
+      },
+      "faq": {
+        "subtitle": "Respuestas rápidas sobre la plantilla, despliegue, idiomas y personalización.",
+        "items": {
+          "plantilla": {
+            "q": "¿Qué es esta plantilla?",
+            "a": "Una base lista para webs modernas con SvelteKit 2 y Svelte 5: componentes UI (shadcn-svelte), SEO, i18n, modo oscuro y despliegue pensado para Vercel o Netlify."
+          },
+          "principiante": {
+            "q": "¿Necesito mucha experiencia en front?",
+            "a": "No hace falta ser experto: puedes tocar textos en JSON, colores en CSS y copiar bloques de la galería de componentes. Cuando quieras ir más lejos, el código está organizado para crecer sin líos."
+          },
+          "comercial": {
+            "q": "¿Puedo usarla en proyectos comerciales?",
+            "a": "Sí. La plantilla es MIT: úsala en clientes, productos o landings sin restricciones de licencia de pago."
+          },
+          "deploy": {
+            "q": "¿Cómo despliego en producción?",
+            "a": "Sube el repo a GitHub y conecta el proyecto a Vercel o Netlify. El build es npm run build; revisa PUBLIC_SITE_URL para SEO (sitemap y Open Graph)."
+          },
+          "i18n": {
+            "q": "¿Cómo funcionan los idiomas?",
+            "a": "Hay español e inglés con claves en src/lib/i18n. Para añadir otro idioma, crea un JSON nuevo, registra las traducciones y amplía el tipo de locale en el módulo i18n."
+          },
+          "cms": {
+            "q": "¿Puedo conectar un CMS?",
+            "a": "Sí. El repo incluye piezas opcionales para Sanity; también puedes consumir cualquier API (Strapi, Contentful, Markdown local) desde load o endpoints."
+          },
+          "seo": {
+            "q": "¿Qué trae de SEO?",
+            "a": "Metadatos centralizados (setSeo), JSON-LD, sitemap, robots y cabeceras de seguridad en hooks.server.ts. Ajusta títulos y descripciones por ruta."
+          },
+          "rendimiento": {
+            "q": "¿Está pensada para rendimiento?",
+            "a": "Svelte compila a JS ligero; usa imágenes optimizadas, lazy loading donde toque y revisa el bundle con el analizador de Vite si la app crece."
+          }
+        }
+      },
+      "ssr": {
+        "eyebrow": "Server Side Rendering",
+        "title": "Demo de carga de datos",
+        "intro": "Los datos vienen de src/routes/components/+page.ts con load(). Misma ruta que el formulario demo (+page.server.ts).",
+        "serverTime": "Hora del servidor",
+        "serverFact": "Dato del servidor",
+        "magic": "Número mágico",
+        "howTitle": "Cómo funciona",
+        "howBody": "1. +page.ts exporta load()\n2. Se ejecuta en el servidor\n3. Los datos llegan al +page.svelte vía props\n4. El componente los recibe con $props()",
+        "facts": {
+          "compiler": "SvelteKit compila tu código en el servidor"
+        }
+      },
+      "blogPost": {
+        "date": "2026-05-11",
+        "title": "Mi primer post con SvelteKit",
+        "lead": "Ejemplo de blog con Markdown/mdsvex (antes en ruta propia; ahora demo en galería).",
+        "h1": "Bienvenido al blog",
+        "p1": "Ejemplo de Markdown y mdsvex en la misma página.",
+        "h2": "Cómo crear un post nuevo",
+        "ol1": "Crea una carpeta en src/routes/blog/tu-post/",
+        "ol2": "Crea un archivo +page.svx dentro de esa carpeta",
+        "ol3": "Escribe tu contenido en Markdown",
+        "ol4": "Añade frontmatter con title, date y description",
+        "h3": "Ejemplo de código",
+        "code": "function saludo(nombre: string) {\n  return 'Hola ' + nombre + '!';\n}",
+        "h4": "Por qué usar SvelteKit para tu blog",
+        "li1": "Velocidad: las páginas se generan en build time",
+        "li2": "Markdown: escribes en texto plano, se convierte a HTML",
+        "li3": "Componentes: puedes meter componentes Svelte dentro del Markdown",
+        "li4": "SEO: cada post puede tener su propio title y description"
+      }
+    },
+    "toastDemoSent": "Mensaje enviado (demo)",
+    "formErrors": {
+      "allRequired": "Todos los campos son obligatorios.",
+      "invalidEmail": "Email no válido."
+    }
+  },
   "home": {
     "seo": {
       "title": "My SvelteKit Starter — Plantilla Svelte 5 + Kit 2 lista para shippear",
@@ -30,7 +227,8 @@
       "title": "La plantilla SvelteKit para quien solo quiere construir",
       "subtitle": "Runes, rutas, formularios, toasts, tema claro/oscuro y una galería de componentes que ya están en tu proyecto —no en un npm opaco. Fork, personaliza y despliega.",
       "ctaPrimary": "Ver componentes",
-      "ctaSecondary": "Documentación"
+      "ctaSecondary": "Documentación",
+      "ctaLiveDemo": "Ver en vivo"
     },
     "features": {
       "eyebrow": "Incluido",

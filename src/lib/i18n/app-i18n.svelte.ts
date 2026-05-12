@@ -12,20 +12,7 @@ function normalizeLocale(lang: string | null | undefined): AppLocale {
   return 'en';
 }
 
-function readInitialLocale(): AppLocale {
-  if (typeof window === 'undefined') return 'es';
-
-  const saved = localStorage.getItem('lang');
-  const hasManual = localStorage.getItem('lang_manual') === '1';
-  if (hasManual && saved) return normalizeLocale(saved);
-
-  const nav = navigator.language || 'es';
-  const lower = nav.toLowerCase();
-  if (lower.startsWith('en')) return 'en';
-  return 'es';
-}
-
-let currentLocale = $state<AppLocale>(readInitialLocale());
+let currentLocale = $state<AppLocale>('es');
 
 if (typeof document !== 'undefined') {
   document.documentElement.lang = currentLocale;

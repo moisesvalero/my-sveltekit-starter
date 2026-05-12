@@ -30,7 +30,7 @@
     <div class="flex flex-wrap justify-center gap-4">
       <a
         href="/components"
-        class="rounded-xl bg-primary px-8 py-3 font-bold text-on-primary shadow-lg transition-colors hover:bg-primary-container"
+        class="accent-glow rounded-xl bg-primary px-8 py-3 font-bold text-white shadow-lg transition-all hover:brightness-110"
       >
         {$t('home.hero.ctaPrimary')}
       </a>
@@ -42,45 +42,56 @@
       >
         {$t('home.hero.ctaSecondary')}
       </a>
+      {#if siteConfig.liveDemoUrl}
+        <a
+          href={siteConfig.liveDemoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-xl border border-outline-variant bg-surface-container-high px-8 py-3 font-bold text-on-surface transition-colors hover:bg-surface-variant"
+        >
+          {$t('home.hero.ctaLiveDemo')}
+        </a>
+      {/if}
     </div>
   </section>
 
-  <!-- Code Snippet Section -->
-  <section class="mx-auto mb-32 max-w-5xl px-6">
-    <div class="overflow-hidden rounded-2xl border border-outline bg-inverse-surface shadow-2xl">
-      <div class="flex items-center gap-2 border-b border-outline bg-inverse-surface px-4 py-3">
-        <div class="size-3 rounded-full bg-error"></div>
-        <div class="size-3 rounded-full bg-tertiary-container"></div>
-        <div class="size-3 rounded-full bg-primary-container"></div>
-        <span class="ml-4 font-code text-xs text-outline-variant"
-          >src/lib/components/Counter.svelte</span
-        >
+  <!-- Code Snippet Section (misma estructura que stitch …/landing_page_dark/code.html) -->
+  <section class="mx-auto mb-32 max-w-4xl px-6">
+    <div class="code-window rounded-xl overflow-hidden">
+      <div
+        class="flex items-center justify-between border-b border-outline-variant bg-surface-container px-4 py-2"
+      >
+        <div class="flex gap-1.5">
+          <div class="size-3 rounded-full bg-red-500/50"></div>
+          <div class="size-3 rounded-full bg-yellow-500/50"></div>
+          <div class="size-3 rounded-full bg-green-500/50"></div>
+        </div>
+        <div class="font-code text-body-sm text-on-surface-variant">
+          src/lib/components/Counter.svelte
+        </div>
+        <div class="w-12 shrink-0"></div>
       </div>
-      <div class="overflow-x-auto p-6 font-code text-code">
-        <pre class="text-on-primary-container"><code
-            ><span class="text-primary-fixed-dim">script</span>
-            <span class="text-secondary-fixed-dim">lang="ts"</span>&gt;
-  <span class="text-tertiary-fixed-dim">let</span> count = <span class="text-on-tertiary-container"
-              >$state</span
-            >(<span class="text-secondary-container">0</span>);
-  <span class="text-tertiary-fixed-dim">let</span> doubled = <span
-              class="text-on-tertiary-container">$derived</span
-            >(count * <span class="text-secondary-container">2</span>);
+      <div class="overflow-x-auto bg-surface-container-lowest p-6 font-code text-body">
+        <pre class="leading-relaxed text-on-surface-variant"><code
+            ><span class="text-primary-container">script</span>
+            <span class="text-secondary">lang="ts"</span>&gt;
+  <span class="text-secondary">let</span> count = <span class="text-tertiary">$state</span>(<span
+              class="text-tertiary-fixed-dim">0</span
+            >);
+  <span class="text-secondary">let</span> doubled = <span class="text-tertiary">$derived</span
+            >(count * <span class="text-tertiary-fixed-dim">2</span>);
 
-  <span class="text-on-tertiary-fixed-variant">function</span> <span class="text-primary-fixed"
-              >increment</span
-            >() {'{'}
-    count += <span class="text-secondary-container">1</span>;
+  <span class="text-secondary">function</span> <span class="text-primary">increment</span>() {'{'}
+    count += <span class="text-tertiary-fixed-dim">1</span>;
   }
-<span class="text-primary-fixed-dim">/script</span>&gt;
+<span class="text-primary-container">/script</span>&gt;
 
-<span class="text-primary-fixed-dim">&lt;button</span> <span class="text-secondary-fixed-dim"
-              >onclick</span
-            >={'{'}<span class="text-primary-fixed">increment</span>}<span
-              class="text-primary-fixed-dim">&gt;</span
-            >
+<span class="text-outline">&lt;!-- Svelte 5 logic --&gt;</span>
+&lt;<span class="text-primary">button</span> <span class="text-secondary">onclick</span>={'{'}<span
+              class="text-primary">increment</span
+            >}&gt;
   Clicks: {'{'}count} (Doubled: {'{'}doubled})
-<span class="text-primary-fixed-dim">&lt;/button&gt;</span></code
+&lt;/<span class="text-primary">button</span>&gt;</code
           ></pre>
       </div>
     </div>
@@ -98,7 +109,7 @@
     </div>
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       <div
-        class="rounded-2xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-700 dark:bg-card"
+        class="glow-hover rounded-xl border border-outline-variant bg-surface p-6 transition-all hover:border-primary/30"
       >
         <div
           class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-container/10 text-primary"
@@ -113,7 +124,7 @@
         </p>
       </div>
       <div
-        class="rounded-2xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-700 dark:bg-card"
+        class="glow-hover rounded-xl border border-outline-variant bg-surface p-6 transition-all hover:border-primary/30"
       >
         <div
           class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-container/10 text-primary"
@@ -126,7 +137,7 @@
         </p>
       </div>
       <div
-        class="rounded-2xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-700 dark:bg-card"
+        class="glow-hover rounded-xl border border-outline-variant bg-surface p-6 transition-all hover:border-primary/30"
       >
         <div
           class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-container/10 text-primary"
@@ -139,7 +150,7 @@
         </p>
       </div>
       <div
-        class="rounded-2xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-700 dark:bg-card"
+        class="glow-hover rounded-xl border border-outline-variant bg-surface p-6 transition-all hover:border-primary/30"
       >
         <div
           class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-container/10 text-primary"
@@ -152,7 +163,7 @@
         </p>
       </div>
       <div
-        class="rounded-2xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-700 dark:bg-card"
+        class="glow-hover rounded-xl border border-outline-variant bg-surface p-6 transition-all hover:border-primary/30"
       >
         <div
           class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-container/10 text-primary"
@@ -165,7 +176,7 @@
         </p>
       </div>
       <div
-        class="rounded-2xl border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-700 dark:bg-card"
+        class="glow-hover rounded-xl border border-outline-variant bg-surface p-6 transition-all hover:border-primary/30"
       >
         <div
           class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-container/10 text-primary"
@@ -188,12 +199,12 @@
       <div class="space-y-12">
         <div class="relative flex items-start gap-8">
           <div
-            class="z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary text-xl font-bold text-on-primary"
+            class="z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-primary text-lg font-bold text-primary"
           >
             1
           </div>
           <div class="pt-4">
-            <h4 class="font-h3 text-h3 mb-2">{$t('home.steps.step1.title')}</h4>
+            <h4 class="font-h3 text-h3 mb-2 text-on-surface">{$t('home.steps.step1.title')}</h4>
             <p class="text-body text-on-surface-variant">
               {$t('home.steps.step1.desc')}
             </p>
@@ -201,12 +212,12 @@
         </div>
         <div class="relative flex items-start gap-8">
           <div
-            class="z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary text-xl font-bold text-on-primary"
+            class="z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-primary text-lg font-bold text-primary"
           >
             2
           </div>
           <div class="pt-4">
-            <h4 class="font-h3 text-h3 mb-2">{$t('home.steps.step2.title')}</h4>
+            <h4 class="font-h3 text-h3 mb-2 text-on-surface">{$t('home.steps.step2.title')}</h4>
             <p class="text-body text-on-surface-variant">
               {$t('home.steps.step2.desc')}
             </p>
@@ -214,12 +225,12 @@
         </div>
         <div class="relative flex items-start gap-8">
           <div
-            class="z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary text-xl font-bold text-on-primary"
+            class="z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-primary text-lg font-bold text-primary"
           >
             3
           </div>
           <div class="pt-4">
-            <h4 class="font-h3 text-h3 mb-2">{$t('home.steps.step3.title')}</h4>
+            <h4 class="font-h3 text-h3 mb-2 text-on-surface">{$t('home.steps.step3.title')}</h4>
             <p class="text-body text-on-surface-variant">
               {$t('home.steps.step3.desc')}
             </p>
@@ -227,12 +238,12 @@
         </div>
         <div class="relative flex items-start gap-8">
           <div
-            class="z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary text-xl font-bold text-on-primary"
+            class="z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-primary text-lg font-bold text-primary"
           >
             4
           </div>
           <div class="pt-4">
-            <h4 class="font-h3 text-h3 mb-2">{$t('home.steps.step4.title')}</h4>
+            <h4 class="font-h3 text-h3 mb-2 text-on-surface">{$t('home.steps.step4.title')}</h4>
             <p class="text-body text-on-surface-variant">
               {$t('home.steps.step4.desc')}
             </p>
@@ -244,20 +255,18 @@
 
   <!-- Final CTA Card -->
   <section class="mx-auto mb-32 max-w-5xl px-6">
-    <div
-      class="relative overflow-hidden rounded-3xl bg-primary-container p-12 text-center text-on-primary-container"
-    >
+    <div class="relative overflow-hidden rounded-3xl bg-primary p-12 text-center md:p-16">
       <div
-        class="absolute right-0 top-0 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-white/10 blur-3xl"
+        class="absolute inset-0 bg-gradient-to-br from-primary via-primary-container to-secondary opacity-50"
       ></div>
       <div class="relative z-10">
-        <h2 class="font-h2 text-h2 mb-6">{$t('home.cta.title')}</h2>
-        <p class="text-subtitle mx-auto mb-8 max-w-xl opacity-90">
+        <h2 class="font-h2 text-h2 mb-6 text-white">{$t('home.cta.title')}</h2>
+        <p class="text-subtitle mx-auto mb-8 max-w-xl text-primary-fixed opacity-90">
           {$t('home.cta.subtitle')}
         </p>
         <a
           href="/components"
-          class="inline-block rounded-xl bg-white px-12 py-4 text-lg font-bold text-primary-container transition-transform hover:bg-surface active:scale-95"
+          class="inline-block rounded-xl bg-white px-12 py-4 text-lg font-bold text-primary transition-all hover:bg-on-surface hover:scale-105 active:scale-95"
         >
           {$t('home.cta.button')}
         </a>

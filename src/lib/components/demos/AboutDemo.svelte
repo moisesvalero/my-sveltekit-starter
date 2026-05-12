@@ -2,17 +2,20 @@
   import Container from '$lib/components/ui/Container.svelte';
   import Section from '$lib/components/ui/Section.svelte';
   import { Card } from '$lib/components/ui/card';
+  import { t } from '$lib/i18n';
 </script>
 
 <div class="demo-pages text-left">
   <Container>
     <div class="pb-6 pt-2">
-      <p class="mb-4 text-xs uppercase tracking-[0.16em] text-muted-foreground">Sobre nosotros</p>
+      <p class="mb-4 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+        {$t('componentsPage.demos.about.eyebrow')}
+      </p>
       <h2 class="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-        Construimos herramientas que la gente ama usar.
+        {$t('componentsPage.demos.about.title')}
       </h2>
       <p class="text-lg text-muted-foreground">
-        Un equipo pequeño con un objetivo grande: hacer software que marque la diferencia.
+        {$t('componentsPage.demos.about.subtitle')}
       </p>
     </div>
   </Container>
@@ -23,25 +26,31 @@
         <Card
           class="border-blue-100/50 bg-gradient-to-br from-blue-50/50 to-transparent p-6 dark:border-border dark:from-blue-950/20"
         >
-          <h3 class="mb-2 text-lg font-semibold text-foreground">Mision</h3>
+          <h3 class="mb-2 text-lg font-semibold text-foreground">
+            {$t('componentsPage.demos.about.mission')}
+          </h3>
           <p class="text-sm leading-relaxed text-muted-foreground">
-            Crear herramientas digitales que resuelvan problemas reales de forma simple y elegante.
+            {$t('componentsPage.demos.about.missionText')}
           </p>
         </Card>
         <Card
           class="border-blue-100/50 bg-gradient-to-br from-blue-50/50 to-transparent p-6 dark:border-border dark:from-blue-950/20"
         >
-          <h3 class="mb-2 text-lg font-semibold text-foreground">Vision</h3>
+          <h3 class="mb-2 text-lg font-semibold text-foreground">
+            {$t('componentsPage.demos.about.vision')}
+          </h3>
           <p class="text-sm leading-relaxed text-muted-foreground">
-            Ser la plataforma de referencia para equipos que quieren construir rapido y bien.
+            {$t('componentsPage.demos.about.visionText')}
           </p>
         </Card>
         <Card
           class="border-blue-100/50 bg-gradient-to-br from-blue-50/50 to-transparent p-6 dark:border-border dark:from-blue-950/20"
         >
-          <h3 class="mb-2 text-lg font-semibold text-foreground">Valores</h3>
+          <h3 class="mb-2 text-lg font-semibold text-foreground">
+            {$t('componentsPage.demos.about.values')}
+          </h3>
           <p class="text-sm leading-relaxed text-muted-foreground">
-            Transparencia, velocidad, calidad y obsesion por la experiencia de usuario.
+            {$t('componentsPage.demos.about.valuesText')}
           </p>
         </Card>
       </div>
@@ -51,10 +60,10 @@
   <Section variant="default">
     <Container>
       <h3 class="mb-4 text-center text-2xl font-bold text-foreground">
-        Las personas detras del proyecto
+        {$t('componentsPage.demos.about.teamTitle')}
       </h3>
       <p class="mb-8 text-center text-muted-foreground">
-        Un equipo distribuido trabajando desde cualquier parte del mundo.
+        {$t('componentsPage.demos.about.teamSubtitle')}
       </p>
       <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
         {#each ['Alex', 'Maria', 'Carlos', 'Lucia'] as name (name)}
@@ -65,7 +74,7 @@
               {name[0]}
             </div>
             <h4 class="text-base font-semibold text-foreground">{name}</h4>
-            <p class="text-sm text-muted-foreground">Rol del equipo</p>
+            <p class="text-sm text-muted-foreground">{$t('componentsPage.demos.about.role')}</p>
           </Card>
         {/each}
       </div>

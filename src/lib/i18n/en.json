@@ -21,6 +21,203 @@
       "toEnglish": "🇬🇧 EN"
     }
   },
+  "componentsPage": {
+    "seo": {
+      "title": "Components | My SvelteKit Starter",
+      "description": "UI gallery (shadcn-svelte), page demos (about, pricing, FAQ, SSR, blog) and contact form."
+    },
+    "nav": {
+      "root": "Components",
+      "uiBase": "UI base",
+      "advanced": "Advanced",
+      "templateExamples": "Template examples",
+      "about": "About",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "serverData": "Server data",
+      "blogList": "Blog (mdsvex)",
+      "sampleArticle": "Sample article",
+      "contactForm": "Contact form"
+    },
+    "badge": "UI COMPONENTS",
+    "title": "Components",
+    "kicker": "Svelte 5 + Tailwind CSS. Ready to copy and customise.",
+    "sections": {
+      "button": { "desc": "5 variants · 3 sizes · link · disabled · loading" },
+      "card": { "desc": "3 variants · composition", "content": "Card content" },
+      "input": { "desc": "Text, email and password" },
+      "textarea": { "desc": "Multi-line input", "placeholder": "Type your message here..." },
+      "label": { "desc": "Accessible label", "demo": "Name", "placeholder": "Your name" },
+      "spinner": { "desc": "SVG indicator" },
+      "skeleton": { "desc": "Pulsing placeholder" },
+      "copy": { "desc": "Copy to clipboard" },
+      "newsletter": { "desc": "Email subscription", "button": "Subscribe" },
+      "toast": { "desc": "success · error · info · warning", "done": "Done!", "err": "Error!", "warn": "Heads up", "info": "Info" },
+      "aiprompt": { "desc": "AI prompt area", "placeholder": "Ask anything…" },
+      "aboutDemo": {
+        "title": "About us",
+        "desc": "Corporate section example: short pitch, values and blocks you can reuse on any landing."
+      },
+      "pricingDemo": {
+        "title": "Plans & pricing",
+        "desc": "Pricing table with highlight and CTAs; a solid base for SaaS, services or memberships."
+      },
+      "faqDemo": {
+        "title": "FAQ",
+        "desc": "Accordion for common questions (product, billing, support) without making the page too long."
+      },
+      "ssrDemo": {
+        "title": "Server data (load)",
+        "desc": "Values computed on the server before HTML: time and sample data. Code lives in src/routes/components/+page.ts.",
+        "chip": "+page.ts + SsrDemoPanel"
+      },
+      "blogDemo": {
+        "title": "Blog — listing",
+        "desc": "Typical list card for articles; the full sample content is in the next section.",
+        "codeChip": "mdsvex + .svx (see AGENTS.md)"
+      },
+      "blogCard": {
+        "title": "My first post with SvelteKit",
+        "excerpt": "Preview; full text is in “Sample article” below."
+      },
+      "blogPostDemo": {
+        "title": "Sample article",
+        "desc": "Long-form post with headings, lists and code; swap for mdsvex routes or CMS-driven content."
+      },
+      "contactDemo": {
+        "title": "Contact form",
+        "desc": "Server-side validation with SvelteKit actions and error messages. In production you’d wire this to your API, email or CRM.",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "phName": "Your name",
+        "phEmail": "you@email.com",
+        "phMessage": "Test message…",
+        "submit": "Send (demo)"
+      }
+    },
+    "demos": {
+      "about": {
+        "eyebrow": "About us",
+        "title": "We build tools people love to use.",
+        "subtitle": "A small team with a big goal: ship software that makes a difference.",
+        "mission": "Mission",
+        "missionText": "Create digital tools that solve real problems in a simple, elegant way.",
+        "vision": "Vision",
+        "visionText": "Become the go-to platform for teams that want to ship fast and well.",
+        "values": "Values",
+        "valuesText": "Transparency, speed, quality and obsession with user experience.",
+        "teamTitle": "The people behind the project",
+        "teamSubtitle": "A distributed team working from anywhere in the world.",
+        "role": "Team role"
+      },
+      "pricing": {
+        "eyebrow": "Pricing",
+        "title": "Simple, clear plans",
+        "subtitle": "Pick the plan that fits you. No surprises.",
+        "perMonth": "/mo",
+        "names": {
+          "starter": "Starter",
+          "pro": "Pro",
+          "enterprise": "Enterprise"
+        },
+        "ctaFeatured": "Get started",
+        "ctaOther": "Choose plan",
+        "starter": {
+          "desc": "Getting started",
+          "f1": "5 projects",
+          "f2": "Basic support",
+          "f3": "Updates"
+        },
+        "pro": {
+          "desc": "For professionals",
+          "f1": "Unlimited projects",
+          "f2": "Priority support",
+          "f3": "API access"
+        },
+        "enterprise": {
+          "desc": "For teams",
+          "f1": "Everything in Pro",
+          "f2": "Guaranteed SLA",
+          "f3": "Dedicated onboarding"
+        }
+      },
+      "faq": {
+        "subtitle": "Quick answers about the template, deploy, languages and customisation.",
+        "items": {
+          "plantilla": {
+            "q": "What is this template?",
+            "a": "A ready-to-go base for modern sites with SvelteKit 2 and Svelte 5: UI components (shadcn-svelte), SEO, i18n, dark mode and deployment tuned for Vercel or Netlify."
+          },
+          "principiante": {
+            "q": "Do I need a lot of front-end experience?",
+            "a": "You don’t have to be an expert: tweak JSON copy, CSS colours and copy blocks from the component gallery. When you want to go further, the code is organised to scale without mess."
+          },
+          "comercial": {
+            "q": "Can I use it for commercial projects?",
+            "a": "Yes. The template is MIT: use it for clients, products or landings with no paid licence restrictions."
+          },
+          "deploy": {
+            "q": "How do I deploy to production?",
+            "a": "Push the repo to GitHub and connect the project to Vercel or Netlify. Build is npm run build; set PUBLIC_SITE_URL for SEO (sitemap and Open Graph)."
+          },
+          "i18n": {
+            "q": "How do languages work?",
+            "a": "Spanish and English with keys under src/lib/i18n. To add another language, add a JSON file, register translations and extend the locale type in the i18n module."
+          },
+          "cms": {
+            "q": "Can I connect a CMS?",
+            "a": "Yes. The repo includes optional Sanity pieces; you can also consume any API (Strapi, Contentful, local Markdown) from load or endpoints."
+          },
+          "seo": {
+            "q": "What about SEO?",
+            "a": "Centralised metadata (setSeo), JSON-LD, sitemap, robots and security headers in hooks.server.ts. Set titles and descriptions per route."
+          },
+          "rendimiento": {
+            "q": "Is it performance-minded?",
+            "a": "Svelte compiles to small JS; use optimised images, lazy loading where it matters and Vite’s bundle analyser as the app grows."
+          }
+        }
+      },
+      "ssr": {
+        "eyebrow": "Server Side Rendering",
+        "title": "Data loading demo",
+        "intro": "Data comes from src/routes/components/+page.ts with load(). Same route as the demo form (+page.server.ts).",
+        "serverTime": "Server time",
+        "serverFact": "Server fact",
+        "magic": "Magic number",
+        "howTitle": "How it works",
+        "howBody": "1. +page.ts exports load()\n2. It runs on the server\n3. Data reaches +page.svelte via props\n4. The component receives them with $props()",
+        "facts": {
+          "compiler": "SvelteKit compiles your code on the server"
+        }
+      },
+      "blogPost": {
+        "date": "2026-05-11",
+        "title": "My first post with SvelteKit",
+        "lead": "Sample blog with Markdown/mdsvex (previously its own route; now a gallery demo).",
+        "h1": "Welcome to the blog",
+        "p1": "Example of Markdown and mdsvex on the same page.",
+        "h2": "How to create a new post",
+        "ol1": "Create a folder in src/routes/blog/your-post/",
+        "ol2": "Add a +page.svx file inside that folder",
+        "ol3": "Write your content in Markdown",
+        "ol4": "Add frontmatter with title, date and description",
+        "h3": "Code sample",
+        "code": "function greet(name: string) {\n  return 'Hello ' + name + '!';\n}",
+        "h4": "Why SvelteKit for your blog",
+        "li1": "Speed: pages can be generated at build time",
+        "li2": "Markdown: write plain text, it becomes HTML",
+        "li3": "Components: embed Svelte components inside Markdown",
+        "li4": "SEO: each post can have its own title and description"
+      }
+    },
+    "toastDemoSent": "Message sent (demo)",
+    "formErrors": {
+      "allRequired": "All fields are required.",
+      "invalidEmail": "Invalid email address."
+    }
+  },
   "home": {
     "seo": {
       "title": "My SvelteKit Starter — Svelte 5 + Kit 2 template ready to ship",
@@ -30,7 +227,8 @@
       "title": "The SvelteKit starter for people who just want to build",
       "subtitle": "Runes, routes, forms, toasts, light/dark theme and a component gallery living in your repo—not an opaque package. Fork, tweak, deploy.",
       "ctaPrimary": "Browse components",
-      "ctaSecondary": "Documentation"
+      "ctaSecondary": "Documentation",
+      "ctaLiveDemo": "Live demo"
     },
     "features": {
       "eyebrow": "Included",
