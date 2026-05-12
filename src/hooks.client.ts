@@ -9,3 +9,12 @@ Sentry.init({
 });
 
 export { Sentry };
+
+/** SvelteKit client hooks (stubs — add logic if needed). */
+export function handleError() {
+  /* optional: Sentry.captureException */
+}
+
+export function init() {
+  /* optional: client-only setup */
+}
