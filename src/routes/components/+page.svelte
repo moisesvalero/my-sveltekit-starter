@@ -15,17 +15,24 @@
   import CopyButton from '$lib/components/CopyButton.svelte';
   import Newsletter from '$lib/components/Newsletter.svelte';
   import AiPrompt from '$lib/components/AiPrompt.svelte';
+  import AboutDemo from '$lib/components/demos/AboutDemo.svelte';
+  import PricingDemo from '$lib/components/demos/PricingDemo.svelte';
+  import FaqDemo from '$lib/components/demos/FaqDemo.svelte';
+  import SsrDemoPanel from '$lib/components/demos/SsrDemoPanel.svelte';
+  import BlogPostDemo from '$lib/components/demos/BlogPostDemo.svelte';
 
   setSeo({
     title: 'Componentes | My SvelteKit Starter',
     description:
-      'Galería de componentes UI shadcn-svelte, bloques del proyecto y demos de blog + formulario.'
+      'Galería de componentes UI shadcn-svelte, demos de páginas (about, pricing, faq, SSR, blog) y formulario.'
   });
 
   let {
-    form
+    form,
+    data
   }: {
     form?: { name?: string; email?: string; message?: string; error?: string; success?: boolean };
+    data: { serverTime: string; serverFact: string; magicNumber: number };
   } = $props();
 
   let name = $state(untrack(() => form?.name ?? ''));
@@ -74,7 +81,12 @@
     {
       label: 'Ejemplos plantilla',
       items: [
+        { id: 'about-demo', name: 'About' },
+        { id: 'pricing-demo', name: 'Pricing' },
+        { id: 'faq-demo', name: 'FAQ' },
+        { id: 'ssr-demo', name: 'SSR load()' },
         { id: 'blog-demo', name: 'Blog (mdsvex)' },
+        { id: 'blog-post-demo', name: 'Post ejemplo' },
         { id: 'contact-demo', name: 'Formulario contacto' }
       ]
     }
@@ -410,6 +422,104 @@
     </section>
 
     <section
+      id="about-demo"
+      class="scroll-mt-32 border-b border-border py-10"
+      use:reveal={{ stage: 'content' }}
+    >
+      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">Página About (demo)</h2>
+          <p class="text-sm text-muted-foreground">
+            Antes en <code class="rounded bg-muted px-1 py-0.5 text-xs">/about</code>; ahora solo
+            redirige aquí.
+          </p>
+        </div>
+        <code
+          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
+          >$lib/components/demos/AboutDemo.svelte</code
+        >
+      </div>
+      <div class="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/15 sm:p-6">
+        <AboutDemo />
+      </div>
+    </section>
+
+    <section
+      id="pricing-demo"
+      class="scroll-mt-32 border-b border-border py-10"
+      use:reveal={{ stage: 'content' }}
+    >
+      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">Página Pricing (demo)</h2>
+          <p class="text-sm text-muted-foreground">
+            Antes en <code class="rounded bg-muted px-1 py-0.5 text-xs">/pricing</code>; ahora solo
+            redirige aquí.
+          </p>
+        </div>
+        <code
+          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
+          >$lib/components/demos/PricingDemo.svelte</code
+        >
+      </div>
+      <div class="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/15 sm:p-6">
+        <PricingDemo />
+      </div>
+    </section>
+
+    <section
+      id="faq-demo"
+      class="scroll-mt-32 border-b border-border py-10"
+      use:reveal={{ stage: 'content' }}
+    >
+      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">Página FAQ (demo)</h2>
+          <p class="text-sm text-muted-foreground">
+            Antes en <code class="rounded bg-muted px-1 py-0.5 text-xs">/faq</code>; ahora solo
+            redirige aquí.
+          </p>
+        </div>
+        <code
+          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
+          >$lib/components/demos/FaqDemo.svelte</code
+        >
+      </div>
+      <div class="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/15 sm:p-6">
+        <FaqDemo />
+      </div>
+    </section>
+
+    <section
+      id="ssr-demo"
+      class="scroll-mt-32 border-b border-border py-10"
+      use:reveal={{ stage: 'content' }}
+    >
+      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">SSR con load() (demo)</h2>
+          <p class="text-sm text-muted-foreground">
+            Datos desde <code class="rounded bg-muted px-1 py-0.5 text-xs"
+              >src/routes/components/+page.ts</code
+            >.
+            <code class="rounded bg-muted px-1 py-0.5 text-xs">/ssr-demo</code> redirige aquí.
+          </p>
+        </div>
+        <code
+          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
+          >+page.ts + SsrDemoPanel</code
+        >
+      </div>
+      <div class="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/15 sm:p-6">
+        <SsrDemoPanel
+          serverTime={data.serverTime}
+          serverFact={data.serverFact}
+          magicNumber={data.magicNumber}
+        />
+      </div>
+    </section>
+
+    <section
       id="blog-demo"
       class="scroll-mt-32 border-b border-border py-10"
       use:reveal={{ stage: 'content' }}
@@ -418,16 +528,19 @@
         <div>
           <h2 class="font-h3 text-h3 mb-1 text-foreground">Blog (mdsvex)</h2>
           <p class="text-sm text-muted-foreground">
-            Ejemplo de post en Markdown — la ruta /blog redirige aquí; el artículo sigue en su URL.
+            <code class="rounded bg-muted px-1 py-0.5 text-xs">/blog</code> redirige a esta galería.
+            El post de ejemplo está debajo (<code class="rounded bg-muted px-1 py-0.5 text-xs"
+              >/blog/primer-post</code
+            > → ancla).
           </p>
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
-          >src/routes/blog/primer-post/</code
+          >mdsvex + .svx (ver AGENTS.md)</code
         >
       </div>
       <div class="rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15">
-        <a href="/blog/primer-post" class="block no-underline">
+        <a href="#blog-post-demo" class="block no-underline">
           <Card class="cursor-pointer p-6 transition-shadow hover:shadow-md">
             <CardHeader>
               <CardTitle>Mi primer post con SvelteKit</CardTitle>
@@ -435,11 +548,37 @@
             <CardContent>
               <p class="mb-2 text-sm text-muted-foreground">2026-05-11</p>
               <p class="text-base text-muted-foreground">
-                Demo con mdsvex: Markdown + componentes Svelte en la misma página.
+                Demo de Markdown; el contenido completo está en la sección «Post ejemplo».
               </p>
             </CardContent>
           </Card>
         </a>
+      </div>
+    </section>
+
+    <section
+      id="blog-post-demo"
+      class="scroll-mt-32 border-b border-border py-10"
+      use:reveal={{ stage: 'content' }}
+    >
+      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">Post ejemplo (contenido)</h2>
+          <p class="text-sm text-muted-foreground">
+            Equivalente al antiguo <code class="rounded bg-muted px-1 py-0.5 text-xs"
+              >+page.svx</code
+            >; ruta
+            <code class="rounded bg-muted px-1 py-0.5 text-xs">/blog/primer-post</code> redirige a esta
+            ancla.
+          </p>
+        </div>
+        <code
+          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
+          >$lib/components/demos/BlogPostDemo.svelte</code
+        >
+      </div>
+      <div class="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/15 sm:p-6">
+        <BlogPostDemo />
       </div>
     </section>
 

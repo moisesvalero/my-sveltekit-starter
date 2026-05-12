@@ -1,10 +1,7 @@
 <script lang="ts">
-  import { setSeo } from '$lib/seo';
   import Container from '$lib/components/ui/Container.svelte';
   import Section from '$lib/components/ui/Section.svelte';
   import { Card } from '$lib/components/ui/card';
-
-  setSeo({ title: 'FAQ', description: 'Preguntas frecuentes.' });
 
   let faqs = $state([
     {
@@ -44,41 +41,44 @@
   }
 </script>
 
-<svelte:head>
-  <title>FAQ | Mi Proyecto</title>
-</svelte:head>
-
-<Container>
-  <div class="pt-32 pb-8 text-center">
-    <p class="text-xs uppercase tracking-[0.16em] text-muted-foreground mb-4">FAQ</p>
-    <h1 class="text-4xl font-bold tracking-tight text-foreground mb-4">Preguntas frecuentes</h1>
-    <p class="text-lg text-muted-foreground">Todo lo que necesitas saber sobre esta plantilla.</p>
-  </div>
-</Container>
-
-<Section variant="default">
+<div class="demo-pages text-left">
   <Container>
-    <div class="max-w-[640px] mx-auto flex flex-col gap-3 pb-16">
-      {#each faqs as item, i (item.q)}
-        <Card class="p-5 bg-gradient-to-br from-blue-50/30 to-transparent cursor-pointer">
-          <button
-            class="flex items-start justify-between w-full text-left"
-            onclick={() => toggle(i)}
-          >
-            <h4 class="text-base font-medium text-foreground pr-4">{item.q}</h4>
-            <span
-              class="text-xl text-muted-foreground transition-transform duration-200 flex-shrink-0"
-              class:text-primary={item.open}
-              class:rotate-45={item.open}
-            >
-              {item.open ? '−' : '+'}
-            </span>
-          </button>
-          {#if item.open}
-            <p class="text-sm text-muted-foreground mt-3 leading-relaxed">{item.a}</p>
-          {/if}
-        </Card>
-      {/each}
+    <div class="pb-6 pt-2 text-center">
+      <p class="mb-4 text-xs uppercase tracking-[0.16em] text-muted-foreground">FAQ</p>
+      <h2 class="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+        Preguntas frecuentes
+      </h2>
+      <p class="text-lg text-muted-foreground">Todo lo que necesitas saber sobre esta plantilla.</p>
     </div>
   </Container>
-</Section>
+
+  <Section variant="default">
+    <Container>
+      <div class="mx-auto flex max-w-[640px] flex-col gap-3 pb-4">
+        {#each faqs as item, i (item.q)}
+          <Card
+            class="cursor-pointer bg-gradient-to-br from-blue-50/30 to-transparent p-5 dark:from-blue-950/15"
+          >
+            <button
+              type="button"
+              class="flex w-full items-start justify-between text-left"
+              onclick={() => toggle(i)}
+            >
+              <h4 class="pr-4 text-base font-medium text-foreground">{item.q}</h4>
+              <span
+                class="flex-shrink-0 text-xl text-muted-foreground transition-transform duration-200"
+                class:text-primary={item.open}
+                class:rotate-45={item.open}
+              >
+                {item.open ? '−' : '+'}
+              </span>
+            </button>
+            {#if item.open}
+              <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{item.a}</p>
+            {/if}
+          </Card>
+        {/each}
+      </div>
+    </Container>
+  </Section>
+</div>

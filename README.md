@@ -34,19 +34,14 @@ Requisitos: **Node.js 22+** (ver `package.json` → `engines`).
 
 ### Paginas pre-hechas
 - `/` — Landing (hero, terminal de ejemplo, caracteristicas, pasos, CTA; textos en `src/lib/i18n/*.json` bajo `home.*`)
-- `/about` — Sobre nosotros
-- `/pricing` — Tabla de precios
-- `/faq` — Preguntas frecuentes con acordeon
-- `/blog` — Redirige a `/components#blog-demo` (demo de listado en la galeria). Post de ejemplo con Markdown/mdsvex: `/blog/primer-post`
-- `/contacto` — Redirige a `/components#contact-demo` (formulario de contacto demo con action server-side en `/components`)
-- `/components` — Galeria de componentes UI + demos (blog + formulario)
-- `/ssr-demo` — Ejemplo de carga de datos SSR
+- `/components` — Galeria de componentes UI **y** demos de plantilla (about, pricing, faq, SSR con `load()`, blog, formulario). Contenido en `src/lib/components/demos/*.svelte`; datos SSR en `src/routes/components/+page.ts`.
+- **Atajos (redirect 307 a anclas en `/components`)** — enlaces legacy o bookmarks: `/about`, `/pricing`, `/faq`, `/blog`, `/blog/primer-post`, `/ssr-demo`, `/contacto` (form action en `src/routes/components/+page.server.ts`).
 
 ### Componentes UI (shadcn-svelte + proyecto)
 
 **UI base** (`src/lib/components/ui/`, patron shadcn-svelte + **bits-ui**): Button, Card, Dialog, Input, Textarea, Label, Skeleton, Spinner, Sonner (toast).
 
-**Proyecto** (`src/lib/components/`): Footer, Heading, Container, Section, Grid, CopyButton, Newsletter, AiPrompt, JsonLd, CookieConsent, BlogLayout, LoadingBlock, etc. (bloques de marketing opcionales como Hero, Pricing, FAQ no estan todos enlazados en la home actual).
+**Proyecto** (`src/lib/components/`): Footer, Heading, Container, Section, Grid, CopyButton, Newsletter, AiPrompt, JsonLd, CookieConsent, BlogLayout, LoadingBlock, demos en `demos/`, etc. (bloques de marketing opcionales como Hero no estan todos enlazados en la home actual).
 
 ### Infraestructura
 - **SEO**: sitemap.xml + robots.txt + OG tags + Twitter cards + Schema.org JSON-LD + GEO (AI crawlers)
@@ -82,6 +77,14 @@ Requisitos: **Node.js 22+** (ver `package.json` → `engines`).
 - **`PROMPTS.md`** — Snippets copy-pasteables para pedirle a la IA
 - **`DESIGN_TO_CURSOR.md`** — Flujo Stitch / Lovable → implementación en esta plantilla (tokens, checklist, prompt base)
 
+**Opcional (recomendado):** instalar skills extra detectadas para tu stack (Cursor, Claude Code, etc.):
+
+```bash
+npx autoskills
+```
+
+Detalle en `INSTRUCCIONES.txt` (seccion «Usar la IA para ayudarte»).
+
 ---
 
 ## Scripts
@@ -111,13 +114,10 @@ src/
     +page.svelte              → Home
     +layout.svelte            → Layout global (header, nav, footer, toasts, cookies, dark mode)
     +error.svelte             → 404/500
-    about/                    → Sobre nosotros
-    pricing/                  → Precios
-    faq/                      → FAQs
-    blog/                     → Redirect a galeria + /blog/primer-post (mdsvex)
-    contacto/                 → Redirect a ancla de formulario en /components
-    components/               → Galeria de componentes
-    ssr-demo/                 → Demo SSR
+    blog/                     → +page.ts redirect a galeria; primer-post/ → ancla post demo
+    contacto/                 → Redirect a ancla formulario en /components
+    about/ pricing/ faq/ ssr-demo/  → Solo +page.ts (redirect 307 a /components#…)
+    components/               → Galeria UI + demos (load SSR, form action contact)
     api/
       og/+server.ts          → OG image dinamica
   lib/

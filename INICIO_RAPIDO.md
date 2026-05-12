@@ -43,14 +43,19 @@ GitHub → Vercel/Netlify → listo.
 | Ruta | Que es |
 |------|--------|
 | `/` | Home |
-| `/about` | Sobre nosotros |
-| `/pricing` | Precios |
-| `/faq` | Preguntas frecuentes |
-| `/blog` | Redirige a `/components#blog-demo`; post ejemplo `/blog/primer-post` (mdsvex) |
-| `/contacto` | Redirige a `/components#contact-demo` (formulario demo en la galeria) |
-| `/components` | Galeria de componentes + demos blog/contacto |
-| `/ssr-demo` | Demo SSR |
+| `/components` | Galeria UI + demos (about, pricing, faq, SSR, blog, formulario) |
+| `/about`, `/pricing`, `/faq`, `/blog`, `/blog/primer-post`, `/ssr-demo`, `/contacto` | Redirigen (307) a anclas en `/components` |
 | `/api/og?title=Hola` | OG image dinamica |
+
+---
+
+## Skills extra para la IA (opcional)
+
+```bash
+npx autoskills
+```
+
+Añade skills segun tu proyecto (Cursor, Claude Code, etc.). Mas contexto en `INSTRUCCIONES.txt`.
 
 ---
 

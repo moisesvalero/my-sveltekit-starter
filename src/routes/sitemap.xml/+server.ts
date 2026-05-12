@@ -15,14 +15,10 @@ export const GET = () => {
   const baseUrl = normalizeBaseUrl(env.PUBLIC_SITE_URL);
   const now = new Date().toISOString();
 
+  /** Solo URLs con contenido estable; /about, /pricing, etc. redirigen a anclas aquí */
   const routes = [
     { path: '/', priority: '1.0', changefreq: 'weekly' },
-    { path: '/about', priority: '0.8', changefreq: 'monthly' },
-    { path: '/pricing', priority: '0.9', changefreq: 'monthly' },
-    { path: '/faq', priority: '0.7', changefreq: 'monthly' },
-    { path: '/blog/primer-post', priority: '0.7', changefreq: 'monthly' },
-    { path: '/components', priority: '0.9', changefreq: 'monthly' },
-    { path: '/ssr-demo', priority: '0.6', changefreq: 'monthly' }
+    { path: '/components', priority: '0.9', changefreq: 'monthly' }
   ];
 
   const urls = routes
