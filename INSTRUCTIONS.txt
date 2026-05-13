@@ -132,7 +132,7 @@ Files you do NOT need to touch at first:
 Sample pages included:
 - / → landing with hero, features, steps, CTAs (copy in i18n)
 - /components → UI gallery + blog demos and contact form
-- There is no /examples/landing route (the main landing is /)
+
 
 --------------------------------------------------
 7. YOUR FIRST CHANGE: CUSTOMIZE THE SITE

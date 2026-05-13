@@ -1,4 +1,4 @@
-# My SvelteKit Starter — up and running in 2 minutes
+# My SvelteKit Starter - up and running in 2 minutes
 
 **[Español → INICIO_RAPIDO.md](INICIO_RAPIDO.md)**
 
