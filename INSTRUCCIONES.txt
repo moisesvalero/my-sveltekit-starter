@@ -132,7 +132,7 @@ Archivos que NO necesitas tocar (al principio):
 Paginas de ejemplo incluidas:
 - / → landing con hero, caracteristicas, pasos y CTA (textos en i18n)
 - /components → galeria de componentes UI + demos de blog y formulario de contacto
-- No existe la ruta /examples/landing en esta plantilla (la landing principal es /)
+
 
 --------------------------------------------------
 7. TU PRIMER CAMBIO: PERSONALIZAR LA WEB
