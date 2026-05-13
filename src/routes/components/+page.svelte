@@ -23,12 +23,31 @@
   import SsrDemoPanel from '$lib/components/demos/SsrDemoPanel.svelte';
   import BlogPostDemo from '$lib/components/demos/BlogPostDemo.svelte';
 
+  /** Build date: alimenta dateModified para que LLMs sepan la frescura del contenido. */
+  const buildDate = new Date().toISOString();
+
   $effect(() => {
     void $locale;
     const tr = get(t);
     setSeo({
       title: tr('componentsPage.seo.title'),
-      description: tr('componentsPage.seo.description')
+      description: tr('componentsPage.seo.description'),
+      ogTitle: tr('componentsPage.seo.title'),
+      ogDescription: tr('componentsPage.seo.description'),
+      schemaType: 'CollectionPage',
+      headline: tr('componentsPage.title'),
+      locale: $locale,
+      dateModified: buildDate,
+      keywords: [
+        'componentes Svelte',
+        'shadcn-svelte',
+        'UI kit',
+        'Tailwind CSS',
+        'demos SvelteKit',
+        'FAQ',
+        'pricing',
+        'blog mdsvex'
+      ]
     });
   });
 

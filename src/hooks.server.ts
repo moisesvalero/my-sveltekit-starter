@@ -1,14 +1,33 @@
 import type { Handle } from '@sveltejs/kit';
 import { dev, building } from '$app/environment';
+import { PORTFOLIO_LOCALE_COOKIE, parseSiteLocaleCookie } from '$lib/i18n/site-locale';
 
 const ONE_YEAR_IN_SECONDS = 31536000;
 const TWO_YEARS_IN_SECONDS = 63072000;
 
+/**
+ * Resuelve el idioma para SSR:
+ *  1) cookie `portfolio_locale` (sobrescribe todo: refleja una elección manual)
+ *  2) cabecera `Accept-Language` del navegador
+ *  3) fallback `es`
+ *
+ * Esto alimenta `<html lang="%lang%">` en `src/app.html` para que crawlers/IAs
+ * vean el idioma correcto desde la primera respuesta HTML, no tras hidratar.
+ */
+function resolveLang(event: Parameters<Handle>[0]['event']): 'es' | 'en' {
+  const cookieLang = parseSiteLocaleCookie(event.cookies.get(PORTFOLIO_LOCALE_COOKIE));
+  if (cookieLang) return cookieLang;
+  const accept = event.request.headers.get('accept-language') || '';
+  if (accept.toLowerCase().startsWith('en')) return 'en';
+  return 'es';
+}
+
 export const handle: Handle = async ({ event, resolve }) => {
   const theme = event.cookies.get('theme') || 'light';
+  const lang = resolveLang(event);
 
   const response = await resolve(event, {
-    transformPageChunk: ({ html }) => html.replace('%theme%', theme)
+    transformPageChunk: ({ html }) => html.replace('%theme%', theme).replace('%lang%', lang)
   });
 
   if (!building) {

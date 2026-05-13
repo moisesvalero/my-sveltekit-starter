@@ -42,8 +42,8 @@ Requirements: **Node.js 22+** (see `package.json` → `engines`).
 **Project** (`src/lib/components/`): Footer, Heading, Container, Section, Grid, CopyButton, Newsletter, AiPrompt, JsonLd, CookieConsent, BlogLayout, LoadingBlock, demos under `demos/`, etc. (optional marketing blocks like Hero are not all wired on the current home).
 
 ### Infrastructure
-- **SEO**: sitemap.xml + robots.txt + OG tags + Twitter cards + Schema.org JSON-LD + GEO (AI crawlers)
-- **i18n**: ES/EN translations with store + localStorage
+- **SEO + GEO (automated)**: dynamic `/sitemap.xml` (with hreflang ES/EN), `/robots.txt` (AI crawlers: GPTBot, Claude, Perplexity, Google-Extended, CCBot…), `/llms.txt` + `/llms-full.txt` ([llmstxt.org](https://llmstxt.org) standard), complete Open Graph + Twitter Cards, canonical URL auto-derived, dynamic `<html lang>` via SSR cookie, and JSON-LD that ships **Organization + WebSite (SearchAction) + BreadcrumbList + FAQPage + HowTo + SoftwareApplication** out of the box. Just call `setSeo({...})` in your `+page.svelte`.
+- **i18n**: ES/EN translations with store + localStorage + server cookie (SSR-aware)
 - **Dark mode**: Toggle with mode-watcher, respects system preference
 - **Toasts**: Sonner (`<Toaster />` in layout) + `toast()` from `$lib/stores/toast` (also `<ToastContainer />` in layout)
 - **Motion**: Scroll reveal via IntersectionObserver
@@ -141,8 +141,49 @@ static/
   logos/                      → Brand SVGs (reference)
   manifest.json              → Web app manifest
   favicon.svg
-  robots.txt, llms.txt
 ```
+
+> SEO/GEO routes (`robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`) are **dynamic SvelteKit endpoints** under `src/routes/`, fed from `src/lib/site-pages.ts` + i18n. To add a page to all of them at once, just append an entry to the `sitePages` array.
+
+---
+
+## SEO + GEO at a glance
+
+The template is wired so that **calling `setSeo({...})` in a page is enough** — every other tag, schema and crawler file is auto-generated.
+
+```ts
+// src/routes/mi-pagina/+page.svelte
+import { setSeo } from '$lib/seo';
+
+setSeo({
+  title: 'Mi página',
+  description: 'Resumen en una frase.',
+  schemaType: 'FAQPage',
+  dateModified: new Date().toISOString(),
+  faq: [{ question: '¿Qué es X?', answer: 'X es...' }],
+  howto: [{ name: 'Paso 1', text: 'Haz Y' }]
+});
+```
+
+That single call updates:
+
+| Output | What it does |
+|--------|--------------|
+| `<title>`, `description`, `keywords`, `author`, `canonical` | Standard SEO tags |
+| Open Graph + Twitter Cards | Social previews |
+| `hreflang` ES/EN/`x-default` | International SEO |
+| JSON-LD `WebPage` / `Article` / `FAQPage` / `HowTo` / `SoftwareApplication` | Rich results in Google + citations in ChatGPT / Perplexity / Gemini |
+| `BreadcrumbList` | Auto-derived from URL |
+| `Organization` + `WebSite` with `SearchAction` | Sitewide schema |
+
+And from `src/lib/site-pages.ts` the template auto-generates:
+
+- `/sitemap.xml` with hreflang
+- `/llms.txt` (Markdown index, [llmstxt.org](https://llmstxt.org))
+- `/llms-full.txt` (full content for LLM ingestion)
+- `/robots.txt` (allow-list for OpenAI, Anthropic, Google, Perplexity, CCBot, Meta, Cohere)
+
+To add a new page to all of them, append one entry to `sitePages` in `src/lib/site-pages.ts`.
 
 ---
 

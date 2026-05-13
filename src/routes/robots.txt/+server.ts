@@ -65,8 +65,12 @@ User-agent: cohere-ai
 Allow: /
 Disallow: /api/
 
-# ====== Sitemap ======
-Sitemap: ${baseUrl}/sitemap.xml`;
+# ====== Sitemap & GEO ======
+Sitemap: ${baseUrl}/sitemap.xml
+
+# Índice GEO para LLMs (llmstxt.org)
+# - ${baseUrl}/llms.txt        índice corto en Markdown
+# - ${baseUrl}/llms-full.txt   contenido completo del sitio en Markdown`;
 
   return new Response(body, {
     headers: {

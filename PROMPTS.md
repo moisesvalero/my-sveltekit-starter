@@ -74,6 +74,17 @@ Add full SEO to this page:
 - Add <svelte:head> meta tags reading $seo
 ```
 
+## Replicate the SEO + GEO setup in another SvelteKit project
+
+For a full audit + implementation plan that an agent can follow end-to-end on any SvelteKit project, see **`GEO_PLAYBOOK.md`** in this repo. It includes a 10-minute audit checklist, a step-by-step plan, the file map for SvelteKit, and a copy-paste prompt at the bottom.
+
+```
+Read GEO_PLAYBOOK.md in this repo and apply the same SEO + GEO setup to my SvelteKit project at [path/repo URL].
+Follow the order in the playbook: audit → site-pages registry → cleanup → store → layout → JsonLd → SSR lang → endpoints → pages → validation → docs.
+Stack: Svelte 5 + SvelteKit 2 + TypeScript, i18n locales: [es/en], indexable routes: [list or "audit them"].
+Start with the audit and show me the report before touching code.
+```
+
 ## Use i18n (translations)
 
 ```

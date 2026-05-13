@@ -4,15 +4,71 @@
   import { setSeo } from '$lib/seo';
   import { locale, t } from '$lib/i18n';
 
+  /**
+   * Fecha de la última build: hace que LLMs y Google sepan que el contenido es reciente.
+   * Se calcula al cargar el módulo, así que cada deploy actualiza el `dateModified`.
+   */
+  const buildDate = new Date().toISOString();
+  const publishedDate = '2026-05-01T00:00:00.000Z';
+
+  /** Claves i18n de las FAQs reutilizadas (viven en `componentsPage.demos.faq`). */
+  const faqKeys = [
+    'plantilla',
+    'principiante',
+    'comercial',
+    'deploy',
+    'i18n',
+    'cms',
+    'seo',
+    'rendimiento'
+  ];
+
   $effect(() => {
     void $locale;
     const tr = get(t);
+
     setSeo({
       title: tr('home.seo.title'),
       description: tr('home.seo.description'),
       ogTitle: siteConfig.name,
       ogDescription: tr('home.seo.description'),
-      twitterCard: 'summary_large_image'
+      twitterCard: 'summary_large_image',
+      schemaType: 'WebPage',
+      headline: tr('home.hero.title'),
+      author: siteConfig.author.name,
+      locale: $locale,
+      datePublished: publishedDate,
+      dateModified: buildDate,
+      keywords: [
+        'SvelteKit',
+        'Svelte 5',
+        'TypeScript',
+        'Tailwind CSS',
+        'shadcn-svelte',
+        'starter template',
+        'vibe coding'
+      ],
+      /**
+       * SoftwareApplication para que Perplexity/Gemini puedan citar la plantilla
+       * como producto descargable y no como un artículo cualquiera.
+       */
+      softwareName: siteConfig.name,
+      softwareCategory: 'DeveloperApplication',
+      /**
+       * HowTo: los 4 pasos del onboarding. Las IAs los citan literalmente cuando
+       * alguien pregunta "cómo empezar con SvelteKit".
+       */
+      howto: [1, 2, 3, 4].map((n) => ({
+        name: tr(`home.steps.step${n}.title`),
+        text: tr(`home.steps.step${n}.desc`)
+      })),
+      /**
+       * FAQPage: reutiliza el copy del demo de FAQ para no duplicar contenido.
+       */
+      faq: faqKeys.map((key) => ({
+        question: tr(`componentsPage.demos.faq.items.${key}.q`),
+        answer: tr(`componentsPage.demos.faq.items.${key}.a`)
+      }))
     });
   });
 </script>

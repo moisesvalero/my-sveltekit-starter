@@ -33,6 +33,17 @@ export function applyLocale(lang: string): void {
   if (typeof document !== 'undefined') {
     document.documentElement.lang = normalized;
   }
+  /**
+   * Propaga el cambio al servidor para que SSR/sitemap/llms.txt vean el idioma correcto
+   * en la próxima navegación. Fire-and-forget; si la red falla el cliente sigue OK.
+   */
+  if (typeof fetch !== 'undefined' && typeof window !== 'undefined') {
+    void fetch('/api/locale', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ locale: normalized })
+    }).catch(() => {});
+  }
 }
 
 /** Traducción; al leer `currentLocale` reacciona el UI que llame a `t(...)`. */

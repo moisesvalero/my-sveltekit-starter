@@ -10,7 +10,7 @@
   import { Toaster } from '$lib/components/ui/sonner';
   import CookieConsent from '$lib/components/CookieConsent.svelte';
   import Footer from '$lib/components/Footer.svelte';
-  import { seo } from '$lib/seo';
+  import { seo, PUBLIC_BASE_URL } from '$lib/seo';
   import { onMount } from 'svelte';
   import type { Snippet } from 'svelte';
   import { ModeWatcher } from 'mode-watcher';
@@ -20,6 +20,12 @@
 
   /** Solo en cliente: en SSR `mode.current` es undefined → icono distinto = fallo de hidratación y botones muertos. */
   let isDark = $derived(browser && mode.current === 'dark');
+
+  /**
+   * URL canónica derivada de la ruta actual. Si una página no llama a `setSeo({ canonical })`
+   * explícitamente, se usa esta. Evita que todo el sitio comparta el canonical de la home.
+   */
+  const canonicalUrl = $derived(`${PUBLIC_BASE_URL}${page.url.pathname}`);
 
   /** Svelte 5: `$store` dentro de funciones inline puede no reaccionar; usamos `get(locale)`. */
   function handleToggleLocale() {
@@ -59,6 +65,41 @@
 
 <svelte:head>
   <title>{$seo.title}</title>
+  <meta name="description" content={$seo.description} />
+  {#if $seo.keywords.length > 0}
+    <meta name="keywords" content={$seo.keywords.join(', ')} />
+  {/if}
+  {#if $seo.author}
+    <meta name="author" content={$seo.author} />
+  {/if}
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={$seo.ogType} />
+  <meta property="og:site_name" content={siteConfig.name} />
+  <meta property="og:title" content={$seo.ogTitle} />
+  <meta property="og:description" content={$seo.ogDescription} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={$seo.ogImage} />
+  <meta property="og:locale" content={$seo.locale === 'en' ? 'en_US' : 'es_ES'} />
+  <meta property="og:locale:alternate" content={$seo.locale === 'en' ? 'es_ES' : 'en_US'} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content={$seo.twitterCard} />
+  <meta name="twitter:title" content={$seo.ogTitle} />
+  <meta name="twitter:description" content={$seo.ogDescription} />
+  <meta name="twitter:image" content={$seo.ogImage} />
+  {#if $seo.twitterCreator}
+    <meta name="twitter:creator" content={$seo.twitterCreator} />
+  {/if}
+
+  <!-- hreflang (mismo URL, contenido cambia por cookie portfolio_locale) -->
+  <link rel="alternate" hreflang="es" href={canonicalUrl} />
+  <link rel="alternate" hreflang="en" href={canonicalUrl} />
+  <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
+  <!-- GEO: índice para LLMs -->
+  <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
 </svelte:head>
 
 <!-- Primero: aplica clase .dark / color-scheme en <html> antes del resto (mode-watcher) -->
@@ -123,4 +164,11 @@
   headline={$seo.headline}
   datePublished={$seo.datePublished}
   dateModified={$seo.dateModified}
+  description={$seo.description}
+  author={$seo.author}
+  image={$seo.ogImage}
+  faq={$seo.faq}
+  howto={$seo.howto}
+  softwareName={$seo.softwareName}
+  softwareCategory={$seo.softwareCategory}
 />

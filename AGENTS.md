@@ -57,7 +57,7 @@ check this list. If a component does the job, **use it**.
 | **CopyButton** | `$lib/components/CopyButton.svelte` | `text label` |
 | **Newsletter** | `$lib/components/Newsletter.svelte` | `title subtitle action buttonLabel` |
 | **AiPrompt** | `$lib/components/AiPrompt.svelte` | `placeholder message maxLength` |
-| **JsonLd** | `$lib/components/JsonLd.svelte` | `type headline datePublished dateModified` |
+| **JsonLd** | `$lib/components/JsonLd.svelte` | `type headline datePublished dateModified description author image faq[] howto[] softwareName softwareCategory` |
 | **Footer** | `$lib/components/Footer.svelte` | Links; translatable copy (`layout.footer.*`) |
 
 The **home** (`src/routes/+page.svelte`) loads copy from **i18n** (`home.*` in `es.json` / `en.json`). SEO is updated with `setSeo` inside `$effect` when the locale changes. Stitch/M3 styles: utilities in `src/lib/styles/stitch-m3.css`.
@@ -174,12 +174,70 @@ let { title }: { title: string } = $props();
 
 ---
 
-## SEO
+## SEO + GEO (Generative Engine Optimization)
+
+La plantilla trae SEO técnico **y** GEO automatizado. El vibe coder solo escribe `setSeo({...})` en su `+page.svelte` y todo lo demás se inyecta solo desde el layout.
+
+### `setSeo` — único punto de entrada
 
 ```ts
 import { setSeo } from '$lib/seo';
-setSeo({ title: '...', description: '...', ogImage: '...' });
+
+setSeo({
+  title: '...',
+  description: '...',
+  schemaType: 'WebPage',          // WebPage | Article | FAQPage | HowTo | CollectionPage | …
+  keywords: ['svelte', 'starter'],
+  dateModified: new Date().toISOString(),
+  author: 'Tu nombre',
+
+  // GEO: estos dos campos hacen que ChatGPT/Perplexity te citen
+  faq: [{ question: '¿…?', answer: '…' }],
+  howto: [{ name: 'Paso 1', text: '…' }],
+
+  // Producto/aplicación (opcional)
+  softwareName: 'Mi App',
+  softwareCategory: 'BusinessApplication'
+});
 ```
+
+### Qué se inyecta automáticamente desde `+layout.svelte`
+
+- `<title>`, `<meta description>`, `<meta keywords>`, `<meta author>`
+- `<link rel="canonical">` calculado desde la ruta actual (no hace falta pasarlo)
+- Open Graph completo (`og:title/description/url/image/type/locale`)
+- Twitter Cards (`summary_large_image`)
+- `hreflang` ES/EN y `x-default`
+- `<link rel="alternate" type="text/plain" href="/llms.txt">`
+- `<html lang>` resuelto en SSR vía cookie `portfolio_locale` + `Accept-Language`
+
+### Qué se inyecta automáticamente desde `JsonLd.svelte`
+
+- `Organization` con logo y `sameAs`
+- `WebSite` con `SearchAction` (sitelinks searchbox)
+- Schema de página (`WebPage`/`Article`/...) con `inLanguage`
+- `BreadcrumbList` desde la URL
+- `FAQPage` si `setSeo({ faq: [...] })`
+- `HowTo` si `setSeo({ howto: [...] })`
+- `SoftwareApplication` si `setSeo({ softwareName: '...' })`
+
+### Endpoints GEO (todos dinámicos)
+
+| Endpoint | Propósito | Genera contenido desde |
+|----------|-----------|------------------------|
+| `/sitemap.xml` | Índice con hreflang ES/EN | `src/lib/site-pages.ts` |
+| `/robots.txt` | Permisos para crawlers IA (GPTBot, Claude, Perplexity, Gemini, CCBot…) | `src/routes/robots.txt/+server.ts` |
+| `/llms.txt` | Índice Markdown estándar [llmstxt.org](https://llmstxt.org) | `site-pages.ts` + i18n |
+| `/llms-full.txt` | Contenido completo del sitio en Markdown para ingesta directa por LLMs | i18n |
+| `/api/og?title=…` | Open Graph SVG dinámico | parámetro `title` |
+
+### Añadir una página nueva al GEO
+
+1. Crea la ruta en `src/routes/...`
+2. Llama a `setSeo({...})` en su `+page.svelte`
+3. Añade un objeto al array `sitePages` en `src/lib/site-pages.ts`
+
+Con eso entra en `/sitemap.xml`, `/llms.txt` y `/llms-full.txt` automáticamente.
 
 ---
 

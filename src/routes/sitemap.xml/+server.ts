@@ -1,4 +1,5 @@
 import { env } from '$env/dynamic/public';
+import { publicPages, supportedLocales } from '$lib/site-pages';
 
 const DEFAULT_SITE_URL = 'http://localhost:5173';
 
@@ -11,29 +12,43 @@ const normalizeBaseUrl = (url: string): string => {
   }
 };
 
+/**
+ * /sitemap.xml — generado desde el registro `publicPages()`.
+ *
+ * Añade `xhtml:link` con `hreflang` para cada locale soportado (ES + EN comparten URL;
+ * el contenido se sirve según el cookie `portfolio_locale`). Esto es el estándar de
+ * Google para sitios multi-idioma en una misma ruta.
+ */
 export const GET = () => {
   const baseUrl = normalizeBaseUrl(env.PUBLIC_SITE_URL);
   const now = new Date().toISOString();
+  const pages = publicPages();
 
-  /** Solo URLs con contenido estable; /about, /pricing, etc. redirigen a anclas aquí */
-  const routes = [
-    { path: '/', priority: '1.0', changefreq: 'weekly' },
-    { path: '/components', priority: '0.9', changefreq: 'monthly' }
-  ];
+  const renderAlternates = (path: string) =>
+    [
+      ...supportedLocales.map(
+        (l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${baseUrl}${path}" />`
+      ),
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}${path}" />`
+    ].join('\n');
 
-  const urls = routes
+  const urls = pages
     .map(
-      (r) => `<url>
-  <loc>${baseUrl}${r.path}</loc>
-  <lastmod>${now}</lastmod>
-  <changefreq>${r.changefreq}</changefreq>
-  <priority>${r.priority}</priority>
-</url>`
+      (p) => `  <url>
+    <loc>${baseUrl}${p.path}</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority.toFixed(1)}</priority>
+${renderAlternates(p.path)}
+  </url>`
     )
     .join('\n');
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
 ${urls}
 </urlset>`;
 
