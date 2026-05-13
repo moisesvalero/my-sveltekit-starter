@@ -1,4 +1,4 @@
-# My SvelteKit Starter — Tu web en 2 minutos
+# My SvelteKit Starter - Tu web en 2 minutos
 
 **[English → QUICK_START.md](QUICK_START.md)**
 
