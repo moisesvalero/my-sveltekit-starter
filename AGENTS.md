@@ -240,7 +240,7 @@ Cada ruta indexable tiene un **twin Markdown** para agentes IA (spec [Dualmark](
 
 | Capa | Qué hace |
 |------|----------|
-| `hooks.server.ts` | Si `Accept: text/markdown` (o URL `*.md`), responde twin con headers AEO |
+| `hooks.server.ts` | Si `Accept: text/markdown`, URL `*.md` o User-Agent de crawler IA, responde twin con headers AEO |
 | `+layout.svelte` | `<link rel="alternate" type="text/markdown" href="…">` |
 | `src/lib/aeo/` | Parser `Accept`, headers, builders desde i18n, registry |
 | `src/routes/*.md/+server.ts` | URLs hermanas (`/index.md`, `/components.md`) |

@@ -9,6 +9,7 @@ import {
   markdownTwinHeaders,
   markdownTwinPath,
   normalizePathname,
+  isAiBot,
   prefersMarkdown
 } from '$lib/aeo';
 import { resolveRequestLocale } from '$lib/i18n/site-locale';
@@ -24,7 +25,10 @@ export const handle: Handle = async ({ event, resolve }) => {
   const mdHtmlPath = htmlPathFromMdUrl(pathname);
   const htmlPath = mdHtmlPath ?? pathname;
 
-  if (hasMarkdownTwin(htmlPath) && (mdHtmlPath || prefersMarkdown(accept))) {
+  const userAgent = event.request.headers.get('user-agent');
+  const wantsMarkdown = mdHtmlPath || prefersMarkdown(accept) || isAiBot(userAgent);
+
+  if (hasMarkdownTwin(htmlPath) && wantsMarkdown) {
     const locale = resolveRequestLocale(event);
     const body = getPageMarkdown(htmlPath, locale);
     if (body) {

@@ -198,6 +198,7 @@ Besides GEO (`llms.txt`, structured data), each indexable route gets a **Markdow
 | Mechanism | Behavior |
 |-----------|----------|
 | **Content negotiation** | `GET /` with `Accept: text/markdown` → same URL, markdown body |
+| **AI bot User-Agents** | GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc. → markdown twin on the canonical URL |
 | **Sibling URLs** | `/index.md` (home), `/components.md`, … |
 | **HTML discovery** | `<link rel="alternate" type="text/markdown" href="…">` in layout + `Link` HTTP header |
 | **Twin headers** | `Content-Type: text/markdown`, `Vary: Accept`, `X-AEO-Version: 1.0`, `X-Markdown-Tokens`, `X-Robots-Tag: noindex` |
