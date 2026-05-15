@@ -85,6 +85,17 @@ Use snippets instead of slots: `{@render children?.()}`
 
 See **AGENTS.md**: `+page.svelte`, `setSeo`, optional `+page.ts` / `+page.server.ts`; no `async` in the `.svelte` file.
 
+## AEO (Markdown twins) — aplicar siempre
+
+En cada página indexable, sin que el usuario lo pida:
+
+1. Entrada en `src/lib/site-pages.ts` + `setSeo` en `$effect` con `$locale`.
+2. `buildXxxMarkdown` en `src/lib/aeo/builders/` + registro en `src/lib/aeo/registry.ts`.
+3. Ruta `src/routes/<slug>.md/+server.ts` con `serveMarkdownTwin` (home → `index.md`).
+4. Copy del twin desde **i18n** (`tFor`), no HTML-to-Markdown.
+
+Infra ya cableada: `hooks.server.ts` (content negotiation), `<link rel="alternate" type="text/markdown">` en layout. Detalle: **AGENTS.md** → SEO + GEO + AEO.
+
 ## shadcn-svelte CLI
 
 ```bash

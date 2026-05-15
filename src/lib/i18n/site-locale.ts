@@ -15,3 +15,15 @@ export function parseSiteLocaleCookie(value: string | null | undefined): SiteLoc
 export function resolveSiteLocale(cookieValue: string | null | undefined): SiteLocale {
   return parseSiteLocaleCookie(cookieValue) ?? 'es';
 }
+
+/** Locale para SSR/AEO: cookie manual → Accept-Language → `es`. */
+export function resolveRequestLocale(event: {
+  cookies: { get: (name: string) => string | undefined };
+  request: Request;
+}): SiteLocale {
+  const cookieLang = parseSiteLocaleCookie(event.cookies.get(PORTFOLIO_LOCALE_COOKIE));
+  if (cookieLang) return cookieLang;
+  const accept = event.request.headers.get('accept-language') || '';
+  if (accept.toLowerCase().startsWith('en')) return 'en';
+  return 'es';
+}

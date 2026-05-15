@@ -5,6 +5,7 @@
  *  - `/sitemap.xml`            (URLs + hreflang)
  *  - `/llms.txt`               (índice para LLMs en formato estándar llmstxt.org)
  *  - `/llms-full.txt`          (versión extendida con contenido)
+ *  - Markdown twins AEO        (`/index.md`, content negotiation)
  *  - JSON-LD BreadcrumbList    (`JsonLd.svelte`)
  *
  * Para añadir una nueva página visible para SEO/GEO basta con:
@@ -35,6 +36,8 @@ export interface SitePage {
   group: SitePageGroup;
   /** Si es `false`, queda fuera de sitemap/llms (útil para redirects o utilidades). */
   index?: boolean;
+  /** Si es `false`, no se genera twin Markdown AEO. Default: true en `publicPages()`. */
+  aeoTwin?: boolean;
 }
 
 /**
@@ -86,3 +89,10 @@ export function tFor(locale: SupportedLocale, key: string, fallback = ''): strin
 export function publicPages(): SitePage[] {
   return sitePages.filter((p) => p.index !== false);
 }
+
+/** Páginas con twin Markdown AEO (content negotiation + `.md` URL). */
+export function pagesWithTwins(): SitePage[] {
+  return publicPages().filter((p) => p.aeoTwin !== false);
+}
+
+export { markdownTwinPath } from './aeo/paths';

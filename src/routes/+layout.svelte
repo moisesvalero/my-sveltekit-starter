@@ -10,6 +10,7 @@
   import { Toaster } from '$lib/components/ui/sonner';
   import CookieConsent from '$lib/components/CookieConsent.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import { hasMarkdownTwin, markdownTwinPath } from '$lib/aeo';
   import { seo, PUBLIC_BASE_URL } from '$lib/seo';
   import { onMount } from 'svelte';
   import type { Snippet } from 'svelte';
@@ -26,6 +27,10 @@
    * explícitamente, se usa esta. Evita que todo el sitio comparta el canonical de la home.
    */
   const canonicalUrl = $derived(`${PUBLIC_BASE_URL}${page.url.pathname}`);
+
+  const markdownAlternateHref = $derived(
+    hasMarkdownTwin(page.url.pathname) ? markdownTwinPath(page.url.pathname) : null
+  );
 
   /** Svelte 5: `$store` dentro de funciones inline puede no reaccionar; usamos `get(locale)`. */
   function handleToggleLocale() {
@@ -100,6 +105,9 @@
 
   <!-- GEO: índice para LLMs -->
   <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
+  {#if markdownAlternateHref}
+    <link rel="alternate" type="text/markdown" href={markdownAlternateHref} />
+  {/if}
 </svelte:head>
 
 <!-- Primero: aplica clase .dark / color-scheme en <html> antes del resto (mode-watcher) -->

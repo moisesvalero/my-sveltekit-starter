@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/public';
-import { publicPages, supportedLocales } from '$lib/site-pages';
+import { markdownTwinPath, pagesWithTwins, publicPages, supportedLocales } from '$lib/site-pages';
 
 const DEFAULT_SITE_URL = 'http://localhost:5173';
 
@@ -14,15 +14,13 @@ const normalizeBaseUrl = (url: string): string => {
 
 /**
  * /sitemap.xml — generado desde el registro `publicPages()`.
- *
- * Añade `xhtml:link` con `hreflang` para cada locale soportado (ES + EN comparten URL;
- * el contenido se sirve según el cookie `portfolio_locale`). Esto es el estándar de
- * Google para sitios multi-idioma en una misma ruta.
+ * Incluye URLs HTML y twins Markdown AEO (`.md`).
  */
 export const GET = () => {
   const baseUrl = normalizeBaseUrl(env.PUBLIC_SITE_URL);
   const now = new Date().toISOString();
   const pages = publicPages();
+  const twins = pagesWithTwins();
 
   const renderAlternates = (path: string) =>
     [
@@ -32,16 +30,21 @@ export const GET = () => {
       `    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}${path}" />`
     ].join('\n');
 
-  const urls = pages
-    .map(
-      (p) => `  <url>
-    <loc>${baseUrl}${p.path}</loc>
+  const renderUrl = (path: string, priority: number, changefreq: string) => `  <url>
+    <loc>${baseUrl}${path}</loc>
     <lastmod>${now}</lastmod>
-    <changefreq>${p.changefreq}</changefreq>
-    <priority>${p.priority.toFixed(1)}</priority>
-${renderAlternates(p.path)}
-  </url>`
-    )
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority.toFixed(1)}</priority>
+${renderAlternates(path)}
+  </url>`;
+
+  const htmlUrls = pages.map((p) => renderUrl(p.path, p.priority, p.changefreq)).join('\n');
+
+  const mdUrls = twins
+    .map((p) => {
+      const mdPath = markdownTwinPath(p.path);
+      return renderUrl(mdPath, Math.max(0.1, p.priority - 0.1), p.changefreq);
+    })
     .join('\n');
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
@@ -49,7 +52,8 @@ ${renderAlternates(p.path)}
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
-${urls}
+${htmlUrls}
+${mdUrls}
 </urlset>`;
 
   return new Response(body, {

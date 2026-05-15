@@ -209,7 +209,9 @@ setSeo({
 - Twitter Cards (`summary_large_image`)
 - `hreflang` ES/EN y `x-default`
 - `<link rel="alternate" type="text/plain" href="/llms.txt">`
+- `<link rel="alternate" type="text/markdown">` hacia el twin de la ruta (`/index.md`, `/ruta.md`)
 - `<html lang>` resuelto en SSR vía cookie `portfolio_locale` + `Accept-Language`
+- Content negotiation AEO en `hooks.server.ts` + header `Link` HTTP en HTML
 
 ### Qué se inyecta automáticamente desde `JsonLd.svelte`
 
@@ -229,15 +231,31 @@ setSeo({
 | `/robots.txt` | Permisos para crawlers IA (GPTBot, Claude, Perplexity, Gemini, CCBot…) | `src/routes/robots.txt/+server.ts` |
 | `/llms.txt` | Índice Markdown estándar [llmstxt.org](https://llmstxt.org) | `site-pages.ts` + i18n |
 | `/llms-full.txt` | Contenido completo del sitio en Markdown para ingesta directa por LLMs | i18n |
+| `/index.md`, `/ruta.md` | Twins Markdown AEO por página (también vía `Accept: text/markdown`) | `src/lib/aeo/builders/` + i18n |
 | `/api/og?title=…` | Open Graph SVG dinámico | parámetro `title` |
 
-### Añadir una página nueva al GEO
+### AEO (Markdown twins + content negotiation)
+
+Cada ruta indexable tiene un **twin Markdown** para agentes IA (spec [Dualmark](https://dualmark.dev/docs/spec/overview) / [acceptmarkdown](https://acceptmarkdown.com/)):
+
+| Capa | Qué hace |
+|------|----------|
+| `hooks.server.ts` | Si `Accept: text/markdown` (o URL `*.md`), responde twin con headers AEO |
+| `+layout.svelte` | `<link rel="alternate" type="text/markdown" href="…">` |
+| `src/lib/aeo/` | Parser `Accept`, headers, builders desde i18n, registry |
+| `src/routes/*.md/+server.ts` | URLs hermanas (`/index.md`, `/components.md`) |
+
+Headers en respuestas **twin** (no en HTML): `Content-Type: text/markdown`, `Vary: Accept`, `X-AEO-Version: 1.0`, `X-Markdown-Tokens`, `X-Robots-Tag: noindex`.
+
+### Añadir una página nueva al GEO + AEO
 
 1. Crea la ruta en `src/routes/...`
-2. Llama a `setSeo({...})` en su `+page.svelte`
-3. Añade un objeto al array `sitePages` en `src/lib/site-pages.ts`
+2. Llama a `setSeo({...})` en su `+page.svelte` ( `$effect` + `$locale` )
+3. Añade entrada en `sitePages` (`src/lib/site-pages.ts`)
+4. Añade `buildXxxMarkdown` en `src/lib/aeo/builders/` y regístralo en `src/lib/aeo/registry.ts`
+5. Crea `src/routes/<slug>.md/+server.ts` (home: `index.md`)
 
-Con eso entra en `/sitemap.xml`, `/llms.txt` y `/llms-full.txt` automáticamente.
+Con eso entra en `/sitemap.xml` (HTML + `.md`), `/llms.txt`, `/llms-full.txt` y negociación AEO automáticamente.
 
 ---
 

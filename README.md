@@ -42,7 +42,7 @@ Requirements: **Node.js 22+** (see `package.json` → `engines`).
 **Project** (`src/lib/components/`): Footer, Heading, Container, Section, Grid, CopyButton, Newsletter, AiPrompt, JsonLd, CookieConsent, BlogLayout, LoadingBlock, demos under `demos/`, etc. (optional marketing blocks like Hero are not all wired on the current home).
 
 ### Infrastructure
-- **SEO + GEO (automated)**: dynamic `/sitemap.xml` (with hreflang ES/EN), `/robots.txt` (AI crawlers: GPTBot, Claude, Perplexity, Google-Extended, CCBot…), `/llms.txt` + `/llms-full.txt` ([llmstxt.org](https://llmstxt.org) standard), complete Open Graph + Twitter Cards, canonical URL auto-derived, dynamic `<html lang>` via SSR cookie, and JSON-LD that ships **Organization + WebSite (SearchAction) + BreadcrumbList + FAQPage + HowTo + SoftwareApplication** out of the box. Just call `setSeo({...})` in your `+page.svelte`.
+- **SEO + GEO + AEO (automated)**: dynamic `/sitemap.xml` (with hreflang ES/EN), `/robots.txt` (AI crawlers: GPTBot, Claude, Perplexity, Google-Extended, CCBot…), `/llms.txt` + `/llms-full.txt` ([llmstxt.org](https://llmstxt.org) standard), **Markdown twins** per page (`/index.md`, `/ruta.md`) with HTTP content negotiation (`Accept: text/markdown`), complete Open Graph + Twitter Cards, canonical URL auto-derived, dynamic `<html lang>` via SSR cookie, and JSON-LD that ships **Organization + WebSite (SearchAction) + BreadcrumbList + FAQPage + HowTo + SoftwareApplication** out of the box. Just call `setSeo({...})` in your `+page.svelte`.
 - **i18n**: ES/EN translations with store + localStorage + server cookie (SSR-aware)
 - **Dark mode**: Toggle with mode-watcher, respects system preference
 - **Toasts**: Sonner (`<Toaster />` in layout) + `toast()` from `$lib/stores/toast` (also `<ToastContainer />` in layout)
@@ -51,7 +51,7 @@ Requirements: **Node.js 22+** (see `package.json` → `engines`).
 - **CI/CD**: GitHub Actions (lint + check + build + test)
 - **Pre-commit**: Husky + lint-staged
 - **Dynamic OG image**: `/api/og?title=Text`
-- **Security headers**: CSP + X-Frame-Options in `hooks.server.ts`
+- **Security + AEO headers**: CSP + X-Frame-Options in `hooks.server.ts`; markdown twins get `Vary: Accept`, `X-AEO-Version`, `X-Markdown-Tokens`, `X-Robots-Tag: noindex`
 
 ### Optional integrations (ready when you add keys)
 - **Sanity CMS** — see [Sanity (optional)](#sanity-cms-optional)
@@ -130,20 +130,22 @@ src/
       clickOutside.ts        → Svelte action
     i18n/                     → ES/EN translations
     seo.ts                    → SEO store
+    aeo/                      → Markdown twins, Accept negotiation, builders from i18n
+    site-pages.ts             → Central page registry (sitemap, llms, AEO twins)
     reveal.ts                 → Scroll animations
     utils.ts                  → cn(), types
     server/
       supabase/              → Supabase client (optional)
       sanity/                → GROQ client + types (optional)
   app.css                     → Global CSS + Tailwind v4 + theme variables
-  hooks.server.ts             → Security headers + CSP
+  hooks.server.ts             → Security headers, CSP, AEO content negotiation
 static/
   logos/                      → Brand SVGs (reference)
   manifest.json              → Web app manifest
   favicon.svg
 ```
 
-> SEO/GEO routes (`robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`) are **dynamic SvelteKit endpoints** under `src/routes/`, fed from `src/lib/site-pages.ts` + i18n. To add a page to all of them at once, just append an entry to the `sitePages` array.
+> SEO/GEO/AEO routes (`robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`, `*.md` twins) are **dynamic SvelteKit endpoints** under `src/routes/`, fed from `src/lib/site-pages.ts` + i18n. To add a page to all of them at once, append an entry to `sitePages` and register a builder in `src/lib/aeo/` (see [AEO](#aeo-ai-engine-optimization) below).
 
 ---
 
@@ -184,6 +186,41 @@ And from `src/lib/site-pages.ts` the template auto-generates:
 - `/robots.txt` (allow-list for OpenAI, Anthropic, Google, Perplexity, CCBot, Meta, Cohere)
 
 To add a new page to all of them, append one entry to `sitePages` in `src/lib/site-pages.ts`.
+
+---
+
+## AEO (AI Engine Optimization)
+
+Besides GEO (`llms.txt`, structured data), each indexable route gets a **Markdown twin** so AI agents (ChatGPT, Claude, Perplexity, etc.) can ingest clean text without parsing HTML. The implementation follows common conventions ([acceptmarkdown.com](https://acceptmarkdown.com/), [Dualmark AEO spec](https://dualmark.dev/docs/spec/overview)).
+
+### What runs automatically
+
+| Mechanism | Behavior |
+|-----------|----------|
+| **Content negotiation** | `GET /` with `Accept: text/markdown` → same URL, markdown body |
+| **Sibling URLs** | `/index.md` (home), `/components.md`, … |
+| **HTML discovery** | `<link rel="alternate" type="text/markdown" href="…">` in layout + `Link` HTTP header |
+| **Twin headers** | `Content-Type: text/markdown`, `Vary: Accept`, `X-AEO-Version: 1.0`, `X-Markdown-Tokens`, `X-Robots-Tag: noindex` |
+| **Source of truth** | i18n (`src/lib/i18n/*.json`) via builders in `src/lib/aeo/builders/` — no duplicate hand-written `.md` files per locale |
+| **Sitemap** | HTML URLs + `.md` twins in `/sitemap.xml` |
+
+### Add a new page to AEO
+
+1. Create the route and call `setSeo({...})` in `+page.svelte` (inside `$effect` with `$locale`).
+2. Add an entry to `sitePages` in `src/lib/site-pages.ts`.
+3. Add `buildYourPageMarkdown(locale, baseUrl)` in `src/lib/aeo/builders/` and register it in `src/lib/aeo/registry.ts`.
+4. Add `src/routes/your-slug.md/+server.ts` that calls `serveMarkdownTwin` (home uses `index.md`).
+
+Full checklist for Cursor/agents: **`AGENTS.md`** → section *SEO + GEO + AEO*.
+
+### Quick check (local)
+
+```bash
+curl.exe -sI -H "Accept: text/markdown" http://localhost:5173/
+curl.exe -sI http://localhost:5173/index.md
+```
+
+You should see `content-type: text/markdown` and the `x-aeo-*` headers. Tools like [aeochecker.xyz](https://aeochecker.xyz) must hit your **deployed** URL after `git push` — production does not update until you redeploy.
 
 ---
 
