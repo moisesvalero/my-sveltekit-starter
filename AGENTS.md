@@ -335,3 +335,32 @@ When you use `Snippet` as a type, import with `import type`:
   let { children }: { children: Snippet } = $props();
 </script>
 ```
+---
+
+## 🛠️ DEVELOPMENT METHODOLOGY (Superpowers Framework Integration)
+
+You must strictly override your default ad-hoc behavior to follow the Superpowers skills framework methodology. Never jump straight into code generation or file modifications.
+
+### Phase 1: Brainstorming & Architecture Gate
+- Before touching or writing any implementation code, you must invoke the 'brainstorming' skill.
+- Review the "GOLDEN RULE" of this project: mapping visual references to existing layout/UI catalog components (`Button`, `Card`, `Section`, `Heading`, `Grid`) is non-negotiable. NEVER write raw HTML alternatives.
+- Present a structural design in clean markdown sections for human validation before proceeding.
+
+### Phase 2: Micro-Task Planning (`/write-plan`)
+- Run the `/write-plan` sequence based on the approved brainstorming.
+- Break down the implementation into granular, atomic steps.
+- Every single task MUST specify:
+  1. Exact file paths to create or modify (respecting the Key Structure table).
+  2. Full, production-ready Svelte 5 Runes syntax (explicit typed props with `$props()`, no `$props<T>()` generics, and proper `Snippet` type-only imports).
+  3. Clear verification steps. No placeholders or `// TODO` allowed.
+
+### Phase 3: Test-Driven Development (TDD)
+- Enforce a strict Red-Green-Refactor development cycle.
+- Write or prepare a verification test/check first. Watch it fail.
+- Write the minimal, compliant code required to make it pass.
+- Run `npm run check` immediately to ensure 0 errors and 0 warnings before declaring a task complete.
+
+### Phase 4: Systematic Debugging & GEO Validation
+- If a test, compilation, or runtime execution fails, stop immediately.
+- Trigger 'systematic-debugging' utilizing a strict 4-phase root cause analysis instead of guessing solutions.
+- When creating new routes, automatically cross-verify that the endpoint is correctly mapped into `sitePages`, has its corresponding `.md` twin server route, and triggers `setSeo({...})` using `$effect` + `$locale` to avoid breaking the AEO pipeline.
