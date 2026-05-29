@@ -52,7 +52,13 @@
       "skeleton": { "desc": "Placeholder con pulso" },
       "copy": { "desc": "Copiar al portapapeles" },
       "newsletter": { "desc": "Suscripción por email", "button": "Suscribirse" },
-      "toast": { "desc": "success · error · info · warning", "done": "¡Completado!", "err": "¡Error!", "warn": "Aviso", "info": "Info" },
+      "toast": {
+        "desc": "success · error · info · warning",
+        "done": "¡Completado!",
+        "err": "¡Error!",
+        "warn": "Aviso",
+        "info": "Info"
+      },
       "aiprompt": { "desc": "Área de prompt para IA", "placeholder": "Pregunta lo que quieras…" },
       "aboutDemo": {
         "title": "Sobre nosotros",

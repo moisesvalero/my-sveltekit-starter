@@ -3,51 +3,57 @@
 **[Español → INICIO_RAPIDO.md](INICIO_RAPIDO.md)**
 
 ## Step 1: Install
+
 ```bash
 npm install
 ```
 
 ## Step 2: Run dev
+
 ```bash
 npm run dev
 ```
+
 Open `http://localhost:5173`. No `.env` required for local dev.
 
 ## Step 3: Branding and copy
+
 1. `src/lib/site-config.ts` — site name, URL, social links.
 2. `src/lib/i18n/es.json` and `en.json` — **home** copy (`home.*`), menu (`layout.nav.*`), footer.
 
 ## Step 4: Colors and theme
+
 Edit `src/app.css` (`--primary`, `--background`, …) and, for the Stitch/M3 look, `src/lib/styles/stitch-m3.css`.
 
 ## Step 5: Deploy
+
 GitHub → Vercel/Netlify → done.
 
 ---
 
 ## Useful scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Local dev server |
-| `npm run build` | Production build |
-| `npm run check` | TypeScript + Svelte (0 errors, 0 warnings) |
-| `npm run lint` | ESLint + Prettier |
-| `npm run format` | Format code |
-| `npm run test` | Tests |
-| `npm run new:page name` | Scaffold a page |
-| `npm run studio` | Sanity Studio (optional CMS) |
+| Command                 | Description                                |
+| ----------------------- | ------------------------------------------ |
+| `npm run dev`           | Local dev server                           |
+| `npm run build`         | Production build                           |
+| `npm run check`         | TypeScript + Svelte (0 errors, 0 warnings) |
+| `npm run lint`          | ESLint + Prettier                          |
+| `npm run format`        | Format code                                |
+| `npm run test`          | Tests                                      |
+| `npm run new:page name` | Scaffold a page                            |
+| `npm run studio`        | Sanity Studio (optional CMS)               |
 
 ---
 
 ## Routes included
 
-| Path | What it is |
-|------|------------|
-| `/` | Home |
-| `/components` | UI gallery + demos (about, pricing, faq, SSR, blog, form) |
-| `/about`, `/pricing`, `/faq`, `/blog`, `/blog/primer-post`, `/ssr-demo`, `/contacto` | 307 redirects to anchors on `/components` |
-| `/api/og?title=Hello` | Dynamic OG image |
+| Path                                                                                 | What it is                                                |
+| ------------------------------------------------------------------------------------ | --------------------------------------------------------- |
+| `/`                                                                                  | Home                                                      |
+| `/components`                                                                        | UI gallery + demos (about, pricing, faq, SSR, blog, form) |
+| `/about`, `/pricing`, `/faq`, `/blog`, `/blog/primer-post`, `/ssr-demo`, `/contacto` | 307 redirects to anchors on `/components`                 |
+| `/api/og?title=Hello`                                                                | Dynamic OG image                                          |
 
 ---
 
@@ -99,8 +105,8 @@ Prefer components over raw HTML. Full list in **`AGENTS.md`**.
 
 ## For AI assistants
 
-| File | Purpose |
-|------|---------|
-| `AGENTS.md` | Instructions for ChatGPT, Claude, Copilot |
-| `PROMPTS.md` | Copy-paste prompt snippets |
+| File                  | Purpose                                                   |
+| --------------------- | --------------------------------------------------------- |
+| `AGENTS.md`           | Instructions for ChatGPT, Claude, Copilot                 |
+| `PROMPTS.md`          | Copy-paste prompt snippets                                |
 | `DESIGN_TO_CURSOR.md` | Stitch/Lovable → this template: tokens, prompt, checklist |

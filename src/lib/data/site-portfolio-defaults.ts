@@ -25,7 +25,8 @@ export const sitePortfolioDefaults: SitePortfolioContent = {
     title: 'Moises Valero - Desarrollador Web',
     description: 'Desarrollo web con foco en rendimiento, WordPress, SvelteKit y soporte tecnico.',
     ogTitle: 'Moises Valero - Desarrollador Web',
-    ogDescription: 'Desarrollo web con foco en rendimiento, WordPress, SvelteKit y soporte tecnico.',
+    ogDescription:
+      'Desarrollo web con foco en rendimiento, WordPress, SvelteKit y soporte tecnico.',
     ogImage: '/og-image.png',
     twitterCard: 'summary_large_image'
   },
@@ -57,7 +58,12 @@ export const sitePortfolioDefaults: SitePortfolioContent = {
   techStack: {
     meta: 'TECNOLOGIAS Y HERRAMIENTAS',
     title: 'Mi Stack Tecnologico',
-    categories: [{ title: 'Desarrollo Moderno', icons: [{ iconify: 'logos:svelte-icon', alt: 'SvelteKit', title: 'SvelteKit' }] }]
+    categories: [
+      {
+        title: 'Desarrollo Moderno',
+        icons: [{ iconify: 'logos:svelte-icon', alt: 'SvelteKit', title: 'SvelteKit' }]
+      }
+    ]
   },
   quality: {
     meta: 'MI ESTANDAR DE TRABAJO',

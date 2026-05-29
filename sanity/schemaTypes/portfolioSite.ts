@@ -18,8 +18,21 @@ export const portfolioSite = defineType({
     { name: 'seo', title: 'SEO' }
   ],
   fields: [
-    defineField({ name: 'title', type: 'string', title: 'Nombre interno', readOnly: true, group: 'panel' }),
-    defineField({ name: 'panelHelp', type: 'text', title: 'Como usar este panel', readOnly: true, rows: 4, group: 'panel' }),
+    defineField({
+      name: 'title',
+      type: 'string',
+      title: 'Nombre interno',
+      readOnly: true,
+      group: 'panel'
+    }),
+    defineField({
+      name: 'panelHelp',
+      type: 'text',
+      title: 'Como usar este panel',
+      readOnly: true,
+      rows: 4,
+      group: 'panel'
+    }),
     defineField({
       name: 'header',
       type: 'object',
@@ -31,14 +44,21 @@ export const portfolioSite = defineType({
         {
           name: 'navItems',
           type: 'array',
-          of: [{
-            type: 'object',
-            fields: [
-              { name: 'label', type: 'string', title: 'Texto' },
-              { name: 'href', type: 'string', title: 'URL o ancla' },
-              { name: 'openCareerModal', type: 'boolean', title: 'Abrir modal Trayectoria', initialValue: false }
-            ]
-          }]
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'label', type: 'string', title: 'Texto' },
+                { name: 'href', type: 'string', title: 'URL o ancla' },
+                {
+                  name: 'openCareerModal',
+                  type: 'boolean',
+                  title: 'Abrir modal Trayectoria',
+                  initialValue: false
+                }
+              ]
+            }
+          ]
         },
         { name: 'ctaLabel', type: 'string', title: 'Texto boton CTA' },
         { name: 'ctaHref', type: 'string', title: 'Enlace CTA' }
@@ -55,7 +75,13 @@ export const portfolioSite = defineType({
         { name: 'ogTitle', type: 'string', title: 'OG title' },
         { name: 'ogDescription', type: 'text', title: 'OG description' },
         { name: 'ogImage', type: 'url', title: 'OG image' },
-        { name: 'twitterCard', type: 'string', title: 'Twitter card', options: { list: ['summary', 'summary_large_image'] }, initialValue: 'summary_large_image' }
+        {
+          name: 'twitterCard',
+          type: 'string',
+          title: 'Twitter card',
+          options: { list: ['summary', 'summary_large_image'] },
+          initialValue: 'summary_large_image'
+        }
       ]
     }),
     defineField({
@@ -96,11 +122,16 @@ export const portfolioSite = defineType({
         {
           name: 'items',
           type: 'array',
-          of: [{ type: 'object', fields: [
-            { name: 'icon', type: 'string', title: 'Emoji / icono' },
-            { name: 'title', type: 'localeString', title: 'Titulo' },
-            { name: 'description', type: 'localeText', title: 'Descripcion' }
-          ] }]
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'icon', type: 'string', title: 'Emoji / icono' },
+                { name: 'title', type: 'localeString', title: 'Titulo' },
+                { name: 'description', type: 'localeText', title: 'Descripcion' }
+              ]
+            }
+          ]
         }
       ]
     }),
@@ -112,16 +143,34 @@ export const portfolioSite = defineType({
       fields: [
         { name: 'meta', type: 'string' },
         { name: 'title', type: 'string' },
-        { name: 'categories', type: 'array', of: [{ type: 'object', fields: [
-          { name: 'title', type: 'string' },
-          { name: 'icons', type: 'array', of: [{ type: 'object', fields: [
-            { name: 'iconImage', type: 'image', title: 'Icono (imagen)' },
-            { name: 'src', type: 'url', title: 'URL del SVG/PNG' },
-            { name: 'iconify', type: 'string', title: 'Iconify id (opcional)' },
-            { name: 'alt', type: 'string' },
-            { name: 'title', type: 'string', title: 'Tooltip' }
-          ] }] }
-        ] }] }
+        {
+          name: 'categories',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'title', type: 'string' },
+                {
+                  name: 'icons',
+                  type: 'array',
+                  of: [
+                    {
+                      type: 'object',
+                      fields: [
+                        { name: 'iconImage', type: 'image', title: 'Icono (imagen)' },
+                        { name: 'src', type: 'url', title: 'URL del SVG/PNG' },
+                        { name: 'iconify', type: 'string', title: 'Iconify id (opcional)' },
+                        { name: 'alt', type: 'string' },
+                        { name: 'title', type: 'string', title: 'Tooltip' }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       ]
     }),
     defineField({
@@ -132,11 +181,20 @@ export const portfolioSite = defineType({
       fields: [
         { name: 'meta', type: 'string' },
         { name: 'title', type: 'string' },
-        { name: 'items', type: 'array', of: [{ type: 'object', fields: [
-          { name: 'icon', type: 'string' },
-          { name: 'title', type: 'string' },
-          { name: 'description', type: 'text' }
-        ] }] }
+        {
+          name: 'items',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'icon', type: 'string' },
+                { name: 'title', type: 'string' },
+                { name: 'description', type: 'text' }
+              ]
+            }
+          ]
+        }
       ]
     }),
     defineField({
@@ -150,17 +208,22 @@ export const portfolioSite = defineType({
         {
           name: 'projects',
           type: 'array',
-          of: [{ type: 'object', fields: [
-            { name: 'sortOrder', type: 'number', title: 'Orden', initialValue: 0 },
-            { name: 'thumbnail', type: 'image', title: 'Captura', options: { hotspot: true } },
-            { name: 'imageSrc', type: 'url', title: 'URL imagen externa' },
-            { name: 'imageAlt', type: 'string' },
-            { name: 'title', type: 'localeString', title: 'Titulo' },
-            { name: 'description', type: 'localeText', title: 'Descripcion' },
-            { name: 'tags', type: 'array', of: [{ type: 'string' }], title: 'Tags' },
-            { name: 'linkLabel', type: 'localeString', title: 'Texto del enlace' },
-            { name: 'destinationUrl', type: 'string', title: 'Destino' }
-          ] }]
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'sortOrder', type: 'number', title: 'Orden', initialValue: 0 },
+                { name: 'thumbnail', type: 'image', title: 'Captura', options: { hotspot: true } },
+                { name: 'imageSrc', type: 'url', title: 'URL imagen externa' },
+                { name: 'imageAlt', type: 'string' },
+                { name: 'title', type: 'localeString', title: 'Titulo' },
+                { name: 'description', type: 'localeText', title: 'Descripcion' },
+                { name: 'tags', type: 'array', of: [{ type: 'string' }], title: 'Tags' },
+                { name: 'linkLabel', type: 'localeString', title: 'Texto del enlace' },
+                { name: 'destinationUrl', type: 'string', title: 'Destino' }
+              ]
+            }
+          ]
         }
       ]
     }),

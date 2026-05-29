@@ -80,10 +80,10 @@
     border-radius: 40px;
     background: linear-gradient(145deg, #3a3a3c 0%, #1c1c1e 40%, #2c2c2e 70%, #1a1a1c 100%);
     box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,0.12),
-      inset 0 1px 0 rgba(255,255,255,0.18),
-      0 40px 80px rgba(0,0,0,0.6),
-      0 0 0 0.5px rgba(0,0,0,0.8);
+      inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 40px 80px rgba(0, 0, 0, 0.6),
+      0 0 0 0.5px rgba(0, 0, 0, 0.8);
   }
 
   .phone::before {
@@ -91,7 +91,7 @@
     position: absolute;
     inset: 2px;
     border-radius: 38px;
-    background: linear-gradient(160deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 10;
   }
@@ -155,9 +155,17 @@
     background: rgba(15, 23, 42, 0.85);
   }
 
-  .safari-signal { width: 7px; }
-  .safari-wifi { width: 10px; opacity: 0.8; }
-  .safari-battery { width: 12px; opacity: 0.9; }
+  .safari-signal {
+    width: 7px;
+  }
+  .safari-wifi {
+    width: 10px;
+    opacity: 0.8;
+  }
+  .safari-battery {
+    width: 12px;
+    opacity: 0.9;
+  }
 
   .safari-address-row {
     display: flex;
@@ -243,7 +251,7 @@
     position: absolute;
     inset: 0;
     border-radius: 34px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 40%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, transparent 40%);
     pointer-events: none;
     z-index: 5;
   }
@@ -258,7 +266,7 @@
     background: #000;
     border-radius: 20px;
     z-index: 20;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.04);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
   }
 
   .camera-dot {
@@ -270,7 +278,7 @@
     background: radial-gradient(circle at 35% 35%, #2a2a2c, #111);
     border-radius: 50%;
     z-index: 21;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
   }
 
   .btn-action {
@@ -320,7 +328,7 @@
     transform: translateX(-50%);
     width: 74px;
     height: 4px;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 4px;
     z-index: 20;
   }
@@ -328,7 +336,7 @@
   .glow {
     width: 160px;
     height: 60px;
-    background: radial-gradient(ellipse, rgba(120,100,255,0.2) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(120, 100, 255, 0.2) 0%, transparent 70%);
     filter: blur(16px);
     margin-top: -10px;
   }

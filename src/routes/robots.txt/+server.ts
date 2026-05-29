@@ -1,15 +1,5 @@
 import { env } from '$env/dynamic/public';
-
-const DEFAULT_SITE_URL = 'http://localhost:5173';
-
-const normalizeBaseUrl = (url: string): string => {
-  try {
-    const parsed = new URL(url || DEFAULT_SITE_URL);
-    return parsed.toString().replace(/\/$/, '');
-  } catch {
-    return DEFAULT_SITE_URL;
-  }
-};
+import { normalizeBaseUrl } from '$lib/server/base-url';
 
 export const GET = () => {
   const baseUrl = normalizeBaseUrl(env.PUBLIC_SITE_URL);

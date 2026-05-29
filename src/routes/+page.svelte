@@ -76,17 +76,23 @@
 <!-- Home — textos desde i18n (ES/EN); estilo alineado con stitch reference -->
 <div>
   <!-- Hero Section -->
-  <section class="mx-auto mb-24 max-w-5xl px-6 text-center">
-    <h1 class="font-h1 text-h1 mx-auto mb-6 max-w-3xl text-on-surface md:text-h1">
+  <section class="mx-auto mb-20 max-w-5xl px-5 text-center sm:px-6 md:mb-24">
+    <h1
+      class="mx-auto mb-6 max-w-3xl text-balance font-h1 text-3xl leading-tight text-on-surface sm:text-5xl md:text-h1"
+    >
       {$t('home.hero.title')}
     </h1>
-    <p class="font-subtitle text-subtitle mx-auto mb-8 max-w-2xl text-on-surface-variant">
+    <p
+      class="mx-auto mb-8 max-w-2xl font-subtitle text-base text-on-surface-variant sm:text-subtitle"
+    >
       {$t('home.hero.subtitle')}
     </p>
-    <div class="flex flex-wrap justify-center gap-4">
+    <div
+      class="mx-auto flex w-full max-w-[22rem] flex-col justify-center gap-4 sm:max-w-none sm:flex-row sm:flex-wrap"
+    >
       <a
         href="/components"
-        class="accent-glow rounded-xl bg-primary px-8 py-3 font-bold text-white shadow-lg transition-all hover:brightness-110"
+        class="accent-glow w-full rounded-xl bg-primary px-8 py-3 text-center font-bold text-white shadow-lg transition-all hover:brightness-110 sm:w-auto"
       >
         {$t('home.hero.ctaPrimary')}
       </a>
@@ -94,7 +100,7 @@
         href={`${siteConfig.social.github}#readme`}
         target="_blank"
         rel="noopener noreferrer"
-        class="rounded-xl border border-outline-variant bg-surface-container-high px-8 py-3 font-bold text-on-surface transition-colors hover:bg-surface-variant"
+        class="w-full rounded-xl border border-outline-variant bg-surface-container-high px-8 py-3 text-center font-bold text-on-surface transition-colors hover:bg-surface-variant sm:w-auto"
       >
         {$t('home.hero.ctaSecondary')}
       </a>
@@ -102,8 +108,8 @@
   </section>
 
   <!-- Code Snippet Section (misma estructura que stitch …/landing_page_dark/code.html) -->
-  <section class="mx-auto mb-32 max-w-4xl px-6">
-    <div class="code-window rounded-xl overflow-hidden">
+  <section class="mx-auto mb-28 max-w-4xl px-5 sm:px-6 md:mb-32">
+    <div class="code-window min-w-0 overflow-hidden rounded-xl">
       <div
         class="flex items-center justify-between border-b border-outline-variant bg-surface-container px-4 py-2"
       >
@@ -112,13 +118,17 @@
           <div class="size-3 rounded-full bg-yellow-500/50"></div>
           <div class="size-3 rounded-full bg-green-500/50"></div>
         </div>
-        <div class="font-code text-body-sm text-on-surface-variant">
+        <div
+          class="min-w-0 truncate px-3 text-center font-code text-xs text-on-surface-variant sm:text-body-sm"
+        >
           src/lib/components/Counter.svelte
         </div>
-        <div class="w-12 shrink-0"></div>
+        <div class="hidden w-12 shrink-0 sm:block"></div>
       </div>
-      <div class="overflow-x-auto bg-surface-container-lowest p-6 font-code text-body">
-        <pre class="leading-relaxed text-on-surface-variant"><code
+      <div
+        class="overflow-x-auto bg-surface-container-lowest p-4 font-code text-sm sm:p-6 sm:text-body"
+      >
+        <pre class="min-w-max leading-relaxed text-on-surface-variant"><code
             ><span class="text-primary-container">script</span>
             <span class="text-secondary">lang="ts"</span>&gt;
   <span class="text-secondary">let</span> count = <span class="text-tertiary">$state</span>(<span

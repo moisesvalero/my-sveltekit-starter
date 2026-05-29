@@ -1,16 +1,6 @@
 import { env } from '$env/dynamic/public';
+import { normalizeBaseUrl } from '$lib/server/base-url';
 import { markdownTwinPath, pagesWithTwins, publicPages, supportedLocales } from '$lib/site-pages';
-
-const DEFAULT_SITE_URL = 'http://localhost:5173';
-
-const normalizeBaseUrl = (url: string): string => {
-  try {
-    const parsed = new URL(url || DEFAULT_SITE_URL);
-    return parsed.toString().replace(/\/$/, '');
-  } catch {
-    return DEFAULT_SITE_URL;
-  }
-};
 
 /**
  * /sitemap.xml — generado desde el registro `publicPages()`.

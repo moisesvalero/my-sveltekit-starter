@@ -52,7 +52,13 @@
       "skeleton": { "desc": "Pulsing placeholder" },
       "copy": { "desc": "Copy to clipboard" },
       "newsletter": { "desc": "Email subscription", "button": "Subscribe" },
-      "toast": { "desc": "success · error · info · warning", "done": "Done!", "err": "Error!", "warn": "Heads up", "info": "Info" },
+      "toast": {
+        "desc": "success · error · info · warning",
+        "done": "Done!",
+        "err": "Error!",
+        "warn": "Heads up",
+        "info": "Info"
+      },
       "aiprompt": { "desc": "AI prompt area", "placeholder": "Ask anything…" },
       "aboutDemo": {
         "title": "About us",

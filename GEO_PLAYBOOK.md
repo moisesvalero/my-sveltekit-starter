@@ -17,15 +17,15 @@ setSeo({ title, description, faq: [...], howto: [...] });
 
 Y el framework debe generar **solo, en cada ruta**:
 
-| Capa | Tags | Generado por |
-|---|---|---|
-| **SEO** | `<title>`, `description`, `keywords`, `author`, `canonical` | layout |
-| **Social** | Open Graph completo, Twitter Cards | layout |
-| **i18n** | `hreflang` ES/EN/x-default, `<html lang>` correcto en SSR | layout + hooks |
-| **JSON-LD** | Organization, WebSite+SearchAction, page schema, BreadcrumbList | componente JsonLd |
-| **JSON-LD GEO** | FAQPage, HowTo, SoftwareApplication | componente JsonLd (si setSeo lo pasa) |
-| **Crawlers** | sitemap.xml con hreflang, robots.txt con IAs allow-list | endpoints dinámicos |
-| **GEO core** | `/llms.txt` (índice), `/llms-full.txt` (contenido) | endpoints dinámicos |
+| Capa            | Tags                                                            | Generado por                          |
+| --------------- | --------------------------------------------------------------- | ------------------------------------- |
+| **SEO**         | `<title>`, `description`, `keywords`, `author`, `canonical`     | layout                                |
+| **Social**      | Open Graph completo, Twitter Cards                              | layout                                |
+| **i18n**        | `hreflang` ES/EN/x-default, `<html lang>` correcto en SSR       | layout + hooks                        |
+| **JSON-LD**     | Organization, WebSite+SearchAction, page schema, BreadcrumbList | componente JsonLd                     |
+| **JSON-LD GEO** | FAQPage, HowTo, SoftwareApplication                             | componente JsonLd (si setSeo lo pasa) |
+| **Crawlers**    | sitemap.xml con hreflang, robots.txt con IAs allow-list         | endpoints dinámicos                   |
+| **GEO core**    | `/llms.txt` (índice), `/llms-full.txt` (contenido)              | endpoints dinámicos                   |
 
 ---
 
@@ -160,7 +160,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 ```html
 <!-- src/app.html -->
-<html lang="%lang%">
+<html lang="%lang%"></html>
 ```
 
 El cambio de idioma en el cliente debe POSTear a `/api/locale/+server.ts` para sincronizar la cookie con el servidor.
@@ -237,16 +237,16 @@ setSeo({
 
 ## Mapa de archivos en SvelteKit
 
-| Pieza | Archivo |
-|---|---|
-| Store SEO | `src/lib/seo.ts` |
-| Registro de páginas | `src/lib/site-pages.ts` |
-| Layout con meta tags | `src/routes/+layout.svelte` |
-| Componente JsonLd | `src/lib/components/JsonLd.svelte` |
-| Endpoints dinámicos | `src/routes/{sitemap.xml,robots.txt,llms.txt,llms-full.txt}/+server.ts` |
-| Hook SSR `<html lang>` | `src/hooks.server.ts` (`transformPageChunk`) |
-| API cookie locale | `src/routes/api/locale/+server.ts` |
-| Constantes locale | `src/lib/i18n/site-locale.ts` |
+| Pieza                  | Archivo                                                                 |
+| ---------------------- | ----------------------------------------------------------------------- |
+| Store SEO              | `src/lib/seo.ts`                                                        |
+| Registro de páginas    | `src/lib/site-pages.ts`                                                 |
+| Layout con meta tags   | `src/routes/+layout.svelte`                                             |
+| Componente JsonLd      | `src/lib/components/JsonLd.svelte`                                      |
+| Endpoints dinámicos    | `src/routes/{sitemap.xml,robots.txt,llms.txt,llms-full.txt}/+server.ts` |
+| Hook SSR `<html lang>` | `src/hooks.server.ts` (`transformPageChunk`)                            |
+| API cookie locale      | `src/routes/api/locale/+server.ts`                                      |
+| Constantes locale      | `src/lib/i18n/site-locale.ts`                                           |
 
 ---
 
@@ -267,7 +267,7 @@ setSeo({
 
 Pega esto en Cursor/Claude/ChatGPT cuando quieras replicar el setup en otro proyecto:
 
-````
+```
 Quiero que implementes SEO + GEO (Generative Engine Optimization) en este proyecto SvelteKit
 siguiendo el playbook que voy a describir. La app usa Svelte 5 + SvelteKit 2 + TypeScript,
 con i18n en [es/en], y tiene estas rutas indexables: [listar rutas o "audítalas tú"].
@@ -355,7 +355,7 @@ REGLAS:
 - Al final, dame: lista de archivos creados/modificados + un párrafo de "cómo añadir una página nueva".
 
 Empieza por la AUDITORÍA y enséñame el informe antes de tocar código.
-````
+```
 
 ---
 

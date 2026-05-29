@@ -7,7 +7,7 @@
 ## Is this a good idea?
 
 **Yes**, as a process: a clear visual reference cuts guesswork and speeds decisions.  
-**No**, don’t expect 100% “pixel perfect” on autopilot: exporters use another stack (React/raw HTML), different class names, and sometimes different breakpoints. You *can* aim for **very high parity** if you provide reference + criteria.
+**No**, don’t expect 100% “pixel perfect” on autopilot: exporters use another stack (React/raw HTML), different class names, and sometimes different breakpoints. You _can_ aim for **very high parity** if you provide reference + criteria.
 
 ---
 
@@ -23,14 +23,14 @@
 
 ## Where this template fits
 
-| Goal | Where to edit |
-|------|----------------|
-| Global colors & theme | `src/app.css`, shadcn variables (`--primary`, `--background`, …) |
-| Typography / Stitch-like utilities | `src/lib/styles/stitch-m3.css` (`text-h1`, `font-h3`, …) |
-| Copy per language | `src/lib/i18n/es.json`, `en.json` |
-| Brand & links | `src/lib/site-config.ts` |
-| Page layout | `src/routes/.../+page.svelte` |
-| Reusable UI | `src/lib/components/ui/` (shadcn) and `src/lib/components/` |
+| Goal                               | Where to edit                                                    |
+| ---------------------------------- | ---------------------------------------------------------------- |
+| Global colors & theme              | `src/app.css`, shadcn variables (`--primary`, `--background`, …) |
+| Typography / Stitch-like utilities | `src/lib/styles/stitch-m3.css` (`text-h1`, `font-h3`, …)         |
+| Copy per language                  | `src/lib/i18n/es.json`, `en.json`                                |
+| Brand & links                      | `src/lib/site-config.ts`                                         |
+| Page layout                        | `src/routes/.../+page.svelte`                                    |
+| Reusable UI                        | `src/lib/components/ui/` (shadcn) and `src/lib/components/`      |
 
 The agent should **map** exported design to **existing components** (`Button`, `Card`, `Section`, …), not leave a wall of unreviewed `<div>`s.
 
@@ -61,15 +61,15 @@ Work order:
 
 ## Quick checklist after the agent
 
-- [ ] `npm run check` clean  
-- [ ] Mobile and desktop compared to the reference  
-- [ ] Accessible contrast and focus on buttons and links  
+- [ ] `npm run check` clean
+- [ ] Mobile and desktop compared to the reference
+- [ ] Accessible contrast and focus on buttons and links
 - [ ] ES/EN copy if the page uses `$t()`
 
 ---
 
 ## Related docs
 
-- **`AGENTS.md`** — Component catalog and conventions  
-- **`PROMPTS.md`** — Snippets; same flow in a dedicated section  
-- **`.cursor/rules`** — Short rules Cursor loads into context  
+- **`AGENTS.md`** — Component catalog and conventions
+- **`PROMPTS.md`** — Snippets; same flow in a dedicated section
+- **`.cursor/rules`** — Short rules Cursor loads into context

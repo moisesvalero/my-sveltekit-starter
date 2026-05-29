@@ -16,10 +16,33 @@ export const caseStudy = defineType({
     { name: 'seo', title: 'SEO y enlace final' }
   ],
   fields: [
-    defineField({ name: 'estadoInterno', type: 'string', title: 'Estado del proyecto', group: 'panel' }),
-    defineField({ name: 'showOnHome', type: 'boolean', title: 'Mostrar en portada', initialValue: true, group: 'panel' }),
-    defineField({ name: 'homeSortOrder', type: 'number', title: 'Orden en portada', initialValue: 50, group: 'panel' }),
-    defineField({ name: 'title', type: 'string', title: 'Nombre del proyecto', group: 'general', validation: (Rule) => Rule.required() }),
+    defineField({
+      name: 'estadoInterno',
+      type: 'string',
+      title: 'Estado del proyecto',
+      group: 'panel'
+    }),
+    defineField({
+      name: 'showOnHome',
+      type: 'boolean',
+      title: 'Mostrar en portada',
+      initialValue: true,
+      group: 'panel'
+    }),
+    defineField({
+      name: 'homeSortOrder',
+      type: 'number',
+      title: 'Orden en portada',
+      initialValue: 50,
+      group: 'panel'
+    }),
+    defineField({
+      name: 'title',
+      type: 'string',
+      title: 'Nombre del proyecto',
+      group: 'general',
+      validation: (Rule) => Rule.required()
+    }),
     defineField({
       name: 'slug',
       type: 'slug',
@@ -28,9 +51,26 @@ export const caseStudy = defineType({
       options: { source: 'title', maxLength: 96 },
       validation: (Rule) => Rule.required()
     }),
-    defineField({ name: 'heroTag', type: 'string', title: 'Etiqueta superior', group: 'contenido' }),
-    defineField({ name: 'heroDescription', type: 'text', title: 'Descripcion corta principal', rows: 3, group: 'contenido' }),
-    defineField({ name: 'tags', type: 'array', title: 'Tecnologias (chips)', of: [{ type: 'string' }], group: 'contenido' }),
+    defineField({
+      name: 'heroTag',
+      type: 'string',
+      title: 'Etiqueta superior',
+      group: 'contenido'
+    }),
+    defineField({
+      name: 'heroDescription',
+      type: 'text',
+      title: 'Descripcion corta principal',
+      rows: 3,
+      group: 'contenido'
+    }),
+    defineField({
+      name: 'tags',
+      type: 'array',
+      title: 'Tecnologias (chips)',
+      of: [{ type: 'string' }],
+      group: 'contenido'
+    }),
     defineField({
       name: 'images',
       type: 'object',
@@ -47,13 +87,65 @@ export const caseStudy = defineType({
       type: 'array',
       title: 'Metricas / resultados rapidos',
       group: 'contenido',
-      of: [{ type: 'object', fields: [{ name: 'value', type: 'string' }, { name: 'label', type: 'string' }] }]
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'value', type: 'string' },
+            { name: 'label', type: 'string' }
+          ]
+        }
+      ]
     }),
-    defineField({ name: 'reto', type: 'object', title: 'Bloque: El reto', group: 'contenido', fields: [{ name: 'title', type: 'string' }, { name: 'bodyHtml', type: 'text', rows: 6 }] }),
-    defineField({ name: 'hice', type: 'object', title: 'Bloque: Lo que hice', group: 'contenido', fields: [{ name: 'title', type: 'string' }, { name: 'bodyHtml', type: 'text', rows: 6 }] }),
-    defineField({ name: 'resultado', type: 'object', title: 'Bloque: Resultado', group: 'contenido', fields: [{ name: 'title', type: 'string' }, { name: 'bodyHtml', type: 'text', rows: 6 }] }),
-    defineField({ name: 'stack', type: 'array', title: 'Stack tecnico final', of: [{ type: 'string' }], group: 'contenido' }),
-    defineField({ name: 'seoDescription', type: 'text', title: 'Meta description (SEO)', rows: 3, group: 'seo' }),
-    defineField({ name: 'liveUrl', type: 'url', title: 'URL del proyecto online (boton final)', group: 'seo' })
+    defineField({
+      name: 'reto',
+      type: 'object',
+      title: 'Bloque: El reto',
+      group: 'contenido',
+      fields: [
+        { name: 'title', type: 'string' },
+        { name: 'bodyHtml', type: 'text', rows: 6 }
+      ]
+    }),
+    defineField({
+      name: 'hice',
+      type: 'object',
+      title: 'Bloque: Lo que hice',
+      group: 'contenido',
+      fields: [
+        { name: 'title', type: 'string' },
+        { name: 'bodyHtml', type: 'text', rows: 6 }
+      ]
+    }),
+    defineField({
+      name: 'resultado',
+      type: 'object',
+      title: 'Bloque: Resultado',
+      group: 'contenido',
+      fields: [
+        { name: 'title', type: 'string' },
+        { name: 'bodyHtml', type: 'text', rows: 6 }
+      ]
+    }),
+    defineField({
+      name: 'stack',
+      type: 'array',
+      title: 'Stack tecnico final',
+      of: [{ type: 'string' }],
+      group: 'contenido'
+    }),
+    defineField({
+      name: 'seoDescription',
+      type: 'text',
+      title: 'Meta description (SEO)',
+      rows: 3,
+      group: 'seo'
+    }),
+    defineField({
+      name: 'liveUrl',
+      type: 'url',
+      title: 'URL del proyecto online (boton final)',
+      group: 'seo'
+    })
   ]
 });

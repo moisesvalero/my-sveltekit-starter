@@ -1,259 +1,258 @@
 # My SvelteKit Starter
 
-**[Español](INICIO_RAPIDO.md)** · Quick start: [QUICK_START.md](QUICK_START.md)
+Production-minded SvelteKit starter with Svelte 5 runes, TypeScript, Tailwind CSS v4, shadcn-svelte style components, i18n, SEO, GEO and AEO already wired.
 
-[![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte)](https://svelte.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-4-38bdf8?logo=tailwind)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/moisesvalero/my-sveltekit-starter/pulls)
+[![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev)
+[![SvelteKit 2](https://img.shields.io/badge/SvelteKit-2-FF3E00?logo=svelte&logoColor=white)](https://kit.svelte.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vitest](https://img.shields.io/badge/Vitest-ready-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
-Starter template for modern **websites** with **SvelteKit 2 + Svelte 5 + TypeScript + Tailwind CSS v4** and **[shadcn-svelte](https://www.shadcn-svelte.com/)**-style UI (code lives in your repo, not an opaque package).
-The **home** uses Material/Stitch tokens (`src/lib/styles/stitch-m3.css`), **ES/EN i18n** on the landing, and centralized **SEO** via `$seo`.
+[Live demo](https://my-sveltekit-starter.vercel.app/) · [Spanish quick start](./INICIO_RAPIDO.md) · [Design handoff guide](./DESIGN_TO_CURSOR.md) · [GEO playbook](./GEO_PLAYBOOK.md)
 
-[![Live demo on Vercel](https://img.shields.io/badge/Live_demo-on_Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://my-sveltekit-starter.vercel.app/)
+## Preview
 
----
+<img src="static/screenshots/home-desktop.png" alt="Home page preview of My SvelteKit Starter" width="100%">
 
-## Quick start (2 minutes)
+<img src="static/screenshots/components-desktop.png" alt="Component gallery preview of My SvelteKit Starter" width="100%">
 
-```bash
-npm install       # first time only
-npm run dev       # dev server
-```
+## Why This Starter
 
-Open `http://localhost:5173`. You do not need a `.env` file to get started.
+Most starters stop at routing and styling. This one is built for shipping a real website or product surface quickly:
 
-Requirements: **Node.js 22+** (see `package.json` → `engines`).
+- Svelte 5 runes and SvelteKit 2 with TypeScript.
+- Tailwind CSS v4 with a shadcn-svelte inspired component layer.
+- ES/EN i18n, dark mode, toasts, cookie consent and responsive layout.
+- Central SEO store with Open Graph, Twitter cards, canonical URLs and JSON-LD.
+- GEO/AEO endpoints for modern AI discovery: `llms.txt`, Markdown twins and content negotiation.
+- Security headers, CSP, HSTS in production, frame protection and strict cookie defaults.
+- Optional Sanity, Supabase and Sentry wiring without making them mandatory.
+- CI, Husky, lint-staged, Vitest and `svelte-check` already configured.
 
----
+## Stack
 
-## What’s included
+| Area              | Included                                                         |
+| ----------------- | ---------------------------------------------------------------- |
+| Framework         | SvelteKit 2, Svelte 5 runes                                      |
+| Language          | TypeScript                                                       |
+| Styling           | Tailwind CSS v4, design tokens, shadcn-svelte style components   |
+| UI primitives     | bits-ui, mode-watcher, lucide-svelte, svelte-sonner              |
+| Quality           | ESLint, Prettier, svelte-check, Vitest                           |
+| SEO/GEO/AEO       | sitemap, robots, Open Graph, JSON-LD, `llms.txt`, Markdown twins |
+| Optional services | Sanity CMS, Supabase, Sentry                                     |
+| Deploy            | Vercel adapter, Netlify config included                          |
 
-### Pre-built pages
-- `/` — Landing (hero, sample terminal, features, steps, CTAs; copy in `src/lib/i18n/*.json` under `home.*`)
-- `/components` — UI gallery **and** template demos (about, pricing, faq, SSR with `load()`, blog, form). Content in `src/lib/components/demos/*.svelte`; SSR data in `src/routes/components/+page.ts`.
-- **Shortcuts (307 redirects to anchors on `/components`)** — legacy links or bookmarks: `/about`, `/pricing`, `/faq`, `/blog`, `/blog/primer-post`, `/ssr-demo`, `/contacto` (form action in `src/routes/components/+page.server.ts`).
+## Quick Start
 
-### UI components (shadcn-svelte + project)
-
-**Base UI** (`src/lib/components/ui/`, shadcn-svelte pattern + **bits-ui**): Button, Card, Dialog, Input, Textarea, Label, Skeleton, Spinner, Sonner (toast).
-
-**Project** (`src/lib/components/`): Footer, Heading, Container, Section, Grid, CopyButton, Newsletter, AiPrompt, JsonLd, CookieConsent, BlogLayout, LoadingBlock, demos under `demos/`, etc. (optional marketing blocks like Hero are not all wired on the current home).
-
-### Infrastructure
-- **SEO + GEO + AEO (automated)**: dynamic `/sitemap.xml` (with hreflang ES/EN), `/robots.txt` (AI crawlers: GPTBot, Claude, Perplexity, Google-Extended, CCBot…), `/llms.txt` + `/llms-full.txt` ([llmstxt.org](https://llmstxt.org) standard), **Markdown twins** per page (`/index.md`, `/ruta.md`) with HTTP content negotiation (`Accept: text/markdown`), complete Open Graph + Twitter Cards, canonical URL auto-derived, dynamic `<html lang>` via SSR cookie, and JSON-LD that ships **Organization + WebSite (SearchAction) + BreadcrumbList + FAQPage + HowTo + SoftwareApplication** out of the box. Just call `setSeo({...})` in your `+page.svelte`.
-- **i18n**: ES/EN translations with store + localStorage + server cookie (SSR-aware)
-- **Dark mode**: Toggle with mode-watcher, respects system preference
-- **Toasts**: Sonner (`<Toaster />` in layout) + `toast()` from `$lib/stores/toast` (also `<ToastContainer />` in layout)
-- **Motion**: Scroll reveal via IntersectionObserver
-- **Tests**: Vitest preconfigured
-- **CI/CD**: GitHub Actions (lint + check + build + test)
-- **Pre-commit**: Husky + lint-staged
-- **Dynamic OG image**: `/api/og?title=Text`
-- **Security + AEO headers**: CSP + X-Frame-Options in `hooks.server.ts`; markdown twins get `Vary: Accept`, `X-AEO-Version`, `X-Markdown-Tokens`, `X-Robots-Tag: noindex`
-
-### Optional integrations (ready when you add keys)
-- **Sanity CMS** — see [Sanity (optional)](#sanity-cms-optional)
-- **Supabase** — auth + database
-- **Sentry** — error tracking
-- **Newsletter** — component ready for Mailchimp/Resend
-- **Live Chat** — placeholder for Crisp/Intercom/Tawk
-
-### Sanity CMS (optional)
-
-**In this repo:** `sanity/` folder (schemas, seeds), `sanity.config.ts` / `sanity.cli.ts`, and server code under `src/lib/server/sanity/` (client with `@sanity/client`, sample GROQ queries, types). The **`sanity`** package is in **devDependencies** so you can run Studio; **`@sanity/client`** and **`@sanity/image-url`** are in dependencies for SSR on the app.
-
-**What the template does not do by default:** no route uses GROQ out of the box. Without Sanity env vars the site still runs; when you want CMS data, call `getSanityServerClient()` from a `load` or `+page.server.ts`.
-
-**Typical env vars** (`.env`, never commit secrets): `SANITY_PROJECT_ID`, `SANITY_DATASET`; optional `SANITY_READ_TOKEN` for drafts or private datasets. `sanity.config.ts` can also use `SANITY_STUDIO_PROJECT_ID` / `SANITY_STUDIO_DATASET` if you want Studio separate from runtime.
-
-**Run Studio:** `npm run studio` (Sanity CLI; different port from Vite). Create or link a project at [sanity.io](https://www.sanity.io) and align `projectId` and dataset with your environment.
-
-### For AI assistants
-- **`AGENTS.md`** — How ChatGPT, Claude, Copilot should work in this repo
-- **`PROMPTS.md`** — Copy-paste snippets for AI prompts
-- **`DESIGN_TO_CURSOR.md`** — Stitch / Lovable → this template (tokens, checklist, base prompt)
-
-**Optional (recommended):** install extra skills detected for your stack (Cursor, Claude Code, etc.):
+Requirements: Node.js 22 or newer.
 
 ```bash
-npx autoskills
+npm install
+npm run dev
 ```
 
-See `INSTRUCTIONS.txt` (section “Using AI to help you”). Spanish step-by-step: `INSTRUCCIONES.txt`.
+Open `http://localhost:5173`.
 
----
+You do not need a `.env` file for the default demo. Add one only when enabling optional services.
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Development server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run check` | Type-check + svelte-check (0 errors, 0 warnings) |
-| `npm run lint` | ESLint + Prettier |
-| `npm run format` | Format everything |
-| `npm run test` | Tests |
-| `npm run new:page name` | Scaffold a page |
-| `npm run studio` | Sanity Studio (optional CMS in dev) |
+| Command                | Purpose                                          |
+| ---------------------- | ------------------------------------------------ |
+| `npm run dev`          | Start the Vite development server                |
+| `npm run build`        | Create a production build                        |
+| `npm run preview`      | Preview the production build locally             |
+| `npm run format:check` | Check formatting with Prettier                   |
+| `npm run format`       | Format project files                             |
+| `npm run lint`         | Run Prettier check and ESLint                    |
+| `npm run check`        | Run `svelte-check` with the project tsconfig     |
+| `npm test`             | Run Vitest                                       |
+| `npm run new:page`     | Scaffold a page from the local script            |
+| `npm run clean`        | Remove demo routes/components for a lean project |
+| `npm run studio`       | Start Sanity Studio, if configured               |
 
----
+## Quality Gate
 
-## Project structure
-
-```
-sanity/                     → Schemas, seeds, Studio (optional; see Sanity section)
-sanity.config.ts
-sanity.cli.ts
-src/
-  routes/
-    +page.svelte              → Home
-    +layout.svelte            → Global layout (header, nav, footer, toasts, cookies, dark mode)
-    +error.svelte             → 404/500
-    blog/                     → +page.ts redirects to gallery; primer-post/ → demo post anchor
-    contacto/                 → Redirect to form anchor on /components
-    about/ pricing/ faq/ ssr-demo/  → +page.ts only (307 → /components#…)
-    components/               → UI gallery + demos (SSR load, contact form action)
-    api/
-      og/+server.ts          → Dynamic OG image
-  lib/
-    styles/stitch-m3.css      → M3/Stitch tokens + utilities (text-h1, font-code…)
-    site-config.ts            → Site name, URL, social links
-    components/
-      ui/                     → shadcn-svelte + base components (Button, Card, Input…)
-      *.svelte                → Project components
-    stores/
-      toast.ts                → Toast notifications
-    actions/
-      clickOutside.ts        → Svelte action
-    i18n/                     → ES/EN translations
-    seo.ts                    → SEO store
-    aeo/                      → Markdown twins, Accept negotiation, builders from i18n
-    site-pages.ts             → Central page registry (sitemap, llms, AEO twins)
-    reveal.ts                 → Scroll animations
-    utils.ts                  → cn(), types
-    server/
-      supabase/              → Supabase client (optional)
-      sanity/                → GROQ client + types (optional)
-  app.css                     → Global CSS + Tailwind v4 + theme variables
-  hooks.server.ts             → Security headers, CSP, AEO content negotiation
-static/
-  logos/                      → Brand SVGs (reference)
-  manifest.json              → Web app manifest
-  favicon.svg
-```
-
-> SEO/GEO/AEO routes (`robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`, `*.md` twins) are **dynamic SvelteKit endpoints** under `src/routes/`, fed from `src/lib/site-pages.ts` + i18n. To add a page to all of them at once, append an entry to `sitePages` and register a builder in `src/lib/aeo/` (see [AEO](#aeo-ai-engine-optimization) below).
-
----
-
-## SEO + GEO at a glance
-
-The template is wired so that **calling `setSeo({...})` in a page is enough** — every other tag, schema and crawler file is auto-generated.
-
-```ts
-// src/routes/mi-pagina/+page.svelte
-import { setSeo } from '$lib/seo';
-
-setSeo({
-  title: 'Mi página',
-  description: 'Resumen en una frase.',
-  schemaType: 'FAQPage',
-  dateModified: new Date().toISOString(),
-  faq: [{ question: '¿Qué es X?', answer: 'X es...' }],
-  howto: [{ name: 'Paso 1', text: 'Haz Y' }]
-});
-```
-
-That single call updates:
-
-| Output | What it does |
-|--------|--------------|
-| `<title>`, `description`, `keywords`, `author`, `canonical` | Standard SEO tags |
-| Open Graph + Twitter Cards | Social previews |
-| `hreflang` ES/EN/`x-default` | International SEO |
-| JSON-LD `WebPage` / `Article` / `FAQPage` / `HowTo` / `SoftwareApplication` | Rich results in Google + citations in ChatGPT / Perplexity / Gemini |
-| `BreadcrumbList` | Auto-derived from URL |
-| `Organization` + `WebSite` with `SearchAction` | Sitewide schema |
-
-And from `src/lib/site-pages.ts` the template auto-generates:
-
-- `/sitemap.xml` with hreflang
-- `/llms.txt` (Markdown index, [llmstxt.org](https://llmstxt.org))
-- `/llms-full.txt` (full content for LLM ingestion)
-- `/robots.txt` (allow-list for OpenAI, Anthropic, Google, Perplexity, CCBot, Meta, Cohere)
-
-To add a new page to all of them, append one entry to `sitePages` in `src/lib/site-pages.ts`.
-
----
-
-## AEO (AI Engine Optimization)
-
-Besides GEO (`llms.txt`, structured data), each indexable route gets a **Markdown twin** so AI agents (ChatGPT, Claude, Perplexity, etc.) can ingest clean text without parsing HTML. The implementation follows common conventions ([acceptmarkdown.com](https://acceptmarkdown.com/), [Dualmark AEO spec](https://dualmark.dev/docs/spec/overview)).
-
-### What runs automatically
-
-| Mechanism | Behavior |
-|-----------|----------|
-| **Content negotiation** | `GET /` with `Accept: text/markdown` → same URL, markdown body |
-| **AI bot User-Agents** | GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc. → markdown twin on the canonical URL |
-| **Sibling URLs** | `/index.md` (home), `/components.md`, … |
-| **HTML discovery** | `<link rel="alternate" type="text/markdown" href="…">` in layout + `Link` HTTP header |
-| **Twin headers** | `Content-Type: text/markdown`, `Vary: Accept`, `X-AEO-Version: 1.0`, `X-Markdown-Tokens`, `X-Robots-Tag: noindex` |
-| **Source of truth** | i18n (`src/lib/i18n/*.json`) via builders in `src/lib/aeo/builders/` — no duplicate hand-written `.md` files per locale |
-| **Sitemap** | HTML URLs + `.md` twins in `/sitemap.xml` |
-
-### Add a new page to AEO
-
-1. Create the route and call `setSeo({...})` in `+page.svelte` (inside `$effect` with `$locale`).
-2. Add an entry to `sitePages` in `src/lib/site-pages.ts`.
-3. Add `buildYourPageMarkdown(locale, baseUrl)` in `src/lib/aeo/builders/` and register it in `src/lib/aeo/registry.ts`.
-4. Add `src/routes/your-slug.md/+server.ts` that calls `serveMarkdownTwin` (home uses `index.md`).
-
-Full checklist for Cursor/agents: **`AGENTS.md`** → section *SEO + GEO + AEO*.
-
-### Quick check (local)
+Before publishing changes, run:
 
 ```bash
-curl.exe -sI -H "Accept: text/markdown" http://localhost:5173/
-curl.exe -sI http://localhost:5173/index.md
+npm run format:check
+npm run lint
+npm run check
+npm test
+npm run build
+npm audit --audit-level=moderate
 ```
 
-You should see `content-type: text/markdown` and the `x-aeo-*` headers. Tools like [aeochecker.xyz](https://aeochecker.xyz) must hit your **deployed** URL after `git push` — production does not update until you redeploy.
+Current local verification has been hardened so npm audit reports zero vulnerabilities after the dependency overrides in `package.json`.
 
----
+## Project Structure
 
-## Customization
-
-### `src/lib/site-config.ts`
-Site name, URL, social links, author defaults used by `src/lib/seo.ts`.
-
-### `src/lib/i18n/es.json` and `en.json`
-Landing copy (`home.*`), navigation (`layout.nav.*`), footer, and other keys. The document title comes from the **`seo`** store (`<title>{$seo.title}</title>` in the layout); each route can call `setSeo({ title, description, ... })`.
-
-### `src/app.css` and `src/lib/styles/stitch-m3.css`
-Theme tokens (`--primary`, `--background`, …) and Stitch typography utilities. Legacy variables (`--text-main`, `--bg-soft`) are aligned with `--foreground` / `--muted`.
-
-### Dark mode (preconfigured)
-```svelte
-import { mode, toggleMode } from 'mode-watcher';
-import { Moon, Sun } from 'lucide-svelte';
-
-<Button variant="ghost" size="icon" onclick={toggleMode}>
-  {#if mode.current === 'dark'} <Moon /> {:else} <Sun /> {/if}
-</Button>
+```txt
+src/
+  routes/
+    +page.svelte              Home page
+    +layout.svelte            App shell, SEO tags, nav, theme, toasts
+    components/               Component gallery and demos
+    api/og/+server.ts         Dynamic Open Graph SVG endpoint
+    *.md/+server.ts           Markdown twin endpoints for AEO
+  lib/
+    components/ui/            shadcn-svelte style base components
+    components/               Project components and demos
+    aeo/                      Markdown twins, content negotiation, token counting
+    i18n/                     ES/EN dictionaries and locale helpers
+    server/                   Server-only Sanity and Supabase helpers
+    styles/stitch-m3.css      Design tokens and typography utilities
+    seo.ts                    Central SEO store
+    site-config.ts            Site identity, URLs and social defaults
+    site-pages.ts             Registry for sitemap, llms.txt and twins
+static/
+  screenshots/                README screenshots
+sanity/                       Optional CMS schema and seed scripts
 ```
 
----
+## UI System
+
+The starter keeps the UI code in your repository, not hidden behind an opaque package.
+
+Base components live in `src/lib/components/ui/`:
+
+- `Button`
+- `Card`
+- `Dialog`
+- `Input`
+- `Textarea`
+- `Label`
+- `Skeleton`
+- `Spinner`
+- `Sonner`
+- Layout helpers: `Container`, `Section`, `Grid`, `Heading`, `Text`, `HeroSection`, `FeaturesSection`
+
+Project components live in `src/lib/components/`:
+
+- `Footer`
+- `CookieConsent`
+- `CopyButton`
+- `Newsletter`
+- `AiPrompt`
+- `JsonLd`
+- `ToastContainer`
+- Demo blocks under `src/lib/components/demos/`
+
+## SEO, GEO and AEO
+
+The starter is designed for search engines and AI answer engines.
+
+One `setSeo({...})` call per page feeds:
+
+- `<title>`, description, keywords, author and canonical URL.
+- Open Graph and Twitter cards.
+- JSON-LD for `Organization`, `WebSite`, `BreadcrumbList`, page schema, FAQ, HowTo and SoftwareApplication.
+- `hreflang` alternates for ES/EN.
+
+Dynamic discovery endpoints:
+
+| Endpoint                      | Purpose                                          |
+| ----------------------------- | ------------------------------------------------ |
+| `/sitemap.xml`                | HTML pages and Markdown twin URLs with hreflang  |
+| `/robots.txt`                 | Search and AI crawler policy                     |
+| `/llms.txt`                   | Compact Markdown index for LLMs                  |
+| `/llms-full.txt`              | Full-site Markdown export                        |
+| `/index.md`, `/components.md` | Clean Markdown twins                             |
+| `Accept: text/markdown`       | Content negotiation for agent-friendly responses |
+| `/api/og?title=...`           | Dynamic Open Graph image                         |
+
+To add a page to the whole SEO/GEO/AEO pipeline:
+
+1. Create the SvelteKit route.
+2. Call `setSeo({...})` in the page.
+3. Add the page to `src/lib/site-pages.ts`.
+4. Add a Markdown builder in `src/lib/aeo/builders/`.
+5. Register the builder and add a sibling `.md` route.
+
+## Security Notes
+
+Implemented by default:
+
+- Content Security Policy in `src/hooks.server.ts`.
+- `Strict-Transport-Security` in production.
+- `X-Frame-Options: DENY`.
+- `X-Content-Type-Options: nosniff`.
+- `Referrer-Policy: strict-origin-when-cross-origin`.
+- Restrictive `Permissions-Policy`.
+- `frame-ancestors 'none'`.
+- Locale cookie uses `httpOnly`, `sameSite: 'lax'` and `secure` in production.
+- Private service keys stay in `$env/dynamic/private`.
+- npm dependency audit is clean with the included overrides.
+
+Review before production:
+
+- Replace or remove `/api/hello`, it is intentionally a demo endpoint.
+- Keep `PUBLIC_SITE_URL` accurate for canonical URLs, sitemap and Open Graph.
+- Treat `SANITY_READ_TOKEN`, `SUPABASE_ANON_KEY` and `RESEND_API_KEY` as environment-specific credentials.
+- If you enable third-party analytics or live chat, update CSP allowlists deliberately.
+
+## Optional Integrations
+
+Copy `.env.example` to `.env` when enabling services:
+
+```bash
+PUBLIC_SITE_URL=http://localhost:5173
+
+SANITY_PROJECT_ID=
+SANITY_DATASET=production
+SANITY_API_VERSION=2024-01-01
+SANITY_READ_TOKEN=
+
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
+
+PUBLIC_SENTRY_DSN=
+RESEND_API_KEY=
+```
+
+### Sanity
+
+The repo includes `sanity/`, `sanity.config.ts`, `sanity.cli.ts`, server helpers and sample GROQ mapping. Without env vars, the app still runs normally.
+
+```bash
+npm run studio
+```
+
+### Supabase
+
+`src/lib/server/supabase/client.ts` returns `null` until `SUPABASE_URL` and `SUPABASE_ANON_KEY` are configured.
+
+### Sentry
+
+Client tracking is disabled in dev and only starts when `PUBLIC_SENTRY_DSN` exists.
 
 ## Deploy
 
-Vercel and Netlify. Push to GitHub, connect the repo, done.
+### Vercel
 
----
+This starter ships with `@sveltejs/adapter-vercel`.
+
+```bash
+npm run build
+```
+
+Connect the repository to Vercel and set `PUBLIC_SITE_URL` to the production URL.
+
+### Netlify
+
+`netlify.toml` is included. Set the same environment variables in the Netlify dashboard.
+
+## For AI-Assisted Workflows
+
+This repository includes agent-facing documentation:
+
+- `AGENTS.md` for repository rules and Svelte 5 patterns.
+- `PROMPTS.md` with copy-paste prompts.
+- `DESIGN_TO_CURSOR.md` for mapping Stitch, Lovable or Figma exports into this component system.
+- `GEO_PLAYBOOK.md` for AI discovery and Markdown twin workflows.
 
 ## License
 
-Free for personal and commercial use.
+MIT. Use it for personal, client and commercial projects.

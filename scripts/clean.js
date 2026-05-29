@@ -48,7 +48,6 @@ for (const comp of componentsToRemove) {
 }
 
 // Limpiar exports de landing
-const landingIndex = path.join(process.cwd(), 'src/lib/examples/landing/index.ts');
 // Ya se borro con el directorio
 
 console.log('\n✓ Plantilla limpia. Solo queda la home y los componentes base.');

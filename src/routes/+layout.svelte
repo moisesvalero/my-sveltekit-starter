@@ -116,20 +116,22 @@
 <div class="flex min-h-0 w-full flex-1 flex-col">
   <!-- Nav — mismas utilidades que stitch .../code.html (enlaces reales) -->
   <nav
-    class="fixed left-0 right-0 top-0 z-50 mx-auto mt-4 flex max-w-5xl items-center justify-between rounded-full border border-outline-variant bg-surface/80 px-6 py-3 shadow-md backdrop-blur-md"
+    class="fixed left-3 right-3 top-0 z-50 mx-auto mt-4 flex max-w-5xl items-center justify-between gap-3 rounded-full border border-outline-variant bg-surface/80 px-4 py-3 shadow-md backdrop-blur-md sm:left-4 sm:right-4 sm:px-6"
   >
-    <div class="font-h3 text-h3 font-bold text-primary">
+    <div
+      class="min-w-0 flex-1 text-balance font-h3 text-lg leading-tight font-bold text-primary sm:text-h3 md:flex-none"
+    >
       {siteConfig.name}
     </div>
     <div class="hidden items-center gap-6 md:flex">
       <a class={navClass('/')} href="/">{$t('layout.nav.home')}</a>
       <a class={navClass('/components')} href="/components">{$t('layout.nav.components')}</a>
     </div>
-    <div class="flex shrink-0 items-center gap-2 sm:gap-4">
+    <div class="flex shrink-0 items-center gap-1 sm:gap-4">
       <div class="flex items-center gap-0.5 sm:gap-2">
         <button
           type="button"
-          class="scale-95 p-2 text-on-surface-variant transition-colors hover:text-primary active:scale-90"
+          class="scale-95 p-1.5 text-on-surface-variant transition-colors hover:text-primary active:scale-90 sm:p-2"
           onclick={handleToggleTheme}
           aria-label={$t('layout.aria.theme')}
         >
@@ -137,7 +139,7 @@
         </button>
         <button
           type="button"
-          class="scale-95 p-2 text-on-surface-variant transition-colors hover:text-primary active:scale-90"
+          class="scale-95 p-1.5 text-on-surface-variant transition-colors hover:text-primary active:scale-90 sm:p-2"
           onclick={handleToggleLocale}
           aria-label={$t('layout.aria.language')}
         >
@@ -146,7 +148,7 @@
       </div>
       <a
         href="/components"
-        class="scale-95 rounded-full bg-primary px-6 py-2 font-bold text-white transition-transform active:scale-90"
+        class="hidden scale-95 rounded-full bg-primary px-6 py-2 font-bold text-white transition-transform active:scale-90 sm:inline-flex"
       >
         {$t('layout.nav.getStarted')}
       </a>

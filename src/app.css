@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import './lib/styles/stitch-m3.css';
 
 /* Fuentes: cargar desde app.html (evita warning "@import must precede rules") */

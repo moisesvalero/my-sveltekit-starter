@@ -5,10 +5,7 @@
 
 <div class="toast-container">
   {#each $toasts as t (t.id)}
-    <div
-      class="toast toast--{t.type}"
-      transition:fly={{ y: 20, duration: 200, opacity: 0 }}
-    >
+    <div class="toast toast--{t.type}" transition:fly={{ y: 20, duration: 200, opacity: 0 }}>
       <span class="toast-icon">
         {#if t.type === 'success'}✓
         {:else if t.type === 'error'}✕
