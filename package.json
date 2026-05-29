@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@internationalized/date": "^3.12.1",
-    "@lucide/svelte": "^1.14.0",
+    "@lucide/svelte": "^1.17.0",
     "@sveltejs/adapter-vercel": "^6.3.3",
     "@sveltejs/kit": "^2.50.2",
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
