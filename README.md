@@ -1,4 +1,4 @@
-# My SvelteKit Starter
+﻿# My SvelteKit Starter
 
 Production-minded SvelteKit starter with Svelte 5 runes, TypeScript, Tailwind CSS v4, shadcn-svelte style components, i18n, SEO, GEO and AEO already wired.
 
@@ -48,8 +48,8 @@ Most starters stop at routing and styling. This one is built for shipping a real
 Requirements: Node.js 22 or newer.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Open `http://localhost:5173`.
@@ -58,34 +58,34 @@ You do not need a `.env` file for the default demo. Add one only when enabling o
 
 ## Scripts
 
-| Command                | Purpose                                          |
-| ---------------------- | ------------------------------------------------ |
-| `npm run dev`          | Start the Vite development server                |
-| `npm run build`        | Create a production build                        |
-| `npm run preview`      | Preview the production build locally             |
-| `npm run format:check` | Check formatting with Prettier                   |
-| `npm run format`       | Format project files                             |
-| `npm run lint`         | Run Prettier check and ESLint                    |
-| `npm run check`        | Run `svelte-check` with the project tsconfig     |
-| `npm test`             | Run Vitest                                       |
-| `npm run new:page`     | Scaffold a page from the local script            |
-| `npm run clean`        | Remove demo routes/components for a lean project |
-| `npm run studio`       | Start Sanity Studio, if configured               |
+| Command                 | Purpose                                          |
+| ----------------------- | ------------------------------------------------ |
+| `pnpm run dev`          | Start the Vite development server                |
+| `pnpm run build`        | Create a production build                        |
+| `pnpm run preview`      | Preview the production build locally             |
+| `pnpm run format:check` | Check formatting with Prettier                   |
+| `pnpm run format`       | Format project files                             |
+| `pnpm run lint`         | Run Prettier check and ESLint                    |
+| `pnpm run check`        | Run `svelte-check` with the project tsconfig     |
+| `pnpm test`             | Run Vitest                                       |
+| `pnpm run new:page`     | Scaffold a page from the local script            |
+| `pnpm run clean`        | Remove demo routes/components for a lean project |
+| `pnpm run studio`       | Start Sanity Studio, if configured               |
 
 ## Quality Gate
 
 Before publishing changes, run:
 
 ```bash
-npm run format:check
-npm run lint
-npm run check
-npm test
-npm run build
-npm audit --audit-level=moderate
+pnpm run format:check
+pnpm run lint
+pnpm run check
+pnpm test
+pnpm run build
+pnpm audit --audit-level=moderate
 ```
 
-Current local verification has been hardened so npm audit reports zero vulnerabilities after the dependency overrides in `package.json`.
+Current local verification has been hardened so pnpm audit reports zero vulnerabilities after the dependency overrides in `package.json`.
 
 ## Project Structure
 
@@ -184,7 +184,7 @@ Implemented by default:
 - `frame-ancestors 'none'`.
 - Locale cookie uses `httpOnly`, `sameSite: 'lax'` and `secure` in production.
 - Private service keys stay in `$env/dynamic/private`.
-- npm dependency audit is clean with the included overrides.
+- pnpm dependency audit is clean with the included overrides.
 
 Review before production:
 
@@ -217,7 +217,7 @@ RESEND_API_KEY=
 The repo includes `sanity/`, `sanity.config.ts`, `sanity.cli.ts`, server helpers and sample GROQ mapping. Without env vars, the app still runs normally.
 
 ```bash
-npm run studio
+pnpm run studio
 ```
 
 ### Supabase
@@ -235,7 +235,7 @@ Client tracking is disabled in dev and only starts when `PUBLIC_SENTRY_DSN` exis
 This starter ships with `@sveltejs/adapter-vercel`.
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Connect the repository to Vercel and set `PUBLIC_SITE_URL` to the production URL.

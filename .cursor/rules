@@ -1,13 +1,15 @@
-# Cursor rules — My SvelteKit Starter
+﻿# Cursor rules — My SvelteKit Starter
 
 Detailed source of truth: **AGENTS.md** at the repo root.
+
+Este proyecto usa pnpm. No uses npm ni generes package-lock.json salvo petición explícita.
 
 ## Trigger: external design → code (read before editing files)
 
 If the user (or context) mentions **Stitch**, **Lovable**, **visual parity**, **pixel perfect**, **match the design**, **exported HTML/CSS**, **Figma / prototype** as the main reference, or **DESIGN_TO_CURSOR**:
 
 1. **Open and follow** **`DESIGN_TO_CURSOR.md`** at the repo root (read it fully with the read tool if it is not in context).
-2. Then apply **AGENTS.md** (component catalog, i18n, `npm run check`).
+2. Then apply **AGENTS.md** (component catalog, i18n, `pnpm run check`).
 3. Map the design to **Button, Card, Section**, etc.; tune tokens in **`src/app.css`** and **`src/lib/styles/stitch-m3.css`**; do not leave only raw HTML without migrating to components.
 
 If none of that applies, follow **AGENTS.md** as usual.
@@ -99,5 +101,5 @@ Infra ya cableada: `hooks.server.ts` (content negotiation), `<link rel="alternat
 ## shadcn-svelte CLI
 
 ```bash
-npx shadcn-svelte@latest add <component>
+pnpm dlx shadcn-svelte@latest add <component>
 ```
