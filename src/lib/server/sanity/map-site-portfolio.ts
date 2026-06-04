@@ -11,7 +11,11 @@ export function mapSanitySitePortfolio(
   const result: Record<string, unknown> = { ...defaults };
 
   if (raw.hero) {
-    result.hero = { ...((defaults.hero as Record<string, unknown>) || {}), ...raw.hero };
+    const defaultHero =
+      defaults.hero && typeof defaults.hero === 'object'
+        ? (defaults.hero as Record<string, unknown>)
+        : {};
+    result.hero = { ...defaultHero, ...raw.hero };
   }
   if (raw.features && raw.features.length > 0) {
     result.features = raw.features.map((f) => ({

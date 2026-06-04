@@ -3,7 +3,7 @@
   import Section from '$lib/components/ui/Section.svelte';
   import { Card } from '$lib/components/ui/card';
   import { cn } from '$lib/utils';
-  import { ChevronDown } from 'lucide-svelte';
+  import { ChevronDown } from '@lucide/svelte';
   import { t } from '$lib/i18n';
 
   const faqIds = [

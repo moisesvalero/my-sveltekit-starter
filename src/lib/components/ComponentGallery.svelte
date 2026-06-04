@@ -28,7 +28,10 @@
 <section class="gallery-section">
   <header class="gallery-intro">
     <p class="gallery-eyebrow">{$t('componentGallery.eyebrow')}</p>
-    <h2 class="gallery-title">{@html $t('componentGallery.title')}</h2>
+    <h2 class="gallery-title">
+      {$t('componentGallery.titlePrefix')}
+      <span class="gradient-text">{$t('componentGallery.titleAccent')}</span>
+    </h2>
     <p class="gallery-subtitle">{$t('componentGallery.subtitle')}</p>
   </header>
 

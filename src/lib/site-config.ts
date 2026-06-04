@@ -6,11 +6,11 @@ export const siteConfig = {
   ogImage: '/og-image.png',
   social: {
     github: 'https://github.com/moisesvalero/my-sveltekit-starter',
-    linkedin: 'https://linkedin.com',
-    email: 'mailto:info@example.com'
+    linkedin: '',
+    email: 'mailto:261577890+moisesvalero@users.noreply.github.com'
   },
   author: {
-    name: 'Tu nombre o equipo',
+    name: 'Moises Valero',
     url: 'https://my-sveltekit-starter.vercel.app'
   },
   nav: [

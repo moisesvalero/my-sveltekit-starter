@@ -1,5 +1,6 @@
 <script lang="ts">
   import { get } from 'svelte/store';
+  import { resolve } from '$app/paths';
   import { siteConfig } from '$lib/site-config';
   import { setSeo } from '$lib/seo';
   import { locale, t } from '$lib/i18n';
@@ -91,7 +92,7 @@
       class="mx-auto flex w-full max-w-[22rem] flex-col justify-center gap-4 sm:max-w-none sm:flex-row sm:flex-wrap"
     >
       <a
-        href="/components"
+        href={resolve('/components')}
         class="accent-glow w-full rounded-xl bg-primary px-8 py-3 text-center font-bold text-white shadow-lg transition-all hover:brightness-110 sm:w-auto"
       >
         {$t('home.hero.ctaPrimary')}
@@ -321,7 +322,7 @@
           {$t('home.cta.subtitle')}
         </p>
         <a
-          href="/components"
+          href={resolve('/components')}
           class="inline-block rounded-xl bg-white px-12 py-4 text-lg font-bold text-primary transition-all hover:bg-on-surface hover:scale-105 active:scale-95"
         >
           {$t('home.cta.button')}

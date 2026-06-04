@@ -19,7 +19,39 @@
     "lang": {
       "toSpanish": "🇪🇸 ES",
       "toEnglish": "🇬🇧 EN"
+    },
+    "cookies": {
+      "message": "We use technical cookies to remember your preferences.",
+      "policy": "Cookie policy",
+      "necessary": "Necessary only",
+      "all": "Accept all",
+      "savedAll": "Preferences saved",
+      "savedNecessary": "Necessary cookies only"
     }
+  },
+  "cookiePolicy": {
+    "seo": {
+      "title": "Cookie policy | My SvelteKit Starter",
+      "description": "Summary of technical cookies and preferences used by My SvelteKit Starter."
+    },
+    "eyebrow": "Privacy",
+    "title": "Cookie policy",
+    "subtitle": "This template only uses minimal cookies and local storage to remember language, theme and cookie preferences.",
+    "sections": {
+      "used": {
+        "title": "Necessary cookies",
+        "body": "The project stores technical preferences such as language, visual theme and cookie consent so the experience stays consistent across visits."
+      },
+      "optional": {
+        "title": "Optional services",
+        "body": "Integrations such as analytics, chat, Sanity, Supabase or Sentry are disabled by default and must be configured explicitly in each project."
+      },
+      "control": {
+        "title": "User control",
+        "body": "You can clear these preferences from browser storage or adapt this text to the legal policy of your final product."
+      }
+    },
+    "backHome": "Back home"
   },
   "componentsPage": {
     "seo": {
@@ -165,7 +197,7 @@
           },
           "deploy": {
             "q": "How do I deploy to production?",
-            "a": "Push the repo to GitHub and connect the project to Vercel or Netlify. Build is npm run build; set PUBLIC_SITE_URL for SEO (sitemap and Open Graph)."
+            "a": "Push the repo to GitHub and connect the project to Vercel or Netlify. Build is pnpm run build; set PUBLIC_SITE_URL for SEO (sitemap and Open Graph)."
           },
           "i18n": {
             "q": "How do languages work?",
@@ -244,7 +276,7 @@
       },
       "types": {
         "title": "TypeScript that survives CI",
-        "desc": "Structured for `npm run check`: typed routes and UI so failures happen in the pipeline, not on users."
+        "desc": "Structured for `pnpm run check`: typed routes and UI so failures happen in the pipeline, not on users."
       },
       "dx": {
         "title": "shadcn-style UI in your repo",
@@ -271,15 +303,15 @@
       },
       "step2": {
         "title": "Install dependencies",
-        "desc": "From the project folder run `npm install`. Requires Node.js 22+ (see `package.json`)."
+        "desc": "From the project folder run `pnpm install`. Requires Node.js 22+ (see `package.json`)."
       },
       "step3": {
         "title": "Start the dev server",
-        "desc": "Run `npm run dev` and open the URL printed in the terminal (usually http://localhost:5173)."
+        "desc": "Run `pnpm run dev` and open the URL printed in the terminal (usually http://localhost:5173)."
       },
       "step4": {
         "title": "Customize & deploy",
-        "desc": "Update name and links in project config, adjust copy and theme colors, run `npm run build`, then ship to Vercel, Netlify or your host."
+        "desc": "Update name and links in project config, adjust copy and theme colors, run `pnpm run build`, then ship to Vercel, Netlify or your host."
       }
     },
     "cta": {
@@ -321,7 +353,8 @@
   },
   "componentGallery": {
     "eyebrow": "A KIT, NOT JUST A TEMPLATE",
-    "title": "Craft full product experiences with <span class='gradient-text'>ready-made UI blocks.</span>",
+    "titlePrefix": "Craft full product experiences with ",
+    "titleAccent": "ready-made UI blocks.",
     "subtitle": "Swap sections, tweak tokens, and keep everything on-brand without touching a design tool every single time.",
     "ui1": {
       "title": "Analytics Dashboard",
@@ -623,8 +656,10 @@
     "subtitle": "Stop building from scratch. Svelte Starter gives you everything you need to ship beautiful products in hours, not weeks.",
     "primary": "Get Svelte Starter",
     "secondary": "Explore components",
-    "proof": "<strong>2,400+</strong> developers trust Svelte Starter",
-    "rating": "<strong>4.9</strong> / 5 rating"
+    "proofCount": "2,400+",
+    "proofText": "developers trust Svelte Starter",
+    "ratingScore": "4.9",
+    "ratingText": "/ 5 rating"
   },
   "footer": {
     "tagline": "The last UI toolkit you will ever need.",

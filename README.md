@@ -28,7 +28,7 @@ Most starters stop at routing and styling. This one is built for shipping a real
 - GEO/AEO endpoints for modern AI discovery: `llms.txt`, Markdown twins and content negotiation.
 - Security headers, CSP, HSTS in production, frame protection and strict cookie defaults.
 - Optional Sanity, Supabase and Sentry wiring without making them mandatory.
-- CI, Husky, lint-staged, Vitest and `svelte-check` already configured.
+- CI, Husky, lint-staged, oxlint, knip, Vitest and `svelte-check` already configured.
 
 ## Stack
 
@@ -37,8 +37,8 @@ Most starters stop at routing and styling. This one is built for shipping a real
 | Framework         | SvelteKit 2, Svelte 5 runes                                      |
 | Language          | TypeScript                                                       |
 | Styling           | Tailwind CSS v4, design tokens, shadcn-svelte style components   |
-| UI primitives     | bits-ui, mode-watcher, lucide-svelte, svelte-sonner              |
-| Quality           | ESLint, Prettier, svelte-check, Vitest                           |
+| UI primitives     | bits-ui, mode-watcher, @lucide/svelte, svelte-sonner             |
+| Quality           | oxlint, knip, Prettier, svelte-check, Vitest                     |
 | SEO/GEO/AEO       | sitemap, robots, Open Graph, JSON-LD, `llms.txt`, Markdown twins |
 | Optional services | Sanity CMS, Supabase, Sentry                                     |
 | Deploy            | Vercel adapter, Netlify config included                          |
@@ -65,7 +65,8 @@ You do not need a `.env` file for the default demo. Add one only when enabling o
 | `pnpm run preview`      | Preview the production build locally             |
 | `pnpm run format:check` | Check formatting with Prettier                   |
 | `pnpm run format`       | Format project files                             |
-| `pnpm run lint`         | Run Prettier check and ESLint                    |
+| `pnpm run lint`         | Run oxlint static analysis                       |
+| `pnpm run knip`         | Find unused dependencies, exports and files      |
 | `pnpm run check`        | Run `svelte-check` with the project tsconfig     |
 | `pnpm test`             | Run Vitest                                       |
 | `pnpm run new:page`     | Scaffold a page from the local script            |
@@ -79,6 +80,7 @@ Before publishing changes, run:
 ```bash
 pnpm run format:check
 pnpm run lint
+pnpm run knip
 pnpm run check
 pnpm test
 pnpm run build
@@ -188,7 +190,6 @@ Implemented by default:
 
 Review before production:
 
-- Replace or remove `/api/hello`, it is intentionally a demo endpoint.
 - Keep `PUBLIC_SITE_URL` accurate for canonical URLs, sitemap and Open Graph.
 - Treat `SANITY_READ_TOKEN`, `SUPABASE_ANON_KEY` and `RESEND_API_KEY` as environment-specific credentials.
 - If you enable third-party analytics or live chat, update CSP allowlists deliberately.

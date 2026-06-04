@@ -22,12 +22,6 @@
 </script>
 
 <svelte:head>
-  {#if cfg.init}
-    <script>
-      {
-        cfg.init;
-      }
-    </script>
-  {/if}
+  {@html cfg.init ? `<script>${cfg.init}</` + `script>` : ''}
   {@html `<script async defer src="${cfg.src}"></` + `script>`}
 </svelte:head>

@@ -46,8 +46,8 @@ export const portfolioEnglishDemo: Omit<SitePortfolioContent, 'seo'> = {
   footer: {
     copyrightTemplate: 'Moises Valero © {{year}}',
     githubHref: 'https://github.com',
-    linkedinHref: 'https://linkedin.com',
-    emailHref: 'mailto:info@example.com'
+    linkedinHref: '',
+    emailHref: 'mailto:261577890+moisesvalero@users.noreply.github.com'
   }
 };
 

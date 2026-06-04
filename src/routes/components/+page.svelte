@@ -2,6 +2,7 @@
   import { untrack } from 'svelte';
   import { get } from 'svelte/store';
   import { enhance } from '$app/forms';
+  import { resolve } from '$app/paths';
   import { setSeo } from '$lib/seo';
   import { locale, t } from '$lib/i18n';
   import Heading from '$lib/components/ui/Heading.svelte';
@@ -133,7 +134,7 @@
   >
     <nav class="flex flex-col gap-1">
       <a
-        href="/components"
+        href={resolve('/components')}
         class="mb-4 rounded-md px-3 py-2 text-sm font-bold text-foreground no-underline hover:bg-muted/60"
         >{$t('componentsPage.nav.root')}</a
       >

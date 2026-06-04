@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Bolt, Shield, Rocket, CloudUpload } from 'lucide-svelte';
+  import { Bolt, Shield, Rocket, CloudUpload } from '@lucide/svelte';
 
   export type FeatureId = 'perf' | 'types' | 'dx' | 'deploy' | 'stack' | 'theme' | 'i18n' | 'seo';
 

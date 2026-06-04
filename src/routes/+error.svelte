@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { resolve } from '$app/paths';
   import { page } from '$app/state';
 </script>
 
@@ -19,7 +20,7 @@
     <p class="error-message">
       {page.error?.message || 'Ha ocurrido un error inesperado.'}
     </p>
-    <a href="/" class="btn-primary">Volver al inicio</a>
+    <a href={resolve('/')} class="btn-primary">Volver al inicio</a>
   </div>
 </div>
 

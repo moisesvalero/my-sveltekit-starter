@@ -1,7 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
+  import { resolve } from '$app/paths';
+  import { t } from '$lib/i18n';
   import { toast } from '$lib/stores/toast';
+  import { Button } from '$lib/components/ui/button';
 
   let show = $state(false);
 
@@ -14,13 +17,13 @@
   function acceptAll() {
     localStorage.setItem('cookies_accepted', 'all');
     show = false;
-    toast('Preferencias guardadas', 'success');
+    toast($t('layout.cookies.savedAll'), 'success');
   }
 
   function acceptNecessary() {
     localStorage.setItem('cookies_accepted', 'necessary');
     show = false;
-    toast('Solo cookies necesarias', 'info');
+    toast($t('layout.cookies.savedNecessary'), 'info');
   }
 </script>
 
@@ -28,12 +31,14 @@
   <div class="cookie-banner" transition:fade={{ duration: 300 }}>
     <div class="cookie-content">
       <p>
-        Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra
-        <a href="/politica-cookies">politica de cookies</a>.
+        {$t('layout.cookies.message')}
+        <a href={resolve('/politica-cookies')}>{$t('layout.cookies.policy')}</a>.
       </p>
       <div class="cookie-actions">
-        <button class="cookie-btn secondary" onclick={acceptNecessary}>Solo necesarias</button>
-        <button class="cookie-btn primary" onclick={acceptAll}>Aceptar todas</button>
+        <Button variant="secondary" size="sm" onclick={acceptNecessary}>
+          {$t('layout.cookies.necessary')}
+        </Button>
+        <Button size="sm" onclick={acceptAll}>{$t('layout.cookies.all')}</Button>
       </div>
     </div>
   </div>
@@ -73,23 +78,5 @@
     display: flex;
     gap: 0.5rem;
     flex-shrink: 0;
-  }
-  .cookie-btn {
-    padding: 0.5rem 1.2rem;
-    border-radius: 999px;
-    font: inherit;
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-  }
-  .cookie-btn.primary {
-    background: var(--primary);
-    color: var(--primary-foreground);
-  }
-  .cookie-btn.secondary {
-    background: var(--bg-soft, #f9fafb);
-    color: var(--text-main, #111827);
-    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 </style>

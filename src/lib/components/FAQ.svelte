@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { resolve } from '$app/paths';
   import { reveal } from '$lib/reveal';
   import { t } from '$lib/i18n';
+  import { Button } from '$lib/components/ui/button';
 </script>
 
 <section
@@ -51,16 +53,10 @@
       style="opacity:0;transform:translate3d(0,22px,0) scale(0.97);filter:blur(6px);"
       use:reveal={{ stage: 'content', delay: 290 }}
     >
-      <a
-        href="#pricing"
-        class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg inline-block"
-        >{$t('faqCta.primary')}</a
-      >
-      <a
-        href="#components"
-        class="px-8 py-4 rounded-xl font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all inline-block"
-        >{$t('faqCta.secondary')}</a
-      >
+      <Button href={`${resolve('/components')}#pricing`}>{$t('faqCta.primary')}</Button>
+      <Button href={`${resolve('/components')}#components`} variant="secondary">
+        {$t('faqCta.secondary')}
+      </Button>
     </div>
 
     <div
@@ -82,7 +78,10 @@
           class="w-7 h-7 rounded-full border-2 border-white bg-gradient-to-br from-orange-500 to-amber-400 -ml-2 shadow-sm"
         ></div>
       </div>
-      <span class="text-sm text-slate-400">{@html $t('faqCta.proof')}</span>
+      <span class="text-sm text-slate-400">
+        <strong>{$t('faqCta.proofCount')}</strong>
+        {$t('faqCta.proofText')}
+      </span>
       <div class="w-px h-5 bg-slate-200"></div>
       <div class="flex gap-0.5">
         {#each [0, 1, 2, 3, 4] as star (star)}
@@ -92,7 +91,10 @@
           ></div>
         {/each}
       </div>
-      <span class="text-sm text-slate-400">{@html $t('faqCta.rating')}</span>
+      <span class="text-sm text-slate-400">
+        <strong>{$t('faqCta.ratingScore')}</strong>
+        {$t('faqCta.ratingText')}
+      </span>
     </div>
   </div>
 </section>

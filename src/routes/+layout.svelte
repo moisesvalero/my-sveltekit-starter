@@ -1,6 +1,7 @@
 <script lang="ts">
   import '../app.css';
   import { get } from 'svelte/store';
+  import { resolve } from '$app/paths';
   import { t, locale, setLocale } from '$lib/i18n';
   import { siteConfig } from '$lib/site-config';
   import { browser } from '$app/environment';
@@ -124,8 +125,10 @@
       {siteConfig.name}
     </div>
     <div class="hidden items-center gap-6 md:flex">
-      <a class={navClass('/')} href="/">{$t('layout.nav.home')}</a>
-      <a class={navClass('/components')} href="/components">{$t('layout.nav.components')}</a>
+      <a class={navClass('/')} href={resolve('/')}>{$t('layout.nav.home')}</a>
+      <a class={navClass('/components')} href={resolve('/components')}
+        >{$t('layout.nav.components')}</a
+      >
     </div>
     <div class="flex shrink-0 items-center gap-1 sm:gap-4">
       <div class="flex items-center gap-0.5 sm:gap-2">
@@ -147,7 +150,7 @@
         </button>
       </div>
       <a
-        href="/components"
+        href={resolve('/components')}
         class="hidden scale-95 rounded-full bg-primary px-6 py-2 font-bold text-white transition-transform active:scale-90 sm:inline-flex"
       >
         {$t('layout.nav.getStarted')}

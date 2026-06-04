@@ -1,6 +1,3 @@
-/** Media types we can serve for content negotiation. */
-export type ServedMediaType = 'text/markdown' | 'text/html';
-
 interface AcceptEntry {
   type: string;
   subtype: string;

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { resolve } from '$app/paths';
   import { siteConfig } from '$lib/site-config';
   import { t } from '$lib/i18n';
 </script>
@@ -17,7 +18,7 @@
   <div class="flex gap-8">
     <a
       class="font-body-sm text-body-sm text-outline-variant opacity-80 transition-colors hover:text-surface hover:opacity-100 dark:text-on-surface-variant dark:hover:text-primary"
-      href="/components">{$t('layout.footer.documentation')}</a
+      href={resolve('/components')}>{$t('layout.footer.documentation')}</a
     >
     <a
       class="font-body-sm text-body-sm text-outline-variant opacity-80 transition-colors hover:text-surface hover:opacity-100 dark:text-on-surface-variant dark:hover:text-primary"

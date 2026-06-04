@@ -19,7 +19,39 @@
     "lang": {
       "toSpanish": "🇪🇸 ES",
       "toEnglish": "🇬🇧 EN"
+    },
+    "cookies": {
+      "message": "Usamos cookies técnicas para recordar tus preferencias.",
+      "policy": "Política de cookies",
+      "necessary": "Solo necesarias",
+      "all": "Aceptar todas",
+      "savedAll": "Preferencias guardadas",
+      "savedNecessary": "Solo cookies necesarias"
     }
+  },
+  "cookiePolicy": {
+    "seo": {
+      "title": "Política de cookies | My SvelteKit Starter",
+      "description": "Resumen de cookies técnicas y preferencias usadas por My SvelteKit Starter."
+    },
+    "eyebrow": "Privacidad",
+    "title": "Política de cookies",
+    "subtitle": "Esta plantilla solo usa cookies y almacenamiento local mínimos para recordar idioma, tema y preferencias de cookies.",
+    "sections": {
+      "used": {
+        "title": "Cookies necesarias",
+        "body": "El proyecto guarda preferencias técnicas como idioma, tema visual y consentimiento de cookies para que la experiencia sea consistente entre visitas."
+      },
+      "optional": {
+        "title": "Servicios opcionales",
+        "body": "Integraciones como analítica, chat, Sanity, Supabase o Sentry están desactivadas por defecto y deben configurarse de forma explícita en cada proyecto."
+      },
+      "control": {
+        "title": "Control del usuario",
+        "body": "Puedes borrar estas preferencias desde el almacenamiento del navegador o adaptar este texto a la política legal de tu producto final."
+      }
+    },
+    "backHome": "Volver al inicio"
   },
   "componentsPage": {
     "seo": {
@@ -165,7 +197,7 @@
           },
           "deploy": {
             "q": "¿Cómo despliego en producción?",
-            "a": "Sube el repo a GitHub y conecta el proyecto a Vercel o Netlify. El build es npm run build; revisa PUBLIC_SITE_URL para SEO (sitemap y Open Graph)."
+            "a": "Sube el repo a GitHub y conecta el proyecto a Vercel o Netlify. El build es pnpm run build; revisa PUBLIC_SITE_URL para SEO (sitemap y Open Graph)."
           },
           "i18n": {
             "q": "¿Cómo funcionan los idiomas?",
@@ -244,7 +276,7 @@
       },
       "types": {
         "title": "TypeScript que aguanta CI",
-        "desc": "Proyecto preparado para `npm run check`: tipos en rutas y componentes para fallar en la pipeline, no en producción."
+        "desc": "Proyecto preparado para `pnpm run check`: tipos en rutas y componentes para fallar en la pipeline, no en producción."
       },
       "dx": {
         "title": "UI estilo shadcn en tu carpeta",
@@ -271,15 +303,15 @@
       },
       "step2": {
         "title": "Instala dependencias",
-        "desc": "En la carpeta del proyecto ejecuta `npm install`. Requisito: Node.js 22 o superior (ver `package.json`)."
+        "desc": "En la carpeta del proyecto ejecuta `pnpm install`. Requisito: Node.js 22 o superior (ver `package.json`)."
       },
       "step3": {
         "title": "Arranca en local",
-        "desc": "Ejecuta `npm run dev` y abre la URL que muestra la terminal (por defecto http://localhost:5173)."
+        "desc": "Ejecuta `pnpm run dev` y abre la URL que muestra la terminal (por defecto http://localhost:5173)."
       },
       "step4": {
         "title": "Personaliza y despliega",
-        "desc": "Cambia nombre y enlaces en la config del proyecto, ajusta textos y colores del tema, ejecuta `npm run build` y sube a Vercel, Netlify o el hosting que uses."
+        "desc": "Cambia nombre y enlaces en la config del proyecto, ajusta textos y colores del tema, ejecuta `pnpm run build` y sube a Vercel, Netlify o el hosting que uses."
       }
     },
     "cta": {
@@ -325,7 +357,8 @@
   },
   "componentGallery": {
     "eyebrow": "UN KIT, NO SOLO UNA PLANTILLA",
-    "title": "Crea experiencias de producto completas con <span class='gradient-text'>bloques de UI listos para usar.</span>",
+    "titlePrefix": "Crea experiencias de producto completas con ",
+    "titleAccent": "bloques de UI listos para usar.",
     "subtitle": "Intercambia secciones, ajusta tokens y mantén todo alineado con tu marca sin tocar una herramienta de diseño cada vez.",
     "ui1": {
       "title": "Panel de analítica",
@@ -627,8 +660,10 @@
     "subtitle": "Deja de construir desde cero. Svelte Starter te da todo lo que necesitas para lanzar productos bonitos en horas, no en semanas.",
     "primary": "Consigue Svelte Starter",
     "secondary": "Explorar componentes",
-    "proof": "<strong>2,400+</strong> desarrolladores confían en Svelte Starter",
-    "rating": "<strong>4.9</strong> / 5 de valoración"
+    "proofCount": "2,400+",
+    "proofText": "desarrolladores confían en Svelte Starter",
+    "ratingScore": "4.9",
+    "ratingText": "/ 5 de valoración"
   },
   "footer": {
     "tagline": "El último kit de UI que vas a necesitar.",
