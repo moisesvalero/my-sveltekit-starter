@@ -47,6 +47,11 @@ describe('public release surface', () => {
   it('no publica el endpoint demo api/hello', () => {
     expect(existsSync(resolve(root, 'src/routes/api/hello/+server.ts'))).toBe(false);
   });
+
+  it('publica security.txt para reporte responsable', () => {
+    expect(existsSync(resolve(root, 'static/.well-known/security.txt'))).toBe(true);
+    expect(existsSync(resolve(root, 'static/security.txt'))).toBe(true);
+  });
 });
 
 describe('base URL normalization', () => {

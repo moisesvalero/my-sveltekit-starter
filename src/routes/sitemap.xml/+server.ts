@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/public';
-import { normalizeBaseUrl } from '$lib/server/base-url';
+import { normalizeBaseUrl } from '$lib/base-url';
 import { markdownTwinPath, pagesWithTwins, publicPages, supportedLocales } from '$lib/site-pages';
 
 /**

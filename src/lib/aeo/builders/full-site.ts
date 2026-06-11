@@ -1,12 +1,11 @@
 import { env } from '$env/dynamic/public';
+import { normalizeBaseUrl } from '$lib/base-url';
 import { siteConfig } from '$lib/site-config';
 import { publicPages, type SupportedLocale } from '$lib/site-pages';
 import { buildFaqMarkdown, buildHomeSections, createTranslator } from '../shared';
 
-const DEFAULT_SITE_URL = 'http://localhost:5173';
-
 export function getPublicBaseUrl(): string {
-  return (env.PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, '');
+  return normalizeBaseUrl(env.PUBLIC_SITE_URL);
 }
 
 /** Full-site Markdown for `/llms-full.txt`. */

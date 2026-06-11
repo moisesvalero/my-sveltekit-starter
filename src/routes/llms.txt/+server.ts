@@ -1,8 +1,7 @@
 import { env } from '$env/dynamic/public';
+import { normalizeBaseUrl } from '$lib/base-url';
 import { siteConfig } from '$lib/site-config';
 import { publicPages, tFor, defaultLocale } from '$lib/site-pages';
-
-const DEFAULT_SITE_URL = 'http://localhost:5173';
 
 /**
  * /llms.txt — Índice GEO en el formato estándar de llmstxt.org.
@@ -13,7 +12,7 @@ const DEFAULT_SITE_URL = 'http://localhost:5173';
  * Spec: https://llmstxt.org
  */
 export const GET = () => {
-  const baseUrl = (env.PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, '');
+  const baseUrl = normalizeBaseUrl(env.PUBLIC_SITE_URL);
   const pages = publicPages();
 
   const primary = pages.filter((p) => p.group === 'primary');

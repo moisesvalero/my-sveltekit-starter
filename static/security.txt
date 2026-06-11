@@ -1,0 +1,4 @@
+Contact: mailto:261577890+moisesvalero@users.noreply.github.com
+Expires: 2027-06-11T00:00:00Z
+Preferred-Languages: es, en
+Canonical: https://my-sveltekit-starter.vercel.app/.well-known/security.txt

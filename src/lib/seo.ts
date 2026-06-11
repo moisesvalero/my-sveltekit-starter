@@ -2,8 +2,7 @@ import { env } from '$env/dynamic/public';
 import { writable } from 'svelte/store';
 import { siteConfig } from '$lib/site-config';
 
-const DEFAULT_SITE_URL = 'http://localhost:5173';
-const baseUrl = new URL(env.PUBLIC_SITE_URL || DEFAULT_SITE_URL).toString().replace(/\/$/, '');
+const baseUrl = new URL(env.PUBLIC_SITE_URL || siteConfig.url).toString().replace(/\/$/, '');
 
 /**
  * Estado SEO/GEO centralizado para toda la app.

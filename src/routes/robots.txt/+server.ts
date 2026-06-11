@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/public';
-import { normalizeBaseUrl } from '$lib/server/base-url';
+import { normalizeBaseUrl } from '$lib/base-url';
 
 export const GET = () => {
   const baseUrl = normalizeBaseUrl(env.PUBLIC_SITE_URL);
