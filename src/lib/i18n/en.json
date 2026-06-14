@@ -8,7 +8,7 @@
     },
     "footer": {
       "documentation": "Documentation",
-      "builtWith": "Built with precision."
+      "builtBy": "Built by"
     },
     "aria": {
       "toggleMenu": "Toggle menu",

@@ -11,7 +11,7 @@ export const siteConfig = {
   },
   author: {
     name: 'Moises Valero',
-    url: 'https://my-sveltekit-starter.vercel.app'
+    url: 'https://moisesvalero.es'
   },
   nav: [
     { label: 'Inicio', href: '/' },

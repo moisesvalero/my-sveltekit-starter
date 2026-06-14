@@ -12,7 +12,16 @@
     <div class="font-h3 text-h3 font-bold text-surface dark:text-on-surface">{siteConfig.name}</div>
     <p class="font-body-sm text-body-sm text-outline-variant dark:text-on-surface-variant">
       © {new Date().getFullYear()}
-      {siteConfig.name}. {$t('layout.footer.builtWith')}
+      {siteConfig.name}.
+      {$t('layout.footer.builtBy')}
+      <a
+        href={siteConfig.author.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-bold underline hover:text-primary transition-colors duration-200"
+      >
+        {siteConfig.author.name}
+      </a>
     </p>
   </div>
   <div class="flex gap-8">

@@ -8,7 +8,7 @@
     },
     "footer": {
       "documentation": "Documentación",
-      "builtWith": "Construido con precisión."
+      "builtBy": "Creado por"
     },
     "aria": {
       "toggleMenu": "Abrir o cerrar menú",
