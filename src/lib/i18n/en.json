@@ -286,9 +286,9 @@
         "title": "SEO & production baseline",
         "desc": "Meta tags, JSON-LD, `/sitemap.xml`, `/robots.txt`, dynamic OG — wire the repo to Vercel or Netlify when your domain is ready."
       },
-      "cms": {
-        "title": "Sanity CMS (optional)",
-        "desc": "Studio + schema under `sanity/`, server client + GROQ helpers under `src/lib/server/sanity/`. Enable with `SANITY_PROJECT_ID` and `SANITY_DATASET` in `.env`."
+      "ai": {
+        "title": "AI-Agent Ready",
+        "desc": "AGENTS.md, AutoSkills, and Impeccable pre-configured. Validate with pnpm run verify to ensure the agent never breaks the build."
       },
       "product": {
         "title": "Product-ready UX",
@@ -303,7 +303,7 @@
       },
       "step2": {
         "title": "Install dependencies",
-        "desc": "From the project folder run `pnpm install`. Requires Node.js 22+ (see `package.json`)."
+        "desc": "Run pnpm install && pnpm run agent:skills to install dependencies and configure local AI assistant skills."
       },
       "step3": {
         "title": "Start the dev server",

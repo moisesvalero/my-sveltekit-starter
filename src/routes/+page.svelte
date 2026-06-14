@@ -225,11 +225,11 @@
         <div
           class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-container/10 text-primary"
         >
-          <span class="material-symbols-outlined">integration_instructions</span>
+          <span class="material-symbols-outlined">smart_toy</span>
         </div>
-        <h3 class="font-h3 text-h3 mb-2 text-on-surface">{$t('home.features.cms.title')}</h3>
+        <h3 class="font-h3 text-h3 mb-2 text-on-surface">{$t('home.features.ai.title')}</h3>
         <p class="text-body-sm text-on-surface-variant">
-          {$t('home.features.cms.desc')}
+          {$t('home.features.ai.desc')}
         </p>
       </div>
       <div

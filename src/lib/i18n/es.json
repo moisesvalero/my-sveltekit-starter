@@ -286,9 +286,9 @@
         "title": "SEO y salida a producción",
         "desc": "Meta tags, JSON-LD, `/sitemap.xml`, `/robots.txt` y OG dinámico incluidos; conectas repo a Vercel o Netlify cuando tengas dominio."
       },
-      "cms": {
-        "title": "Sanity CMS (opcional)",
-        "desc": "Schema y Studio en `sanity/`, cliente y GROQ en `src/lib/server/sanity/`. Actívalo con `SANITY_PROJECT_ID` y `SANITY_DATASET` en `.env`."
+      "ai": {
+        "title": "Optimizado para Agentes IA",
+        "desc": "AGENTS.md, AutoSkills e Impeccable preconfigurados. Flujo validado mediante pnpm run verify para evitar que la IA rompa tu código."
       },
       "product": {
         "title": "Experiencia de producto",
@@ -303,7 +303,7 @@
       },
       "step2": {
         "title": "Instala dependencias",
-        "desc": "En la carpeta del proyecto ejecuta `pnpm install`. Requisito: Node.js 22 o superior (ver `package.json`)."
+        "desc": "En la carpeta ejecuta pnpm install && pnpm run agent:skills para instalar dependencias y configurar las guías del agente IA."
       },
       "step3": {
         "title": "Arranca en local",
