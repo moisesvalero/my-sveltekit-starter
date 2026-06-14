@@ -259,7 +259,7 @@
   "home": {
     "seo": {
       "title": "My SvelteKit Starter — Plantilla Svelte 5 + Kit 2 lista para shippear",
-      "description": "Todo en un repo: UI estilo shadcn en tu código, Tailwind v4, TypeScript, textos ES/EN, modo oscuro, SEO técnico y páginas de ejemplo. Para quien quiere vibe coding sin reinventar la base."
+      "description": "Todo en un repo: UI estilo shadcn en tu código, Tailwind v4, TypeScript, textos ES/EN, modo oscuro, SEO técnico y páginas de ejemplo. Para quien quiere desarrollar rápido sin reinventar la base."
     },
     "hero": {
       "title": "La plantilla SvelteKit para quien solo quiere construir",

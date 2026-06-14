@@ -259,7 +259,7 @@
   "home": {
     "seo": {
       "title": "My SvelteKit Starter — Svelte 5 + Kit 2 template ready to ship",
-      "description": "All in one repo: shadcn-style UI you own, Tailwind v4, TypeScript, ES/EN copy, dark mode, technical SEO and demo pages. For vibe coders who skip reinventing the stack."
+      "description": "All in one repo: shadcn-style UI you own, Tailwind v4, TypeScript, ES/EN copy, dark mode, technical SEO and demo pages. For developers who want to ship fast without reinventing the stack."
     },
     "hero": {
       "title": "The SvelteKit starter for people who just want to build",

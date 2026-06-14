@@ -46,8 +46,7 @@
         'TypeScript',
         'Tailwind CSS',
         'shadcn-svelte',
-        'starter template',
-        'vibe coding'
+        'starter template'
       ],
       /**
        * SoftwareApplication para que Perplexity/Gemini puedan citar la plantilla

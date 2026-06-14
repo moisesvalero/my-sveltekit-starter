@@ -1,4 +1,4 @@
-# GEO Playbook — SEO + Generative Engine Optimization perfecto para vibe coders
+# GEO Playbook — SEO + Generative Engine Optimization perfecto para desarrollo asistido por IA
 
 Guía para llevar a cualquier proyecto **SvelteKit** el mismo nivel de GEO que tiene esta plantilla. Pensada para **copiarse a otros repos SvelteKit** y para usarse como **prompt de agente** (sección final del documento).
 
@@ -9,7 +9,7 @@ Guía para llevar a cualquier proyecto **SvelteKit** el mismo nivel de GEO que t
 
 ## El principio: una llamada, todo automático
 
-El vibe coder solo debería escribir:
+El desarrollador solo debería escribir:
 
 ```ts
 setSeo({ title, description, faq: [...], howto: [...] });

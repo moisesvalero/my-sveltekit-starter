@@ -179,7 +179,7 @@ let { title }: { title: string } = $props();
 
 ## SEO + GEO (Generative Engine Optimization)
 
-La plantilla trae SEO técnico **y** GEO automatizado. El vibe coder solo escribe `setSeo({...})` en su `+page.svelte` y todo lo demás se inyecta solo desde el layout.
+La plantilla trae SEO técnico **y** GEO automatizado. Solo es necesario escribir `setSeo({...})` en `+page.svelte` y todo lo demás se inyecta solo desde el layout.
 
 ### `setSeo` — único punto de entrada
 
