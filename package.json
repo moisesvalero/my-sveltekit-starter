@@ -22,7 +22,10 @@
     "test:watch": "vitest",
     "new:page": "node scripts/new-page.js",
     "clean": "node scripts/clean.js",
-    "studio": "sanity dev"
+    "studio": "sanity dev",
+    "verify": "pnpm run lint && pnpm run knip && pnpm run check && pnpm run format:check && pnpm run test && pnpm run build",
+    "agent:skills": "pnpm dlx autoskills",
+    "agent:impeccable": "pnpm dlx autoskills install impeccable"
   },
   "lint-staged": {
     "*.{js,ts,svelte}": [

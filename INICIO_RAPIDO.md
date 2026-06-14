@@ -5,13 +5,14 @@
 ## Paso 1: Instalar
 
 ```bash
-npm install
+pnpm install
+pnpm run agent:skills
 ```
 
 ## Paso 2: Arrancar
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Abre `http://localhost:5173`. No necesitas `.env` para local.
@@ -33,16 +34,21 @@ GitHub → Vercel/Netlify → listo.
 
 ## Scripts útiles
 
-| Comando                   | Qué hace                                    |
-| ------------------------- | ------------------------------------------- |
-| `npm run dev`             | Servidor local                              |
-| `npm run build`           | Build producción                            |
-| `npm run check`           | TypeScript + Svelte (0 errores, 0 warnings) |
-| `npm run lint`            | ESLint + Prettier                           |
-| `npm run format`          | Formatear código                            |
-| `npm run test`            | Tests                                       |
-| `npm run new:page nombre` | Crear página                                |
-| `npm run studio`          | Sanity Studio (opcional; CMS)               |
+| Comando                     | Qué hace                                                                      |
+| --------------------------- | ----------------------------------------------------------------------------- |
+| `pnpm run dev`              | Servidor local                                                                |
+| `pnpm run build`            | Build producción                                                              |
+| `pnpm run check`            | TypeScript + Svelte (0 errores, 0 warnings)                                   |
+| `pnpm run lint`             | Análisis estático ultrarrápido con oxlint                                     |
+| `pnpm run format:check`     | Verificar formateo con Prettier                                               |
+| `pnpm run format`           | Formatear código con Prettier                                                 |
+| `pnpm test`                 | Ejecutar tests unitarios con Vitest                                           |
+| `pnpm run verify`           | Ejecutar toda la suite de validación (lint, knip, check, format, test, build) |
+| `pnpm run agent:skills`     | Configurar las skills locales de agente IA con AutoSkills                     |
+| `pnpm run agent:impeccable` | Instalar la skill Impeccable de calidad en el workspace                       |
+| `pnpm run new:page nombre`  | Crear página                                                                  |
+| `pnpm run clean`            | Eliminar rutas/componentes de demo para un proyecto limpio                    |
+| `pnpm run studio`           | Sanity Studio (opcional; CMS)                                                 |
 
 ---
 
@@ -60,10 +66,17 @@ GitHub → Vercel/Netlify → listo.
 ## Skills extra para la IA (opcional)
 
 ```bash
-npx autoskills
+pnpm run agent:skills
 ```
 
-Añade skills según tu proyecto (Cursor, Claude Code, etc.). Más contexto en `INSTRUCCIONES.txt` (English: **`INSTRUCTIONS.txt`**).
+Configura y actualiza automáticamente directivas y guías operacionales locales (`.agents/skills`) para tus asistentes de IA (como Claude Code, Cursor, Windsurf o Gemini).
+Para añadir la skill avanzada de calidad y consistencia Impeccable:
+
+```bash
+pnpm run agent:impeccable
+```
+
+Más contexto en `INSTRUCCIONES.txt` (English: **`INSTRUCTIONS.txt`**).
 
 ---
 

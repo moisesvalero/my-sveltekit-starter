@@ -1,4 +1,4 @@
-﻿# My SvelteKit Starter
+# My SvelteKit Starter
 
 Production-minded SvelteKit starter with Svelte 5 runes, TypeScript, Tailwind CSS v4, shadcn-svelte style components, i18n, SEO, GEO and AEO already wired.
 
@@ -49,6 +49,7 @@ Requirements: Node.js 22 or newer.
 
 ```bash
 pnpm install
+pnpm run agent:skills
 pnpm run dev
 ```
 
@@ -56,36 +57,76 @@ Open `http://localhost:5173`.
 
 You do not need a `.env` file for the default demo. Add one only when enabling optional services.
 
+## Working with AI Agents
+
+1. Clone this template for any new SvelteKit project.
+2. Open the project directory in your preferred AI-powered editor or terminal agent (e.g. Claude Code, Cursor, Windsurf, Gemini).
+3. Prompt your agent to read [AGENTS.md](file:///AGENTS.md) before making any code modifications.
+4. Run `pnpm run agent:skills` to let `autoskills` detect your environment and install helpful agent skills.
+5. Before completing any task, always ask the agent to run `pnpm run verify`.
+
 ## Scripts
 
-| Command                 | Purpose                                          |
-| ----------------------- | ------------------------------------------------ |
-| `pnpm run dev`          | Start the Vite development server                |
-| `pnpm run build`        | Create a production build                        |
-| `pnpm run preview`      | Preview the production build locally             |
-| `pnpm run format:check` | Check formatting with Prettier                   |
-| `pnpm run format`       | Format project files                             |
-| `pnpm run lint`         | Run oxlint static analysis                       |
-| `pnpm run knip`         | Find unused dependencies, exports and files      |
-| `pnpm run check`        | Run `svelte-check` with the project tsconfig     |
-| `pnpm test`             | Run Vitest                                       |
-| `pnpm run new:page`     | Scaffold a page from the local script            |
-| `pnpm run clean`        | Remove demo routes/components for a lean project |
-| `pnpm run studio`       | Start Sanity Studio, if configured               |
+| Command                     | Purpose                                                   |
+| --------------------------- | --------------------------------------------------------- |
+| `pnpm run dev`              | Start the Vite development server                         |
+| `pnpm run build`            | Create a production build                                 |
+| `pnpm run preview`          | Preview the production build locally                      |
+| `pnpm run format:check`     | Check formatting with Prettier                            |
+| `pnpm run format`           | Format project files                                      |
+| `pnpm run lint`             | Run oxlint static analysis                                |
+| `pnpm run knip`             | Find unused dependencies, exports and files               |
+| `pnpm run check`            | Run `svelte-check` with the project tsconfig              |
+| `pnpm test`                 | Run Vitest                                                |
+| `pnpm run new:page`         | Scaffold a page from the local script                     |
+| `pnpm run clean`            | Remove demo routes/components for a lean project          |
+| `pnpm run studio`           | Start Sanity Studio, if configured                        |
+| `pnpm run verify`           | Run lint, knip, typecheck, format check, tests, and build |
+| `pnpm run agent:skills`     | Run `pnpm dlx autoskills` to configure agent skills       |
+| `pnpm run agent:impeccable` | Install the Impeccable skill in your workspace            |
+
+## AI Agent Tools
+
+This template recommends two core tools to supercharge your AI agent's performance:
+
+### AutoSkills
+
+[AutoSkills](https://www.autoskills.sh/) is an audited command-line utility that automatically detects your project's technology stack (Svelte 5, TypeScript, Tailwind CSS, etc.) and installs the best contextual operational guidelines, custom rules, and workflow capabilities for your AI agents (such as Claude Code, Cursor, Windsurf, or Gemini).
+
+To initialize or update the recommended agent skills for this workspace:
+
+```bash
+pnpm run agent:skills
+```
+
+This script executes `pnpm dlx autoskills` to automatically configure your project environment so that any AI assistant instantly understands the Svelte 5 directory structure, styling guidelines, and rules.
+
+### Impeccable
+
+Impeccable is a developer-centric quality and validation skill. When installed, it provides additional tools and checklists for agents to perform comprehensive checks on code style, localization consistency, and schema validation.
+
+To install the Impeccable skill in your workspace:
+
+```bash
+pnpm run agent:impeccable
+```
 
 ## Quality Gate
 
-Before publishing changes, run:
+Before publishing changes (and as enforced by `pnpm run verify`), the full pipeline ensures everything is correct:
 
 ```bash
-pnpm run format:check
-pnpm run lint
-pnpm run knip
-pnpm run check
-pnpm test
-pnpm run build
-pnpm audit --audit-level=moderate
+pnpm run verify
 ```
+
+This runs:
+
+1. `oxlint` (Static analysis)
+2. `knip` (Unused dependencies/exports)
+3. `svelte-check` (TypeScript & Svelte diagnostics)
+4. `prettier` (Code formatting)
+5. `vitest` (Unit tests)
+6. `vite build` (Production compilation)
 
 Current local verification has been hardened so pnpm audit reports zero vulnerabilities after the dependency overrides in `package.json`.
 

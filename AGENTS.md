@@ -1,4 +1,4 @@
-﻿# AGENTS.md — Instructions for AI assistants
+# AGENTS.md — Instructions for AI assistants
 
 ## Project: My SvelteKit Starter
 
@@ -375,3 +375,12 @@ You must strictly override your default ad-hoc behavior to follow the Superpower
 - If a test, compilation, or runtime execution fails, stop immediately.
 - Trigger 'systematic-debugging' utilizing a strict 4-phase root cause analysis instead of guessing solutions.
 - When creating new routes, automatically cross-verify that the endpoint is correctly mapped into `sitePages`, has its corresponding `.md` twin server route, and triggers `setSeo({...})` using `$effect` + `$locale` to avoid breaking the AEO pipeline.
+
+### Phase 5: Complete Verification Before Completion
+
+- Before declaring any task finished, you MUST run the verification suite:
+  ```bash
+  pnpm run verify
+  ```
+- This runs: static analysis (`oxlint`), dead-code analysis (`knip`), TypeScript check (`svelte-check`), code style formatting (`prettier`), unit testing (`vitest`), and a production compilation check (`vite build`).
+- Do not mark the task as complete if any step in `pnpm run verify` fails. Fix all issues and run verify again.

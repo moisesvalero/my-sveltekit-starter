@@ -18,7 +18,14 @@
     "src/lib/types/**",
     "src/lib/index.ts"
   ],
-  "ignoreDependencies": ["@sanity/client", "@sanity/image-url", "@supabase/supabase-js"],
+  "ignoreDependencies": [
+    "@sanity/client",
+    "@sanity/image-url",
+    "@supabase/supabase-js",
+    "lint-staged"
+  ],
+  "husky": false,
+  "lint-staged": false,
   "ignoreIssues": {
     "src/lib/aeo/index.ts": ["exports", "types"],
     "src/lib/aeo/headers.ts": ["exports"],
