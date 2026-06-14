@@ -1,6 +1,6 @@
 # My SvelteKit Starter
 
-Production-minded SvelteKit starter with Svelte 5 runes, TypeScript, Tailwind CSS v4, shadcn-svelte style components, i18n, SEO, GEO and AEO already wired.
+Production-ready SvelteKit starter optimized for AI-assisted development, featuring Svelte 5 runes, TypeScript, Tailwind CSS v4, shadcn-svelte style components, i18n, SEO, GEO, and AEO.
 
 [![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev)
 [![SvelteKit 2](https://img.shields.io/badge/SvelteKit-2-FF3E00?logo=svelte&logoColor=white)](https://kit.svelte.dev)
