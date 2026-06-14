@@ -123,7 +123,8 @@
       href={resolve('/')}
       class="min-w-0 flex-1 text-balance text-lg leading-tight font-black tracking-tight text-on-surface transition-all duration-200 hover:scale-[1.02] md:flex-none"
     >
-      My <span class="bg-gradient-to-r from-[#ff3e00] to-[#ff6a00] bg-clip-text text-transparent"
+      My <span
+        class="bg-gradient-to-r from-[#3525cd] to-[#4f46e5] dark:from-[#818cf8] dark:to-[#c7d2fe] bg-clip-text text-transparent"
         >SvelteKit</span
       > Starter
     </a>
