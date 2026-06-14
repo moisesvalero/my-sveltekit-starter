@@ -119,11 +119,14 @@
   <nav
     class="fixed left-3 right-3 top-0 z-50 mx-auto mt-4 flex max-w-5xl items-center justify-between gap-3 rounded-full border border-outline-variant bg-surface/80 px-4 py-3 shadow-md backdrop-blur-md sm:left-4 sm:right-4 sm:px-6"
   >
-    <div
-      class="min-w-0 flex-1 text-balance font-h3 text-lg leading-tight font-bold text-primary sm:text-h3 md:flex-none"
+    <a
+      href={resolve('/')}
+      class="min-w-0 flex-1 text-balance text-lg leading-tight font-black tracking-tight text-on-surface transition-all duration-200 hover:scale-[1.02] md:flex-none"
     >
-      {siteConfig.name}
-    </div>
+      My <span class="bg-gradient-to-r from-[#ff3e00] to-[#ff6a00] bg-clip-text text-transparent"
+        >SvelteKit</span
+      > Starter
+    </a>
     <div class="hidden items-center gap-6 md:flex">
       <a class={navClass('/')} href={resolve('/')}>{$t('layout.nav.home')}</a>
       <a class={navClass('/components')} href={resolve('/components')}
