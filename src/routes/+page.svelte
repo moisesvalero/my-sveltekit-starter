@@ -92,15 +92,15 @@
       class="mx-auto flex w-full max-w-[22rem] flex-col justify-center gap-4 sm:max-w-none sm:flex-row sm:flex-wrap"
     >
       <a
-        href={resolve('/components')}
+        href={`${siteConfig.social.github}/generate`}
+        target="_blank"
+        rel="noopener noreferrer"
         class="accent-glow w-full rounded-xl bg-primary px-8 py-3 text-center font-bold text-white shadow-lg transition-all hover:brightness-110 sm:w-auto"
       >
         {$t('home.hero.ctaPrimary')}
       </a>
       <a
-        href={`${siteConfig.social.github}#readme`}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={resolve('/components')}
         class="w-full rounded-xl border border-outline-variant bg-surface-container-high px-8 py-3 text-center font-bold text-on-surface transition-colors hover:bg-surface-variant sm:w-auto"
       >
         {$t('home.hero.ctaSecondary')}

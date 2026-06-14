@@ -264,8 +264,8 @@
     "hero": {
       "title": "La plantilla SvelteKit para quien solo quiere construir",
       "subtitle": "Runes, rutas, formularios, toasts, tema claro/oscuro y una galería de componentes que ya están en tu proyecto —no en un npm opaco. Fork, personaliza y despliega.",
-      "ctaPrimary": "Ver componentes",
-      "ctaSecondary": "Documentación"
+      "ctaPrimary": "Crear proyecto",
+      "ctaSecondary": "Ver componentes"
     },
     "features": {
       "eyebrow": "Incluido",
