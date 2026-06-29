@@ -2,7 +2,7 @@ name: Weekly security audit
 
 on:
   schedule:
-    - cron: "0 9 * * 1" # Lunes 09:00 Europe/Madrid
+    - cron: '0 9 * * 1' # Lunes 09:00 Europe/Madrid
   workflow_dispatch: # manual
 
 permissions:
