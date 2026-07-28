@@ -52,7 +52,7 @@
     "knip": "^6.15.0",
     "lint-staged": "^16.2.7",
     "mdsvex": "^0.12.3",
-    "oxlint": "^1.68.0",
+    "oxlint": "^1.76.0",
     "prettier": "^3.7.4",
     "prettier-plugin-svelte": "^3.4.0",
     "sanity": "^5.24.0",
