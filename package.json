@@ -46,7 +46,7 @@
     "@sveltejs/adapter-vercel": "^6.3.3",
     "@sveltejs/kit": "^2.69.1",
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
-    "@tailwindcss/vite": "^4.3.0",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^25.9.1",
     "husky": "^9.1.7",
     "knip": "^6.15.0",
