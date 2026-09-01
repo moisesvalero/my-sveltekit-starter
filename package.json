@@ -41,7 +41,7 @@
     }
   },
   "devDependencies": {
-    "@internationalized/date": "^3.12.1",
+    "@internationalized/date": "^3.12.3",
     "@lucide/svelte": "^1.14.0",
     "@sveltejs/adapter-vercel": "^6.3.4",
     "@sveltejs/kit": "^2.70.2",
