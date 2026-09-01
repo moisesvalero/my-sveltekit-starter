@@ -67,7 +67,7 @@
   "dependencies": {
     "@sanity/client": "^7.22.0",
     "@sanity/image-url": "^2.1.1",
-    "@sentry/sveltekit": "^10.52.0",
+    "@sentry/sveltekit": "^10.72.0",
     "@supabase/supabase-js": "^2.105.4",
     "bits-ui": "^2.18.1",
     "clsx": "^2.1.1",
