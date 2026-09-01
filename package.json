@@ -65,7 +65,7 @@
     "vitest": "^4.1.11"
   },
   "dependencies": {
-    "@sanity/client": "^7.22.0",
+    "@sanity/client": "^8.4.0",
     "@sanity/image-url": "^2.1.1",
     "@sentry/sveltekit": "^10.72.0",
     "@supabase/supabase-js": "^2.105.4",
