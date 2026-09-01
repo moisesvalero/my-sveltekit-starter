@@ -35,8 +35,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(svelte@5.56.8(@typescript-eslint/types@8.60.1))
       svelte-sonner:
-        specifier: ^1.1.1
-        version: 1.1.1(svelte@5.56.8(@typescript-eslint/types@8.60.1))
+        specifier: ^1.2.1
+        version: 1.2.1(svelte@5.56.8(@typescript-eslint/types@8.60.1))
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
@@ -5539,8 +5539,8 @@ packages:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
 
-  svelte-sonner@1.1.1:
-    resolution: {integrity: sha512-5cd3p7wa4cq0NsqslMwdlPb7x1JglEZ/GKrLePWNr5bCxR1nagAVrY01FRFrXfUGs41miLt3C327+8XJo5BzZw==}
+  svelte-sonner@1.2.1:
+    resolution: {integrity: sha512-N00LOWb60fjKXULbpngku+7E9Krb16KpNq4/Eax5Vu7o1Dpbca55QpaLPsB+yp82JIEdFhfJuv5cVXLoe0ZtVA==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -11879,7 +11879,7 @@ snapshots:
     transitivePeerDependencies:
       - picomatch
 
-  svelte-sonner@1.1.1(svelte@5.56.8(@typescript-eslint/types@8.60.1)):
+  svelte-sonner@1.2.1(svelte@5.56.8(@typescript-eslint/types@8.60.1)):
     dependencies:
       runed: 0.28.0(svelte@5.56.8(@typescript-eslint/types@8.60.1))
       svelte: 5.56.8(@typescript-eslint/types@8.60.1)
