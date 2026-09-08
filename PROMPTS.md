@@ -94,22 +94,25 @@ Add i18n support to this page/component:
 - Add keys to src/lib/i18n/es.json and en.json
 ```
 
-## Connect Supabase Auth
+## Use landing blocks (Hero, Features, Pricing, FAQ, Waitlist)
 
 ```
-Connect Supabase Auth to my SvelteKit project.
-Use src/lib/server/supabase/client.ts for the client.
-Create a login page with email/password form.
-Use SvelteKit actions in +page.server.ts.
-Show auth state (signed in / signed out).
+Build a modern landing page using the pre-built blocks from $lib/components/ui/:
+- HeroSection: with eyebrow, title, subtitle, primary/secondary CTA buttons, and optional children slot for a preview.
+- FeaturesSection: with grid of items (title, description, icon, badge).
+- PricingTable: with monthly/yearly billing toggle, highlight for popular plan, and checkmark feature lists.
+- FaqSection: accessible interactive accordion for questions and answers.
+- WaitlistForm: high-converting email capture with Sonner toast feedback and loading state.
+All blocks are styled with Tailwind v4, support dark mode, and use Svelte 5 runes.
 ```
 
-## Connect Sanity CMS
+## Create a Waitlist / Lead capture section
 
 ```
-Configure Sanity CMS in my SvelteKit project.
-There is sample code under src/lib/server/sanity/ (GROQ client, types). Verify files exist on your branch and add SANITY_* to .env if you use them.
-Typical variables: SANITY_PROJECT_ID, SANITY_DATASET, SANITY_API_VERSION, SANITY_READ_TOKEN (optional).
+Add a waitlist lead capture section to my page.
+Use WaitlistForm from $lib/components/ui/WaitlistForm.svelte.
+Set eyebrow, title, subtitle, placeholder, and customize the button label.
+It automatically handles email validation, loading states, and shows a success toast with svelte-sonner.
 ```
 
 ## Match a Stitch / Lovable design (visual parity)

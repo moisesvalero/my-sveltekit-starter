@@ -33,6 +33,7 @@
   import FaqDemo from '$lib/components/demos/FaqDemo.svelte';
   import SsrDemoPanel from '$lib/components/demos/SsrDemoPanel.svelte';
   import BlogPostDemo from '$lib/components/demos/BlogPostDemo.svelte';
+  import WaitlistForm from '$lib/components/ui/WaitlistForm.svelte';
 
   /** Build date: alimenta dateModified para que LLMs sepan la frescura del contenido. */
   const buildDate = new Date().toISOString();
@@ -126,6 +127,7 @@
       {
         label: tr('componentsPage.nav.templateExamples'),
         items: [
+          { id: 'landing-blocks', name: tr('componentsPage.nav.landingBlocks') },
           { id: 'about-demo', name: tr('componentsPage.nav.about') },
           { id: 'pricing-demo', name: tr('componentsPage.nav.pricing') },
           { id: 'faq-demo', name: tr('componentsPage.nav.faq') },
@@ -779,6 +781,36 @@
             >{$t('componentsPage.sections.contactDemo.submit')}</Button
           >
         </form>
+      </div>
+    </section>
+
+    <section
+      id="landing-blocks"
+      class="scroll-mt-32 border-b border-border py-10"
+      use:reveal={{ stage: 'content' }}
+    >
+      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.landingBlocks.title')}
+          </h2>
+          <p class="text-sm text-muted-foreground">
+            {$t('componentsPage.sections.landingBlocks.desc')}
+          </p>
+        </div>
+        <code
+          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
+          >$lib/components/ui/WaitlistForm.svelte</code
+        >
+      </div>
+      <div class="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/15 sm:p-6">
+        <WaitlistForm
+          eyebrow="Lead Capture / Vibe Coding"
+          title="Únete a la lista de espera"
+          subtitle="Bloque con validación, spinner reactivo y feedback Sonner integrado."
+          placeholder="tu@startup.com"
+          buttonLabel="Unirme a la beta"
+        />
       </div>
     </section>
   </main>

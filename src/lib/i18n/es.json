@@ -44,7 +44,7 @@
       },
       "optional": {
         "title": "Servicios opcionales",
-        "body": "Integraciones como analítica, chat, Sanity, Supabase o Sentry están desactivadas por defecto y deben configurarse de forma explícita en cada proyecto."
+        "body": "Integraciones como analítica, chat o Sentry están desactivadas por defecto y deben configurarse de forma explícita en cada proyecto."
       },
       "control": {
         "title": "Control del usuario",
@@ -63,6 +63,7 @@
       "uiBase": "UI base",
       "advanced": "Avanzados",
       "templateExamples": "Ejemplos plantilla",
+      "landingBlocks": "Bloques de Landing",
       "about": "About",
       "pricing": "Pricing",
       "faq": "FAQ",
@@ -132,6 +133,10 @@
         "phEmail": "tu@email.com",
         "phMessage": "Mensaje de prueba…",
         "submit": "Enviar (demo)"
+      },
+      "landingBlocks": {
+        "title": "Bloques de Landing (Vibe Coding)",
+        "desc": "Bloques de alto nivel listos para producción: HeroSection, FeaturesSection, PricingTable, FaqSection y WaitlistForm."
       }
     },
     "demos": {

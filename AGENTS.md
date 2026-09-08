@@ -53,8 +53,11 @@ check this list. If a component does the job, **use it**.
 | **Heading**         | `$lib/components/ui/Heading.svelte`         | `level={1\|2\|3\|4} eyebrow kicker align`                                                                       |
 | **Text**            | `$lib/components/ui/Text.svelte`            | `variant="body\|muted\|small\|label" align`                                                                     |
 | **Grid**            | `$lib/components/ui/Grid.svelte`            | `columns={n} gap className`                                                                                     |
-| **HeroSection**     | `$lib/components/ui/HeroSection.svelte`     | `eyebrow title subtitle primaryLabel primaryHref secondaryLabel secondaryHref align`                            |
-| **FeaturesSection** | `$lib/components/ui/FeaturesSection.svelte` | `eyebrow title subtitle items=[{icon,title,description}] id`                                                    |
+| **HeroSection**     | `$lib/components/ui/HeroSection.svelte`     | `eyebrow title subtitle primaryLabel primaryHref secondaryLabel secondaryHref align children`                   |
+| **FeaturesSection** | `$lib/components/ui/FeaturesSection.svelte` | `eyebrow title subtitle columns items=[{title,description,icon,badge}] id`                                      |
+| **PricingTable**    | `$lib/components/ui/PricingTable.svelte`    | `eyebrow title subtitle yearlyDiscountLabel plans=[{name,description,monthlyPrice,yearlyPrice,...}]`            |
+| **FaqSection**      | `$lib/components/ui/FaqSection.svelte`      | `eyebrow title subtitle items=[{question,answer}] allowMultiple`                                                |
+| **WaitlistForm**    | `$lib/components/ui/WaitlistForm.svelte`    | `eyebrow title subtitle placeholder buttonLabel privacyNote onSubmit actionUrl`                                 |
 | **Sonner (Toast)**  | `$lib/components/ui/sonner`                 | `<Toaster />` in +layout.svelte                                                                                 |
 | **CopyButton**      | `$lib/components/CopyButton.svelte`         | `text label`                                                                                                    |
 | **Newsletter**      | `$lib/components/Newsletter.svelte`         | `title subtitle action buttonLabel`                                                                             |

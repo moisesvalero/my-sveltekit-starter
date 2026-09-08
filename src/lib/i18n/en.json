@@ -44,7 +44,7 @@
       },
       "optional": {
         "title": "Optional services",
-        "body": "Integrations such as analytics, chat, Sanity, Supabase or Sentry are disabled by default and must be configured explicitly in each project."
+        "body": "Integrations such as analytics, chat or Sentry are disabled by default and must be configured explicitly in each project."
       },
       "control": {
         "title": "User control",
@@ -63,6 +63,7 @@
       "uiBase": "UI base",
       "advanced": "Advanced",
       "templateExamples": "Template examples",
+      "landingBlocks": "Landing Blocks",
       "about": "About",
       "pricing": "Pricing",
       "faq": "FAQ",
@@ -132,6 +133,10 @@
         "phEmail": "you@email.com",
         "phMessage": "Test message…",
         "submit": "Send (demo)"
+      },
+      "landingBlocks": {
+        "title": "Landing Blocks (Vibe Coding)",
+        "desc": "High-level production-ready blocks: HeroSection, FeaturesSection, PricingTable, FaqSection, and WaitlistForm."
       }
     },
     "demos": {
