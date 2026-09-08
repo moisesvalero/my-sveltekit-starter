@@ -8,12 +8,22 @@
   import Heading from '$lib/components/ui/Heading.svelte';
   import { Button } from '$lib/components/ui/button';
   import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
+  import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+  } from '$lib/components/ui/dialog';
   import { Spinner } from '$lib/components/ui/spinner';
   import { Skeleton } from '$lib/components/ui/skeleton';
   import { Input } from '$lib/components/ui/input';
   import { Textarea } from '$lib/components/ui/textarea';
   import { Label } from '$lib/components/ui/label';
-  import { toast } from '$lib/stores/toast';
+  import { toast } from 'svelte-sonner';
   import { reveal } from '$lib/reveal';
   import CopyButton from '$lib/components/CopyButton.svelte';
   import Newsletter from '$lib/components/Newsletter.svelte';
@@ -80,7 +90,7 @@
 
   $effect(() => {
     if (form?.success) {
-      toast(get(t)('componentsPage.toastDemoSent'), 'success');
+      toast.success(get(t)('componentsPage.toastDemoSent'));
       name = '';
       email = '';
       message = '';
@@ -95,6 +105,7 @@
         label: tr('componentsPage.nav.uiBase'),
         items: [
           { id: 'button', name: 'Button' },
+          { id: 'dialog', name: 'Dialog' },
           { id: 'card', name: 'Card' },
           { id: 'input', name: 'Input' },
           { id: 'textarea', name: 'Textarea' },
@@ -203,6 +214,57 @@
           <Button size="lg">Large</Button>
           <Button disabled>Disabled</Button>
         </div>
+      </div>
+    </section>
+
+    <section
+      id="dialog"
+      class="scroll-mt-32 border-b border-border py-10"
+      use:reveal={{ stage: 'content' }}
+    >
+      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">Dialog</h2>
+          <p class="text-sm text-muted-foreground">
+            Modal interactivo accesible con overlay, foco y animaciones suaves.
+          </p>
+        </div>
+        <code
+          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
+          >$lib/components/ui/dialog</code
+        >
+      </div>
+      <div
+        class="flex flex-wrap justify-center gap-4 rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15"
+      >
+        <Dialog>
+          <DialogTrigger>
+            {#snippet child({ props })}
+              <Button {...props}>Abrir Dialog</Button>
+            {/snippet}
+          </DialogTrigger>
+          <DialogContent class="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Modal Accesible</DialogTitle>
+              <DialogDescription>
+                Componente Dialog shadcn-svelte basado en bits-ui con soporte completo de teclado
+                (Esc) y bloqueo de scroll.
+              </DialogDescription>
+            </DialogHeader>
+            <div class="py-2">
+              <p class="text-sm text-muted-foreground">
+                Totalmente configurable y estilado con Tailwind CSS v4.
+              </p>
+            </div>
+            <DialogFooter>
+              <DialogClose>
+                {#snippet child({ props })}
+                  <Button variant="default" {...props}>Cerrar</Button>
+                {/snippet}
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
 
@@ -432,7 +494,7 @@
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
-          >$lib/stores/toast</code
+          >svelte-sonner</code
         >
       </div>
       <div
@@ -441,22 +503,22 @@
         <Button
           variant="default"
           size="sm"
-          onclick={() => toast($t('componentsPage.sections.toast.done'), 'success')}>Success</Button
+          onclick={() => toast.success($t('componentsPage.sections.toast.done'))}>Success</Button
         >
         <Button
           variant="secondary"
           size="sm"
-          onclick={() => toast($t('componentsPage.sections.toast.err'), 'error')}>Error</Button
+          onclick={() => toast.error($t('componentsPage.sections.toast.err'))}>Error</Button
         >
         <Button
           variant="outline"
           size="sm"
-          onclick={() => toast($t('componentsPage.sections.toast.warn'), 'warning')}>Warning</Button
+          onclick={() => toast.warning($t('componentsPage.sections.toast.warn'))}>Warning</Button
         >
         <Button
           variant="ghost"
           size="sm"
-          onclick={() => toast($t('componentsPage.sections.toast.info'), 'info')}>Info</Button
+          onclick={() => toast.info($t('componentsPage.sections.toast.info'))}>Info</Button
         >
       </div>
     </section>

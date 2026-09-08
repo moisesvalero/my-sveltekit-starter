@@ -49,8 +49,6 @@
 </script>
 
 <script lang="ts">
-  import { untrack } from 'svelte';
-
   let {
     class: className,
     variant = 'default',
@@ -64,6 +62,7 @@
   }: ButtonProps = $props();
 
   const variants = $derived(buttonVariants({ variant, size }));
+  const rest = $derived(restProps as Record<string, unknown>);
 </script>
 
 {#if href}
@@ -75,7 +74,7 @@
     aria-disabled={disabled}
     role={disabled ? 'link' : undefined}
     tabindex={disabled ? -1 : undefined}
-    {...untrack(() => restProps as Record<string, unknown>)}
+    {...rest}
   >
     {@render children?.()}
   </a>
@@ -86,7 +85,7 @@
     class={cn(variants, className)}
     {type}
     {disabled}
-    {...untrack(() => restProps as Record<string, unknown>)}
+    {...rest}
   >
     {@render children?.()}
   </button>

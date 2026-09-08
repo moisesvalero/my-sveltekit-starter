@@ -14,7 +14,7 @@
     "prepare": "svelte-kit sync && husky || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "oxlint src scripts sanity *.ts *.js",
+    "lint": "oxlint src scripts *.ts *.js",
     "knip": "knip",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
@@ -22,7 +22,6 @@
     "test:watch": "vitest",
     "new:page": "node scripts/new-page.js",
     "clean": "node scripts/clean.js",
-    "studio": "sanity dev",
     "verify": "pnpm run lint && pnpm run knip && pnpm run check && pnpm run format:check && pnpm run test && pnpm run build",
     "agent:skills": "pnpm dlx autoskills",
     "agent:impeccable": "pnpm dlx autoskills install impeccable"
@@ -55,7 +54,6 @@
     "oxlint": "^1.76.0",
     "prettier": "^3.9.6",
     "prettier-plugin-svelte": "^3.4.0",
-    "sanity": "^5.24.0",
     "svelte": "^5.57.0",
     "svelte-check": "^4.7.6",
     "tailwind-variants": "^3.2.2",
@@ -65,10 +63,7 @@
     "vitest": "^4.1.11"
   },
   "dependencies": {
-    "@sanity/client": "^7.22.0",
-    "@sanity/image-url": "^2.1.1",
     "@sentry/sveltekit": "^10.72.0",
-    "@supabase/supabase-js": "^2.105.4",
     "bits-ui": "^2.19.0",
     "clsx": "^2.1.1",
     "mode-watcher": "^1.1.0",

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { toast } from '$lib/stores/toast';
+  import { toast } from 'svelte-sonner';
   import { Button } from '$lib/components/ui/button';
   import { Input } from '$lib/components/ui/input';
 
@@ -40,13 +40,13 @@
           headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
-          toast('Gracias por suscribirte!', 'success');
+          toast.success('Gracias por suscribirte!');
           email = '';
         } else {
-          toast('Error al suscribir. Intenta de nuevo.', 'error');
+          toast.error('Error al suscribir. Intenta de nuevo.');
         }
       } catch {
-        toast('Error de conexion.', 'error');
+        toast.error('Error de conexion.');
       } finally {
         loading = false;
       }

@@ -181,7 +181,7 @@ Project components live in `src/lib/components/`:
 - `Newsletter`
 - `AiPrompt`
 - `JsonLd`
-- `ToastContainer`
+- `Toaster` (svelte-sonner)
 - Demo blocks under `src/lib/components/demos/`
 
 ## SEO, GEO and AEO

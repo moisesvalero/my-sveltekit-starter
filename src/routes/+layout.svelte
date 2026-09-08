@@ -2,12 +2,11 @@
   import '../app.css';
   import { get } from 'svelte/store';
   import { resolve } from '$app/paths';
-  import { t, locale, setLocale } from '$lib/i18n';
+  import { t, locale, setLocale, applyLocale } from '$lib/i18n';
   import { siteConfig } from '$lib/site-config';
   import { browser } from '$app/environment';
   import { page } from '$app/state';
   import JsonLd from '$lib/components/JsonLd.svelte';
-  import ToastContainer from '$lib/components/ToastContainer.svelte';
   import { Toaster } from '$lib/components/ui/sonner';
   import CookieConsent from '$lib/components/CookieConsent.svelte';
   import Footer from '$lib/components/Footer.svelte';
@@ -18,7 +17,25 @@
   import { ModeWatcher } from 'mode-watcher';
   import { mode, toggleMode } from 'mode-watcher';
 
-  let { children }: { children: Snippet } = $props();
+  let {
+    children,
+    data
+  }: {
+    children: Snippet;
+    data?: { locale?: 'es' | 'en'; [key: string]: unknown };
+  } = $props();
+
+  $effect.pre(() => {
+    if (data?.locale) {
+      applyLocale(data.locale);
+    }
+  });
+
+  /** Metadatos activos: combina el fallback global con lo que retorne el `load` de la página actual (SSR-safe). */
+  const activeSeo = $derived({
+    ...$seo,
+    ...page.data?.seo
+  });
 
   /** Solo en cliente: en SSR `mode.current` es undefined → icono distinto = fallo de hidratación y botones muertos. */
   let isDark = $derived(browser && mode.current === 'dark');
@@ -45,17 +62,9 @@
   onMount(() => {
     const saved = localStorage.getItem('lang');
     const hasManual = localStorage.getItem('lang_manual') === '1';
-    if (hasManual && saved) {
-      setLocale(saved as 'en' | 'es');
-    } else {
-      const nav = navigator.language || 'es';
-      setLocale(nav.toLowerCase().startsWith('en') ? 'en' : 'es');
+    if (hasManual && (saved === 'en' || saved === 'es')) {
+      setLocale(saved);
     }
-    setTimeout(() => {
-      document.querySelectorAll('.assembly-item:not(.is-visible)').forEach((el) => {
-        el.classList.add('is-visible');
-      });
-    }, 3000);
   });
 
   function navClass(href: string): string {
@@ -70,36 +79,36 @@
 </script>
 
 <svelte:head>
-  <title>{$seo.title}</title>
-  <meta name="description" content={$seo.description} />
-  {#if $seo.keywords.length > 0}
-    <meta name="keywords" content={$seo.keywords.join(', ')} />
+  <title>{activeSeo.title}</title>
+  <meta name="description" content={activeSeo.description} />
+  {#if activeSeo.keywords && activeSeo.keywords.length > 0}
+    <meta name="keywords" content={activeSeo.keywords.join(', ')} />
   {/if}
-  {#if $seo.author}
-    <meta name="author" content={$seo.author} />
+  {#if activeSeo.author}
+    <meta name="author" content={activeSeo.author} />
   {/if}
   <link rel="canonical" href={canonicalUrl} />
 
   <!-- Open Graph -->
-  <meta property="og:type" content={$seo.ogType} />
+  <meta property="og:type" content={activeSeo.ogType} />
   <meta property="og:site_name" content={siteConfig.name} />
-  <meta property="og:title" content={$seo.ogTitle} />
-  <meta property="og:description" content={$seo.ogDescription} />
+  <meta property="og:title" content={activeSeo.ogTitle} />
+  <meta property="og:description" content={activeSeo.ogDescription} />
   <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:image" content={$seo.ogImage} />
-  <meta property="og:locale" content={$seo.locale === 'en' ? 'en_US' : 'es_ES'} />
-  <meta property="og:locale:alternate" content={$seo.locale === 'en' ? 'es_ES' : 'en_US'} />
+  <meta property="og:image" content={activeSeo.ogImage} />
+  <meta property="og:locale" content={activeSeo.locale === 'en' ? 'en_US' : 'es_ES'} />
+  <meta property="og:locale:alternate" content={activeSeo.locale === 'en' ? 'es_ES' : 'en_US'} />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content={$seo.twitterCard} />
-  <meta name="twitter:title" content={$seo.ogTitle} />
-  <meta name="twitter:description" content={$seo.ogDescription} />
-  <meta name="twitter:image" content={$seo.ogImage} />
-  {#if $seo.twitterCreator}
-    <meta name="twitter:creator" content={$seo.twitterCreator} />
+  <meta name="twitter:card" content={activeSeo.twitterCard} />
+  <meta name="twitter:title" content={activeSeo.ogTitle} />
+  <meta name="twitter:description" content={activeSeo.ogDescription} />
+  <meta name="twitter:image" content={activeSeo.ogImage} />
+  {#if activeSeo.twitterCreator}
+    <meta name="twitter:creator" content={activeSeo.twitterCreator} />
   {/if}
 
-  <!-- hreflang (mismo URL, contenido cambia por cookie portfolio_locale) -->
+  <!-- hreflang (mismo URL, contenido cambia por cookie site_locale) -->
   <link rel="alternate" hreflang="es" href={canonicalUrl} />
   <link rel="alternate" hreflang="en" href={canonicalUrl} />
   <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
@@ -178,29 +187,26 @@
   </nav>
 
   <main id="main-content" class="w-full flex-1 pt-32">
-    {#key page.url.pathname}
-      <div class="block w-full min-h-0">
-        {@render children()}
-      </div>
-    {/key}
+    <div class="block w-full min-h-0">
+      {@render children()}
+    </div>
   </main>
 
   <Footer />
 </div>
 
 <Toaster />
-<ToastContainer />
 <CookieConsent />
 <JsonLd
-  type={$seo.schemaType}
-  headline={$seo.headline}
-  datePublished={$seo.datePublished}
-  dateModified={$seo.dateModified}
-  description={$seo.description}
-  author={$seo.author}
-  image={$seo.ogImage}
-  faq={$seo.faq}
-  howto={$seo.howto}
-  softwareName={$seo.softwareName}
-  softwareCategory={$seo.softwareCategory}
+  type={activeSeo.schemaType}
+  headline={activeSeo.headline}
+  datePublished={activeSeo.datePublished}
+  dateModified={activeSeo.dateModified}
+  description={activeSeo.description}
+  author={activeSeo.author}
+  image={activeSeo.ogImage}
+  faq={activeSeo.faq}
+  howto={activeSeo.howto}
+  softwareName={activeSeo.softwareName}
+  softwareCategory={activeSeo.softwareCategory}
 />

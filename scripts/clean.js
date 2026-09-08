@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
 
 const routesToRemove = [
   'src/routes/examples',
-  'src/routes/components',
   'src/routes/ssr-demo',
   'src/routes/blog',
   'src/routes/contacto',
@@ -22,22 +21,7 @@ for (const route of routesToRemove) {
   }
 }
 
-const componentsToRemove = [
-  'src/lib/components/Hero.svelte',
-  'src/lib/components/SocialProof.svelte',
-  'src/lib/components/Workflow.svelte',
-  'src/lib/components/ComponentGallery.svelte',
-  'src/lib/components/UseCases.svelte',
-  'src/lib/components/Superpowers.svelte',
-  'src/lib/components/Features.svelte',
-  'src/lib/components/Pricing.svelte',
-  'src/lib/components/Testimonials.svelte',
-  'src/lib/components/DeepDetails.svelte',
-  'src/lib/components/FAQ.svelte',
-  'src/lib/components/Footer.svelte',
-  'src/lib/components/PhoneMockup.svelte',
-  'src/lib/examples'
-];
+const componentsToRemove = ['src/lib/components/PhoneMockup.svelte', 'src/lib/examples'];
 
 for (const comp of componentsToRemove) {
   const fullPath = path.join(process.cwd(), comp);
@@ -47,8 +31,4 @@ for (const comp of componentsToRemove) {
   }
 }
 
-// Limpiar exports de landing
-// Ya se borro con el directorio
-
-console.log('\n✓ Plantilla limpia. Solo queda la home y los componentes base.');
-console.log('  Ahora edita +page.svelte con tu contenido.');
+console.log('\n✓ Plantilla limpia. Demos opcionales eliminados con seguridad.');

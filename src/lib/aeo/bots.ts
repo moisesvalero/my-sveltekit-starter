@@ -10,7 +10,6 @@ const AI_BOT_UA_PATTERNS = [
   'Claude-Web',
   'anthropic-ai',
   'Google-Extended',
-  'Googlebot', // some AEO auditors probe with generic Google UA
   'Applebot-Extended',
   'Applebot',
   'PerplexityBot',
@@ -19,7 +18,6 @@ const AI_BOT_UA_PATTERNS = [
   'cohere-ai',
   'FacebookBot',
   'Amazonbot',
-  'bingbot',
   'YouBot',
   'Diffbot',
   'DuckAssistBot',

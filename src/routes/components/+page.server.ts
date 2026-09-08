@@ -17,8 +17,6 @@ export const actions = {
       return fail(400, { name, email, message, errorKey: 'invalidEmail' as const });
     }
 
-    console.log('[contact demo]', { name, email, message });
-
     return { success: true, name: '', email: '', message: '' };
   }
 } satisfies Actions;

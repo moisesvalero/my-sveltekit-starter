@@ -6,24 +6,9 @@
     "src/app.{d,html}",
     "scripts/*.js"
   ],
-  "project": ["src/**/*.{ts,svelte}", "sanity/**/*.ts", "scripts/**/*.js"],
-  "ignoreFiles": [
-    "sanity/seed-*.ts",
-    "sanity/fix-missing-keys.ts",
-    "src/lib/actions/**",
-    "src/lib/components/{Analytics,BlogLayout,ComponentGallery,DeepDetails,FAQ,Features,Hero,LandingCodeShowcase,LiveChat,LoadingBlock,PhoneMockup,Pricing,SocialProof,Testimonials,UseCases}.svelte",
-    "src/lib/components/ui/{dialog/**,FeaturesSection.svelte,HeroSection.svelte}",
-    "src/lib/data/**",
-    "src/lib/server/{sanity,supabase}/**",
-    "src/lib/types/**",
-    "src/lib/index.ts"
-  ],
-  "ignoreDependencies": [
-    "@sanity/client",
-    "@sanity/image-url",
-    "@supabase/supabase-js",
-    "lint-staged"
-  ],
+  "project": ["src/**/*.{ts,svelte}", "scripts/**/*.js"],
+  "ignoreFiles": ["src/lib/index.ts", "src/lib/actions/**"],
+  "ignoreDependencies": ["lint-staged"],
   "husky": false,
   "lint-staged": false,
   "ignoreIssues": {
@@ -35,7 +20,6 @@
     "src/lib/i18n/site-locale.ts": ["exports"],
     "src/lib/seo.ts": ["exports"],
     "src/lib/site-pages.ts": ["exports", "types"],
-    "src/lib/stores/toast.ts": ["exports"],
     "src/lib/utils.ts": ["types"]
   },
   "ignoreExportsUsedInFile": true

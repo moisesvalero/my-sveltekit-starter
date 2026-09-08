@@ -51,7 +51,7 @@ On the server validate name, email (regex), message.
 Return fail(400, { error: '...' }) on error, or { success: true } on success.
 In +page.svelte receive form via $props and show errors or success.
 Initialize fields with $state(untrack(() => form?.field ?? '')).
-Use { toast } from '$lib/stores/toast' for notifications.
+Use `{ toast } from 'svelte-sonner'` for notifications (`toast.success(...)`, `toast.error(...)`).
 ```
 
 ## Create a page with server data (SSR)

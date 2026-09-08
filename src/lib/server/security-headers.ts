@@ -24,7 +24,7 @@ export function applySecurityHeaders(
       "img-src 'self' data: https:",
       "font-src 'self' https://fonts.gstatic.com",
       "connect-src 'self' https:",
-      "frame-src 'self' https://*.typebot.io",
+      "frame-src 'self'",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'"
@@ -63,7 +63,9 @@ export function applySecurityHeaders(
   headers.set('X-DNS-Prefetch-Control', 'on');
   headers.delete('X-Powered-By');
 
-  if (pathname.match(/\.(js|css|svg|png|jpg|jpeg|gif|ico|woff2?)$/)) {
+  if (pathname.startsWith('/_app/immutable/')) {
     headers.set('Cache-Control', `public, max-age=${ONE_YEAR_IN_SECONDS}, immutable`);
+  } else if (pathname.match(/\.(js|css|svg|png|jpg|jpeg|gif|ico|woff2?)$/)) {
+    headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
   }
 }

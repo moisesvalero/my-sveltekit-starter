@@ -69,9 +69,9 @@ The **document title** in the layout uses **`{$seo.title}`** (store in `src/lib/
 ### Stores and utilities
 
 ```ts
-import { toast } from '$lib/stores/toast';
-toast('Message', 'success'); // success | error | info | warning
-// Layout mounts `<Toaster />` (Sonner/shadcn) and `<ToastContainer />` for the legacy toast store.
+import { toast } from 'svelte-sonner';
+toast.success('Message'); // toast.success | toast.error | toast.info | toast.warning
+// Layout mounts `<Toaster />` (Sonner/shadcn).
 
 import { mode, toggleMode } from 'mode-watcher';
 // mode.current === 'dark' | 'light' | 'system', toggleMode() to toggle

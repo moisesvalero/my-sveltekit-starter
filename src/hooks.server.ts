@@ -18,6 +18,7 @@ import { applySecurityHeaders } from '$lib/server/security-headers';
 export const handle: Handle = async ({ event, resolve }) => {
   const theme = event.cookies.get('theme') || 'light';
   const lang = resolveRequestLocale(event);
+  event.locals.locale = lang;
   const accept = event.request.headers.get('accept');
   const pathname = normalizePathname(event.url.pathname);
   const mdHtmlPath = htmlPathFromMdUrl(pathname);

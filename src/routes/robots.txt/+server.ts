@@ -8,6 +8,7 @@ export const GET = () => {
 User-agent: *
 Allow: /
 Disallow: /api/
+Allow: /api/og
 
 # ====== AI Crawlers (GEO) ======
 

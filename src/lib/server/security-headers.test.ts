@@ -20,4 +20,23 @@ describe('security headers', () => {
     expect(headers.has('Content-Security-Policy')).toBe(false);
     expect(headers.has('Cross-Origin-Embedder-Policy')).toBe(false);
   });
+
+  it('aplica immutable solo a bundles bajo /_app/immutable/', () => {
+    const immutableHeaders = new Headers();
+    applySecurityHeaders(immutableHeaders, {
+      building: false,
+      dev: false,
+      pathname: '/_app/immutable/entry/app.js'
+    });
+    expect(immutableHeaders.get('Cache-Control')).toContain('immutable');
+
+    const staticHeaders = new Headers();
+    applySecurityHeaders(staticHeaders, {
+      building: false,
+      dev: false,
+      pathname: '/favicon.svg'
+    });
+    expect(staticHeaders.get('Cache-Control')).not.toContain('immutable');
+    expect(staticHeaders.get('Cache-Control')).toContain('max-age=86400');
+  });
 });

@@ -17,3 +17,5 @@ export const locale = derived(tick, () => getLocale());
 
 /** Compatible con `$t('clave')` — al cambiar `tick` se emite un traductor nuevo y el UI se actualiza. */
 export const t = derived(tick, () => (key: string) => translate(key));
+
+export { applyLocale } from './app-i18n.svelte.ts';

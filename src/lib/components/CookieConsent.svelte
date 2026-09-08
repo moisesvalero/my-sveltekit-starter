@@ -3,7 +3,7 @@
   import { fade } from 'svelte/transition';
   import { resolve } from '$app/paths';
   import { t } from '$lib/i18n';
-  import { toast } from '$lib/stores/toast';
+  import { toast } from 'svelte-sonner';
   import { Button } from '$lib/components/ui/button';
 
   let show = $state(false);
@@ -17,13 +17,13 @@
   function acceptAll() {
     localStorage.setItem('cookies_accepted', 'all');
     show = false;
-    toast($t('layout.cookies.savedAll'), 'success');
+    toast.success($t('layout.cookies.savedAll'));
   }
 
   function acceptNecessary() {
     localStorage.setItem('cookies_accepted', 'necessary');
     show = false;
-    toast($t('layout.cookies.savedNecessary'), 'info');
+    toast.info($t('layout.cookies.savedNecessary'));
   }
 </script>
 
