@@ -69,7 +69,7 @@ GitHub → Vercel/Netlify → listo.
 pnpm run agent:skills
 ```
 
-Configura y actualiza automáticamente directivas y guías operacionales locales (`.agents/skills`) para tus asistentes de IA (como Claude Code, Cursor, Windsurf o Gemini).
+Configura y actualiza automáticamente directivas y guías operacionales locales (`.agents/skills`) para tus asistentes de IA (como Claude Code, Cursor, Codex, OpenCode, Antigravity o Gemini).
 Para añadir la skill avanzada de calidad y consistencia Impeccable:
 
 ```bash

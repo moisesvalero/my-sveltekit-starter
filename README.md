@@ -4,7 +4,7 @@
 
 ### Production-ready SvelteKit 2 & Svelte 5 template engineered for collaboration with AI coding agents
 
-A lightweight, high-performance foundation built from the ground up for developer-agent workflows (Claude Code, Cursor, Windsurf, Copilot, Gemini). Pre-configured with Svelte 5 Runes, strict boundaries, modular agent instructions, instant Rust tooling, and full-stack capabilities.
+A lightweight, high-performance foundation built from the ground up for developer-agent workflows (Claude Code, Cursor, Codex, OpenCode, Antigravity, Copilot, Gemini). Pre-configured with Svelte 5 Runes, strict boundaries, modular agent instructions, instant Rust tooling, and full-stack capabilities.
 
 [![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://svelte.dev)
 [![SvelteKit 2](https://img.shields.io/badge/SvelteKit-2-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://kit.svelte.dev)
@@ -94,7 +94,7 @@ You do not need a `.env` file for the default demo. The app runs in zero-bloat m
 ## Working with AI Agents
 
 1. Clone this template for any new SvelteKit project.
-2. Open the project directory in your preferred AI-powered editor or terminal agent (e.g. Claude Code, Cursor, Windsurf, Gemini).
+2. Open the project directory in your preferred AI-powered editor or terminal agent (e.g. Claude Code, Cursor, Codex, OpenCode, Antigravity, Gemini).
 3. Prompt your agent to read [AGENTS.md](file:///AGENTS.md) before making any code modifications.
 4. Run `pnpm run agent:skills` to let `autoskills` detect your environment and install helpful agent skills.
 5. Before completing any task, always ask the agent to run `pnpm run verify` or `pnpm run verify:release`.
@@ -132,7 +132,7 @@ This template recommends two core tools to supercharge your AI agent's performan
 
 ### AutoSkills
 
-[AutoSkills](https://www.autoskills.sh/) is an audited command-line utility that automatically detects your project's technology stack (Svelte 5, TypeScript, Tailwind CSS, etc.) and installs the best contextual operational guidelines, custom rules, and workflow capabilities for your AI agents (such as Claude Code, Cursor, Windsurf, or Gemini).
+[AutoSkills](https://www.autoskills.sh/) is an audited command-line utility that automatically detects your project's technology stack (Svelte 5, TypeScript, Tailwind CSS, etc.) and installs the best contextual operational guidelines, custom rules, and workflow capabilities for your AI agents (such as Claude Code, Cursor, Codex, OpenCode, Antigravity, or Gemini).
 
 To initialize or update the recommended agent skills for this workspace:
 
