@@ -27,6 +27,10 @@
   <div class="flex gap-8">
     <a
       class="font-body-sm text-body-sm text-outline-variant opacity-80 transition-colors hover:text-surface hover:opacity-100 dark:text-on-surface-variant dark:hover:text-primary"
+      href={resolve('/dashboard')}>Dashboard</a
+    >
+    <a
+      class="font-body-sm text-body-sm text-outline-variant opacity-80 transition-colors hover:text-surface hover:opacity-100 dark:text-on-surface-variant dark:hover:text-primary"
       href={resolve('/components')}>{$t('layout.footer.documentation')}</a
     >
     <a

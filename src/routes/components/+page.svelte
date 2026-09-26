@@ -8,22 +8,12 @@
   import Heading from '$lib/components/ui/Heading.svelte';
   import { Button } from '$lib/components/ui/button';
   import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-  import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger
-  } from '$lib/components/ui/dialog';
   import { Spinner } from '$lib/components/ui/spinner';
   import { Skeleton } from '$lib/components/ui/skeleton';
   import { Input } from '$lib/components/ui/input';
   import { Textarea } from '$lib/components/ui/textarea';
   import { Label } from '$lib/components/ui/label';
-  import { toast } from 'svelte-sonner';
+  import { toast } from '$lib/stores/toast';
   import { reveal } from '$lib/reveal';
   import CopyButton from '$lib/components/CopyButton.svelte';
   import Newsletter from '$lib/components/Newsletter.svelte';
@@ -33,7 +23,6 @@
   import FaqDemo from '$lib/components/demos/FaqDemo.svelte';
   import SsrDemoPanel from '$lib/components/demos/SsrDemoPanel.svelte';
   import BlogPostDemo from '$lib/components/demos/BlogPostDemo.svelte';
-  import WaitlistForm from '$lib/components/ui/WaitlistForm.svelte';
 
   /** Build date: alimenta dateModified para que LLMs sepan la frescura del contenido. */
   const buildDate = new Date().toISOString();
@@ -91,7 +80,7 @@
 
   $effect(() => {
     if (form?.success) {
-      toast.success(get(t)('componentsPage.toastDemoSent'));
+      toast(get(t)('componentsPage.toastDemoSent'), 'success');
       name = '';
       email = '';
       message = '';
@@ -106,7 +95,6 @@
         label: tr('componentsPage.nav.uiBase'),
         items: [
           { id: 'button', name: 'Button' },
-          { id: 'dialog', name: 'Dialog' },
           { id: 'card', name: 'Card' },
           { id: 'input', name: 'Input' },
           { id: 'textarea', name: 'Textarea' },
@@ -127,7 +115,7 @@
       {
         label: tr('componentsPage.nav.templateExamples'),
         items: [
-          { id: 'landing-blocks', name: tr('componentsPage.nav.landingBlocks') },
+          { id: 'saas-dashboard', name: tr('componentsPage.nav.dashboard') },
           { id: 'about-demo', name: tr('componentsPage.nav.about') },
           { id: 'pricing-demo', name: tr('componentsPage.nav.pricing') },
           { id: 'faq-demo', name: tr('componentsPage.nav.faq') },
@@ -216,57 +204,6 @@
           <Button size="lg">Large</Button>
           <Button disabled>Disabled</Button>
         </div>
-      </div>
-    </section>
-
-    <section
-      id="dialog"
-      class="scroll-mt-32 border-b border-border py-10"
-      use:reveal={{ stage: 'content' }}
-    >
-      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">Dialog</h2>
-          <p class="text-sm text-muted-foreground">
-            Modal interactivo accesible con overlay, foco y animaciones suaves.
-          </p>
-        </div>
-        <code
-          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
-          >$lib/components/ui/dialog</code
-        >
-      </div>
-      <div
-        class="flex flex-wrap justify-center gap-4 rounded-xl border border-border bg-muted/40 p-6 dark:bg-muted/15"
-      >
-        <Dialog>
-          <DialogTrigger>
-            {#snippet child({ props })}
-              <Button {...props}>Abrir Dialog</Button>
-            {/snippet}
-          </DialogTrigger>
-          <DialogContent class="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Modal Accesible</DialogTitle>
-              <DialogDescription>
-                Componente Dialog shadcn-svelte basado en bits-ui con soporte completo de teclado
-                (Esc) y bloqueo de scroll.
-              </DialogDescription>
-            </DialogHeader>
-            <div class="py-2">
-              <p class="text-sm text-muted-foreground">
-                Totalmente configurable y estilado con Tailwind CSS v4.
-              </p>
-            </div>
-            <DialogFooter>
-              <DialogClose>
-                {#snippet child({ props })}
-                  <Button variant="default" {...props}>Cerrar</Button>
-                {/snippet}
-              </DialogClose>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
       </div>
     </section>
 
@@ -496,7 +433,7 @@
         </div>
         <code
           class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
-          >svelte-sonner</code
+          >$lib/stores/toast</code
         >
       </div>
       <div
@@ -505,22 +442,22 @@
         <Button
           variant="default"
           size="sm"
-          onclick={() => toast.success($t('componentsPage.sections.toast.done'))}>Success</Button
+          onclick={() => toast($t('componentsPage.sections.toast.done'), 'success')}>Success</Button
         >
         <Button
           variant="secondary"
           size="sm"
-          onclick={() => toast.error($t('componentsPage.sections.toast.err'))}>Error</Button
+          onclick={() => toast($t('componentsPage.sections.toast.err'), 'error')}>Error</Button
         >
         <Button
           variant="outline"
           size="sm"
-          onclick={() => toast.warning($t('componentsPage.sections.toast.warn'))}>Warning</Button
+          onclick={() => toast($t('componentsPage.sections.toast.warn'), 'warning')}>Warning</Button
         >
         <Button
           variant="ghost"
           size="sm"
-          onclick={() => toast.info($t('componentsPage.sections.toast.info'))}>Info</Button
+          onclick={() => toast($t('componentsPage.sections.toast.info'), 'info')}>Info</Button
         >
       </div>
     </section>
@@ -545,6 +482,96 @@
           placeholder={$t('componentsPage.sections.aiprompt.placeholder')}
           maxLength={300}
         />
+      </div>
+    </section>
+
+    <section
+      id="saas-dashboard"
+      class="scroll-mt-32 border-b border-border py-10"
+      use:reveal={{ stage: 'content' }}
+    >
+      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <div class="mb-2 flex flex-wrap items-center gap-2">
+            <span
+              class="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400"
+            >
+              {$t('componentsPage.sections.dashboardDemo.badge')}
+            </span>
+            <span class="text-xs text-muted-foreground"
+              >Svelte 5 Runes · Better Auth · Polar & Stripe</span
+            >
+          </div>
+          <h2 class="font-h3 text-h3 mb-1 text-foreground">
+            {$t('componentsPage.sections.dashboardDemo.title')}
+          </h2>
+          <p class="text-sm text-muted-foreground">
+            {$t('componentsPage.sections.dashboardDemo.desc')}
+          </p>
+        </div>
+        <code
+          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
+          >src/routes/dashboard/+page.svelte</code
+        >
+      </div>
+
+      <div
+        class="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-secondary/5 p-6 shadow-xs"
+      >
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded-xl border border-border/60 bg-card p-4 shadow-2xs">
+            <div class="text-xs font-medium text-muted-foreground">Sesión & Multitenancy</div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-base font-bold text-foreground">ACME Studio</span>
+              <span
+                class="rounded bg-primary/10 px-1.5 py-0.5 text-[0.65rem] font-bold text-primary"
+                >B2B Org</span
+              >
+            </div>
+            <p class="mt-1 text-xs text-muted-foreground">Better Auth + 2FA TOTP & Impersonation</p>
+          </div>
+
+          <div class="rounded-xl border border-border/60 bg-card p-4 shadow-2xs">
+            <div class="text-xs font-medium text-muted-foreground">Ledger Contable de Créditos</div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-base font-bold text-emerald-600 dark:text-emerald-400">500</span>
+              <span class="text-xs font-medium text-muted-foreground">créditos</span>
+            </div>
+            <p class="mt-1 text-xs text-muted-foreground">
+              Transacciones atómicas (Polar & Stripe)
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-border/60 bg-card p-4 shadow-2xs">
+            <div class="text-xs font-medium text-muted-foreground">Seguridad & Auditoría</div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-base font-bold text-blue-600 dark:text-blue-400">Protegido</span>
+            </div>
+            <p class="mt-1 text-xs text-muted-foreground">
+              Rate limit, CSRF, Audit Log en Prisma 7
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="mt-6 flex flex-col items-center justify-between gap-4 rounded-xl border border-primary/20 bg-primary/10 p-4 sm:flex-row"
+        >
+          <div class="text-sm">
+            <strong class="font-semibold text-foreground"
+              >¿Listo para probar la experiencia completa?</strong
+            >
+            <p class="text-xs text-muted-foreground">
+              Interactúa con el consumo de créditos, recargas de saldo y controles de sesión en
+              vivo.
+            </p>
+          </div>
+          <a
+            href={resolve('/dashboard')}
+            class="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-sm transition-transform hover:scale-[1.02] active:scale-95"
+          >
+            <span>{$t('componentsPage.sections.dashboardDemo.cta')}</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -781,36 +808,6 @@
             >{$t('componentsPage.sections.contactDemo.submit')}</Button
           >
         </form>
-      </div>
-    </section>
-
-    <section
-      id="landing-blocks"
-      class="scroll-mt-32 border-b border-border py-10"
-      use:reveal={{ stage: 'content' }}
-    >
-      <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h2 class="font-h3 text-h3 mb-1 text-foreground">
-            {$t('componentsPage.sections.landingBlocks.title')}
-          </h2>
-          <p class="text-sm text-muted-foreground">
-            {$t('componentsPage.sections.landingBlocks.desc')}
-          </p>
-        </div>
-        <code
-          class="font-mono text-xs font-semibold whitespace-nowrap rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-primary"
-          >$lib/components/ui/WaitlistForm.svelte</code
-        >
-      </div>
-      <div class="rounded-xl border border-border bg-muted/40 p-4 dark:bg-muted/15 sm:p-6">
-        <WaitlistForm
-          eyebrow="Lead Capture / Vibe Coding"
-          title="Únete a la lista de espera"
-          subtitle="Bloque con validación, spinner reactivo y feedback Sonner integrado."
-          placeholder="tu@startup.com"
-          buttonLabel="Unirme a la beta"
-        />
       </div>
     </section>
   </main>

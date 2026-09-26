@@ -4,6 +4,7 @@
     "nav": {
       "home": "Inicio",
       "components": "Componentes",
+      "dashboard": "Dashboard",
       "getStarted": "Usar plantilla"
     },
     "footer": {
@@ -44,7 +45,7 @@
       },
       "optional": {
         "title": "Servicios opcionales",
-        "body": "Integraciones como analítica, chat o Sentry están desactivadas por defecto y deben configurarse de forma explícita en cada proyecto."
+        "body": "Integraciones como analítica, chat, Sanity, Supabase o Sentry están desactivadas por defecto y deben configurarse de forma explícita en cada proyecto."
       },
       "control": {
         "title": "Control del usuario",
@@ -63,7 +64,7 @@
       "uiBase": "UI base",
       "advanced": "Avanzados",
       "templateExamples": "Ejemplos plantilla",
-      "landingBlocks": "Bloques de Landing",
+      "dashboard": "Dashboard SaaS",
       "about": "About",
       "pricing": "Pricing",
       "faq": "FAQ",
@@ -96,6 +97,12 @@
       "aboutDemo": {
         "title": "Sobre nosotros",
         "desc": "Ejemplo de sección corporativa: propuesta breve, valores y bloques que puedes reutilizar en cualquier landing."
+      },
+      "dashboardDemo": {
+        "title": "Portal & Dashboard SaaS",
+        "desc": "Panel de control integral para Micro-SaaS con autenticación B2B (Better Auth), ledger de créditos atómico (Polar/Stripe) y métricas en tiempo real.",
+        "badge": "SaaS Ready",
+        "cta": "Explorar Dashboard Interactivo (/dashboard) →"
       },
       "pricingDemo": {
         "title": "Planes y precios",
@@ -133,10 +140,6 @@
         "phEmail": "tu@email.com",
         "phMessage": "Mensaje de prueba…",
         "submit": "Enviar (demo)"
-      },
-      "landingBlocks": {
-        "title": "Bloques de Landing (Vibe Coding)",
-        "desc": "Bloques de alto nivel listos para producción: HeroSection, FeaturesSection, PricingTable, FaqSection y WaitlistForm."
       }
     },
     "demos": {

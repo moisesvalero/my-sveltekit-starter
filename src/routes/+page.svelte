@@ -104,6 +104,12 @@
       >
         {$t('home.hero.ctaSecondary')}
       </a>
+      <a
+        href={resolve('/dashboard')}
+        class="w-full rounded-xl border border-primary/40 bg-primary/10 px-8 py-3 text-center font-bold text-primary transition-all hover:bg-primary/20 sm:w-auto"
+      >
+        Dashboard SaaS →
+      </a>
     </div>
   </section>
 
@@ -243,6 +249,26 @@
         <p class="text-body-sm text-on-surface-variant">
           {$t('home.features.product.desc')}
         </p>
+      </div>
+      <div
+        class="glow-hover rounded-xl border border-primary/30 bg-surface p-6 transition-all hover:border-primary/60"
+      >
+        <div
+          class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary"
+        >
+          <span class="material-symbols-outlined">dashboard</span>
+        </div>
+        <h3 class="font-h3 text-h3 mb-2 text-on-surface">Dashboard Micro-SaaS</h3>
+        <p class="text-body-sm text-on-surface-variant">
+          Panel B2B completo con Better Auth, ledger atómico de créditos con Polar y Stripe, y
+          registro de auditoría.
+        </p>
+        <a
+          href={resolve('/dashboard')}
+          class="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:underline"
+        >
+          Explorar Dashboard →
+        </a>
       </div>
     </div>
   </section>
