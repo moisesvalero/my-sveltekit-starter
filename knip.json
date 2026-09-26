@@ -7,22 +7,15 @@
     "scripts/*.js"
   ],
   "ignore": [
-    "src/generated/**",
-    "scripts/**",
     "src/lib/server/payments/**",
     "src/lib/payments/**",
     "src/lib/server/auth.ts"
   ],
-  "project": ["src/**/*.{ts,svelte}", "sanity/**/*.ts", "scripts/**/*.js"],
+  "project": ["src/**/*.{ts,svelte}", "scripts/**/*.js"],
   "ignoreFiles": [
-    "sanity/seed-*.ts",
-    "sanity/fix-missing-keys.ts",
     "src/lib/actions/**",
-    "src/lib/components/{Analytics,BlogLayout,ComponentGallery,DeepDetails,FAQ,Features,Hero,LandingCodeShowcase,LiveChat,LoadingBlock,PhoneMockup,Pricing,SocialProof,Testimonials,UseCases}.svelte",
-    "src/lib/components/ui/{dialog/**,FeaturesSection.svelte,HeroSection.svelte}",
-    "src/lib/data/**",
-    "src/lib/server/{sanity,supabase,security}/**",
-    "src/lib/types/**",
+    "src/lib/components/ui/{dialog/**,FaqSection.svelte,FeaturesSection.svelte,HeroSection.svelte,PricingTable.svelte,WaitlistForm.svelte}",
+    "src/lib/server/security/**",
     "src/lib/index.ts",
     "src/lib/auth-client.ts"
   ],
