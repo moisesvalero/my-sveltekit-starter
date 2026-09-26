@@ -8,7 +8,6 @@ Production-ready SvelteKit starter optimized for AI-assisted development, featur
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Vitest](https://img.shields.io/badge/Vitest-ready-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-[![Mentioned in Awesome Svelte](https://awesome.re/mentioned-badge.svg)](https://github.com/TheComputerM/awesome-svelte#templates--starter-kits)
 
 [Live demo](https://my-sveltekit-starter.vercel.app/) · [Spanish quick start](./INICIO_RAPIDO.md) · [Design handoff guide](./DESIGN_TO_CURSOR.md) · [GEO playbook](./GEO_PLAYBOOK.md)
 
@@ -40,6 +39,9 @@ Most starters stop at routing and styling. This one is built for shipping a real
 | Styling           | Tailwind CSS v4, design tokens, shadcn-svelte style components   |
 | UI primitives     | bits-ui, mode-watcher, @lucide/svelte, svelte-sonner             |
 | Quality           | oxlint, knip, Prettier, svelte-check, Vitest                     |
+| SaaS Auth         | Better Auth (Admin roles, impersonation, B2B orgs, TOTP 2FA)     |
+| Database & ORM    | Prisma ORM with PostgreSQL adapter & visual Prisma Studio        |
+| Payments & Ledger | Polar (Merchant of Record) and Stripe with atomic credit ledger  |
 | SEO/GEO/AEO       | sitemap, robots, Open Graph, JSON-LD, `llms.txt`, Markdown twins |
 | Optional services | Sanity CMS, Supabase, Sentry                                     |
 | Deploy            | Vercel adapter, Netlify config included                          |
@@ -56,7 +58,7 @@ pnpm run dev
 
 Open `http://localhost:5173`.
 
-You do not need a `.env` file for the default demo. Add one only when enabling optional services.
+You do not need a `.env` file for the default demo. The app runs in zero-bloat mode immediately.
 
 ## Working with AI Agents
 
@@ -64,27 +66,34 @@ You do not need a `.env` file for the default demo. Add one only when enabling o
 2. Open the project directory in your preferred AI-powered editor or terminal agent (e.g. Claude Code, Cursor, Windsurf, Gemini).
 3. Prompt your agent to read [AGENTS.md](file:///AGENTS.md) before making any code modifications.
 4. Run `pnpm run agent:skills` to let `autoskills` detect your environment and install helpful agent skills.
-5. Before completing any task, always ask the agent to run `pnpm run verify`.
+5. Before completing any task, always ask the agent to run `pnpm run verify` or `pnpm run verify:release`.
 
 ## Scripts
 
-| Command                     | Purpose                                                   |
-| --------------------------- | --------------------------------------------------------- |
-| `pnpm run dev`              | Start the Vite development server                         |
-| `pnpm run build`            | Create a production build                                 |
-| `pnpm run preview`          | Preview the production build locally                      |
-| `pnpm run format:check`     | Check formatting with Prettier                            |
-| `pnpm run format`           | Format project files                                      |
-| `pnpm run lint`             | Run oxlint static analysis                                |
-| `pnpm run knip`             | Find unused dependencies, exports and files               |
-| `pnpm run check`            | Run `svelte-check` with the project tsconfig              |
-| `pnpm test`                 | Run Vitest                                                |
-| `pnpm run new:page`         | Scaffold a page from the local script                     |
-| `pnpm run clean`            | Remove demo routes/components for a lean project          |
-| `pnpm run studio`           | Start Sanity Studio, if configured                        |
-| `pnpm run verify`           | Run lint, knip, typecheck, format check, tests, and build |
-| `pnpm run agent:skills`     | Run `pnpm dlx autoskills` to configure agent skills       |
-| `pnpm run agent:impeccable` | Install the Impeccable skill in your workspace            |
+| Command                     | Purpose                                                             |
+| --------------------------- | ------------------------------------------------------------------- |
+| `pnpm run dev`              | Start the Vite development server                                   |
+| `pnpm run build`            | Create a production build                                           |
+| `pnpm run preview`          | Preview the production build locally                                |
+| `pnpm run format:check`     | Check formatting with Prettier                                      |
+| `pnpm run format`           | Format project files                                                |
+| `pnpm run lint`             | Run oxlint static analysis                                          |
+| `pnpm run knip`             | Find unused dependencies, exports and files                         |
+| `pnpm run check`            | Run `svelte-check` with the project tsconfig                        |
+| `pnpm test`                 | Run Vitest                                                          |
+| `pnpm run db:generate`      | Generate Prisma client types                                        |
+| `pnpm run db:push`          | Push schema changes to database                                     |
+| `pnpm run db:migrate`       | Run Prisma migrations in development                                |
+| `pnpm run db:studio`        | Open Prisma Studio web visual database viewer                       |
+| `pnpm run docker:up`        | Start optional local PostgreSQL container                           |
+| `pnpm run docker:down`      | Stop local PostgreSQL container                                     |
+| `pnpm run new:page`         | Scaffold a page from the local script                               |
+| `pnpm run clean`            | Remove demo routes/components for a lean project                    |
+| `pnpm run studio`           | Start Sanity Studio, if configured                                  |
+| `pnpm run verify`           | Run lint, knip, typecheck, format check, tests, and build           |
+| `pnpm run verify:release`   | Run full release audit (agent rules size, AEO accessibility, build) |
+| `pnpm run agent:skills`     | Run `pnpm dlx autoskills` to configure agent skills                 |
+| `pnpm run agent:impeccable` | Install the Impeccable skill in your workspace                      |
 
 ## AI Agent Tools
 
@@ -181,7 +190,7 @@ Project components live in `src/lib/components/`:
 - `Newsletter`
 - `AiPrompt`
 - `JsonLd`
-- `Toaster` (svelte-sonner)
+- `ToastContainer`
 - Demo blocks under `src/lib/components/demos/`
 
 ## SEO, GEO and AEO

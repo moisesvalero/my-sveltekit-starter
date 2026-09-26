@@ -53,11 +53,8 @@ check this list. If a component does the job, **use it**.
 | **Heading**         | `$lib/components/ui/Heading.svelte`         | `level={1\|2\|3\|4} eyebrow kicker align`                                                                       |
 | **Text**            | `$lib/components/ui/Text.svelte`            | `variant="body\|muted\|small\|label" align`                                                                     |
 | **Grid**            | `$lib/components/ui/Grid.svelte`            | `columns={n} gap className`                                                                                     |
-| **HeroSection**     | `$lib/components/ui/HeroSection.svelte`     | `eyebrow title subtitle primaryLabel primaryHref secondaryLabel secondaryHref align children`                   |
-| **FeaturesSection** | `$lib/components/ui/FeaturesSection.svelte` | `eyebrow title subtitle columns items=[{title,description,icon,badge}] id`                                      |
-| **PricingTable**    | `$lib/components/ui/PricingTable.svelte`    | `eyebrow title subtitle yearlyDiscountLabel plans=[{name,description,monthlyPrice,yearlyPrice,...}]`            |
-| **FaqSection**      | `$lib/components/ui/FaqSection.svelte`      | `eyebrow title subtitle items=[{question,answer}] allowMultiple`                                                |
-| **WaitlistForm**    | `$lib/components/ui/WaitlistForm.svelte`    | `eyebrow title subtitle placeholder buttonLabel privacyNote onSubmit actionUrl`                                 |
+| **HeroSection**     | `$lib/components/ui/HeroSection.svelte`     | `eyebrow title subtitle primaryLabel primaryHref secondaryLabel secondaryHref align`                            |
+| **FeaturesSection** | `$lib/components/ui/FeaturesSection.svelte` | `eyebrow title subtitle items=[{icon,title,description}] id`                                                    |
 | **Sonner (Toast)**  | `$lib/components/ui/sonner`                 | `<Toaster />` in +layout.svelte                                                                                 |
 | **CopyButton**      | `$lib/components/CopyButton.svelte`         | `text label`                                                                                                    |
 | **Newsletter**      | `$lib/components/Newsletter.svelte`         | `title subtitle action buttonLabel`                                                                             |
@@ -72,9 +69,9 @@ The **document title** in the layout uses **`{$seo.title}`** (store in `src/lib/
 ### Stores and utilities
 
 ```ts
-import { toast } from 'svelte-sonner';
-toast.success('Message'); // toast.success | toast.error | toast.info | toast.warning
-// Layout mounts `<Toaster />` (Sonner/shadcn).
+import { toast } from '$lib/stores/toast';
+toast('Message', 'success'); // success | error | info | warning
+// Layout mounts `<Toaster />` (Sonner/shadcn) and `<ToastContainer />` for the legacy toast store.
 
 import { mode, toggleMode } from 'mode-watcher';
 // mode.current === 'dark' | 'light' | 'system', toggleMode() to toggle

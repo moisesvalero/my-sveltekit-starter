@@ -17,7 +17,8 @@ const config = {
     adapter: adapter(),
     alias: {
       $components: 'src/lib/components',
-      $ui: 'src/lib/components/ui'
+      $ui: 'src/lib/components/ui',
+      $generated: 'src/generated'
     }
   }
 };

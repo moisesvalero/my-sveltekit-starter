@@ -2,7 +2,8 @@
 build
 .output
 node_modules
-pnpm-lock.yaml
 package-lock.json
 .agents
 skills-lock.json
+src/generated
+

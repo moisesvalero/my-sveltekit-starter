@@ -14,11 +14,22 @@ import {
 } from '$lib/aeo';
 import { resolveRequestLocale } from '$lib/i18n/site-locale';
 import { applySecurityHeaders } from '$lib/server/security-headers';
+import { auth } from '$lib/server/auth';
 
 export const handle: Handle = async ({ event, resolve }) => {
+  try {
+    const session = await auth.api.getSession({
+      headers: event.request.headers
+    });
+    event.locals.user = session?.user ?? null;
+    event.locals.session = session?.session ?? null;
+  } catch {
+    event.locals.user = null;
+    event.locals.session = null;
+  }
+
   const theme = event.cookies.get('theme') || 'light';
   const lang = resolveRequestLocale(event);
-  event.locals.locale = lang;
   const accept = event.request.headers.get('accept');
   const pathname = normalizePathname(event.url.pathname);
   const mdHtmlPath = htmlPathFromMdUrl(pathname);
