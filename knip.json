@@ -6,11 +6,7 @@
     "src/app.{d,html}",
     "scripts/*.js"
   ],
-  "ignore": [
-    "src/lib/server/payments/**",
-    "src/lib/payments/**",
-    "src/lib/server/auth.ts"
-  ],
+  "ignore": ["src/lib/server/payments/**", "src/lib/payments/**", "src/lib/server/auth.ts"],
   "project": ["src/**/*.{ts,svelte}", "scripts/**/*.js"],
   "ignoreFiles": [
     "src/lib/actions/**",
