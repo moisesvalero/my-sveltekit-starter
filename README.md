@@ -1,21 +1,57 @@
-# My SvelteKit Starter
+<div align="center">
 
-Production-ready SvelteKit starter optimized for AI-assisted development, featuring Svelte 5 runes, TypeScript, Tailwind CSS v4, shadcn-svelte style components, i18n, SEO, GEO, and AEO.
+# My SvelteKit Starter ⚡️
 
-[![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev)
-[![SvelteKit 2](https://img.shields.io/badge/SvelteKit-2-FF3E00?logo=svelte&logoColor=white)](https://kit.svelte.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vitest](https://img.shields.io/badge/Vitest-ready-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+### The Ultimate Production-Ready Svelte 5 & SvelteKit 2 Micro-SaaS Boilerplate
 
-[Live demo](https://my-sveltekit-starter.vercel.app/) · [Spanish quick start](./INICIO_RAPIDO.md) · [Design handoff guide](./DESIGN_TO_CURSOR.md) · [GEO playbook](./GEO_PLAYBOOK.md)
+**The 100% Free & Open-Source Alternative to $199 Paid SaaS Boilerplates.**  
+Built for shipping real products, web apps, and AI tools with Svelte 5 Runes, Better Auth, Prisma 7, Polar, and Tailwind CSS v4 in record time.
 
-## Preview
+[![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://svelte.dev)
+[![SvelteKit 2](https://img.shields.io/badge/SvelteKit-2-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://kit.svelte.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Better Auth](https://img.shields.io/badge/Better_Auth-Enterprise-black?style=for-the-badge&logo=auth0&logoColor=white)](https://better-auth.com)
+[![Prisma ORM](https://img.shields.io/badge/Prisma-7-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://prisma.io)
+[![Polar.sh](https://img.shields.io/badge/Polar.sh-MoR_Billing-0052FF?style=for-the-badge&logo=polar&logoColor=white)](https://polar.sh)
+[![Oxlint](https://img.shields.io/badge/Oxlint-Rust_Fast-FF7A00?style=for-the-badge&logo=rust&logoColor=white)](https://oxc.rs)
+[![Vitest](https://img.shields.io/badge/Vitest-ready-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)](./LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://makeapullrequest.com)
+
+<br />
+
+[🌐 **Live Demo**](https://my-sveltekit-starter.vercel.app/) • [🇪🇸 **Inicio Rápido**](./INICIO_RAPIDO.md) • [⚡ **Deploy on Vercel**](https://vercel.com/new/clone?repository-url=https://github.com/moisesvalero/my-sveltekit-starter) • [⭐ **Star on GitHub**](https://github.com/moisesvalero/my-sveltekit-starter)
+
+<br />
 
 <img src="static/screenshots/home-desktop.png" alt="Home page preview of My SvelteKit Starter" width="100%">
 
+<br />
+
 <img src="static/screenshots/components-desktop.png" alt="Component gallery preview of My SvelteKit Starter" width="100%">
+
+</div>
+
+---
+
+## 💡 Why Choose This Over Paid $199 Boilerplates?
+
+Most commercial SaaS boilerplates charge $149–$299 for clunky setups that only support React/Next.js, require heavy Docker stacks to boot, and leave you dealing with international VAT headaches. **My SvelteKit Starter brings full enterprise SaaS architecture to Svelte 5 for free:**
+
+| Feature                  | My SvelteKit Starter (Free & MIT)                    | Typical $199 Commercial Boilerplates            |
+| :----------------------- | :--------------------------------------------------- | :---------------------------------------------- |
+| **Framework & Engine**   | **Svelte 5 Runes (`$state`, `$derived`, `$effect`)** | Legacy React/Next.js only                       |
+| **Price & Freedom**      | **$0 (100% Free & Open Source)**                     | $149 – $299 (Single-site license)               |
+| **Instant Boot**         | **Zero-Bloat: Boot in 5s without DB/Docker**         | Crashes on clone if local DB is missing         |
+| **SaaS Auth Engine**     | **Better Auth**: B2B Teams, 2FA TOTP, Impersonation  | Basic password auth or third-party locks        |
+| **Global Tax & Billing** | **Polar (Merchant of Record)** + Stripe fallback     | Stripe only (you handle global VAT / sales tax) |
+| **AI Credit Ledger**     | **Atomic Ledger (`prisma.$transaction`)**            | Vulnerable counter (race condition prone)       |
+| **Tooling Velocity**     | **Oxlint in Rust + svelte-check + Knip**             | Slow ESLint (seconds per pre-commit)            |
+| **AI Discovery (AEO)**   | **Native `llms.txt`, Markdown twins, JSON-LD**       | None                                            |
+| **Internationalization** | **ES/EN Reactive i18n out-of-the-box**               | Extra paid add-on or missing                    |
+
+---
 
 ## Why This Starter
 
@@ -305,6 +341,16 @@ This repository includes agent-facing documentation:
 - `DESIGN_TO_CURSOR.md` for mapping Stitch, Lovable or Figma exports into this component system.
 - `GEO_PLAYBOOK.md` for AI discovery and Markdown twin workflows.
 
+---
+
+## 🌟 Support & Community
+
+If this free Svelte 5 boilerplate saves you time or money compared to closed $199 alternatives, please consider giving it a **Star on GitHub** ⭐ — it helps the project reach more Svelte and vibe coding developers!
+
+- **Found a bug?** [Open an issue](https://github.com/moisesvalero/my-sveltekit-starter/issues)
+- **Have an idea?** Pull requests and feature suggestions are warmly welcomed!
+- **Author:** [Moisés Valero](https://github.com/moisesvalero)
+
 ## License
 
-MIT. Use it for personal, client and commercial projects.
+Released under the [MIT License](./LICENSE). Free for personal, client, and commercial projects without restrictions.
