@@ -2,10 +2,9 @@
 
 # My SvelteKit Starter ⚡️
 
-### The Ultimate Production-Ready Svelte 5 & SvelteKit 2 Micro-SaaS Boilerplate
+### Production-ready SvelteKit 2 & Svelte 5 template engineered for collaboration with AI coding agents
 
-**The 100% Free & Open-Source Alternative to $199 Paid SaaS Boilerplates.**  
-Built for shipping real products, web apps, and AI tools with Svelte 5 Runes, Better Auth, Prisma 7, Polar, and Tailwind CSS v4 in record time.
+A lightweight, high-performance foundation built from the ground up for developer-agent workflows (Claude Code, Cursor, Windsurf, Copilot, Gemini). Pre-configured with Svelte 5 Runes, strict boundaries, modular agent instructions, instant Rust tooling, and full-stack capabilities.
 
 [![Svelte 5](https://img.shields.io/badge/Svelte-5-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://svelte.dev)
 [![SvelteKit 2](https://img.shields.io/badge/SvelteKit-2-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)](https://kit.svelte.dev)
@@ -13,11 +12,10 @@ Built for shipping real products, web apps, and AI tools with Svelte 5 Runes, Be
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Better Auth](https://img.shields.io/badge/Better_Auth-Enterprise-black?style=for-the-badge&logo=auth0&logoColor=white)](https://better-auth.com)
 [![Prisma ORM](https://img.shields.io/badge/Prisma-7-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://prisma.io)
-[![Polar.sh](https://img.shields.io/badge/Polar.sh-MoR_Billing-0052FF?style=for-the-badge&logo=polar&logoColor=white)](https://polar.sh)
+[![Polar.sh](https://img.shields.io/badge/Polar.sh-Billing-0052FF?style=for-the-badge&logo=polar&logoColor=white)](https://polar.sh)
 [![Oxlint](https://img.shields.io/badge/Oxlint-Rust_Fast-FF7A00?style=for-the-badge&logo=rust&logoColor=white)](https://oxc.rs)
 [![Vitest](https://img.shields.io/badge/Vitest-ready-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://makeapullrequest.com)
 
 <br />
 
@@ -35,21 +33,18 @@ Built for shipping real products, web apps, and AI tools with Svelte 5 Runes, Be
 
 ---
 
-## 💡 Why Choose This Over Paid $199 Boilerplates?
+## 🤖 Why This Template for AI Coding Agents?
 
-Most commercial SaaS boilerplates charge $149–$299 for clunky setups that only support React/Next.js, require heavy Docker stacks to boot, and leave you dealing with international VAT headaches. **My SvelteKit Starter brings full enterprise SaaS architecture to Svelte 5 for free:**
+Most starter templates are built solely for human developers, ignoring how LLMs parse codebases. This template is architected specifically to maximize the reasoning power, accuracy, and execution speed of AI coding assistants:
 
-| Feature                  | My SvelteKit Starter (Free & MIT)                    | Typical $199 Commercial Boilerplates            |
-| :----------------------- | :--------------------------------------------------- | :---------------------------------------------- |
-| **Framework & Engine**   | **Svelte 5 Runes (`$state`, `$derived`, `$effect`)** | Legacy React/Next.js only                       |
-| **Price & Freedom**      | **$0 (100% Free & Open Source)**                     | $149 – $299 (Single-site license)               |
-| **Instant Boot**         | **Zero-Bloat: Boot in 5s without DB/Docker**         | Crashes on clone if local DB is missing         |
-| **SaaS Auth Engine**     | **Better Auth**: B2B Teams, 2FA TOTP, Impersonation  | Basic password auth or third-party locks        |
-| **Global Tax & Billing** | **Polar (Merchant of Record)** + Stripe fallback     | Stripe only (you handle global VAT / sales tax) |
-| **AI Credit Ledger**     | **Atomic Ledger (`prisma.$transaction`)**            | Vulnerable counter (race condition prone)       |
-| **Tooling Velocity**     | **Oxlint in Rust + svelte-check + Knip**             | Slow ESLint (seconds per pre-commit)            |
-| **AI Discovery (AEO)**   | **Native `llms.txt`, Markdown twins, JSON-LD**       | None                                            |
-| **Internationalization** | **ES/EN Reactive i18n out-of-the-box**               | Extra paid add-on or missing                    |
+- **Svelte 5 Runes Native**: Crystal-clear state management using modern `$state`, `$derived`, and `$effect`, making reactive logic predictable and trivial for AI models to reason about without reactivity bugs.
+- **Context-Window Optimized**: No barrel files (`index.ts`) in internal modules, preventing token bloat and circular dependencies. All rule files are strictly under 32 KB.
+- **Hierarchical Agent Rules**: Root `AGENTS.md` establishes overarching Svelte 5 patterns, while local domain rules (`src/lib/auth/AGENTS.md`, `src/lib/payments/AGENTS.md`, `src/lib/security/AGENTS.md`) guide agents with laser focus.
+- **Sub-10ms Feedback Loop**: Powered by **Oxlint** in Rust alongside `svelte-check`. Agents get instant static analysis feedback in milliseconds instead of waiting for heavy legacy tooling.
+- **Strict Quality Gates**: `pnpm run verify` and `pnpm run verify:release` provide agents with clear automated verification to self-audit their work before declaring a task complete.
+- **Agent Skill Integrations**: Built-in scripts for `autoskills` and `impeccable` to install domain-specific workflows and design auditing directly in the agent workspace.
+- **AEO Native (AI Engine Optimization)**: Ships with `llms.txt`, machine-readable Markdown twins, and search metadata so external AI models can discover and reason about your site.
+- **Zero-Bloat Boot**: Clones and boots in seconds without forcing local databases or Docker containers. Full-stack modules (Better Auth, Prisma 7, Polar/Stripe) are completely decoupled and opt-in.
 
 ---
 
@@ -345,7 +340,7 @@ This repository includes agent-facing documentation:
 
 ## 🌟 Support & Community
 
-If this free Svelte 5 boilerplate saves you time or money compared to closed $199 alternatives, please consider giving it a **Star on GitHub** ⭐ — it helps the project reach more Svelte and vibe coding developers!
+If you find this starter helpful for your projects or vibe coding workflow, please consider giving it a **Star on GitHub** ⭐ — it helps more developers discover the project!
 
 - **Found a bug?** [Open an issue](https://github.com/moisesvalero/my-sveltekit-starter/issues)
 - **Have an idea?** Pull requests and feature suggestions are warmly welcomed!
