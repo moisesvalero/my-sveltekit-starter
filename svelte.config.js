@@ -14,7 +14,9 @@ const config = {
   extensions: ['.svelte', '.svx', '.md'],
   preprocess: preprocessors,
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      runtime: 'nodejs24.x'
+    }),
     alias: {
       $components: 'src/lib/components',
       $ui: 'src/lib/components/ui',
