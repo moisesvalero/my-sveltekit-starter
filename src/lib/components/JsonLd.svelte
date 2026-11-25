@@ -158,22 +158,26 @@
         }
       : null
   );
+
+  function safeJsonLd(data: unknown): string {
+    return JSON.stringify(data).replace(/</g, '\\u003c');
+  }
 </script>
 
 <svelte:head>
-  {@html `<script type="application/ld+json">${JSON.stringify(organization)}</` + `script>`}
-  {@html `<script type="application/ld+json">${JSON.stringify(website)}</` + `script>`}
-  {@html `<script type="application/ld+json">${JSON.stringify(pageSchema)}</` + `script>`}
+  {@html `<script type="application/ld+json">${safeJsonLd(organization)}</` + `script>`}
+  {@html `<script type="application/ld+json">${safeJsonLd(website)}</` + `script>`}
+  {@html `<script type="application/ld+json">${safeJsonLd(pageSchema)}</` + `script>`}
   {#if path !== '/'}
-    {@html `<script type="application/ld+json">${JSON.stringify(breadcrumb)}</` + `script>`}
+    {@html `<script type="application/ld+json">${safeJsonLd(breadcrumb)}</` + `script>`}
   {/if}
   {#if faqSchema}
-    {@html `<script type="application/ld+json">${JSON.stringify(faqSchema)}</` + `script>`}
+    {@html `<script type="application/ld+json">${safeJsonLd(faqSchema)}</` + `script>`}
   {/if}
   {#if howtoSchema}
-    {@html `<script type="application/ld+json">${JSON.stringify(howtoSchema)}</` + `script>`}
+    {@html `<script type="application/ld+json">${safeJsonLd(howtoSchema)}</` + `script>`}
   {/if}
   {#if softwareSchema}
-    {@html `<script type="application/ld+json">${JSON.stringify(softwareSchema)}</` + `script>`}
+    {@html `<script type="application/ld+json">${safeJsonLd(softwareSchema)}</` + `script>`}
   {/if}
 </svelte:head>

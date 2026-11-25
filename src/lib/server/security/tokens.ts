@@ -1,17 +1,21 @@
 import crypto from 'node:crypto';
 
-export function createUnsubscribeToken(
-  email: string,
-  secret = process.env.BETTER_AUTH_SECRET || 'default-secret-salt-change-in-production'
-): string {
-  return crypto.createHmac('sha256', secret).update(email.toLowerCase().trim()).digest('hex');
+function resolveTokenSecret(secret?: string): string {
+  const resolved = secret ?? process.env.BETTER_AUTH_SECRET;
+  if (!resolved || resolved.length < 16) {
+    throw new Error('BETTER_AUTH_SECRET must be configured to sign/verify tokens');
+  }
+  return resolved;
 }
 
-export function verifyUnsubscribeToken(
-  email: string,
-  token: string,
-  secret = process.env.BETTER_AUTH_SECRET || 'default-secret-salt-change-in-production'
-): boolean {
+export function createUnsubscribeToken(email: string, secret?: string): string {
+  return crypto
+    .createHmac('sha256', resolveTokenSecret(secret))
+    .update(email.toLowerCase().trim())
+    .digest('hex');
+}
+
+export function verifyUnsubscribeToken(email: string, token: string, secret?: string): boolean {
   if (!email || !token) {
     return false;
   }

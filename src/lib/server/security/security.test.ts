@@ -1,5 +1,7 @@
+import crypto from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 
+import { verifyStripeWebhookSignature } from '$lib/server/payments/webhook-signatures';
 import { checkRateLimit, getClientIp } from './rate-limit';
 import { createUnsubscribeToken, verifyUnsubscribeToken } from './tokens';
 
@@ -29,13 +31,42 @@ describe('security utilities in SvelteKit', () => {
 
   it('creates and verifies HMAC unsubscribe tokens', () => {
     const email = 'user@example.com';
-    const token = createUnsubscribeToken(email);
+    const testSecret = 'test-secret-with-more-than-32-characters-1234';
+    const token = createUnsubscribeToken(email, testSecret);
 
     expect(typeof token).toBe('string');
     expect(token.length).toBe(64);
 
-    expect(verifyUnsubscribeToken(email, token)).toBe(true);
-    expect(verifyUnsubscribeToken('attacker@example.com', token)).toBe(false);
-    expect(verifyUnsubscribeToken(email, 'invalid-token')).toBe(false);
+    expect(verifyUnsubscribeToken(email, token, testSecret)).toBe(true);
+    expect(verifyUnsubscribeToken('attacker@example.com', token, testSecret)).toBe(false);
+    expect(verifyUnsubscribeToken(email, 'invalid-token', testSecret)).toBe(false);
+  });
+
+  it('rejects missing secret for unsubscribe tokens', () => {
+    const prev = process.env.BETTER_AUTH_SECRET;
+    delete process.env.BETTER_AUTH_SECRET;
+    try {
+      expect(() => createUnsubscribeToken('user@example.com')).toThrow();
+    } finally {
+      if (prev !== undefined) process.env.BETTER_AUTH_SECRET = prev;
+    }
+  });
+
+  it('verifies Stripe webhook HMAC-SHA256 signatures and rejects tampering or replays', () => {
+    const secret = 'whsec_test_secret_key_for_unit_tests';
+    const body = JSON.stringify({ id: 'evt_1', type: 'checkout.session.completed' });
+    const now = 1_700_000_000;
+    const validSig = crypto.createHmac('sha256', secret).update(`${now}.${body}`).digest('hex');
+
+    expect(verifyStripeWebhookSignature(body, `t=${now},v1=${validSig}`, secret, 300, now)).toBe(
+      true
+    );
+    expect(
+      verifyStripeWebhookSignature(`${body} `, `t=${now},v1=${validSig}`, secret, 300, now)
+    ).toBe(false);
+    expect(
+      verifyStripeWebhookSignature(body, `t=${now - 400},v1=${validSig}`, secret, 300, now)
+    ).toBe(false);
+    expect(verifyStripeWebhookSignature(body, 't=123,v1=deadbeef', secret, 300, now)).toBe(false);
   });
 });

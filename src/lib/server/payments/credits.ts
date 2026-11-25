@@ -35,31 +35,22 @@ export async function addCredits({
   }
 
   return db.$transaction(async (tx) => {
-    let creditBalance = await tx.creditBalance.findUnique({
-      where: { userId }
+    const creditBalance = await tx.creditBalance.upsert({
+      where: { userId },
+      create: {
+        userId,
+        balance: amount,
+        totalPurchased: amount,
+        totalConsumed: 0
+      },
+      update: {
+        balance: { increment: amount },
+        totalPurchased: { increment: amount }
+      }
     });
 
-    const balanceBefore = creditBalance ? creditBalance.balance : 0;
-    const balanceAfter = balanceBefore + amount;
-
-    if (!creditBalance) {
-      creditBalance = await tx.creditBalance.create({
-        data: {
-          userId,
-          balance: balanceAfter,
-          totalPurchased: amount,
-          totalConsumed: 0
-        }
-      });
-    } else {
-      creditBalance = await tx.creditBalance.update({
-        where: { userId },
-        data: {
-          balance: balanceAfter,
-          totalPurchased: { increment: amount }
-        }
-      });
-    }
+    const balanceAfter = creditBalance.balance;
+    const balanceBefore = balanceAfter - amount;
 
     await tx.creditTransaction.create({
       data: {
@@ -92,29 +83,31 @@ export async function consumeCredits({
   }
 
   return db.$transaction(async (tx) => {
-    const creditBalance = await tx.creditBalance.findUnique({
+    const debit = await tx.creditBalance.updateMany({
+      where: {
+        userId,
+        balance: { gte: amount }
+      },
+      data: {
+        balance: { decrement: amount },
+        totalConsumed: { increment: amount }
+      }
+    });
+
+    const updated = await tx.creditBalance.findUnique({
       where: { userId }
     });
 
-    const balanceBefore = creditBalance ? creditBalance.balance : 0;
-
-    if (balanceBefore < amount) {
+    if (debit.count === 0 || !updated) {
       return {
         success: false,
-        balance: balanceBefore,
+        balance: updated ? updated.balance : 0,
         error: 'Insufficient credits'
       };
     }
 
-    const balanceAfter = balanceBefore - amount;
-
-    const updated = await tx.creditBalance.update({
-      where: { userId },
-      data: {
-        balance: balanceAfter,
-        totalConsumed: { increment: amount }
-      }
-    });
+    const balanceAfter = updated.balance;
+    const balanceBefore = balanceAfter + amount;
 
     await tx.creditTransaction.create({
       data: {

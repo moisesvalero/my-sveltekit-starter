@@ -1,3 +1,4 @@
+import { building } from '$app/environment';
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { admin, organization, twoFactor } from 'better-auth/plugins';
@@ -11,7 +12,10 @@ function getAuthSecret(): string {
   if (secret && secret.length >= 32) {
     return secret;
   }
-  return BUILD_TIME_SECRET;
+  if (building || process.env.NODE_ENV === 'test' || process.env.VITEST) {
+    return BUILD_TIME_SECRET;
+  }
+  throw new Error('BETTER_AUTH_SECRET must be configured with at least 32 characters in runtime');
 }
 
 export const auth = betterAuth({
